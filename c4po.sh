@@ -9,5 +9,5 @@ ______| |______ |_____  |_____| |    \_ __|__    |       |         _/_/_/     _/
                                                               _/               _/       _/           _/    _/
                                                                _/_/_/         _/       _/             _/_/
 "
-docker-compose up --build
-#docker-compose up
+#docker-compose up --build
+docker-compose up

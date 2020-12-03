@@ -1,0 +1,6 @@
+@mixin ngx-layout() {
+  @include media-breakpoint-down(is) {
+    .row {
+    }
+  }
+}
