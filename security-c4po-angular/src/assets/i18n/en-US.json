@@ -1,0 +1,26 @@
+{
+  "global": {
+    "action.login": "Login",
+    "action.retry": "Try again",
+    "username": "Username",
+    "password": "Password"
+  },
+  "popup": {
+    "success": "✔",
+    "failure": "✘",
+    "warning": "!",
+    "info": "",
+    "error.position": {
+      "permissionDenied": "Permission Denied",
+      "timeout": "Timeout"
+    },
+    "login": {
+      "successful": "Login successful"
+    }
+  },
+  "login": {
+    "title": "Login",
+    "failed": "Wrong username or password",
+    "unauthorized": "User not found. Please register and try again"
+  }
+}
