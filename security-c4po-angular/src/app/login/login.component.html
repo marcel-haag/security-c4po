@@ -1,0 +1,59 @@
+<div class="login-background"></div>
+<div class="login-container">
+  <nb-card class="login-card">
+    <nb-card-body fxLayout="column"
+                  fxLayoutGap="0.5rem">
+      <form [formGroup]="loginFormGroup">
+        <div fxLayout="column"
+             fxLayoutGap="0.5rem">
+          <h2 class="login-label">
+            {{SECURITYC4PO_TITLE}}
+          </h2>
+
+          <nb-form-field class="username">
+            <input formControlName="username" required
+                   type="text" nbInput
+                   status="{{formCtrlStatus}}"
+                   placeholder="{{'global.username' | translate}}"
+                   [min]="MIN_LENGTH"
+                   (keydown.enter)="onEnterPressed()">
+          </nb-form-field>
+
+          <nb-form-field class="password">
+            <input formControlName="password" required
+                   type="password" nbInput
+                   status="{{formCtrlStatus}}"
+                   placeholder="{{'global.password' | translate}}"
+                   (keydown.enter)="onEnterPressed()">
+          </nb-form-field>
+
+          <div id="login-failed-error"
+               class="alert"
+               *ngIf="loginFailedWithCurrentCredentials">
+            {{'login.failed' | translate}}
+          </div>
+
+          <button nbButton class="login-button" status="primary"
+                  [disabled]="formIsEmptyOrInvalid()"
+                  (click)="login()">
+            {{'global.action.login' | translate}}
+          </button>
+        </div>
+      </form>
+      <div class="bottom-text" fxLayout="row" fxLayoutAlign="space-around center">
+        <div class="version-text">
+          {{version}}
+        </div>
+        <div>
+          &copy; {{NOVATEC_NAME}}
+        </div>
+      </div>
+    </nb-card-body>
+  </nb-card>
+</div>
+
+
+
+
+
+

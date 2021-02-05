@@ -1,0 +1,87 @@
+@import '~@nebular/theme/styles/theming';
+
+$login-width: 24em;
+$input-width: 16rem;
+
+.login-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+
+  .login-card {
+    z-index: 10;
+    align-self: center;
+    text-align: center;
+    border-radius: 0.5rem;
+
+    max-width: $login-width;
+    max-height: $login-width;
+
+    .login-label {
+      margin-top: 1rem;
+      margin-bottom: 2rem !important;
+      color: #8f9bb3;
+    }
+
+    .username {
+      width: $input-width;
+      margin-bottom: 1.5rem !important;
+    }
+
+    .password {
+      width: $input-width;
+      margin-bottom: 1.25rem !important;
+    }
+
+    .login-button {
+      max-width: $input-width;
+      margin-bottom: 0.2rem;
+    }
+
+    .alert {
+      padding-bottom: 0.5rem;
+      color: #e74c3c;
+    }
+  }
+
+  .bottom-text {
+    display: flex;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: 1rem;
+    justify-content: space-around;
+    padding: 0.625rem;
+    .version-text{
+      max-width: 50%;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+}
+
+.login-background {
+  background-image: url("../../assets/images/login/login.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  min-width: 100vw;
+  min-height: 100vh;
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  filter: grayscale(100%) blur(2.5px) brightness(1);
+  z-index: 1;
+  margin: -2%
+}
