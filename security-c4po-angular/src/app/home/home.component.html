@@ -1,1 +1,16 @@
-<p>home works!</p>
+<nb-card>
+
+  <nb-card-header>
+    <button (click)="onClickGetProjects()" nbButton>get Projects</button>
+  </nb-card-header>
+
+    <nb-card-body>
+      <div *ngIf="projects.getValue().length > 0, else noProjects">
+        {{projects.getValue() | json}}
+      </div>
+      <ng-template #noProjects>
+        {{'No Projects available!'}}
+      </ng-template>
+    </nb-card-body>
+
+</nb-card>

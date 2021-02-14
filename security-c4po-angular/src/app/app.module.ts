@@ -6,7 +6,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   NbLayoutModule,
   NbToastrModule,
-  NbIconModule,
+  NbIconModule, NbCardModule, NbButtonModule,
 } from '@nebular/theme';
 import {NbEvaIconsModule} from '@nebular/eva-icons';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -21,6 +21,8 @@ import {SessionState} from '../shared/stores/session-state/session-state';
 import {environment} from '../environments/environment';
 import {NotificationService} from '../shared/services/notification.service';
 import {ThemeModule} from '@assets/@theme/theme.module';
+import {HeaderModule} from './header/header.module';
+import {HomeModule} from './home/home.module';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import {ThemeModule} from '@assets/@theme/theme.module';
     BrowserAnimationsModule,
     ThemeModule.forRoot(),
     NbLayoutModule,
+    NbCardModule,
     NbIconModule,
+    NbButtonModule,
     NbEvaIconsModule,
     NgxsModule.forRoot([SessionState], {developmentMode: !environment.production}),
     HttpClientModule,
@@ -46,6 +50,8 @@ import {ThemeModule} from '@assets/@theme/theme.module';
         deps: [HttpClient]
       }
     }),
+    HeaderModule,
+    HomeModule
   ],
   providers: [
     HttpClient,

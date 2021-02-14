@@ -1,0 +1,50 @@
+= SecurityC4PO REST API Documentation
+Novatec Consulting GmbH;
+:doctype: book
+:source-highlighter: highlightjs
+:icons: font
+:toc: left
+:toclevels: 4
+:sectlinks:
+:data-uri:
+
+This documentation describes the REST API for the "SecurityC4PO".
+
+The service tries to adhere as closely as possible to standard HTTP and REST conventions in its use of HTTP verbs and status codes.
+
+== Error handling
+
+You can generally expect 4xx for client errors and 5xx for server errors.
+
+== Request Headers
+
+The request and response snippets shown in this documentation are generated from real interactions.
+When creating requests you must not follow the examples exactly, e.g. instead of providing the Accept Header `application/json, application/javascript, text/javascript` you can also provide only one value, typically `application/json`.
+
+== Project
+
+=== Get projects
+
+To get projects, call the GET request /v1/projects
+
+==== Request example
+
+#include::{snippets}/getProjects/http-request.adoc[]
+
+==== Response example
+
+#include::{snippets}/getProjects/http-response.adoc[]
+
+==== Response structure
+
+#include::{snippets}/getProjects/response-fields.adoc[]
+
+== Change History
+
+|===
+|Date |Change
+|2021-02-14
+|Added GET endpoint to receive Projects
+|2021-02-12
+|Initial version
+|===

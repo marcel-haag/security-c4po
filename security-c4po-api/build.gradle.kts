@@ -16,8 +16,10 @@ plugins {
 	id("io.spring.dependency-management") version "1.0.10.RELEASE"
 	id("com.github.spotbugs") version "4.5.0"
 	id("org.owasp.dependencycheck") version "6.0.0"
+	id("org.asciidoctor.jvm.convert") version "2.4.0"
 	kotlin("jvm") version "1.3.72"
 	kotlin("plugin.spring") version "1.3.72"
+	jacoco
 }
 
 group = "com.security-c4po.api"
@@ -56,17 +58,33 @@ spotbugs {
 val snippetsDir = file("build/generated-snippets")
 
 dependencies {
+	implementation("com.fasterxml.jackson.datatype:jackson-datatype-joda:2.11.3")
+	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions:1.1.1")
+	implementation("javax.websocket:javax.websocket-api:1.1")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	/*implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
+	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")*/
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("com.github.spotbugs:spotbugs-annotations:4.1.2")
-	compileOnly("org.projectlombok:lombok")
-	annotationProcessor("org.projectlombok:lombok")
-	testImplementation("org.springframework.boot:spring-boot-starter-test") {
-		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
-	}
-	testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
+	implementation("org.modelmapper:modelmapper:2.3.2")
+
+	api("org.springframework.boot:spring-boot-starter-test")
+	/*api("org.springframework.security:spring-security-jwt:1.0.10.RELEASE")*/
+
+	testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0")
+	testImplementation("io.projectreactor:reactor-test")
+	testImplementation("org.junit.jupiter:junit-jupiter-api:5.3.1")
+	testImplementation("org.junit.jupiter:junit-jupiter-engine:5.3.1")
+	testImplementation("org.springframework.cloud:spring-cloud-contract-wiremock:2.1.0.RELEASE")
+	testImplementation("org.springframework.restdocs:spring-restdocs-webtestclient")
+}
+
+jacoco {
+	toolVersion = "0.8.3"
+	reportsDir = file("$buildDir/reports/coverage")
 }
 
 tasks.withType<Test> {
@@ -81,7 +99,7 @@ tasks.withType<KotlinCompile> {
 }
 
 tasks.bootJar {
-	dependsOn(tasks.test, tasks.dependencyCheckAnalyze)
+	dependsOn(tasks.test, tasks.asciidoctor, tasks.jacocoTestReport, tasks.dependencyCheckAnalyze)
 }
 
 tasks.test {
@@ -89,5 +107,35 @@ tasks.test {
 }
 
 tasks.dependencyCheckAnalyze {
+	dependsOn(tasks.test, tasks.asciidoctor, tasks.jacocoTestReport)
+}
+
+//Issue with Kotlin assignment of sourceDir and outputDir: https://github.com/asciidoctor/asciidoctor-gradle-plugin/issues/458
+tasks.asciidoctor {
+	inputs.dir(snippetsDir)
+	setSourceDir(file("src/main/asciidoc"))
+	setOutputDir(file("$buildDir/asciidoc"))
+	sources(delegateClosureOf<PatternSet> {
+		include("SecurityC4PO.adoc")
+	})
+
+	attributes(
+			mapOf(
+					"snippets" to snippetsDir,
+					"source-highlighter" to "coderay",
+					"toc" to "left",
+					"toclevels" to 3,
+					"sectlinks" to true
+			)
+	)
 	dependsOn(tasks.test)
+}
+
+tasks.jacocoTestReport {
+	reports {
+		xml.isEnabled = true
+		csv.isEnabled = false
+		html.isEnabled = true
+		html.destination = file("$buildDir/reports/coverage")
+	}
 }

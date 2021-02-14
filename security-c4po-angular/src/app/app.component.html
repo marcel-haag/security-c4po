@@ -1,9 +1,14 @@
-<div class="content-container">
-  <div class="scrollable-content">
-    <nb-layout>
-      <nb-layout-column>
+<nb-layout>
+  <nb-layout-header *ngIf="$authState.getValue()">
+    <app-header></app-header>
+  </nb-layout-header>
+
+  <nb-layout-column>
+    <div class="content-container">
+      <div class="scrollable-content">
         <router-outlet></router-outlet>
-      </nb-layout-column>
-    </nb-layout>
-  </div>
-</div>
+      </div>
+    </div>
+  </nb-layout-column>
+
+</nb-layout>
