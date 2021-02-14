@@ -10,6 +10,7 @@ import {ThemeModule} from '../assets/@theme/theme.module';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {SessionState} from '../shared/stores/session-state/session-state';
 import {NgxsModule} from '@ngxs/store';
+import {HeaderModule} from './header/header.module';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -27,6 +28,7 @@ describe('AppComponent', () => {
         }),
         NbEvaIconsModule,
         ThemeModule,
+        HeaderModule,
         NgxsModule.forRoot([SessionState]),
         HttpClientTestingModule
       ],
