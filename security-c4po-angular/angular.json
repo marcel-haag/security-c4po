@@ -25,6 +25,7 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
+              "src/favicon-c4po.ico",
               "src/assets"
             ],
             "styles": [
@@ -96,6 +97,7 @@
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               "src/favicon.ico",
+              "src/favicon-c4po.ico",
               "src/assets"
             ],
             "styles": [

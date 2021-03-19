@@ -1,0 +1,9 @@
+@import "../../assets/@theme/styles/_variables.scss";
+
+.c4po-header {
+  height: $header-height;
+
+  .toggle-dark-mode {
+    text-align: right;
+  }
+}

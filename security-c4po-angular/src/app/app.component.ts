@@ -4,16 +4,18 @@ import localeDe from '@angular/common/locales/de';
 import {registerLocale} from 'i18n-iso-countries';
 import {registerLocaleData} from '@angular/common';
 import {Store} from '@ngxs/store';
-import {BehaviorSubject, of, Subscription} from 'rxjs';
-import {SessionState} from '../shared/stores/session-state/session-state';
-import { untilDestroyed } from 'ngx-take-until-destroy';
+import {BehaviorSubject, Subscription} from 'rxjs';
+import {SessionState, SessionStateModel} from '../shared/stores/session-state/session-state';
+import {untilDestroyed} from 'ngx-take-until-destroy';
+import {isNotNullOrUndefined} from 'codelyzer/util/isNotNullOrUndefined';
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, OnDestroy{
+export class AppComponent implements OnInit, OnDestroy {
   title = 'security-c4po-angular';
 
   $authState: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
@@ -27,11 +29,12 @@ export class AppComponent implements OnInit, OnDestroy{
 
   ngOnInit(): void {
     // authState change handling
-    of(this.store.selectSnapshot(SessionState.isAuthenticated)).pipe(
+    this.authStateSubscription = this.store.select(SessionState).pipe(
+      filter(isNotNullOrUndefined),
       untilDestroyed(this)
     ).subscribe({
-      next: (authState: boolean) => {
-        this.$authState.next(authState);
+      next: (state: SessionStateModel) => {
+        this.$authState.next(state.isAuthenticated);
       },
       error: (err) => console.error('auth error:', err)
     });
