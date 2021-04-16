@@ -7,6 +7,7 @@ import {HttpClient} from '@angular/common/http';
 import {SESSION_STATE_NAME, SessionState, SessionStateModel} from './session-state';
 import {User} from '../../models/user.model';
 import {InitSession, UpdateUser} from './session-state.actions';
+import {KeycloakService} from 'keycloak-angular';
 
 const INITIAL_STORE_STATE_SESSION: SessionStateModel = {
   userAccount: {
@@ -40,7 +41,9 @@ describe('SessionState', () => {
         }),
         NgxsModule.forRoot([SessionState]),
       ],
-      providers: []
+      providers: [
+        KeycloakService
+      ]
     });
     store = TestBed.inject(Store);
     store.reset({

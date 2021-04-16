@@ -4,45 +4,42 @@ import {Store} from '@ngxs/store';
 import {Observable, of} from 'rxjs';
 import {SessionState} from '../stores/session-state/session-state';
 import {catchError, map} from 'rxjs/operators';
+import {KeycloakAuthGuard, KeycloakService} from 'keycloak-angular';
+import {UpdateIsAuthenticated, UpdateUser} from '../stores/session-state/session-state.actions';
+import {User} from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuardService implements CanActivate {
+export class AuthGuardService extends KeycloakAuthGuard implements CanActivate {
   constructor(
-    private readonly router: Router,
+    public readonly router: Router,
+    protected keycloakService: KeycloakService,
     private readonly store: Store) {
+    super(router, keycloakService);
   }
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> {
-    return this.isAuthenticated()
-      .pipe(
-        map((canAccess: boolean) => {
-          if (canAccess) {
-            return canAccess;
-          } else {
-            this.router.navigate(['/login']);
-            return false;
-          }
-        })
-      );
-  }
+  isAccessAllowed(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      if (!this.authenticated) {
+        this.keycloakAngular.login()
+          .catch(e => console.error(e));
+        return reject(false);
+      }
 
-  /**
-   * @return boolean
-   */
-  private isAuthenticated(): Observable<boolean> {
-    // ToDo: Should check from Authentication Provider
-    return of(this.store.selectSnapshot(SessionState.isAuthenticated))
-      .pipe(
-        map((isLoggedIn: boolean) => {
-          return isLoggedIn;
-        }),
-        catchError(() => {
-          return of(false);
-        })
-      );
+      const requiredRoles: string[] = route.data.roles;
+      if (!requiredRoles || requiredRoles.length === 0) {
+        this.store.dispatch(new UpdateIsAuthenticated(true));
+        this.store.dispatch(new UpdateUser(route.data.user, true));
+        return resolve(true);
+      } else {
+        if (!this.roles || this.roles.length === 0) {
+          this.store.dispatch(new UpdateIsAuthenticated(false));
+          this.store.dispatch(new UpdateUser(null, true));
+          resolve(false);
+        }
+        resolve(requiredRoles.every(role => this.roles.indexOf(role) > -1));
+      }
+    });
   }
 }

@@ -9,6 +9,10 @@ export class ResetSession {
   static readonly type = '[Session] ResetSession';
 }
 
+export class FetchUser {
+  static readonly type = '[Session] FetchUser';
+}
+
 export class UpdateUser {
   static readonly type = '[Session] UpdateUser';
 

@@ -10,12 +10,14 @@ import {UpdateIsAuthenticated, UpdateUser} from '../../shared/stores/session-sta
 import {GlobalTitlesVariables} from '../../shared/config/global-variables';
 import {HttpClient} from '@angular/common/http';
 import {FieldStatus} from '../../shared/models/form-field-status.model';
+import {KeycloakService} from 'keycloak-angular';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+// ToDo: Exchange default Keycloak login with self made login
 export class LoginComponent implements OnInit, OnDestroy {
   readonly MIN_LENGTH: number = 2;
   readonly SECURITYC4PO_TITLE = GlobalTitlesVariables.SECURITYC4PO_TITLE;
@@ -41,7 +43,8 @@ export class LoginComponent implements OnInit, OnDestroy {
               private router: Router,
               private store: Store,
               private readonly httpClient: HttpClient,
-              private notificationService: NotificationService) {
+              private notificationService: NotificationService,
+              protected keycloakService: KeycloakService) {
   }
 
   ngOnInit(): void {
@@ -65,8 +68,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   login(): void {
     const username = this.loginUsernameCtrl.value;
     const password = this.loginPasswordCtrl.value;
-    if (username === DefaultUser.username
-      && password === DefaultUser.password) {
+    // ToDo: Should be handled in Guards
+    this.keycloakService.login({});
+    if (true) {
       // ToDo: Should be handled in Guards
       this.store.dispatch(new UpdateIsAuthenticated(true));
       this.store.dispatch(new UpdateUser(this.user, true));
@@ -120,10 +124,3 @@ export class LoginComponent implements OnInit, OnDestroy {
 export interface Version {
   version: string;
 }
-
-export enum DefaultUser {
-  username = 'ttt',
-  password = 'Test1234!'
-}
-
-
