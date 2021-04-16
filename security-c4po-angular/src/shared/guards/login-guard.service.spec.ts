@@ -8,6 +8,7 @@ import {SessionState} from '../stores/session-state/session-state';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpLoaderFactory} from '../../app/common-app.module';
 import {HttpClient} from '@angular/common/http';
+import {KeycloakService} from 'keycloak-angular';
 
 describe('LoginGuardService', () => {
   let service: LoginGuardService;
@@ -27,6 +28,7 @@ describe('LoginGuardService', () => {
         NgxsModule.forRoot([SessionState])
       ],
       providers: [
+        KeycloakService
       ]
     });
     service = TestBed.inject(LoginGuardService);

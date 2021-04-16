@@ -2,10 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {AuthGuardService} from '../shared/guards/auth-guard.service';
-import {LoginGuardService} from '../shared/guards/login-guard.service';
 
 export const START_PAGE = 'home';
-export const FALLBACK_PAGE = 'home';
 
 const routes: Routes = [
   {
@@ -18,11 +16,12 @@ const routes: Routes = [
     loadChildren: () => import('./dashboard').then(mod => mod.DashboardModule),
     canActivate: [AuthGuardService]
   },
-  {
+  // ToDo: Exchange default Keycloak login with self made login
+  /*{
     path: 'login',
     loadChildren: () => import('./login').then(mod => mod.LoginModule),
     canActivate: [LoginGuardService]
-  },
+  },*/
   {path: '**', redirectTo: START_PAGE},
   {path: '', redirectTo: START_PAGE, pathMatch: 'full'},
 ];

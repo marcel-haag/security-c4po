@@ -25,15 +25,15 @@ When creating requests you must not follow the examples exactly, e.g. instead of
 
 === Get projects
 
-To get projects, call the GET request /v1/projects
+To get projects, call the GET request /projects
 
 ==== Request example
 
-#include::{snippets}/getProjects/http-request.adoc[]
+#include::{snippets}/getProjects/com.securityc4po.api.http-request.adoc[]
 
 ==== Response example
 
-#include::{snippets}/getProjects/http-response.adoc[]
+#include::{snippets}/getProjects/com.securityc4po.api.http-response.adoc[]
 
 ==== Response structure
 

@@ -61,6 +61,7 @@ dependencies {
 	implementation("com.fasterxml.jackson.datatype:jackson-datatype-joda:2.11.3")
 	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions:1.1.1")
 	implementation("javax.websocket:javax.websocket-api:1.1")
+	implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
@@ -72,7 +73,7 @@ dependencies {
 	implementation("org.modelmapper:modelmapper:2.3.2")
 
 	api("org.springframework.boot:spring-boot-starter-test")
-	/*api("org.springframework.security:spring-security-jwt:1.0.10.RELEASE")*/
+	api("org.springframework.security:spring-security-jwt:1.1.1.RELEASE")
 
 	testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0")
 	testImplementation("io.projectreactor:reactor-test")

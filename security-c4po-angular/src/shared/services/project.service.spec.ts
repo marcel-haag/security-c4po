@@ -3,6 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { ProjectService } from './project.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {KeycloakService} from 'keycloak-angular';
 
 describe('ProjectService', () => {
   let service: ProjectService;
@@ -13,7 +14,9 @@ describe('ProjectService', () => {
         HttpClientTestingModule,
         BrowserAnimationsModule,
       ],
-      providers: []
+      providers: [
+        KeycloakService
+      ]
     });
     service = TestBed.inject(ProjectService);
   });

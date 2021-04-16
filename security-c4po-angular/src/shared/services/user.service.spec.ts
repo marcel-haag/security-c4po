@@ -8,6 +8,7 @@ import {HttpLoaderFactory} from '../../app/common-app.module';
 import {HttpClient} from '@angular/common/http';
 import {NgxsModule} from '@ngxs/store';
 import {SessionState} from '../stores/session-state/session-state';
+import {KeycloakService} from 'keycloak-angular';
 
 describe('UserService', () => {
   let service: UserService;
@@ -26,7 +27,9 @@ describe('UserService', () => {
           }
         }),
       ],
-      providers: []
+      providers: [
+        KeycloakService
+      ]
     });
     service = TestBed.inject(UserService);
   });

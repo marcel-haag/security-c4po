@@ -2,9 +2,10 @@ import {User} from '../../models/user.model';
 import {Inject, Injectable, LOCALE_ID} from '@angular/core';
 import {Action, Selector, State, StateContext} from '@ngxs/store';
 import {TranslateService} from '@ngx-translate/core';
-import {InitSession, ResetSession, UpdateIsAuthenticated, UpdateUser, UpdateUserSettings} from './session-state.actions';
+import {FetchUser, InitSession, ResetSession, UpdateIsAuthenticated, UpdateUser, UpdateUserSettings} from './session-state.actions';
 import deepEqual from 'deep-equal';
 import moment from 'moment';
+import {UserService} from '../../services/user.service';
 
 export interface SessionStateModel {
   userAccount: User;
@@ -24,6 +25,7 @@ export const SESSION_STORAGE_KEY_USER = 'user';
 @Injectable()
 export class SessionState {
   constructor(@Inject(LOCALE_ID) private readonly localeId: string,
+              private readonly userService: UserService,
               private readonly translateService: TranslateService) {
   }
 
@@ -49,6 +51,17 @@ export class SessionState {
   resetSession(ctx: StateContext<SessionStateModel>): void {
     this.deleteSessionStorage();
     ctx.dispatch(new InitSession());
+  }
+
+  @Action(FetchUser)
+  fetchUser(ctx: StateContext<SessionStateModel>): void {
+    this.userService.loadUserProfile().subscribe({
+      next: (user: User): void => {
+        ctx.dispatch(new UpdateUser(user, true));
+      },
+      // TODO: add better error handling
+      error: (err) => console.error('Failed to load UserProfile', err)
+    });
   }
 
   @Action(UpdateUser)
