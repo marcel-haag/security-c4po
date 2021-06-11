@@ -11,6 +11,7 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {SessionState} from '../shared/stores/session-state/session-state';
 import {NgxsModule} from '@ngxs/store';
 import {HeaderModule} from './header/header.module';
+import {KeycloakService} from 'keycloak-angular';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -31,6 +32,9 @@ describe('AppComponent', () => {
         HeaderModule,
         NgxsModule.forRoot([SessionState]),
         HttpClientTestingModule
+      ],
+      providers: [
+        KeycloakService
       ],
       declarations: [
         AppComponent

@@ -11,17 +11,41 @@
 				{
 					"name": "getProjects",
 					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenType",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "accessToken",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "authorization_code_with_pkce",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8443/v1/projects",
+							"raw": "http://localhost:8443/projects",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8443",
 							"path": [
-								"v1",
 								"projects"
 							]
 						}
@@ -45,6 +69,87 @@
 					"path": [
 						"actuator",
 						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postKeycloakToken",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "c4po_local",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "ttt",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Test1234!",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "token",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "client_secret",
+							"value": "secret",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8888/auth/realms/c4po_realm_local/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"auth",
+						"realms",
+						"c4po_realm_local",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getASCIIDocumentation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8443/docs/SecurityC4PO.html",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"docs",
+						"SecurityC4PO.html"
 					]
 				}
 			},

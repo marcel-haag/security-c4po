@@ -23,6 +23,7 @@ import {CommonModule} from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NotificationService} from '../../shared/services/notification.service';
 import {NotificationServiceMock} from '../../shared/services/notification.service.mock';
+import {KeycloakService} from 'keycloak-angular';
 
 const DESIRED_STORE_STATE_SESSION: SessionStateModel = {
   userAccount: {
@@ -68,6 +69,7 @@ describe('LoginComponent', () => {
         LoginComponent
       ],
       providers: [
+        KeycloakService,
         {provide: NotificationService, useValue: new NotificationServiceMock()}
       ]
     })

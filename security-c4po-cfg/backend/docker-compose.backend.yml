@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+  c4po-api:
+    build: '../../security-c4po-api'
+    image: security-c4po-api:latest
+    container_name: security-c4po-api
+    deploy:
+      resources:
+        limits:
+          memory: "1G"
+    ports:
+      - '8443:8443'
+
+networks:
+  c4po:
