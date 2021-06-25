@@ -10,7 +10,7 @@ services:
         limits:
           memory: "1G"
     ports:
-      - '8443:8443'
+      - 8443:8443
 
 networks:
   c4po:

@@ -10,7 +10,7 @@ services:
         limits:
           memory: "1G"
     ports:
-      - '4200:4200'
+      - 4200:4200
 
 networks:
   c4po:
