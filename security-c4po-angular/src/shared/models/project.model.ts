@@ -4,22 +4,21 @@ export class Project {
   id: string;
   client: string;
   title: string;
-  /* Change to Date after database integration */
-  createdAt: string;
+  createdAt: Date;
   tester: string;
-  logo: string;
+  createdBy: string;
 
   constructor(id: string,
               client: string,
               title: string,
-              createdAt: string,
+              createdAt: Date,
               tester?: string,
-              logo?: string) {
+              createdBy?: string) {
     this.id = id;
     this.client = client;
     this.title = title;
     this.createdAt = createdAt;
     this.tester = tester;
-    this.logo = logo;
+    this.createdBy = createdBy;
   }
 }

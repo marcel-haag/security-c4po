@@ -8,6 +8,7 @@ import {HttpLoaderFactory} from '../../app/common-app.module';
 import {HttpClient} from '@angular/common/http';
 import {NgxsModule} from '@ngxs/store';
 import {SessionState} from '../stores/session-state/session-state';
+import {KeycloakService} from 'keycloak-angular';
 
 describe('AuthGuardService', () => {
   let service: AuthGuardService;
@@ -27,6 +28,7 @@ describe('AuthGuardService', () => {
         NgxsModule.forRoot([SessionState])
       ],
       providers: [
+        KeycloakService
       ]
     });
     service = TestBed.inject(AuthGuardService);

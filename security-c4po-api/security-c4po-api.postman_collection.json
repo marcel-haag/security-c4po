@@ -55,6 +55,95 @@
 			]
 		},
 		{
+			"name": "keycloak",
+			"item": [
+				{
+					"name": "getKeycloakConfiguration",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/auth/realms/c4po_realm_local/.well-known/openid-configuration",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"auth",
+								"realms",
+								"c4po_realm_local",
+								".well-known",
+								"openid-configuration"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postKeycloakToken",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "c4po_local",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "ttt",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Test1234!",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "client_secret",
+									"value": "secret",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8888/auth/realms/c4po_realm_local/protocol/openid-connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"auth",
+								"realms",
+								"c4po_realm_local",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "getHealth",
 			"request": {
 				"method": "GET",
@@ -69,67 +158,6 @@
 					"path": [
 						"actuator",
 						"health"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "postKeycloakToken",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "client_id",
-							"value": "c4po_local",
-							"type": "text"
-						},
-						{
-							"key": "username",
-							"value": "ttt",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "Test1234!",
-							"type": "text"
-						},
-						{
-							"key": "grant_type",
-							"value": "password",
-							"type": "text"
-						},
-						{
-							"key": "token",
-							"value": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "client_secret",
-							"value": "secret",
-							"type": "text",
-							"disabled": true
-						}
-					]
-				},
-				"url": {
-					"raw": "http://localhost:8888/auth/realms/c4po_realm_local/protocol/openid-connect/token",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8888",
-					"path": [
-						"auth",
-						"realms",
-						"c4po_realm_local",
-						"protocol",
-						"openid-connect",
-						"token"
 					]
 				}
 			},
@@ -154,6 +182,29 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }

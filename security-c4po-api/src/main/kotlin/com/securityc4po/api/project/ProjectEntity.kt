@@ -15,7 +15,7 @@ fun ProjectEntity.toProject() : Project {
                 this.data.title,
                 this.data.createdAt,
                 this.data.tester,
-                this.data.logo
+                this.data.createdBy
         )
 }
 

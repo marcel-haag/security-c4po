@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock
 import org.springframework.data.mongodb.core.MongoTemplate
+import org.springframework.data.mongodb.core.query.Query
 import org.springframework.restdocs.operation.preprocess.Preprocessors
 import org.springframework.restdocs.payload.JsonFieldType
 import org.springframework.restdocs.payload.PayloadDocumentation
@@ -64,7 +65,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
                 title = "Some Mock API (v1.0) Scanning",
                 createdAt = "2021-01-10T18:05:00Z",
                 tester = "Novatester",
-                logo = "Insert'E_Corp.png'BASE64Encoded"
+                createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
         val projectTwo = Project(
                 id = "61360a47-796b-4b3f-abf9-c46c668596c5",
@@ -72,7 +73,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
                 title = "CashMyData (iOS)",
                 createdAt = "2021-01-10T18:05:00Z",
                 tester = "Elliot",
-                logo = "Insert'Allsafe.png'BASE64Encoded"
+                createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
 
         private fun getProjectsResponse() = listOf(
@@ -82,7 +83,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
     }
 
     private fun cleanUp() {
-        /*mongoTemplate.findAllAndRemove(Query(), Project::class.java)*/
+        mongoTemplate.findAllAndRemove(Query(), Project::class.java)
     }
 
     private fun persistBasicTestScenario() {
@@ -93,7 +94,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
                 title = "",
                 createdAt = "",
                 tester = "",
-                logo = ""
+                createdBy = ""
         )
         val projectTwo = Project(
                 id = "260aa538-0873-43fc-84de-3a09b008646d",
@@ -101,10 +102,10 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
                 title = "",
                 createdAt = "",
                 tester = "",
-                logo = ""
+                createdBy = ""
         )
         cleanUp()
-        /*mongoTemplate.save(ProjectEntity(projectOne))
-        mongoTemplate.save(ProjectEntity(projectTwo))*/
+        mongoTemplate.save(ProjectEntity(projectOne))
+        mongoTemplate.save(ProjectEntity(projectTwo))
     }
 }

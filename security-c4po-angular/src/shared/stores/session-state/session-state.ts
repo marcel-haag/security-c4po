@@ -59,7 +59,6 @@ export class SessionState {
       next: (user: User): void => {
         ctx.dispatch(new UpdateUser(user, true));
       },
-      // TODO: add better error handling
       error: (err) => console.error('Failed to load UserProfile', err)
     });
   }
