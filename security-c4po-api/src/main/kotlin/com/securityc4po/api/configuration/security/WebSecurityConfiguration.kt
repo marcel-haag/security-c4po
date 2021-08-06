@@ -1,18 +1,18 @@
 package com.securityc4po.api.configuration.security
 
+import org.springframework.boot.autoconfigure.web.reactive.WebFluxAutoConfiguration
 import org.springframework.context.annotation.Bean
-import org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.Lazy
 import org.springframework.http.HttpMethod
-import org.springframework.web.cors.CorsConfiguration
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity
 import org.springframework.security.config.web.server.ServerHttpSecurity
 import org.springframework.security.web.server.SecurityWebFilterChain
+import org.springframework.web.cors.CorsConfiguration
 
-@Configuration
 @EnableWebFluxSecurity
 @EnableReactiveMethodSecurity
-class WebSecurityConfiguration(private val userAccountDetailsService: UserAccountDetailsService) {
+class WebSecurityConfiguration {
 
     @Bean
     fun springSecurityFilterChain(http: ServerHttpSecurity): SecurityWebFilterChain {
@@ -43,6 +43,6 @@ class WebSecurityConfiguration(private val userAccountDetailsService: UserAccoun
 
     @Bean
     fun appuserJwtAuthenticationConverter(): AppuserJwtAuthConverter {
-        return AppuserJwtAuthConverter(userAccountDetailsService)
+        return AppuserJwtAuthConverter()
     }
 }

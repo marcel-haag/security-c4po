@@ -1,0 +1,89 @@
+version: '2'
+
+volumes:
+  c4po-keycloak-postgres:
+  c4po-db:
+
+services:
+  # Database
+  c4po-keycloak-postgres:
+    container_name: c4po-keycloak-postgres
+    image: postgres:latest
+    env_file:
+      - cfg/keycloakdb.env
+    ports:
+      - 5433:5432
+    volumes:
+      - /volumes/keycloak/data/:/var/lib/postgres/data
+    networks:
+      - c4po
+  c4po-db:
+    image: mongo:latest
+    container_name: c4po-db
+    volumes:
+      - /volumes/mongodb/data/:/db/data
+    deploy:
+      resources:
+        limits:
+          memory: "1G"
+    ports:
+      - 27017:27017
+    networks:
+      - c4po
+  # Authentity Provider
+  c4po-keycloak:
+    container_name: c4po-keycloak
+    depends_on:
+      - c4po-keycloak-postgres
+    links:
+      - c4po-keycloak-postgres
+    image: jboss/keycloak:11.0.3
+    volumes:
+      - /cfg/c4po_realm_export.json/:/tmp/c4po_realm_export.json
+    ports:
+      - 8888:8080
+    env_file:
+      - cfg/keycloak.env
+    networks:
+      - c4po
+  # Services
+  c4po-angular:
+    build: '../security-c4po-angular'
+    image: security-c4po-angular:latest
+    container_name: c4po-angular
+    depends_on:
+      - c4po-keycloak
+    links:
+      - c4po-keycloak
+    deploy:
+      resources:
+        limits:
+          memory: "1G"
+    ports:
+      - 4200:4200
+    networks:
+      - c4po
+
+  c4po-api:
+    build: '../security-c4po-api'
+    image: security-c4po-api:latest
+    container_name: c4po-api
+    environment:
+      - SPRING_PROFILES_ACTIVE=COMPOSE
+    depends_on:
+      - c4po-db
+      - c4po-keycloak
+    links:
+      - c4po-db
+      - c4po-keycloak
+    deploy:
+      resources:
+        limits:
+          memory: "1G"
+    ports:
+      - 8443:8443
+    networks:
+      - c4po
+
+networks:
+  c4po:

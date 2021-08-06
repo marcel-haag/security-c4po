@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock
+import org.springframework.data.mongodb.core.MongoTemplate
 import org.springframework.restdocs.operation.preprocess.Preprocessors
 import org.springframework.restdocs.payload.JsonFieldType
 import org.springframework.restdocs.payload.PayloadDocumentation
@@ -18,8 +19,8 @@ import org.springframework.restdocs.webtestclient.WebTestClientRestDocumentation
 @SuppressFBWarnings(SIC_INNER_SHOULD_BE_STATIC)
 class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
 
-    /*@Autowired
-    lateinit var mongoTemplate: MongoTemplate*/
+    @Autowired
+    lateinit var mongoTemplate: MongoTemplate
 
     @BeforeEach
     fun init() {

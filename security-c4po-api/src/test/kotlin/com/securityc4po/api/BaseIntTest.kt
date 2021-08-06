@@ -8,4 +8,4 @@ import org.springframework.test.context.junit.jupiter.SpringExtension
 @ExtendWith(SpringExtension::class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @DirtiesContext
-abstract class BaseIntTest : BaseContainerizedTest() { }
+abstract class BaseIntTest : BaseContainerizedTest()

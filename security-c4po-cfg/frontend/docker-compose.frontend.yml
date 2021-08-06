@@ -4,13 +4,12 @@ services:
   c4po-angular:
     build: '../../security-c4po-angular'
     image: security-c4po-angular:latest
-    container_name: security-c4po-angular
+    container_name: c4po-angular
+    depends_on:
+      - c4po-keycloak
     deploy:
       resources:
         limits:
           memory: "1G"
     ports:
-      - '4200:4200'
-
-networks:
-  c4po:
+      - 4200:4200
