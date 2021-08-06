@@ -74,7 +74,7 @@ class ProjectControllerIntTest : BaseIntTest() {
             title = "Some Mock API (v1.0) Scanning",
             createdAt = "2021-01-10T18:05:00Z",
             tester = "Novatester",
-            logo = "Insert'E_Corp.png'BASE64Encoded"
+            createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
         val projectTwo = Project(
             id = "61360a47-796b-4b3f-abf9-c46c668596c5",
@@ -82,7 +82,7 @@ class ProjectControllerIntTest : BaseIntTest() {
             title = "CashMyData (iOS)",
             createdAt = "2021-01-10T18:05:00Z",
             tester = "Elliot",
-            logo = "Insert'Allsafe.png'BASE64Encoded"
+            createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
 
         private fun getProjects() = listOf(
@@ -105,7 +105,7 @@ class ProjectControllerIntTest : BaseIntTest() {
             title = "Some Mock API (v1.0) Scanning",
             createdAt = "2021-01-10T18:05:00Z",
             tester = "Novatester",
-            logo = "Insert'E_Corp.png'BASE64Encoded"
+            createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
         val projectTwo = Project(
             id = "61360a47-796b-4b3f-abf9-c46c668596c5",
@@ -113,7 +113,7 @@ class ProjectControllerIntTest : BaseIntTest() {
             title = "CashMyData (iOS)",
             createdAt = "2021-01-10T18:05:00Z",
             tester = "Elliot",
-            logo = "Insert'Allsafe.png'BASE64Encoded"
+            createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
         cleanUp()
         mongoTemplate.save(ProjectEntity(projectOne))

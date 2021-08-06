@@ -14,7 +14,7 @@ data class Project(
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ssZ")
     val createdAt: String = Instant.now().toString(),
     val tester: String? = null,
-    val logo: String? = null
+    val createdBy: String
 )
 
 fun Project.toProjectResponseBody(): ResponseBody {
@@ -24,7 +24,7 @@ fun Project.toProjectResponseBody(): ResponseBody {
             "title" to title,
             "createdAt" to createdAt,
             "tester" to tester,
-            "logo" to logo
+            "createdBy" to createdBy
     )
 }
 
