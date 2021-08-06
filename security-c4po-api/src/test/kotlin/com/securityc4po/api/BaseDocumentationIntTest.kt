@@ -28,7 +28,7 @@ abstract class BaseDocumentationIntTest : BaseContainerizedTest() {
     @BeforeEach
     fun setupDocs(restDocumentation: RestDocumentationContextProvider) {
         webTestClient = WebTestClient.bindToServer()
-                .baseUrl("com.securityc4po.api.http://localhost:$port")
+                .baseUrl("http://localhost:$port")
                 .filter(documentationConfiguration(restDocumentation))
                 .responseTimeout(Duration.ofMillis(10000))
                 .build()

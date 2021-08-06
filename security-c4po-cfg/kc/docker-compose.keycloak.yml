@@ -2,23 +2,22 @@ version: '3.1'
 
 services:
   c4po-keycloak:
-    container_name: security-c4po-keycloak
+    container_name: c4po-keycloak
     depends_on:
-      - keycloak-postgres
+      - c4po-keycloak-postgres
     image: jboss/keycloak:11.0.3
     volumes:
       - ../cfg/c4po_realm_export.json:/tmp/c4po_realm_export.json
     ports:
       - 8888:8080
-      - 9990:9990
     env_file:
       - ../cfg/keycloak.env
-  keycloak-postgres:
-    container_name: security-c4po-postgres-keycloak
+  c4po-keycloak-postgress:
+    container_name: c4po-keycloak-postgres
     image: postgres:latest
     env_file:
       - ../cfg/keycloakdb.env
     ports:
       - 5433:5432
     volumes:
-      - ../volumes/keycloak/data:/var/lib/postgresql/data
+      - ../volumes/keycloak/data:/var/lib/postgres/data

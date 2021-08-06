@@ -3,7 +3,7 @@ version: '3.1'
 services:
   c4po-db:
     image: mongo:latest
-    container_name: security-c4po-db
+    container_name: c4po-db
     volumes:
       - ../volumes/mongodb/data:/data/db
     deploy:
@@ -12,6 +12,3 @@ services:
           memory: "1G"
     ports:
       - 27017:27017
-
-networks:
-  c4po:

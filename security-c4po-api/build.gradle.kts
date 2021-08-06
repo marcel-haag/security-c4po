@@ -36,6 +36,8 @@ repositories {
 	mavenCentral()
 }
 
+apply(plugin = "org.asciidoctor.jvm.convert")
+
 dependencyCheck {
 	autoUpdate = true
 	cveValidForHours = 1
@@ -59,28 +61,33 @@ val snippetsDir = file("build/generated-snippets")
 
 dependencies {
 	implementation("com.fasterxml.jackson.datatype:jackson-datatype-joda:2.11.3")
-	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions:1.1.1")
-	implementation("javax.websocket:javax.websocket-api:1.1")
-	implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
+	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+	implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
+
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
+	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions:1.1.1")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-	implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
-	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("com.github.spotbugs:spotbugs-annotations:4.1.2")
+
+	implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
+	implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
+	implementation("com.auth0:java-jwt:3.18.1")
 	implementation("org.modelmapper:modelmapper:2.3.2")
 
-	api("org.springframework.boot:spring-boot-starter-test")
 	api("org.springframework.security:spring-security-jwt:1.1.1.RELEASE")
 
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0")
 	testImplementation("io.projectreactor:reactor-test")
 	testImplementation("org.junit.jupiter:junit-jupiter-api:5.3.1")
 	testImplementation("org.junit.jupiter:junit-jupiter-engine:5.3.1")
 	testImplementation("org.springframework.cloud:spring-cloud-contract-wiremock:2.1.0.RELEASE")
 	testImplementation("org.springframework.restdocs:spring-restdocs-webtestclient")
+	testImplementation("com.github.spotbugs:spotbugs-annotations:4.1.2")
+	testApi("org.testcontainers:junit-jupiter:1.15.2")
 }
 
 jacoco {

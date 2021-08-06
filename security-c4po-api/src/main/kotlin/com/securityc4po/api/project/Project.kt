@@ -18,7 +18,7 @@ data class Project(
 )
 
 fun Project.toProjectResponseBody(): ResponseBody {
-    return kotlin.collections.mapOf(
+    return mapOf(
             "id" to id,
             "client" to client,
             "title" to title,

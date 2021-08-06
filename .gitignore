@@ -1,0 +1,4 @@
+.DS_Store
+# Volumes
+/security-c4po-cfg/volumes/keycloak/data/*
+/security-c4po-cfg/volumes/mongodb/data/*

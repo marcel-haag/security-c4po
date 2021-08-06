@@ -12,7 +12,9 @@ class ProjectServiceTest {
 
     private val log = mock<Logger>()
 
-    private val cut = ProjectService().apply {
+    private val projectRepository = mock<ProjectRepository>()
+
+    private val cut = ProjectService(projectRepository).apply {
         this.logger = log
     }
 

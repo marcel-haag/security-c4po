@@ -4,13 +4,18 @@ services:
   c4po-api:
     build: '../../security-c4po-api'
     image: security-c4po-api:latest
-    container_name: security-c4po-api
+    container_name: c4po-api
+    environment:
+      - SPRING_PROFILES_ACTIVE=COMPOSE
+    depends_on:
+      - c4po-db
+      - c4po-keycloak
+    links:
+      - c4po-db
+      - c4po-keycloak
     deploy:
       resources:
         limits:
           memory: "1G"
     ports:
       - 8443:8443
-
-networks:
-  c4po:
