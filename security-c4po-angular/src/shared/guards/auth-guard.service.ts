@@ -1,12 +1,8 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {Store} from '@ngxs/store';
-import {Observable, of} from 'rxjs';
-import {SessionState} from '../stores/session-state/session-state';
-import {catchError, map} from 'rxjs/operators';
 import {KeycloakAuthGuard, KeycloakService} from 'keycloak-angular';
 import {UpdateIsAuthenticated, UpdateUser} from '../stores/session-state/session-state.actions';
-import {User} from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'

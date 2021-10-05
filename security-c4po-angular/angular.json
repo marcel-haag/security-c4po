@@ -24,8 +24,8 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
-              "src/favicon.ico",
-              "src/favicon-c4po.ico",
+              "src/assets/images/favicons/favicon.ico",
+              "src/assets/images/favicons/corporate_favicon.ico",
               "src/assets"
             ],
             "styles": [
@@ -96,8 +96,8 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "assets": [
-              "src/favicon.ico",
-              "src/favicon-c4po.ico",
+              "src/assets/images/favicons/favicon.ico",
+              "src/assets/images/favicons/corporate_favicon.ico",
               "src/assets"
             ],
             "styles": [

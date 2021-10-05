@@ -22,5 +22,17 @@
     "title": "Einloggen",
     "failed": "Benutzername oder Passwort falsch",
     "unauthorized": "Benutzer nicht gefunden. Bitte registrieren und erneut versuchen"
+  },
+  "project": {
+    "overview": {
+      "add.project": "Projekt hinzufügen",
+      "no.projects": "Keine Projekte verfügbar"
+    },
+    "popup": {
+      "not.found": "Keine Projekte gefunden"
+    },
+    "client": "Klient",
+    "tester": "Tester",
+    "createdAt": "Erstellt am"
   }
 }

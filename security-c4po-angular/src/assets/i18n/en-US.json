@@ -11,7 +11,7 @@
     "warning": "!",
     "info": "",
     "error.position": {
-      "permissionDenied": "Permission Denied",
+      "permissionDenied": "Permission denied",
       "timeout": "Timeout"
     },
     "login": {
@@ -22,5 +22,17 @@
     "title": "Login",
     "failed": "Wrong username or password",
     "unauthorized": "User not found. Please register and try again"
+  },
+  "project": {
+    "overview": {
+      "add.project": "Add project",
+      "no.projects": "No projects available"
+    },
+    "popup": {
+      "not.found": "No projects found"
+    },
+    "client": "Client",
+    "tester": "Tester",
+    "createdAt": "Created at"
   }
 }

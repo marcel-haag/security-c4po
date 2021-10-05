@@ -1,4 +1,26 @@
-<div class="c4po-header">
-      <p>header works!</p>
+<div class="header" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="2rem">
+  <img *ngIf="currentTheme === 'corporate', else changeImage"
+       src="../../assets/images/favicons/favicon.ico" alt="logo dark" class="header-icon" width="60rem" height="60rem">
+  <ng-template #changeImage>
+    <img src="../../assets/images/favicons/corporate_favicon.ico" alt="logo light" class="header-icon" width="60rem" height="60rem">
+  </ng-template>
+
+  <div class="logo-container" fxLayoutAlign="center center">
+    <h1 >{{SECURITYC4PO_TITLE}} </h1>
+  </div>
+  <div fxLayoutAlign="end" fxLayoutGap="4rem">
+    <nb-actions size="medium">
+      <nb-action class="toggle-theme">
+        <button nbButton
+                (click)="onClickSwitchTheme()">
+          <fa-icon *ngIf="currentTheme === 'corporate', else changeIcon" [icon]="fa.faMoon"
+                   class="new-element-icon"></fa-icon>
+          <ng-template #changeIcon>
+            <fa-icon [icon]="fa.faSun" class="new-element-icon"></fa-icon>
+          </ng-template>
+        </button>
+      </nb-action>
+    </nb-actions>
+  </div>
 </div>
 

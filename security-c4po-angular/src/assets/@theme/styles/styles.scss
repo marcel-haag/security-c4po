@@ -6,8 +6,6 @@
 
 // loading progress bar theme
 @import './pace.theme';
-
-@import './layout';
 @import './overrides';
 @import './variables';
 
@@ -22,8 +20,6 @@ body {
 @include nb-install() {
   // framework global styles
   @include nb-theme-global();
-
-  @include ngx-layout();
 
   @include nb-overrides();
 };

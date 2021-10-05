@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {AuthGuardService} from '../shared/guards/auth-guard.service';
 
-export const START_PAGE = 'home';
+export const START_PAGE = 'projects';
 
 const routes: Routes = [
   {
@@ -12,11 +12,11 @@ const routes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
-    path: 'dashboard',
-    loadChildren: () => import('./dashboard').then(mod => mod.DashboardModule),
+    path: 'projects',
+    loadChildren: () => import('./project-overview').then(mod => mod.ProjectOverviewModule),
     canActivate: [AuthGuardService]
   },
-  // ToDo: Exchange default Keycloak login with self made login
+  // ToDo: Remove after default Keycloak login mask got reworked
   /*{
     path: 'login',
     loadChildren: () => import('./login').then(mod => mod.LoginModule),

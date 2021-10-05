@@ -1,0 +1,84 @@
+<div fxLayout="row" fxLayoutGap="2rem">
+  <div *ngFor="let project of projects | async">
+    <nb-card accent="success" class="project-card">
+      <nb-card-header fxLayoutAlign="start center"
+                      routerLink="id"
+                      fragment="{{project.id}}"
+                      class="project-link project-header"
+                      [state]="{selectedProject:project}">
+        <h4>{{project?.title}}</h4>
+      </nb-card-header>
+      <nb-card-body class="project-link"
+                    routerLink="id"
+                    fragment="{{project.id}}"
+                    [state]="{selectedProject:project}">
+        <p class="project-subheader">
+          {{'project.client' | translate}}:
+        </p>
+        <span class="project-paragraph">
+          {{project?.client}}
+        </span>
+
+        <p class="project-subheader">
+          {{'project.tester' | translate}}:
+        </p>
+        <span class="project-paragraph">
+          {{project?.tester}}
+        </span>
+
+        <p class="project-subheader">
+          {{'project.createdAt' | translate}}:
+        </p>
+        <span class="project-paragraph">
+          {{project?.createdAt | dateTimeFormat}}
+        </span>
+      </nb-card-body>
+      <nb-card-footer>
+        <!--ToDo: Display correct progress of project-->
+        <div fxLayout="row" fxLayoutGap="1rem" fxLayoutAlign="start end">
+          <nb-progress-bar class="project-progress"
+                           status="warning"
+                           [value]="40"
+                           [displayValue]="true">
+          </nb-progress-bar>
+          <button nbButton
+                  status="primary"
+                  size="small"
+                  class="project-button"
+                  (click)="onClickEditProject()">
+            <fa-icon [icon]="fa.faPencilAlt"></fa-icon>
+          </button>
+          <button nbButton
+                  status="danger"
+                  size="small"
+                  class="project-button"
+                  (click)="onClickDeleteProject()">
+            <fa-icon [icon]="fa.faTrash"></fa-icon>
+          </button>
+        </div>
+      </nb-card-footer>
+    </nb-card>
+  </div>
+</div>
+
+<div *ngIf="projects.getValue().length === 0 && !isLoading()" fxLayout="row" fxLayoutAlign="center center">
+  <p class="error-text">
+    {{'project.overview.no.projects' | translate}}
+  </p>
+</div>
+
+<div fxLayoutAlign="end end">
+  <button nbButton
+          status="primary"
+          size="large"
+          shape="round"
+          class="add-project-button"
+          (click)="onClickAddProject()">
+    <fa-icon [icon]="fa.faPlus" class="new-project-icon"></fa-icon>
+    {{'project.overview.add.project' | translate}}
+  </button>
+</div>
+
+<app-loading-spinner [isLoading$]="isLoading()" *ngIf="isLoading() | async"></app-loading-spinner>
+
+

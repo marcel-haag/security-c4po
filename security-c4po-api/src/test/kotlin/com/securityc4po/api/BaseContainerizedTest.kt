@@ -11,6 +11,7 @@ import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
+import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.TestPropertySource
 import org.springframework.util.LinkedMultiValueMap
 import org.springframework.web.client.RestTemplate
@@ -21,6 +22,7 @@ import org.testcontainers.utility.DockerImageName
 import org.testcontainers.utility.MountableFile
 import java.nio.file.Paths
 
+// @ActiveProfiles("TEST")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @AutoConfigureWireMock(port = 0)
 @TestPropertySource(properties = [
@@ -59,7 +61,7 @@ abstract class BaseContainerizedTest {
             withCreateContainerCmdModifier {
                 it.hostConfig?.withPortBindings(PortBinding(Ports.Binding.bindPort(8888), ExposedPort(8080)))
             }
-            withCopyFileToContainer(MountableFile.forClasspathResource("outdated_realm-export.json", 700), "/tmp/realm.json")
+            withCopyFileToContainer(MountableFile.forClasspathResource("realm-export.json", 700), "/tmp/realm.json")
             withCopyFileToContainer(MountableFile.forClasspathResource("create-keycloak-user.sh", 700),
                 "/opt/jboss/create-keycloak-user.sh")
             start()
@@ -80,10 +82,10 @@ abstract class BaseContainerizedTest {
         headers.contentType = MediaType.APPLICATION_FORM_URLENCODED
 
         val map = LinkedMultiValueMap<Any, Any>()
-        map.add("grant_type", "password")
         map.add("client_id", clientId)
         map.add("username", username)
         map.add("password", password)
+        map.add("grant_type", "password")
         map.add("client_secret", "secret")
         val responseString = restTemplate.postForObject("$keycloakHost/auth/realms/$realm/protocol/openid-connect/token",
             HttpEntity<Any>(map, headers), String::class.java)

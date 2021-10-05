@@ -5,7 +5,6 @@ import com.securityc4po.api.BaseIntTest
 import com.securityc4po.api.configuration.SIC_INNER_SHOULD_BE_STATIC
 import com.securityc4po.api.configuration.URF_UNREAD_FIELD
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
-import io.netty.handler.ssl.SslContextBuilder
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
@@ -14,18 +13,15 @@ import org.springframework.boot.web.server.LocalServerPort
 import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock
 import org.springframework.data.mongodb.core.MongoTemplate
 import org.springframework.data.mongodb.core.query.Query
-import org.springframework.test.context.TestPropertySource
 import org.springframework.test.web.reactive.server.WebTestClient
-import org.springframework.util.ResourceUtils
-import reactor.netty.http.client.HttpClient
 import java.time.Duration
 
-@AutoConfigureWireMock(port = 0)
 /*@TestPropertySource(
     properties = [
         "keycloak.client.url=http://localhost:${'$'}{wiremock.server.port}"
     ]
 )*/
+@AutoConfigureWireMock(port = 0)
 @SuppressFBWarnings(
     SIC_INNER_SHOULD_BE_STATIC,
     URF_UNREAD_FIELD,
@@ -35,6 +31,9 @@ class ProjectControllerIntTest : BaseIntTest() {
 
     @LocalServerPort
     private var port = 0
+
+    // @Value("\${static-jwt.valid-token}")
+    private var newToken: String = ""
 
     @Autowired
     lateinit var mongoTemplate: MongoTemplate
@@ -60,8 +59,9 @@ class ProjectControllerIntTest : BaseIntTest() {
     inner class GetProjects {
         @Test
         fun `requesting projects successfully`() {
+            println(newToken)
             webTestClient.get().uri("/v1/projects")
-                .header("Authorization", "Bearer $tokenAdmin")
+                .header("Authorization", "Bearer $newToken")
                 .exchange()
                 .expectStatus().isOk
                 .expectHeader().valueEquals("Application-Name", "security-c4po-api")
@@ -94,7 +94,7 @@ class ProjectControllerIntTest : BaseIntTest() {
     private fun cleanUp() {
         mongoTemplate.findAllAndRemove(Query(), Project::class.java)
 
-        tokenAdmin = "n/a"
+        token = "n/a"
     }
 
     private fun persistBasicTestScenario() {
@@ -121,6 +121,6 @@ class ProjectControllerIntTest : BaseIntTest() {
     }
 
     private fun configureAdminToken() {
-        tokenAdmin = getAccessToken("test_admin", "test", "c4po_local", "c4po_realm_local")
+        newToken = getAccessToken("test_admin", "test", "c4po_local", "c4po_realm_local")
     }
 }

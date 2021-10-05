@@ -1,6 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { HeaderComponent } from './header.component';
+import {HeaderComponent} from './header.component';
+import {CommonModule} from '@angular/common';
+import {FontAwesomeTestingModule} from '@fortawesome/angular-fontawesome/testing';
+import {NbActionsModule} from '@nebular/theme';
+import {ThemeModule} from '@assets/@theme/theme.module';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {HttpLoaderFactory} from '../common-app.module';
+import {HttpClient} from '@angular/common/http';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -8,9 +16,25 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
+      declarations: [
+        HeaderComponent
+      ],
+      imports: [
+        CommonModule,
+        NbActionsModule,
+        FontAwesomeTestingModule,
+        ThemeModule.forRoot(),
+        TranslateModule.forRoot({
+          loader: {
+            provide: TranslateLoader,
+            useFactory: HttpLoaderFactory,
+            deps: [HttpClient]
+          }
+        }),
+        RouterTestingModule.withRoutes([])
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

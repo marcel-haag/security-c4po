@@ -58,7 +58,7 @@
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/jest": "26.0.15",
-    "@types/node": "^12.19.8",
+    "@types/node": "^12.20.33",
     "codelyzer": "^6.0.0",
     "font-awesome": "^4.7.0",
     "jasmine-core": "~3.6.0",

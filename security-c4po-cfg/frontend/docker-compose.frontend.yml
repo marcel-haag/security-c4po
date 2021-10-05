@@ -5,8 +5,6 @@ services:
     build: '../../security-c4po-angular'
     image: security-c4po-angular:latest
     container_name: c4po-angular
-    depends_on:
-      - c4po-keycloak
     deploy:
       resources:
         limits:

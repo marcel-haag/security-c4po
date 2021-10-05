@@ -25,36 +25,38 @@ import {HeaderModule} from './header/header.module';
 import {HomeModule} from './home/home.module';
 import {KeycloakService} from 'keycloak-angular';
 import {httpInterceptorProviders} from '../shared/interceptors';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    RouterModule,
-    FontAwesomeModule,
-    NbToastrModule.forRoot(), // used for notification service
-    BrowserAnimationsModule,
-    ThemeModule.forRoot(),
-    NbLayoutModule,
-    NbCardModule,
-    NbIconModule,
-    NbButtonModule,
-    NbEvaIconsModule,
-    NgxsModule.forRoot([SessionState], {developmentMode: !environment.production}),
-    HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
-    HeaderModule,
-    HomeModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        RouterModule,
+        FontAwesomeModule,
+        NbToastrModule.forRoot(), // used for notification service
+        BrowserAnimationsModule,
+        ThemeModule.forRoot(),
+        NbLayoutModule,
+        NbCardModule,
+        NbIconModule,
+        NbButtonModule,
+        NbEvaIconsModule,
+        NgxsModule.forRoot([SessionState], {developmentMode: !environment.production}),
+        HttpClientModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
+        HeaderModule,
+        HomeModule,
+        FlexLayoutModule
+    ],
   providers: [
     HttpClient,
     {
