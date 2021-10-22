@@ -2,42 +2,35 @@ package com.securityc4po.api.project
 
 import com.github.tomakehurst.wiremock.common.Json
 import com.securityc4po.api.BaseIntTest
+import com.securityc4po.api.configuration.NP_NONNULL_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR
+import com.securityc4po.api.configuration.RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE
 import com.securityc4po.api.configuration.SIC_INNER_SHOULD_BE_STATIC
-import com.securityc4po.api.configuration.URF_UNREAD_FIELD
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.web.server.LocalServerPort
-import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock
 import org.springframework.data.mongodb.core.MongoTemplate
 import org.springframework.data.mongodb.core.query.Query
 import org.springframework.test.web.reactive.server.WebTestClient
 import java.time.Duration
 
-/*@TestPropertySource(
-    properties = [
-        "keycloak.client.url=http://localhost:${'$'}{wiremock.server.port}"
-    ]
-)*/
-@AutoConfigureWireMock(port = 0)
 @SuppressFBWarnings(
     SIC_INNER_SHOULD_BE_STATIC,
-    URF_UNREAD_FIELD,
-    "Unread field will become used after database implementation"
+    NP_NONNULL_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR,
+    RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE
 )
 class ProjectControllerIntTest : BaseIntTest() {
 
     @LocalServerPort
     private var port = 0
 
-    // @Value("\${static-jwt.valid-token}")
-    private var newToken: String = ""
-
     @Autowired
     lateinit var mongoTemplate: MongoTemplate
 
+    @Autowired
     private lateinit var webTestClient: WebTestClient
 
     @BeforeEach
@@ -50,21 +43,24 @@ class ProjectControllerIntTest : BaseIntTest() {
 
     @BeforeEach
     fun init() {
-        cleanUp()
         configureAdminToken()
         persistBasicTestScenario()
+    }
+
+    @AfterEach
+    fun destroy() {
+        cleanUp()
     }
 
     @Nested
     inner class GetProjects {
         @Test
         fun `requesting projects successfully`() {
-            println(newToken)
-            webTestClient.get().uri("/v1/projects")
-                .header("Authorization", "Bearer $newToken")
+            webTestClient.get().uri("/projects")
+                .header("Authorization", "Bearer $tokenAdmin")
                 .exchange()
                 .expectStatus().isOk
-                .expectHeader().valueEquals("Application-Name", "security-c4po-api")
+                .expectHeader().valueEquals("Application-Name", "SecurityC4PO")
                 .expectBody().json(Json.write(getProjects()))
         }
 
@@ -91,12 +87,6 @@ class ProjectControllerIntTest : BaseIntTest() {
         )
     }
 
-    private fun cleanUp() {
-        mongoTemplate.findAllAndRemove(Query(), Project::class.java)
-
-        token = "n/a"
-    }
-
     private fun persistBasicTestScenario() {
         // setup test data
         val projectOne = Project(
@@ -115,12 +105,18 @@ class ProjectControllerIntTest : BaseIntTest() {
             tester = "Elliot",
             createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
-        cleanUp()
+        // persist test data in database
         mongoTemplate.save(ProjectEntity(projectOne))
         mongoTemplate.save(ProjectEntity(projectTwo))
     }
 
     private fun configureAdminToken() {
-        newToken = getAccessToken("test_admin", "test", "c4po_local", "c4po_realm_local")
+        tokenAdmin = getAccessToken("test_admin", "test", "c4po_local", "c4po_realm_local")
+    }
+
+    private fun cleanUp() {
+        mongoTemplate.findAllAndRemove(Query(), ProjectEntity::class.java)
+
+        tokenAdmin = "n/a"
     }
 }

@@ -29,15 +29,15 @@ To get projects, call the GET request /projects
 
 ==== Request example
 
-#include::{snippets}/getProjects/com.securityc4po.api.http-request.adoc[]
+include::{snippets}/getProjects/http-request.adoc[]
 
 ==== Response example
 
-#include::{snippets}/getProjects/com.securityc4po.api.http-response.adoc[]
+include::{snippets}/getProjects/http-response.adoc[]
 
 ==== Response structure
 
-#include::{snippets}/getProjects/response-fields.adoc[]
+include::{snippets}/getProjects/response-fields.adoc[]
 
 == Change History
 

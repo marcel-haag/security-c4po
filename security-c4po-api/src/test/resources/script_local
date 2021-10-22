@@ -9,7 +9,8 @@ USERID=$(./kcadm.sh create users -r c4po_realm_local -s username=test_admin \
 -s lastName=admin \
 -s attributes.lang="de-DE" \
 -s attributes.datenumberformat="en-US" \
--s enabled=true -o --fields id | jq '.id' | tr -d '"')
+-s enabled=true \
+-o --fields id | jq '.id' | tr -d '"')
 
 ./kcadm.sh update users/$USERID/reset-password -r c4po_realm_test -s type=password -s value=test -s temporary=false -n
 ./kcadm.sh add-roles --uusername test_admin --rolename c4po_admin -r c4po_realm_test
@@ -21,7 +22,8 @@ USERID=$(./kcadm.sh create users -r c4po_realm_local -s username=test_user \
 -s lastName=user \
 -s attributes.lang="de-DE" \
 -s attributes.datenumberformat="en-US" \
--s enabled=true -o --fields id | jq '.id' | tr -d '"')
+-s enabled=true \
+-o --fields id | jq '.id' | tr -d '"')
 
 ./kcadm.sh update users/$USERID/reset-password -r c4po_realm_test -s type=password -s value=test -s temporary=false -n
 ./kcadm.sh add-roles --uusername test_user --rolename c4po_user -r c4po_realm_test

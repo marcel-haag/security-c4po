@@ -9,16 +9,14 @@ import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.oauth2.jwt.Jwt
 import reactor.core.publisher.Mono
-import reactor.kotlin.core.publisher.toMono
 import java.util.stream.Collectors
 
-/** JWT converter that takes the roles from 'groups' claim of JWT token.  */
 class AppuserJwtAuthConverter(private val appuserDetailsService: UserAccountDetailsService) :
     Converter<Jwt, Mono<AbstractAuthenticationToken>> {
 
     override fun convert(jwt: Jwt): Mono<AbstractAuthenticationToken> {
         val authorities = extractAuthorities(jwt)
-        val sub = extractSub(jwt)
+        // val sub = extractSub(jwt)
         val username = extractUserName(jwt)
         return appuserDetailsService
             .findByUsername(username)

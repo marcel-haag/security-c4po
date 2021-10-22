@@ -17,46 +17,46 @@ import {FaConfig, FaIconLibrary, FontAwesomeModule} from '@fortawesome/angular-f
 import {fas} from '@fortawesome/free-solid-svg-icons';
 import {far} from '@fortawesome/free-regular-svg-icons';
 import {NgxsModule} from '@ngxs/store';
-import {SessionState} from '../shared/stores/session-state/session-state';
+import {SessionState} from '@shared/stores/session-state/session-state';
 import {environment} from '../environments/environment';
-import {NotificationService} from '../shared/services/notification.service';
+import {NotificationService} from '@shared/services/notification.service';
 import {ThemeModule} from '@assets/@theme/theme.module';
 import {HeaderModule} from './header/header.module';
 import {HomeModule} from './home/home.module';
 import {KeycloakService} from 'keycloak-angular';
-import {httpInterceptorProviders} from '../shared/interceptors';
+import {httpInterceptorProviders} from '@shared/interceptors';
 import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        RouterModule,
-        FontAwesomeModule,
-        NbToastrModule.forRoot(), // used for notification service
-        BrowserAnimationsModule,
-        ThemeModule.forRoot(),
-        NbLayoutModule,
-        NbCardModule,
-        NbIconModule,
-        NbButtonModule,
-        NbEvaIconsModule,
-        NgxsModule.forRoot([SessionState], {developmentMode: !environment.production}),
-        HttpClientModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
-                deps: [HttpClient]
-            }
-        }),
-        HeaderModule,
-        HomeModule,
-        FlexLayoutModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    RouterModule,
+    FontAwesomeModule,
+    NbToastrModule.forRoot(), // used for notification service
+    BrowserAnimationsModule,
+    ThemeModule.forRoot(),
+    NbLayoutModule,
+    NbCardModule,
+    NbIconModule,
+    NbButtonModule,
+    NbEvaIconsModule,
+    NgxsModule.forRoot([SessionState], {developmentMode: !environment.production}),
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
+    HeaderModule,
+    HomeModule,
+    FlexLayoutModule
+  ],
   providers: [
     HttpClient,
     {

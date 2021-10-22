@@ -22,11 +22,10 @@ import org.testcontainers.utility.DockerImageName
 import org.testcontainers.utility.MountableFile
 import java.nio.file.Paths
 
-// @ActiveProfiles("TEST")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @AutoConfigureWireMock(port = 0)
 @TestPropertySource(properties = [
-    "spring.data.mongodb.port=10002",
+    "spring.data.mongodb.port=27017",
     "spring.data.mongodb.authentication-database=admin",
     "spring.data.mongodb.password=test",
     "spring.data.mongodb.username=testuser",
@@ -48,12 +47,12 @@ abstract class BaseContainerizedTest {
         }.withFileFromPath("insert-mongodb-user.js", Paths.get(MountableFile.forClasspathResource("insert-mongodb-user.js", 700).resolvedPath))
         ).apply {
             withCreateContainerCmdModifier {
-                it.hostConfig?.withPortBindings(PortBinding(Ports.Binding.bindPort(10002), ExposedPort(27017)))
+                it.hostConfig?.withPortBindings(PortBinding(Ports.Binding.bindPort(27017), ExposedPort(27017)))
             }
             start()
         }
 
-        val keycloakContainer = KGenericContainerFromImage(DockerImageName.parse("jboss/keycloak:6.0.1")).apply {
+        val keycloakContainer = KGenericContainerFromImage(DockerImageName.parse("jboss/keycloak:11.0.3")).apply {
             withEnv("KEYCLOAK_USER", "admin")
             withEnv("KEYCLOAK_PASSWORD", "admin")
             withEnv("KEYCLOAK_IMPORT", "/tmp/realm.json")
@@ -62,8 +61,6 @@ abstract class BaseContainerizedTest {
                 it.hostConfig?.withPortBindings(PortBinding(Ports.Binding.bindPort(8888), ExposedPort(8080)))
             }
             withCopyFileToContainer(MountableFile.forClasspathResource("realm-export.json", 700), "/tmp/realm.json")
-            withCopyFileToContainer(MountableFile.forClasspathResource("create-keycloak-user.sh", 700),
-                "/opt/jboss/create-keycloak-user.sh")
             start()
             println("== Inserting users must wait until Keycloak is started completely ==")
             execInContainer("sh", "/opt/jboss/create-keycloak-user.sh")
