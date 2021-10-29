@@ -3,8 +3,6 @@ version: '3.1'
 services:
   c4po-keycloak:
     container_name: c4po-keycloak
-    depends_on:
-      - c4po-keycloak-postgres
     image: jboss/keycloak:11.0.3
     volumes:
       - ../cfg/c4po_realm_export.json:/tmp/c4po_realm_export.json

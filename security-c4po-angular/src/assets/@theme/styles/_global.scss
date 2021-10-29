@@ -1,0 +1,20 @@
+@import "_variables.scss";
+
+nb-layout {
+  width: 100vw;
+  height: 100vh;
+
+  nb-layout-header {
+    max-width: 100vw;
+    height: $header-height;
+
+    justify-content: center;
+  }
+
+  nb-layout-column {
+    width: 100vw;
+    height: calc(100vh - #{$header-height});
+
+    overflow: auto;
+  }
+}

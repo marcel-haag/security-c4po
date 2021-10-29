@@ -1,9 +1,31 @@
+
+@import '~@nebular/theme/styles/global/breakpoints';
 @import "../../assets/@theme/styles/_variables.scss";
 
-.c4po-header {
-  height: $header-height;
+@mixin nb-overrides {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
 
-  .toggle-dark-mode {
-    text-align: right;
+  .header {
+    display: flex;
+    align-items: center;
+    width: auto;
+
+    .logo-container {
+      font-style: oblique;
+      color: #e74c3c;
+    }
+
+    nb-action {
+      height: auto;
+      display: flex;
+      align-content: center;
+    }
+
+    .toggle-theme {
+      align-content: flex-end;
+      display: flex;
+    }
   }
 }

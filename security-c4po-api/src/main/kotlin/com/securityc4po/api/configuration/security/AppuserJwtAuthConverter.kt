@@ -9,17 +9,20 @@ import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.oauth2.jwt.Jwt
 import reactor.core.publisher.Mono
-import reactor.kotlin.core.publisher.toMono
 import java.util.stream.Collectors
 
-/** JWT converter that takes the roles from 'groups' claim of JWT token.  */
-class AppuserJwtAuthConverter : Converter<Jwt, Mono<AbstractAuthenticationToken>> {
+class AppuserJwtAuthConverter(private val appuserDetailsService: UserAccountDetailsService) :
+    Converter<Jwt, Mono<AbstractAuthenticationToken>> {
 
     override fun convert(jwt: Jwt): Mono<AbstractAuthenticationToken> {
         val authorities = extractAuthorities(jwt)
-        val sub = extractSub(jwt)
+        // val sub = extractSub(jwt)
         val username = extractUserName(jwt)
-        return UsernamePasswordAuthenticationToken(Appuser(sub, username, jwt.tokenValue!!), "n/a", authorities).toMono()
+        return appuserDetailsService
+            .findByUsername(username)
+            .map { user ->
+                UsernamePasswordAuthenticationToken(user, "n/a", authorities);
+            }
     }
 
     private fun extractSub(jwt: Jwt): String {
@@ -51,7 +54,7 @@ class AppuserJwtAuthConverter : Converter<Jwt, Mono<AbstractAuthenticationToken>
         val scopes = jwt.getClaims().get(GROUPS_CLAIM).toString()
         val roleStringValue = mapper.readTree(scopes).get("roles").toString()
         val roles = mapper.readValue<Collection<String>>(roleStringValue)
-        if (!roles.isEmpty()){
+        if (!roles.isEmpty()) {
             return roles
         }
         return emptyList()

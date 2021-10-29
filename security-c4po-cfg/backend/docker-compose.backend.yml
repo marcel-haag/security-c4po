@@ -7,12 +7,6 @@ services:
     container_name: c4po-api
     environment:
       - SPRING_PROFILES_ACTIVE=COMPOSE
-    depends_on:
-      - c4po-db
-      - c4po-keycloak
-    links:
-      - c4po-db
-      - c4po-keycloak
     deploy:
       resources:
         limits:

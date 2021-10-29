@@ -17,14 +17,15 @@ import {FaConfig, FaIconLibrary, FontAwesomeModule} from '@fortawesome/angular-f
 import {fas} from '@fortawesome/free-solid-svg-icons';
 import {far} from '@fortawesome/free-regular-svg-icons';
 import {NgxsModule} from '@ngxs/store';
-import {SessionState} from '../shared/stores/session-state/session-state';
+import {SessionState} from '@shared/stores/session-state/session-state';
 import {environment} from '../environments/environment';
-import {NotificationService} from '../shared/services/notification.service';
+import {NotificationService} from '@shared/services/notification.service';
 import {ThemeModule} from '@assets/@theme/theme.module';
 import {HeaderModule} from './header/header.module';
 import {HomeModule} from './home/home.module';
 import {KeycloakService} from 'keycloak-angular';
-import {httpInterceptorProviders} from '../shared/interceptors';
+import {httpInterceptorProviders} from '@shared/interceptors';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import {httpInterceptorProviders} from '../shared/interceptors';
       }
     }),
     HeaderModule,
-    HomeModule
+    HomeModule,
+    FlexLayoutModule
   ],
   providers: [
     HttpClient,

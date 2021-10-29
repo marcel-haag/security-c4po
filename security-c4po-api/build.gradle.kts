@@ -74,7 +74,6 @@ dependencies {
 
 	implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
 	implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
-	implementation("com.auth0:java-jwt:3.18.1")
 	implementation("org.modelmapper:modelmapper:2.3.2")
 
 	api("org.springframework.security:spring-security-jwt:1.1.1.RELEASE")

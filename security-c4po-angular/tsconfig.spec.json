@@ -7,7 +7,7 @@
     ],
     "module": "commonjs",
     "emitDecoratorMetadata": true,
-    "allowJs": true
+    "allowJs": true,
   },
   "files": [
     "src/polyfills.ts"

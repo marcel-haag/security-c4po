@@ -1,6 +1,9 @@
 package com.securityc4po.api.project
 
 import com.securityc4po.api.BaseEntity
+import com.securityc4po.api.configuration.BC_BAD_CAST_TO_ABSTRACT_COLLECTION
+import com.securityc4po.api.configuration.MESSAGE_BAD_CAST_TO_ABSTRACT_COLLECTION
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import org.springframework.data.mongodb.core.mapping.Document
 
 @Document(collection = "projects")
@@ -19,6 +22,7 @@ fun ProjectEntity.toProject() : Project {
         )
 }
 
+@SuppressFBWarnings(BC_BAD_CAST_TO_ABSTRACT_COLLECTION, MESSAGE_BAD_CAST_TO_ABSTRACT_COLLECTION)
 fun List<ProjectEntity>.toProjects(): List<Project> {
         return this.map {
                 it.toProject()

@@ -1,6 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {HeaderComponent} from './header.component';
+import {NbActionsModule, NbButtonModule, NbCardModule} from '@nebular/theme';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -10,7 +13,13 @@ import {HeaderComponent} from './header.component';
     HeaderComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    NbButtonModule,
+    FontAwesomeModule,
+    NbCardModule,
+    NbActionsModule,
+    FlexLayoutModule
   ]
 })
-export class HeaderModule { }
+export class HeaderModule {
+}

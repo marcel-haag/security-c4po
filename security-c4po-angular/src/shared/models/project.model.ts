@@ -1,5 +1,3 @@
-import { v4 as UUID } from 'uuid';
-
 export class Project {
   id: string;
   client: string;
