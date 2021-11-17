@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "58021f5f-0ae9-4f64-990b-f09dcc2d3bc2",
+		"_postman_id": "a20516f0-5f7f-4d15-9f26-ada358993ff8",
 		"name": "security-c4po-api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -71,7 +71,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"client\": \"Novatec\",\n    \"title\": \"log4j Pentest\",\n    \"tester\": \"Stipe\",\n    \"createyBy\": \"10e06d7a-8dd0-4ecd-8963-056b45079c4f\"\n}",
+							"raw": "{\n    \"client\": \"Novatec\",\n    \"title\": \"log4j Pentest\",\n    \"tester\": \"Stipe\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"

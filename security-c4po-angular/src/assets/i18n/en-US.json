@@ -2,6 +2,8 @@
   "global": {
     "action.login": "Login",
     "action.retry": "Try again",
+    "action.save": "Save",
+    "action.cancel": "Cancel",
     "username": "Username",
     "password": "Password"
   },
@@ -28,9 +30,18 @@
       "add.project": "Add project",
       "no.projects": "No projects available"
     },
-    "popup": {
-      "not.found": "No projects found"
+    "create": {
+      "header": "Create New Project"
     },
+    "popup": {
+      "not.found": "No projects found",
+      "save.success": "Project saved successfully",
+      "save.failed": "Project could not be saved"
+    },
+    "title.label": "Project Title",
+    "client.label": "Name of Client",
+    "tester.label": "Name of Pentester",
+    "title": "Title",
     "client": "Client",
     "tester": "Tester",
     "createdAt": "Created at"

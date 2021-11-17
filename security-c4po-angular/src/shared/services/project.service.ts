@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
-import {Project} from '../models/project.model';
+import {Project, SaveProjectDialogBody} from '../models/project.model';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -16,5 +16,13 @@ export class ProjectService {
 
   public getProjects(): Observable<Project[]> {
     return this.http.get<Project[]>(`${this.apiBaseURL}`);
+  }
+
+  /**
+   * Save Project
+   * @param project the information of the project
+   */
+  public saveProject(project: SaveProjectDialogBody): Observable<Project> {
+    return this.http.post<Project>(`${this.apiBaseURL}`, project);
   }
 }

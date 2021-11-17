@@ -6,7 +6,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   NbLayoutModule,
   NbToastrModule,
-  NbIconModule, NbCardModule, NbButtonModule,
+  NbIconModule, NbCardModule, NbButtonModule, NbDialogService, NbDialogModule,
 } from '@nebular/theme';
 import {NbEvaIconsModule} from '@nebular/eva-icons';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -26,6 +26,7 @@ import {HomeModule} from './home/home.module';
 import {KeycloakService} from 'keycloak-angular';
 import {httpInterceptorProviders} from '@shared/interceptors';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {DialogService} from '@shared/services/dialog-service/dialog.service';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
         deps: [HttpClient]
       }
     }),
+    NbDialogModule.forRoot(),
     HeaderModule,
     HomeModule,
     FlexLayoutModule
@@ -67,7 +69,9 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     },
     KeycloakService,
     httpInterceptorProviders,
-    NotificationService
+    NotificationService,
+    NbDialogService,
+    DialogService
   ],
   bootstrap: [
     AppComponent

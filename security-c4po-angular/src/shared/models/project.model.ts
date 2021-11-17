@@ -20,3 +20,9 @@ export class Project {
     this.createdBy = createdBy;
   }
 }
+
+export interface SaveProjectDialogBody {
+  title: string;
+  client: string;
+  tester: string;
+}

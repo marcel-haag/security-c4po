@@ -1,0 +1,23 @@
+.project-dialog {
+  width: 24rem;
+  height: 31rem;
+
+  .project-dialog-header {
+    height: 8vh;
+    font-size: 1.5rem;
+  }
+
+  nb-form-field {
+    padding: 0.5rem 0 0.75rem;
+  }
+
+  .label {
+    display: block;
+    font-size: 0.95rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .input {
+    width: 15rem;
+  }
+}

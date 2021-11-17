@@ -41,8 +41,7 @@ fun ProjectOverview.toProjectOverviewResponseBody(): ResponseBody {
 data class ProjectRequestBody(
     val client: String,
     val title: String,
-    val tester: String? = null,
-    val createdBy: String
+    val tester: String? = null
 )
 
 fun ProjectRequestBody.toProject(): Project {
@@ -52,6 +51,7 @@ fun ProjectRequestBody.toProject(): Project {
         title = this.title,
         createdAt = Instant.now().toString(),
         tester = this.tester,
-        createdBy = this.createdBy
+        // ToDo: Should be changed to SUB from Token after adding AUTH Header
+        createdBy = UUID.randomUUID().toString()
     )
 }

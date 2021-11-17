@@ -48,7 +48,6 @@ describe('LoginComponent', () => {
         BrowserAnimationsModule,
         ReactiveFormsModule,
         NbInputModule,
-        NbCardModule,
         NbButtonModule,
         NbLayoutModule,
         ThemeModule.forRoot(),
