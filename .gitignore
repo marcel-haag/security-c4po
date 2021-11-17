@@ -1,4 +1,7 @@
+# Default
 .DS_Store
+.idea
+
 # Volumes
 /security-c4po-cfg/volumes/keycloak/data/*
 /security-c4po-cfg/volumes/mongodb/data/*
