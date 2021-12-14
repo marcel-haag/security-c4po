@@ -37,3 +37,21 @@ fun ProjectOverview.toProjectOverviewResponseBody(): ResponseBody {
             "projects" to projects
     )
 }
+
+data class ProjectRequestBody(
+    val client: String,
+    val title: String,
+    val tester: String? = null,
+    val createdBy: String
+)
+
+fun ProjectRequestBody.toProject(): Project {
+    return Project(
+        id = UUID.randomUUID().toString(),
+        client = this.client,
+        title = this.title,
+        createdAt = Instant.now().toString(),
+        tester = this.tester,
+        createdBy = this.createdBy
+    )
+}

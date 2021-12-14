@@ -39,10 +39,28 @@ include::{snippets}/getProjects/http-response.adoc[]
 
 include::{snippets}/getProjects/response-fields.adoc[]
 
+=== Save project
+
+To save a project, call the POST request /projects
+
+==== Request example
+
+include::{snippets}/saveProject/http-request.adoc[]
+
+==== Response example
+
+include::{snippets}/saveProject/http-response.adoc[]
+
+==== Response structure
+
+include::{snippets}/saveProject/response-fields.adoc[]
+
 == Change History
 
 |===
 |Date |Change
+|2021-12-22
+|Added POST endpoint to save Projects
 |2021-02-14
 |Added GET endpoint to receive Projects
 |2021-02-12

@@ -23,4 +23,14 @@ class ProjectService(private val projectRepository: ProjectRepository) {
             it.map { projectEntity -> projectEntity.toProject() }
         }
     }
+
+    fun saveProject(body: ProjectRequestBody): Mono<Project> {
+        val project = body.toProject()
+        val projectEntity = ProjectEntity(project)
+        return projectRepository.insert(projectEntity).map {
+            it.toProject()
+        }.doOnError {
+            logger.warn("Project could not be stored in Database. Thrown exception: ", it)
+        }
+    }
 }

@@ -17,6 +17,7 @@ import org.springframework.restdocs.operation.preprocess.Preprocessors
 import org.springframework.restdocs.payload.JsonFieldType
 import org.springframework.restdocs.payload.PayloadDocumentation
 import org.springframework.restdocs.webtestclient.WebTestClientRestDocumentation
+import reactor.core.publisher.Mono
 
 @SuppressFBWarnings(
     SIC_INNER_SHOULD_BE_STATIC,
@@ -87,6 +88,43 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
         private fun getProjectsResponse() = listOf(
                 projectOne.toProjectResponseBody(),
                 projectTwo.toProjectResponseBody()
+        )
+    }
+
+    @Nested
+    inner class SaveProject {
+        @Test
+        fun saveProject() {
+            webTestClient.post().uri("/projects")
+                .header("Authorization", "Bearer $tokenAdmin")
+                .body(Mono.just(project), ProjectRequestBody::class.java)
+                .exchange()
+                .expectStatus().isAccepted
+                .expectHeader().valueEquals("Application-Name", "SecurityC4PO")
+                .expectBody().json(Json.write(project))
+                .consumeWith(WebTestClientRestDocumentation.document("{methodName}",
+                    Preprocessors.preprocessRequest(Preprocessors.prettyPrint(),
+                        Preprocessors.modifyUris().removePort(),
+                        Preprocessors.removeHeaders("Host", "Content-Length")),
+                    Preprocessors.preprocessResponse(
+                        Preprocessors.prettyPrint()
+                    ),
+                    PayloadDocumentation.relaxedResponseFields(
+                        PayloadDocumentation.fieldWithPath("id").type(JsonFieldType.STRING).description("The id of the requested project"),
+                        PayloadDocumentation.fieldWithPath("client").type(JsonFieldType.STRING).description("The name of the client of the requested project"),
+                        PayloadDocumentation.fieldWithPath("title").type(JsonFieldType.STRING).description("The title of the requested project"),
+                        PayloadDocumentation.fieldWithPath("createdAt").type(JsonFieldType.STRING).description("The date where the project was created at"),
+                        PayloadDocumentation.fieldWithPath("tester").type(JsonFieldType.STRING).description("The user that is assigned as a tester in the project"),
+                        PayloadDocumentation.fieldWithPath("createdBy").type(JsonFieldType.STRING).description("The id of the user that created the project")
+                    )
+                ))
+        }
+
+        val project = ProjectRequestBody(
+            client = "Novatec",
+            title = "log4j Pentest",
+            tester = "Stipe",
+            createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
     }
 
