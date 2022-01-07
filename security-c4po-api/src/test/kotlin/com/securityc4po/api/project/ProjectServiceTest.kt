@@ -22,7 +22,6 @@ class ProjectServiceTest {
     inner class GetProjects {
         @Test
         fun `happy path - getProjects successfully`() {
-
         }
     }
 

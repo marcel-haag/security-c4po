@@ -15,6 +15,7 @@ import org.springframework.boot.web.server.LocalServerPort
 import org.springframework.data.mongodb.core.MongoTemplate
 import org.springframework.data.mongodb.core.query.Query
 import org.springframework.test.web.reactive.server.WebTestClient
+import reactor.core.publisher.Mono
 import java.time.Duration
 
 @SuppressFBWarnings(
@@ -84,6 +85,33 @@ class ProjectControllerIntTest : BaseIntTest() {
         private fun getProjects() = listOf(
             projectOne.toProjectResponseBody(),
             projectTwo.toProjectResponseBody()
+        )
+    }
+
+    @Nested
+    inner class SaveProject {
+        @Test
+        fun `save project successfully`() {
+            webTestClient.post().uri("/projects")
+                .header("Authorization", "Bearer $tokenAdmin")
+                .body(Mono.just(project), ProjectRequestBody::class.java)
+                .exchange()
+                .expectStatus().isAccepted
+                .expectHeader().valueEquals("Application-Name", "SecurityC4PO")
+                .expectBody().json(Json.write(project))
+                .jsonPath("$.client").isEqualTo("Novatec")
+                .jsonPath("$.title").isEqualTo("log4j Pentest")
+                .jsonPath("$.tester").isEqualTo("Stipe")
+                .jsonPath("$.createdBy").isEqualTo("f8aab31f-4925-4242-a6fa-f98135b4b032")
+        }
+
+        val project = Project(
+            id = "4f6567a8-76fd-487b-8602-f82d0ca4d1f9",
+            client = "Novatec",
+            title = "log4j Pentest",
+            createdAt = "2021-04-10T18:05:00Z",
+            tester = "Stipe",
+            createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
     }
 

@@ -14,7 +14,7 @@ import reactor.core.publisher.Mono
         origins = [],
         allowCredentials = "false",
         allowedHeaders = ["*"],
-        methods = [RequestMethod.GET]
+        methods = [RequestMethod.GET, RequestMethod.POST]
 )
 @SuppressFBWarnings(BC_BAD_CAST_TO_ABSTRACT_COLLECTION)
 class ProjectController(private val projectService: ProjectService) {
@@ -23,12 +23,21 @@ class ProjectController(private val projectService: ProjectService) {
 
     @GetMapping
     fun getProjects(): Mono<ResponseEntity<List<ResponseBody>>> {
-        return projectService.getProjects().map {
-            it.map {
+        return projectService.getProjects().map { projectList ->
+            projectList.map {
                 it.toProjectResponseBody()
             }
         }.map {
             ResponseEntity.ok(it)
+        }
+    }
+
+    @PostMapping
+    fun saveProject(
+        @RequestBody body: ProjectRequestBody
+    ): Mono<ResponseEntity<ResponseBody>> {
+        return this.projectService.saveProject(body).map {
+            ResponseEntity.accepted().body(it.toProjectResponseBody())
         }
     }
 }
