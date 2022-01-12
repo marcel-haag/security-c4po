@@ -45,49 +45,60 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
         @Test
         fun getProjects() {
             webTestClient.get().uri("/projects")
-                    .header("Authorization", "Bearer $tokenAdmin")
-                    .exchange()
-                    .expectStatus().isOk
-                    .expectHeader().doesNotExist("")
-                    .expectBody().json(Json.write(getProjectsResponse()))
-                    .consumeWith(WebTestClientRestDocumentation.document("{methodName}",
-                            Preprocessors.preprocessRequest(Preprocessors.prettyPrint(),
-                                    Preprocessors.modifyUris().removePort(),
-                                    Preprocessors.removeHeaders("Host", "Content-Length")),
-                            Preprocessors.preprocessResponse(
-                                    Preprocessors.prettyPrint()
-                            ),
-                            PayloadDocumentation.relaxedResponseFields(
-                                    PayloadDocumentation.fieldWithPath("[].id").type(JsonFieldType.STRING).description("The id of the requested project"),
-                                    PayloadDocumentation.fieldWithPath("[].client").type(JsonFieldType.STRING).description("The name of the client of the requested project"),
-                                    PayloadDocumentation.fieldWithPath("[].title").type(JsonFieldType.STRING).description("The title of the requested project"),
-                                    PayloadDocumentation.fieldWithPath("[].createdAt").type(JsonFieldType.STRING).description("The date where the project was created at"),
-                                    PayloadDocumentation.fieldWithPath("[].tester").type(JsonFieldType.STRING).description("The user that is assigned as a tester in the project"),
-                                PayloadDocumentation.fieldWithPath("[].createdBy").type(JsonFieldType.STRING).description("The id of the user that created the project")
-                            )
-                    ))
+                .header("Authorization", "Bearer $tokenAdmin")
+                .exchange()
+                .expectStatus().isOk
+                .expectHeader().doesNotExist("")
+                .expectBody().json(Json.write(getProjectsResponse()))
+                .consumeWith(
+                    WebTestClientRestDocumentation.document(
+                        "{methodName}",
+                        Preprocessors.preprocessRequest(
+                            Preprocessors.prettyPrint(),
+                            Preprocessors.modifyUris().removePort(),
+                            Preprocessors.removeHeaders("Host", "Content-Length")
+                        ),
+                        Preprocessors.preprocessResponse(
+                            Preprocessors.prettyPrint()
+                        ),
+                        PayloadDocumentation.relaxedResponseFields(
+                            PayloadDocumentation.fieldWithPath("[].id").type(JsonFieldType.STRING)
+                                .description("The id of the requested project"),
+                            PayloadDocumentation.fieldWithPath("[].client").type(JsonFieldType.STRING)
+                                .description("The name of the client of the requested project"),
+                            PayloadDocumentation.fieldWithPath("[].title").type(JsonFieldType.STRING)
+                                .description("The title of the requested project"),
+                            PayloadDocumentation.fieldWithPath("[].createdAt").type(JsonFieldType.STRING)
+                                .description("The date where the project was created at"),
+                            PayloadDocumentation.fieldWithPath("[].tester").type(JsonFieldType.STRING)
+                                .description("The user that is assigned as a tester in the project"),
+                            PayloadDocumentation.fieldWithPath("[].createdBy").type(JsonFieldType.STRING)
+                                .description("The id of the user that created the project")
+                        )
+                    )
+                )
         }
 
         val projectOne = Project(
-                id = "4f6567a8-76fd-487b-8602-f82d0ca4d1f9",
-                client = "E Corp",
-                title = "Some Mock API (v1.0) Scanning",
-                createdAt = "2021-01-10T18:05:00Z",
-                tester = "Novatester",
-                createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
+            id = "4f6567a8-76fd-487b-8602-f82d0ca4d1f9",
+            client = "E Corp",
+            title = "Some Mock API (v1.0) Scanning",
+            createdAt = "2021-01-10T18:05:00Z",
+            tester = "Novatester",
+            createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
         val projectTwo = Project(
-                id = "61360a47-796b-4b3f-abf9-c46c668596c5",
-                client = "Allsafe",
-                title = "CashMyData (iOS)",
-                createdAt = "2021-01-10T18:05:00Z",
-                tester = "Elliot",
-                createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
+            id = "61360a47-796b-4b3f-abf9-c46c668596c5",
+            client = "Allsafe",
+            title = "CashMyData (iOS)",
+            createdAt = "2021-01-10T18:05:00Z",
+            tester = "Elliot",
+            createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
 
         private fun getProjectsResponse() = listOf(
-                projectOne.toProjectResponseBody(),
-                projectTwo.toProjectResponseBody()
+            projectOne.toProjectResponseBody(),
+            projectTwo.toProjectResponseBody()
         )
     }
 
@@ -102,29 +113,39 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
                 .expectStatus().isAccepted
                 .expectHeader().valueEquals("Application-Name", "SecurityC4PO")
                 .expectBody().json(Json.write(project))
-                .consumeWith(WebTestClientRestDocumentation.document("{methodName}",
-                    Preprocessors.preprocessRequest(Preprocessors.prettyPrint(),
-                        Preprocessors.modifyUris().removePort(),
-                        Preprocessors.removeHeaders("Host", "Content-Length")),
-                    Preprocessors.preprocessResponse(
-                        Preprocessors.prettyPrint()
-                    ),
-                    PayloadDocumentation.relaxedResponseFields(
-                        PayloadDocumentation.fieldWithPath("id").type(JsonFieldType.STRING).description("The id of the requested project"),
-                        PayloadDocumentation.fieldWithPath("client").type(JsonFieldType.STRING).description("The name of the client of the requested project"),
-                        PayloadDocumentation.fieldWithPath("title").type(JsonFieldType.STRING).description("The title of the requested project"),
-                        PayloadDocumentation.fieldWithPath("createdAt").type(JsonFieldType.STRING).description("The date where the project was created at"),
-                        PayloadDocumentation.fieldWithPath("tester").type(JsonFieldType.STRING).description("The user that is assigned as a tester in the project"),
-                        PayloadDocumentation.fieldWithPath("createdBy").type(JsonFieldType.STRING).description("The id of the user that created the project")
+                .consumeWith(
+                    WebTestClientRestDocumentation.document(
+                        "{methodName}",
+                        Preprocessors.preprocessRequest(
+                            Preprocessors.prettyPrint(),
+                            Preprocessors.modifyUris().removePort(),
+                            Preprocessors.removeHeaders("Host", "Content-Length")
+                        ),
+                        Preprocessors.preprocessResponse(
+                            Preprocessors.prettyPrint()
+                        ),
+                        PayloadDocumentation.relaxedResponseFields(
+                            PayloadDocumentation.fieldWithPath("id").type(JsonFieldType.STRING)
+                                .description("The id of the requested project"),
+                            PayloadDocumentation.fieldWithPath("client").type(JsonFieldType.STRING)
+                                .description("The name of the client of the requested project"),
+                            PayloadDocumentation.fieldWithPath("title").type(JsonFieldType.STRING)
+                                .description("The title of the requested project"),
+                            PayloadDocumentation.fieldWithPath("createdAt").type(JsonFieldType.STRING)
+                                .description("The date where the project was created at"),
+                            PayloadDocumentation.fieldWithPath("tester").type(JsonFieldType.STRING)
+                                .description("The user that is assigned as a tester in the project"),
+                            PayloadDocumentation.fieldWithPath("createdBy").type(JsonFieldType.STRING)
+                                .description("The id of the user that created the project")
+                        )
                     )
-                ))
+                )
         }
 
         val project = ProjectRequestBody(
             client = "Novatec",
             title = "log4j Pentest",
-            tester = "Stipe",
-            createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
+            tester = "Stipe"
         )
     }
 

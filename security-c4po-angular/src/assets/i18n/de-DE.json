@@ -2,6 +2,8 @@
   "global": {
     "action.login": "Einloggen",
     "action.retry": "Erneut Versuchen",
+    "action.save": "Speichern",
+    "action.cancel": "Abbrechen",
     "username": "Nutzername",
     "password": "Passwort"
   },
@@ -28,9 +30,18 @@
       "add.project": "Projekt hinzufügen",
       "no.projects": "Keine Projekte verfügbar"
     },
-    "popup": {
-      "not.found": "Keine Projekte gefunden"
+    "create": {
+      "header": "Neues Projekt erstellen"
     },
+    "popup": {
+      "not.found": "Keine Projekte gefunden",
+      "save.success": "Projekt erfolgreich gespeichert",
+      "save.failed": "Projekt konnte nicht gespeichert werden"
+    },
+    "title.label": "Projekt Titel",
+    "client.label": "Name des Auftraggebers",
+    "tester.label": "Name des Pentester",
+    "title": "Titel",
     "client": "Klient",
     "tester": "Tester",
     "createdAt": "Erstellt am"

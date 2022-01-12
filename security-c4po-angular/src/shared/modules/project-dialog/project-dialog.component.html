@@ -1,0 +1,49 @@
+<nb-card #dialog accent="primary" class="project-dialog">
+  <nb-card-header fxLayoutAlign="start center" class="project-dialog-header">
+    {{ 'project.create.header' | translate }}
+  </nb-card-header>
+  <nb-card-body>
+    <form [formGroup]="projectFormGroup" fxLayout="column" fxLayoutGap="1rem" fxLayoutAlign="start start">
+      <nb-form-field class="project-form-field">
+        <label for="projectTitleInput" class="label">
+          {{'project.title.label' | translate}}:
+        </label>
+        <input formControlName="projectTitle" required
+               id="projectTitleInput" nbInput
+               class="input" type="text" fullWidth
+               status="{{formCtrlStatus}}"
+               placeholder="{{'project.title' | translate}} *">
+      </nb-form-field>
+
+      <nb-form-field class="project-form-field">
+        <label for="projectClientInput" class="label">
+          {{'project.client.label' | translate}}:
+        </label>
+        <input formControlName="projectClient" required
+               id="projectClientInput" nbInput
+               class="input" type="text" fullWidth
+               status="{{formCtrlStatus}}"
+               placeholder="{{'project.client' | translate}} *">
+      </nb-form-field>
+
+      <nb-form-field class="project-form-field">
+        <label for="projectTesterInput" class="label">
+          {{'project.tester.label' | translate}}:
+        </label>
+        <input formControlName="projectTester" required
+               id="projectTesterInput" nbInput
+               class="input" type="text" fullWidth
+               status="{{formCtrlStatus}}"
+               placeholder="{{'project.tester' | translate}} *">
+      </nb-form-field>
+    </form>
+  </nb-card-body>
+  <nb-card-footer fxLayout="row" fxLayoutGap="1.5rem" fxLayoutAlign="end end">
+    <button nbButton status="success" [disabled]="formIsEmptyOrInvalid()" (click)="onClickSave(projectFormGroup.value)">
+      {{ 'global.action.save' | translate}}
+    </button>
+    <button nbButton status="danger" (click)="onClickClose()">
+      {{ 'global.action.cancel' | translate }}
+    </button>
+  </nb-card-footer>
+</nb-card>

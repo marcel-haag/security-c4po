@@ -17,7 +17,7 @@ export class NotificationService {
       .subscribe((translationContainer) => {
         this.toastrService.show(
           '',
-          translationContainer[popupType] + ' ' + translationContainer[translationKey], {
+          translationContainer[translationKey] + ' ' + translationContainer[popupType], {
             position: NbGlobalPhysicalPosition.BOTTOM_RIGHT,
             duration: 5000,
             toastClass: createCssClassName(popupType)

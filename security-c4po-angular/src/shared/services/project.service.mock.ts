@@ -11,4 +11,8 @@ export class ProjectServiceMock implements Required<ProjectService> {
   getProjects(): Observable<Project[]> {
     return of([]);
   }
+
+  saveProject(): Observable<Project> {
+    return of();
+  }
 }

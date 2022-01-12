@@ -22,6 +22,8 @@ import {ProjectServiceMock} from '@shared/services/project.service.mock';
 import {ThemeModule} from '@assets/@theme/theme.module';
 import {LoadingSpinnerComponent} from '@shared/widgets/loading-spinner/loading-spinner.component';
 import {KeycloakService} from 'keycloak-angular';
+import {DialogService} from '@shared/services/dialog-service/dialog.service';
+import {DialogServiceMock} from '@shared/services/dialog-service/dialog.service.mock';
 
 describe('ProjectOverviewComponent', () => {
   let component: ProjectOverviewComponent;
@@ -61,6 +63,7 @@ describe('ProjectOverviewComponent', () => {
       providers: [
         KeycloakService,
         {provide: ProjectService, useValue: new ProjectServiceMock()},
+        {provide: DialogService, useClass: DialogServiceMock},
         {provide: NotificationService, useValue: new NotificationServiceMock()}
       ]
     })
