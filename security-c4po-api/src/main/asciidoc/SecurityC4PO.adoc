@@ -55,10 +55,28 @@ include::{snippets}/saveProject/http-response.adoc[]
 
 include::{snippets}/saveProject/response-fields.adoc[]
 
+=== Delete project
+
+To delete a project, call the DELETE request /projects/{projectId}
+
+==== Request example
+
+include::{snippets}/deleteProject/http-request.adoc[]
+
+==== Response example
+
+include::{snippets}/deleteProject/http-response.adoc[]
+
+==== Response structure
+
+include::{snippets}/deleteProject/response-fields.adoc[]
+
 == Change History
 
 |===
 |Date |Change
+|2022-02-01
+|Added DELETE endpoint to save Projects
 |2021-12-22
 |Added POST endpoint to save Projects
 |2021-02-14

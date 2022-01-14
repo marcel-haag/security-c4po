@@ -28,6 +28,12 @@ fun Project.toProjectResponseBody(): ResponseBody {
     )
 }
 
+fun Project.toProjectDeleteResponseBody(): ResponseBody {
+    return mapOf(
+        "id" to id
+    )
+}
+
 data class ProjectOverview(
         val projects: List<Project>
 )
@@ -44,6 +50,10 @@ data class ProjectRequestBody(
     val tester: String? = null
 )
 
+data class ProjectDeleteRequestBody(
+    val id: String
+)
+
 fun ProjectRequestBody.toProject(): Project {
     return Project(
         id = UUID.randomUUID().toString(),
@@ -53,5 +63,7 @@ fun ProjectRequestBody.toProject(): Project {
         tester = this.tester,
         // ToDo: Should be changed to SUB from Token after adding AUTH Header
         createdBy = UUID.randomUUID().toString()
-    )
+
+)
+
 }

@@ -149,6 +149,46 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
         )
     }
 
+    @Nested
+    inner class DeleteProject {
+        @Test
+        fun deleteProject() {
+            webTestClient.delete().uri("/projects/${project.id}")
+                .header("Authorization", "Bearer $tokenAdmin")
+                .exchange()
+                .expectStatus().isOk
+                .expectHeader().valueEquals("Application-Name", "SecurityC4PO")
+                .expectBody()
+                .json(Json.write(project.toProjectDeleteResponseBody()))
+                .consumeWith(
+                    WebTestClientRestDocumentation.document(
+                        "{methodName}",
+                        Preprocessors.preprocessRequest(
+                            Preprocessors.prettyPrint(),
+                            Preprocessors.modifyUris().removePort(),
+                            Preprocessors.removeHeaders("Host", "Content-Length")
+                        ),
+                        Preprocessors.preprocessResponse(
+                            Preprocessors.prettyPrint()
+                        ),
+                        PayloadDocumentation.relaxedResponseFields(
+                            PayloadDocumentation.fieldWithPath("id").type(JsonFieldType.STRING)
+                                .description("The id of the deleted project")
+                        )
+                    )
+                )
+        }
+
+        val project = Project(
+            id = "4f6567a8-76fd-487b-8602-f82d0ca4d1f9",
+            client = "E Corp",
+            title = "Some Mock API (v1.0) Scanning",
+            createdAt = "2021-01-10T18:05:00Z",
+            tester = "Novatester",
+            createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
+        )
+    }
+
     private fun persistBasicTestScenario() {
         // setup test data
         val projectOne = Project(

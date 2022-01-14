@@ -39,7 +39,7 @@ abstract class BaseContainerizedTest {
 
     companion object {
         val mongoDbContainer = KGenericContainer(ImageFromDockerfile("c4poapibasecontainerizedtest").withDockerfileFromBuilder {
-            it.from("mongo")
+            it.from("mongo:4.4.6")
             it.env("MONGO_INITDB_ROOT_USERNAME", "root")
             it.env("MONGO_INITDB_ROOT_PASSWORD", "cjwkbencowepoc324pon2mop3mp4")
             it.env("MONGO_INITDB_DATABASE", "admin")

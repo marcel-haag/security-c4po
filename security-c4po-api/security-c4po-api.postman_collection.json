@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a20516f0-5f7f-4d15-9f26-ada358993ff8",
+		"_postman_id": "1823096a-1cb2-438d-9872-73ec0ca94cfa",
 		"name": "security-c4po-api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -10,9 +10,6 @@
 			"item": [
 				{
 					"name": "getProjects",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "oauth2",
@@ -41,9 +38,38 @@
 						},
 						"method": "GET",
 						"header": [],
+						"url": {
+							"raw": "http://localhost:8443/projects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saveProject",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "",
+							"raw": "{\n    \"client\": \"Novatec\",\n    \"title\": \"log4j pentest\",\n    \"tester\" : \"Stipe\",\n    \"createdBy\" : \"10e06d7a-8dd0-4ecd-8963-056b45079c4f\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -65,30 +91,11 @@
 					"response": []
 				},
 				{
-					"name": "saveProject",
+					"name": "deleteProject",
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"client\": \"Novatec\",\n    \"title\": \"log4j Pentest\",\n    \"tester\": \"Stipe\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8443/projects",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8443",
-							"path": [
-								"projects"
-							]
-						}
+						"url": null
 					},
 					"response": []
 				}
