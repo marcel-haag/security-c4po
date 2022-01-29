@@ -1,6 +1,6 @@
 <div fxLayout="row" fxLayoutGap="2rem">
   <div *ngFor="let project of projects | async">
-    <nb-card accent="success" class="project-card">
+    <nb-card class="project-card" accent="success">
       <nb-card-header fxLayoutAlign="start center"
                       routerLink="id"
                       fragment="{{project.id}}"
@@ -52,7 +52,7 @@
                   status="danger"
                   size="small"
                   class="project-button"
-                  (click)="onClickDeleteProject()">
+                  (click)="onClickDeleteProject(project)">
             <fa-icon [icon]="fa.faTrash"></fa-icon>
           </button>
         </div>

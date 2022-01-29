@@ -33,6 +33,7 @@ describe('ProjectService', () => {
   });
 
   describe('getProjects', () => {
+    // arrange
     const mockProject: Project = {
       id: '56c47c56-3bcd-45f1-a05b-c197dbd33111',
       client: 'E Corp',
@@ -52,6 +53,7 @@ describe('ProjectService', () => {
     }];
 
     it('should get Projects', (done) => {
+      // act
       service.getProjects().subscribe((projects) => {
         expect(projects[0].id).toEqual(mockProject.id);
         expect(projects[0].client).toEqual(mockProject.client);
@@ -62,6 +64,7 @@ describe('ProjectService', () => {
         done();
       });
 
+      // assert
       const mockReq = httpMock.expectOne(`${apiBaseURL}`);
       expect(mockReq.cancelled).toBe(false);
       expect(mockReq.request.responseType).toEqual('json');
@@ -72,6 +75,7 @@ describe('ProjectService', () => {
   });
 
   describe('saveProject', () => {
+    // arrange
     const mockSaveProjectDialogBody: SaveProjectDialogBody = {
       client: 'E Corp',
       title: 'Some Mock API (v1.0) Scanning',
@@ -97,17 +101,40 @@ describe('ProjectService', () => {
     };
 
     it('should save project', (done) => {
-
+      // act
       service.saveProject(mockSaveProjectDialogBody).subscribe(
         value => {
           expect(value).toEqual(mockProject);
           done();
         },
         fail);
-
+      // assert
       const req = httpMock.expectOne(`${apiBaseURL}`);
       expect(req.request.method).toBe('POST');
       req.flush(mockProject);
+    });
+  });
+
+  describe('deleteProject', () => {
+    // arrange
+    const mockProjectId = '56c47c56-3bcd-45f1-a05b-c197dbd33111';
+
+    const httpResponse = {
+      id: '56c47c56-3bcd-45f1-a05b-c197dbd33111'
+    };
+
+    it('should delete project', (done) => {
+      // act
+      service.deleteProjectById(mockProjectId).subscribe(
+        value => {
+          expect(value).toEqual(httpResponse.id);
+          done();
+        },
+        fail);
+      // assert
+      const req = httpMock.expectOne(`${apiBaseURL}/${mockProjectId}`);
+      expect(req.request.method).toBe('DELETE');
+      req.flush(httpResponse.id);
     });
   });
 });

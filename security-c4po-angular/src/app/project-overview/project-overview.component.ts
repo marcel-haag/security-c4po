@@ -5,10 +5,9 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {untilDestroyed} from 'ngx-take-until-destroy';
 import {ProjectService} from '@shared/services/project.service';
 import {NotificationService, PopupType} from '@shared/services/notification.service';
-import {filter, mergeMap, tap} from 'rxjs/operators';
+import {catchError, filter, mergeMap, switchMap, tap} from 'rxjs/operators';
 import {DialogService} from '@shared/services/dialog-service/dialog.service';
 import {ProjectDialogComponent} from '@shared/modules/project-dialog/project-dialog.component';
-import {NB_DIALOG_CONFIG} from '@nebular/theme/components/dialog/dialog-config';
 
 @Component({
   selector: 'app-project-overview',
@@ -80,8 +79,30 @@ export class ProjectOverviewComponent implements OnInit, OnDestroy {
     console.log('to be implemented...');
   }
 
-  onClickDeleteProject(): void {
-    console.log('to be implemented...');
+  onClickDeleteProject(project: Project): void {
+    const message = {
+      title: 'project.delete.title',
+      key: 'project.delete.key',
+      data: {name: project.title},
+    };
+    this.dialogService.openConfirmDialog(
+      message
+    ).onClose.pipe(
+      filter((confirm) => !!confirm),
+      switchMap(() => this.projectService.deleteProjectById(project.id)),
+      catchError(() => {
+        this.notificationService.showPopup('project.popup.delete.failed', PopupType.FAILURE);
+        return [];
+      }),
+      untilDestroyed(this)
+    ).subscribe({
+      next: () => {
+        this.loadProjects();
+        this.notificationService.showPopup('project.popup.delete.success', PopupType.SUCCESS);
+      }, error: error => {
+        console.error(error);
+      }
+    });
   }
 
   isLoading(): Observable<boolean> {

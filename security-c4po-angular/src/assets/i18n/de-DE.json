@@ -3,7 +3,10 @@
     "action.login": "Einloggen",
     "action.retry": "Erneut Versuchen",
     "action.save": "Speichern",
+    "action.confirm": "Bestätigen",
     "action.cancel": "Abbrechen",
+    "action.yes": "Ja",
+    "action.no": "Nein",
     "username": "Nutzername",
     "password": "Passwort"
   },
@@ -33,10 +36,16 @@
     "create": {
       "header": "Neues Projekt erstellen"
     },
+    "delete": {
+      "title": "Projekt löschen",
+      "key": "Möchten Sie das Projekt \"{{name}}\" unwiderruflich löschen?"
+    },
     "popup": {
       "not.found": "Keine Projekte gefunden",
       "save.success": "Projekt erfolgreich gespeichert",
-      "save.failed": "Projekt konnte nicht gespeichert werden"
+      "save.failed": "Projekt konnte nicht gespeichert werden",
+      "delete.success": "Projekt erfolgreich gelöscht",
+      "delete.failed": "Projekt konnte nicht gelöscht werden"
     },
     "title.label": "Projekt Titel",
     "client.label": "Name des Auftraggebers",

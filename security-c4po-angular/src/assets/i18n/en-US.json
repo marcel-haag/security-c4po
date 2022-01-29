@@ -2,8 +2,11 @@
   "global": {
     "action.login": "Login",
     "action.retry": "Try again",
+    "action.confirm": "Confirm",
     "action.save": "Save",
     "action.cancel": "Cancel",
+    "action.yes": "Yes",
+    "action.no": "No",
     "username": "Username",
     "password": "Password"
   },
@@ -33,10 +36,16 @@
     "create": {
       "header": "Create New Project"
     },
+    "delete": {
+      "title": "Delete Project",
+      "key": "Do you want to permanently delete the project \"{{name}}\"?"
+    },
     "popup": {
       "not.found": "No projects found",
       "save.success": "Project saved successfully",
-      "save.failed": "Project could not be saved"
+      "save.failed": "Project could not be saved",
+      "delete.success": "Project deleted successfully",
+      "delete.failed": "Project could not be deleted"
     },
     "title.label": "Project Title",
     "client.label": "Name of Client",
