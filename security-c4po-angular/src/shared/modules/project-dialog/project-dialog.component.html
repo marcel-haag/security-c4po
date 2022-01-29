@@ -1,5 +1,5 @@
 <nb-card #dialog accent="primary" class="project-dialog">
-  <nb-card-header fxLayoutAlign="start center" class="project-dialog-header">
+  <nb-card-header fxLayoutAlign="start center" class="dialog-header">
     {{ 'project.create.header' | translate }}
   </nb-card-header>
   <nb-card-body>
@@ -39,10 +39,10 @@
     </form>
   </nb-card-body>
   <nb-card-footer fxLayout="row" fxLayoutGap="1.5rem" fxLayoutAlign="end end">
-    <button nbButton status="success" [disabled]="formIsEmptyOrInvalid()" (click)="onClickSave(projectFormGroup.value)">
+    <button nbButton status="success" size="small" class="dialog-button" [disabled]="formIsEmptyOrInvalid()" (click)="onClickSave(projectFormGroup.value)">
       {{ 'global.action.save' | translate}}
     </button>
-    <button nbButton status="danger" (click)="onClickClose()">
+    <button nbButton status="danger" size="small" class="dialog-button"(click)="onClickClose()">
       {{ 'global.action.cancel' | translate }}
     </button>
   </nb-card-footer>

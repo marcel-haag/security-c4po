@@ -1,3 +1,5 @@
+@import '../../assets/@theme/styles/themes';
+
 .project-card {
   max-width: 22rem;
   width: 22rem;
@@ -31,6 +33,12 @@
   .project-button {
     height: 1.425rem;
   }
+}
+
+.project-card:hover {
+  background-color: nb-theme(color-info-transparent-default);
+  margin-top: +0.625rem;
+  transform: scale(1.025)
 }
 
 .project-link:hover {

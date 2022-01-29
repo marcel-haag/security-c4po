@@ -1,0 +1,21 @@
+<nb-card>
+  <nb-card-header fxLayoutAlign="start center" class="dialog-header confirm">
+    {{ data?.title | translate }}
+  </nb-card-header>
+  <nb-card-body class="dialog-body">
+    {{ data?.key | translate: data?.data }}
+  </nb-card-body>
+  <nb-card-footer fxLayout="row" fxLayoutGap="1.5rem" fxLayoutAlign="end end">
+    <button nbButton size="small"
+            class="dialog-button"
+            status="danger"
+            (click)="onClickConfirm()">
+      {{ 'global.action.yes' | translate }}
+    </button>
+    <button nbButton size="small"
+            class="dialog-button"
+            (click)="onClickClose()">
+      {{ 'global.action.no' | translate }}
+    </button>
+  </nb-card-footer>
+</nb-card>

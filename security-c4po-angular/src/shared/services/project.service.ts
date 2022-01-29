@@ -14,6 +14,9 @@ export class ProjectService {
   constructor(private http: HttpClient) {
   }
 
+  /**
+   * Get Projects
+   */
   public getProjects(): Observable<Project[]> {
     return this.http.get<Project[]>(`${this.apiBaseURL}`);
   }
@@ -24,5 +27,13 @@ export class ProjectService {
    */
   public saveProject(project: SaveProjectDialogBody): Observable<Project> {
     return this.http.post<Project>(`${this.apiBaseURL}`, project);
+  }
+
+  /**
+   * Delete Project
+   * @param projectId the id of the project
+   */
+  public deleteProjectById(projectId: string): Observable<string> {
+    return this.http.delete<string>(`${this.apiBaseURL}/${projectId}`);
   }
 }

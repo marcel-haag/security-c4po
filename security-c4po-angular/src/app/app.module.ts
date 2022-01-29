@@ -27,6 +27,7 @@ import {KeycloakService} from 'keycloak-angular';
 import {httpInterceptorProviders} from '@shared/interceptors';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {DialogService} from '@shared/services/dialog-service/dialog.service';
+import {ConfirmDialogModule} from '@shared/modules/confirm-dialog/confirm-dialog.module';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import {DialogService} from '@shared/services/dialog-service/dialog.service';
     NbIconModule,
     NbButtonModule,
     NbEvaIconsModule,
+    ConfirmDialogModule,
     NgxsModule.forRoot([SessionState], {developmentMode: !environment.production}),
     HttpClientModule,
     TranslateModule.forRoot({
