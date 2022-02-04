@@ -1,13 +1,21 @@
 # security-c4po
 
-## Project Members
+## Chief Innovator
 * Daniel Mader
+
+## Project Leads
+* Andreas Falk
+* Christina Paule
+
+## Developers
 * Marcel Haag
+* Stipe Knez
 
 ## Technical Requirements
 * Docker / Docker-compose
 * OpenJDK 11
 * Node 14.15.1 / npm 6.14.8
+* MongoDB 4.4.6
 
 ## Tools
 * mongoDB Compass
