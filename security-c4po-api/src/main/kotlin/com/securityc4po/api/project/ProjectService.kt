@@ -6,6 +6,8 @@ import com.securityc4po.api.extensions.getLoggerFor
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono
+import reactor.kotlin.core.publisher.switchIfEmpty
+
 
 @Service
 @SuppressFBWarnings(BC_BAD_CAST_TO_ABSTRACT_COLLECTION, MESSAGE_BAD_CAST_TO_ABSTRACT_COLLECTION)
@@ -31,6 +33,16 @@ class ProjectService(private val projectRepository: ProjectRepository) {
             it.toProject()
         }.doOnError {
             logger.warn("Project could not be stored in Database. Thrown exception: ", it)
+        }
+    }
+
+    fun deleteProject(id: String): Mono<Project> {
+        return projectRepository.findProjectById(id).switchIfEmpty{
+            logger.info("Project with id $id not found. Deletion not possible.")
+            Mono.empty()
+        }.flatMap{ projectEntity: ProjectEntity ->
+            val project = projectEntity.toProject()
+            projectRepository.deleteProjectById(id).map{project}
         }
     }
 }

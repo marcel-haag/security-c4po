@@ -116,6 +116,36 @@ class ProjectControllerIntTest : BaseIntTest() {
         )
     }
 
+    @Nested
+    inner class DeleteProject {
+        @Test
+        fun `deleted project successfully`() {
+            webTestClient.delete().uri("/projects/{id}", projectTwo.id)
+                .header("Authorization", "Bearer $tokenAdmin")
+                .exchange()
+                .expectStatus().isOk
+                .expectHeader().valueEquals("Application-Name", "SecurityC4PO")
+                .expectBody().json(Json.write(projectTwo.toProjectDeleteResponseBody()))
+        }
+        /*@Test
+        fun `delete project by non-existing id`() {
+            webTestClient.delete().uri("/projects/{id}", "98754a47-796b-4b3f-abf9-c46c668596c5")
+                .header("Authorization", "Bearer $tokenAdmin")
+                .exchange()
+                .expectStatus().isNoContent
+                .expectHeader().valueEquals("Application-Name", "SecurityC4PO")
+                .expectBody().isEmpty
+        }*/
+        val projectTwo = Project(
+            id = "61360a47-796b-4b3f-abf9-c46c668596c5",
+            client = "Allsafe",
+            title = "CashMyData (iOS)",
+            createdAt = "2021-01-10T18:05:00Z",
+            tester = "Elliot",
+            createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
+        )
+    }
+
     private fun persistBasicTestScenario() {
         // setup test data
         val projectOne = Project(
