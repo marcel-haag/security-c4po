@@ -21,7 +21,7 @@ export class Project {
   }
 }
 
-export interface SaveProjectDialogBody {
+export interface ProjectDialogBody {
   title: string;
   client: string;
   tester: string;

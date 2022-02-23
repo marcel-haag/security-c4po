@@ -4,7 +4,7 @@ import {ProjectService} from './project.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {KeycloakService} from 'keycloak-angular';
-import {Project, SaveProjectDialogBody} from '@shared/models/project.model';
+import {Project, ProjectDialogBody} from '@shared/models/project.model';
 import {environment} from '../../environments/environment';
 
 describe('ProjectService', () => {
@@ -76,7 +76,7 @@ describe('ProjectService', () => {
 
   describe('saveProject', () => {
     // arrange
-    const mockSaveProjectDialogBody: SaveProjectDialogBody = {
+    const mockSaveProjectDialogBody: ProjectDialogBody = {
       client: 'E Corp',
       title: 'Some Mock API (v1.0) Scanning',
       tester: 'Novatester',

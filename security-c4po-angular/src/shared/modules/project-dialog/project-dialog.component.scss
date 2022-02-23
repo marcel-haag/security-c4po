@@ -1,8 +1,9 @@
 @import "../../../assets/@theme/styles/_dialog.scss";
+@import '../../../assets/@theme/styles/themes';
 
 .project-dialog {
-  width: 24rem;
-  height: 31rem;
+  width: 25.25rem;
+  height: 35rem;
 
   .project-dialog-header {
     height: 8vh;
@@ -20,6 +21,12 @@
   }
 
   .input {
-    width: 15rem;
+    width: 18rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .error-text {
+    float: left;
+    color: nb-theme(color-danger-default);;
   }
 }

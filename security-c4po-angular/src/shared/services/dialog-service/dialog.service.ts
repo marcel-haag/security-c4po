@@ -24,7 +24,7 @@ export class DialogService {
       closeOnEsc: config?.closeOnEsc || false,
       hasScroll: config?.hasScroll || false,
       autoFocus: config?.autoFocus || false,
-      closeOnBackdropClick: config?.closeOnBackdropClick || false,
+      closeOnBackdropClick: config?.closeOnBackdropClick || false
     });
   }
 
@@ -35,7 +35,7 @@ export class DialogService {
    */
   openConfirmDialog(message: DialogMessage): NbDialogRef<ConfirmDialogComponent> {
     return this.dialog.open(ConfirmDialogComponent, {
-      closeOnEsc: false,
+      closeOnEsc: true,
       hasScroll: false,
       autoFocus: false,
       closeOnBackdropClick: false,

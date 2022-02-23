@@ -6,6 +6,7 @@
       "jest"
     ],
     "module": "commonjs",
+    "esModuleInterop": true,
     "emitDecoratorMetadata": true,
     "allowJs": true,
   },

@@ -4,6 +4,7 @@
     "action.retry": "Try again",
     "action.confirm": "Confirm",
     "action.save": "Save",
+    "action.update": "Update",
     "action.cancel": "Cancel",
     "action.yes": "Yes",
     "action.no": "No",
@@ -14,7 +15,7 @@
     "success": "✔",
     "failure": "✘",
     "warning": "!",
-    "info": "",
+    "info": "ⓘ",
     "error.position": {
       "permissionDenied": "Permission denied",
       "timeout": "Timeout"
@@ -29,30 +30,40 @@
     "unauthorized": "User not found. Please register and try again"
   },
   "project": {
-    "overview": {
-      "add.project": "Add project",
-      "no.projects": "No projects available"
-    },
-    "create": {
-      "header": "Create New Project"
-    },
-    "delete": {
-      "title": "Delete Project",
-      "key": "Do you want to permanently delete the project \"{{name}}\"?"
-    },
-    "popup": {
-      "not.found": "No projects found",
-      "save.success": "Project saved successfully",
-      "save.failed": "Project could not be saved",
-      "delete.success": "Project deleted successfully",
-      "delete.failed": "Project could not be deleted"
-    },
     "title.label": "Project Title",
     "client.label": "Name of Client",
     "tester.label": "Name of Pentester",
     "title": "Title",
     "client": "Client",
     "tester": "Tester",
-    "createdAt": "Created at"
+    "createdAt": "Created at",
+    "overview": {
+      "add.project": "Add Project",
+      "no.projects": "No projects available"
+    },
+    "create": {
+      "header": "Create New Project"
+    },
+    "edit": {
+      "header": "Edit Project"
+    },
+    "delete": {
+      "title": "Delete Project",
+      "key": "Do you want to permanently delete the project \"{{name}}\"?"
+    },
+    "validationMessage": {
+      "titleRequired": "Title is required.",
+      "clientRequired": "Client is required.",
+      "testerRequired": "Tester is required."
+    },
+    "popup": {
+      "not.found": "No projects found",
+      "save.success": "Project saved successfully",
+      "save.failed": "Project could not be saved",
+      "update.success": "Project updated successfully",
+      "update.failed": "Project could not be updated",
+      "delete.success": "Project deleted successfully",
+      "delete.failed": "Project could not be deleted"
+    }
   }
 }

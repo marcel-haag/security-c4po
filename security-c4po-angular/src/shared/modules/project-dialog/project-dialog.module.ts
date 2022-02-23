@@ -7,6 +7,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {TranslateModule} from '@ngx-translate/core';
 import {DialogService} from '@shared/services/dialog-service/dialog.service';
 import {ReactiveFormsModule} from '@angular/forms';
+import {ProjectDialogService} from '@shared/modules/project-dialog/service/project-dialog.service';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {ReactiveFormsModule} from '@angular/forms';
   ],
   providers: [
     DialogService,
+    ProjectDialogService,
     NbDialogService
   ],
   entryComponents: [

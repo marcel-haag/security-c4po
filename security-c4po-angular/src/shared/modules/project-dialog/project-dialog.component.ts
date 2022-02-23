@@ -1,8 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {NbDialogRef} from '@nebular/theme';
-import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {FieldStatus} from '@shared/models/form-field-status.model';
-import {untilDestroyed} from 'ngx-take-until-destroy';
+import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
+import {NB_DIALOG_CONFIG, NbDialogRef} from '@nebular/theme';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {GenericFormFieldConfig, ProjectDialogData} from '@shared/models/project-dialog-data';
+import deepEqual from 'deep-equal';
 
 @Component({
   selector: 'app-project-dialog',
@@ -12,40 +12,29 @@ import {untilDestroyed} from 'ngx-take-until-destroy';
 export class ProjectDialogComponent implements OnInit, OnDestroy {
   // form control elements
   projectFormGroup: FormGroup;
-  projectTitleCtrl: AbstractControl;
-  projectClientCtrl: AbstractControl;
-  projectTesterCtrl: AbstractControl;
+  formArray: GenericFormFieldConfig[];
 
-  formCtrlStatus = FieldStatus.BASIC;
-
-  invalidProjectTitle: string;
-  invalidProjectClient: string;
-  invalidProjectTester: string;
-
-  readonly MIN_LENGTH: number = 2;
+  dialogData: ProjectDialogData;
 
   constructor(
+    @Inject(NB_DIALOG_CONFIG) private data: ProjectDialogData,
     private fb: FormBuilder,
     protected dialogRef: NbDialogRef<ProjectDialogComponent>
   ) {
   }
 
   ngOnInit(): void {
-    this.projectFormGroup = this.fb.group({
-      projectTitle: ['', [Validators.required, Validators.minLength(this.MIN_LENGTH)]],
-      projectClient: ['', [Validators.required, Validators.minLength(this.MIN_LENGTH)]],
-      projectTester: ['', [Validators.required, Validators.minLength(this.MIN_LENGTH)]]
-    });
+    this.projectFormGroup = this.generateFormCreationFieldArray();
+    this.dialogData = this.data;
+  }
 
-    this.projectTitleCtrl = this.projectFormGroup.get('projectTitle');
-    this.projectClientCtrl = this.projectFormGroup.get('projectClient');
-    this.projectTesterCtrl = this.projectFormGroup.get('projectTester');
-
-    this.projectFormGroup.valueChanges
-      .pipe(untilDestroyed(this))
-      .subscribe(() => {
-        this.formCtrlStatus = FieldStatus.BASIC;
-      });
+  generateFormCreationFieldArray(): FormGroup {
+    this.formArray = Object.values(this.data.form);
+    const config = this.formArray?.reduce((accumulator: {}, currentValue: GenericFormFieldConfig) => ({
+      ...accumulator,
+      [currentValue?.fieldName]: currentValue?.controlsConfig
+    }), {});
+    return this.fb.group(config);
   }
 
   onClickSave(value): void {
@@ -60,23 +49,41 @@ export class ProjectDialogComponent implements OnInit, OnDestroy {
     this.dialogRef.close();
   }
 
-  formIsEmptyOrInvalid(): boolean {
-    return this.isEmpty(this.projectTitleCtrl.value)
-      || this.isEmpty(this.projectClientCtrl.value)
-      || this.isEmpty(this.projectTesterCtrl.value)
-      || this.projectTitleCtrl.invalid
-      || this.projectClientCtrl.invalid
-      || this.projectTesterCtrl.invalid;
+  allowSave(): boolean {
+    return this.projectFormGroup.valid && this.projectDataChanged();
   }
 
   /**
-   * @param ctrlValue of type string
-   * @return if ctrlValue is empty or not
+   * @return true if project data is different from initial value
    */
-  isEmpty(ctrlValue: string): boolean {
-    return ctrlValue === '';
+  private projectDataChanged(): boolean {
+    const oldProjectData = this.parseInitializedProjectDialogData(this.dialogData);
+    const newProjectData = this.projectFormGroup.getRawValue();
+    Object.entries(newProjectData).forEach(entry => {
+      const [key, value] = entry;
+      if (value === null) {
+        newProjectData[key] = '';
+      }
+    });
+    const didChange = !deepEqual(oldProjectData, newProjectData);
+    return didChange;
+  }
+
+  /**
+   * @param dialogData of type ProjectDialogData
+   * @return parsed projectData
+   */
+  private parseInitializedProjectDialogData(dialogData: ProjectDialogData): any {
+    const projectData = {};
+    Object.entries(dialogData.form).forEach(entry => {
+      const [key, value] = entry;
+      projectData[key] = value.controlsConfig[0] ?
+        (value.controlsConfig[0].value ? value.controlsConfig[0].value : value.controlsConfig[0]) : '';
+    });
+    return projectData;
   }
 
   ngOnDestroy(): void {
+    // ToDo: Remove this after Angular upgrade and use @UnitDestroy() instead
   }
 }
