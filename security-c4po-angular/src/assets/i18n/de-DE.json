@@ -3,6 +3,7 @@
     "action.login": "Einloggen",
     "action.retry": "Erneut Versuchen",
     "action.save": "Speichern",
+    "action.update": "Aktualisieren",
     "action.confirm": "Bestätigen",
     "action.cancel": "Abbrechen",
     "action.yes": "Ja",
@@ -14,7 +15,7 @@
     "success": "✔",
     "failure": "✘",
     "warning": "!",
-    "info": "",
+    "info": "ⓘ",
     "error.position": {
       "permissionDenied": "Berechtigung verweigert",
       "timeout": "Zeitüberschreitung"
@@ -29,6 +30,13 @@
     "unauthorized": "Benutzer nicht gefunden. Bitte registrieren und erneut versuchen"
   },
   "project": {
+    "title.label": "Projekt Titel",
+    "client.label": "Name des Auftraggebers",
+    "tester.label": "Name des Pentester",
+    "title": "Titel",
+    "client": "Klient",
+    "tester": "Tester",
+    "createdAt": "Erstellt am",
     "overview": {
       "add.project": "Projekt hinzufügen",
       "no.projects": "Keine Projekte verfügbar"
@@ -36,23 +44,26 @@
     "create": {
       "header": "Neues Projekt erstellen"
     },
+    "edit": {
+      "header": "Projekt editieren"
+    },
     "delete": {
       "title": "Projekt löschen",
       "key": "Möchten Sie das Projekt \"{{name}}\" unwiderruflich löschen?"
+    },
+    "validationMessage": {
+      "titleRequired": "Titel ist erforderlich.",
+      "clientRequired": "Klient ist erforderlich.",
+      "testerRequired": "Tester ist erforderlich."
     },
     "popup": {
       "not.found": "Keine Projekte gefunden",
       "save.success": "Projekt erfolgreich gespeichert",
       "save.failed": "Projekt konnte nicht gespeichert werden",
+      "update.success": "Projekt erfolgreich aktualisiert",
+      "update.failed": "Projekt konnte nicht aktualisiert werden",
       "delete.success": "Projekt erfolgreich gelöscht",
       "delete.failed": "Projekt konnte nicht gelöscht werden"
-    },
-    "title.label": "Projekt Titel",
-    "client.label": "Name des Auftraggebers",
-    "tester.label": "Name des Pentester",
-    "title": "Titel",
-    "client": "Klient",
-    "tester": "Tester",
-    "createdAt": "Erstellt am"
+    }
   }
 }

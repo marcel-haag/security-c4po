@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
-import {Project, SaveProjectDialogBody} from '../models/project.model';
+import {Project, ProjectDialogBody} from '../models/project.model';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -25,8 +25,18 @@ export class ProjectService {
    * Save Project
    * @param project the information of the project
    */
-  public saveProject(project: SaveProjectDialogBody): Observable<Project> {
+  public saveProject(project: ProjectDialogBody): Observable<Project> {
     return this.http.post<Project>(`${this.apiBaseURL}`, project);
+  }
+
+  /**
+   * Update Project
+   * @param projectId the id of the project
+   * @param project the information of the project
+   */
+  public updateProject(projectId: string, project: ProjectDialogBody): Observable<Project> {
+    console.log('update Project');
+    return this.http.patch<Project>(`${this.apiBaseURL}/${projectId}`, project);
   }
 
   /**

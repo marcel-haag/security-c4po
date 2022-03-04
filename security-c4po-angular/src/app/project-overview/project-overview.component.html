@@ -45,7 +45,7 @@
                   status="primary"
                   size="small"
                   class="project-button"
-                  (click)="onClickEditProject()">
+                  (click)="onClickEditProject(project)">
             <fa-icon [icon]="fa.faPencilAlt"></fa-icon>
           </button>
           <button nbButton
@@ -61,7 +61,7 @@
   </div>
 </div>
 
-<div *ngIf="projects.getValue().length === 0 && !isLoading()" fxLayout="row" fxLayoutAlign="center center">
+<div *ngIf="projects.getValue().length === 0 || !isLoading()" fxLayout="row" fxLayoutAlign="center center">
   <p class="error-text">
     {{'project.overview.no.projects' | translate}}
   </p>

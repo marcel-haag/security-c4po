@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import * as FA from '@fortawesome/free-solid-svg-icons';
-import {Project, SaveProjectDialogBody} from '@shared/models/project.model';
+import {Project, ProjectDialogBody} from '@shared/models/project.model';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {untilDestroyed} from 'ngx-take-until-destroy';
 import {ProjectService} from '@shared/services/project.service';
@@ -8,6 +8,7 @@ import {NotificationService, PopupType} from '@shared/services/notification.serv
 import {catchError, filter, mergeMap, switchMap, tap} from 'rxjs/operators';
 import {DialogService} from '@shared/services/dialog-service/dialog.service';
 import {ProjectDialogComponent} from '@shared/modules/project-dialog/project-dialog.component';
+import {ProjectDialogService} from '@shared/modules/project-dialog/service/project-dialog.service';
 
 @Component({
   selector: 'app-project-overview',
@@ -24,6 +25,7 @@ export class ProjectOverviewComponent implements OnInit, OnDestroy {
   constructor(
     private readonly projectService: ProjectService,
     private readonly dialogService: DialogService,
+    private readonly projectDialogService: ProjectDialogService,
     private readonly notificationService: NotificationService) {
   }
 
@@ -51,17 +53,18 @@ export class ProjectOverviewComponent implements OnInit, OnDestroy {
   }
 
   onClickAddProject(): void {
-    this.dialogService.openCustomDialog(
+    this.projectDialogService.openProjectDialog(
       ProjectDialogComponent,
+      null,
       {
         closeOnEsc: false,
         hasScroll: false,
         autoFocus: false,
         closeOnBackdropClick: false
       }
-    ).onClose.pipe(
+    ).pipe(
       filter(value => !!value),
-      mergeMap((value: SaveProjectDialogBody) => this.projectService.saveProject(value)),
+      mergeMap((value: ProjectDialogBody) => this.projectService.saveProject(value)),
       untilDestroyed(this)
     ).subscribe({
       next: () => {
@@ -75,8 +78,30 @@ export class ProjectOverviewComponent implements OnInit, OnDestroy {
     });
   }
 
-  onClickEditProject(): void {
-    console.log('to be implemented...');
+  onClickEditProject(project: Project): void {
+    this.projectDialogService.openProjectDialog(
+      ProjectDialogComponent,
+      project,
+      {
+        closeOnEsc: false,
+        hasScroll: false,
+        autoFocus: false,
+        closeOnBackdropClick: false
+      }
+    ).pipe(
+      filter(value => !!value),
+      mergeMap((value: ProjectDialogBody) => this.projectService.updateProject(project.id, value)),
+      untilDestroyed(this)
+    ).subscribe({
+      next: () => {
+        this.loadProjects();
+        this.notificationService.showPopup('project.popup.update.success', PopupType.SUCCESS);
+      },
+      error: error => {
+        console.error(error);
+        this.notificationService.showPopup('project.popup.update.failed', PopupType.FAILURE);
+      }
+    });
   }
 
   onClickDeleteProject(project: Project): void {

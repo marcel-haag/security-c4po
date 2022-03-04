@@ -36,9 +36,13 @@
 }
 
 .project-card:hover {
-  background-color: nb-theme(color-info-transparent-default);
+  background-color: nb-theme(color-basic-transparent-focus);
+  // Increases element size on hover
+  // Decreases usability which is why it is commented out
+  /*
   margin-top: +0.625rem;
-  transform: scale(1.025)
+  transform: scale(1.025);
+  */
 }
 
 .project-link:hover {

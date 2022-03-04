@@ -12,7 +12,7 @@ services:
       - ../cfg/keycloak.env
   c4po-keycloak-postgress:
     container_name: c4po-keycloak-postgres
-    image: postgres:latest
+    image: postgres:10.16-alpine
     env_file:
       - ../cfg/keycloakdb.env
     ports:

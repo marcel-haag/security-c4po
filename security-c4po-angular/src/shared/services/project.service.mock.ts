@@ -1,7 +1,7 @@
 import {ProjectService} from '@shared/services/project.service';
 import {HttpClient} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
-import {Project, SaveProjectDialogBody} from '@shared/models/project.model';
+import {Project, ProjectDialogBody} from '@shared/models/project.model';
 
 
 export class ProjectServiceMock implements Required<ProjectService> {
@@ -12,7 +12,11 @@ export class ProjectServiceMock implements Required<ProjectService> {
     return of([]);
   }
 
-  saveProject(saveProject: SaveProjectDialogBody): Observable<Project> {
+  saveProject(saveProject: ProjectDialogBody): Observable<Project> {
+    return of();
+  }
+
+  updateProject(projectId: string, project: ProjectDialogBody): Observable<Project> {
     return of();
   }
 
