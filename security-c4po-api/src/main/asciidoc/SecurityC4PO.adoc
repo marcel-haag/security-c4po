@@ -71,10 +71,28 @@ include::{snippets}/deleteProject/http-response.adoc[]
 
 include::{snippets}/deleteProject/response-fields.adoc[]
 
+=== Update project
+
+To update a project, call the PATCH request /projects/{projectId}
+
+==== Request example
+
+include::{snippets}/deleteProject/http-request.adoc[]
+
+==== Response example
+
+include::{snippets}/deleteProject/http-response.adoc[]
+
+==== Response structure
+
+include::{snippets}/deleteProject/response-fields.adoc[]
+
 == Change History
 
 |===
 |Date |Change
+|2022-03-04
+|Added PATCH endpoint to save Projects
 |2022-02-01
 |Added DELETE endpoint to save Projects
 |2021-12-22
