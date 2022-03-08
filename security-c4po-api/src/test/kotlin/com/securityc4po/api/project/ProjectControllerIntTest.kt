@@ -127,15 +127,7 @@ class ProjectControllerIntTest : BaseIntTest() {
                 .expectHeader().valueEquals("Application-Name", "SecurityC4PO")
                 .expectBody().json(Json.write(projectTwo.toProjectDeleteResponseBody()))
         }
-        /*@Test
-        fun `delete project by non-existing id`() {
-            webTestClient.delete().uri("/projects/{id}", "98754a47-796b-4b3f-abf9-c46c668596c5")
-                .header("Authorization", "Bearer $tokenAdmin")
-                .exchange()
-                .expectStatus().isNoContent
-                .expectHeader().valueEquals("Application-Name", "SecurityC4PO")
-                .expectBody().isEmpty
-        }*/
+
         val projectTwo = Project(
             id = "61360a47-796b-4b3f-abf9-c46c668596c5",
             client = "Allsafe",
@@ -143,6 +135,32 @@ class ProjectControllerIntTest : BaseIntTest() {
             createdAt = "2021-01-10T18:05:00Z",
             tester = "Elliot",
             createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
+        )
+    }
+
+    @Nested
+    inner class UpdateProject {
+        @Test
+        fun `updated project successfully`() {
+            webTestClient.patch().uri("/projects/{id}", projectUpdate.id)
+                .header("Authorization", "Bearer $tokenAdmin")
+                .body(Mono.just(projectUpdate), ProjectRequestBody::class.java)
+                .exchange()
+                .expectStatus().isAccepted
+                .expectHeader().valueEquals("Application-Name", "SecurityC4PO")
+                .expectBody()
+                .jsonPath("$.client").isEqualTo("Novatec_updated")
+                .jsonPath("$.title").isEqualTo("log4j Pentest_updated")
+                .jsonPath("$.tester").isEqualTo("Stipe_updated")
+        }
+
+        val projectUpdate = Project(
+            id = "4f6567a8-76fd-487b-8602-f82d0ca4d1f9",
+            client = "Novatec_updated",
+            title = "log4j Pentest_updated",
+            createdAt = "2021-04-10T18:05:00Z",
+            tester = "Stipe_updated",
+            createdBy = "a8891ad2-5cf5-4519-a89e-9ef8eec9e10c"
         )
     }
 
