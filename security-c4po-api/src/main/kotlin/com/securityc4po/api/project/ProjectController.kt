@@ -15,7 +15,7 @@ import java.util.*
         origins = [],
         allowCredentials = "false",
         allowedHeaders = ["*"],
-        methods = [RequestMethod.GET, RequestMethod.DELETE, RequestMethod.POST]
+        methods = [RequestMethod.GET, RequestMethod.DELETE, RequestMethod.POST, RequestMethod.PATCH]
 )
 
 @SuppressFBWarnings(BC_BAD_CAST_TO_ABSTRACT_COLLECTION)
@@ -47,6 +47,16 @@ class ProjectController(private val projectService: ProjectService) {
     fun deleteProject(@PathVariable(value = "id") id: String): Mono<ResponseEntity<ResponseBody>> {
         return this.projectService.deleteProject(id).map{
             ResponseEntity.ok().body(it.toProjectDeleteResponseBody())
+        }
+    }
+
+    @PatchMapping("/{id}")
+    fun updateProject(
+        @PathVariable(value = "id") id: String,
+        @RequestBody body: ProjectRequestBody
+    ): Mono<ResponseEntity<ResponseBody>> {
+        return this.projectService.updateProject(id, body).map {
+            ResponseEntity.accepted().body(it.toProjectResponseBody())
         }
     }
 }

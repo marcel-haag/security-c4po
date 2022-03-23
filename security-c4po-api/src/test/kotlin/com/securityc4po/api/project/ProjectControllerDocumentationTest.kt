@@ -189,6 +189,56 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
         )
     }
 
+    @Nested
+    inner class UpdateProject {
+        @Test
+        fun updateProject() {
+            webTestClient.patch().uri("/projects/${projectUpdate.id}")
+                .header("Authorization", "Bearer $tokenAdmin")
+                .body(Mono.just(projectUpdate), ProjectRequestBody::class.java)
+                .exchange()
+                .expectStatus().isAccepted
+                .expectHeader().valueEquals("Application-Name", "SecurityC4PO")
+                .expectBody().json(Json.write(projectUpdate))
+                .consumeWith(
+                    WebTestClientRestDocumentation.document(
+                        "{methodName}",
+                        Preprocessors.preprocessRequest(
+                            Preprocessors.prettyPrint(),
+                            Preprocessors.modifyUris().removePort(),
+                            Preprocessors.removeHeaders("Host", "Content-Length")
+                        ),
+                        Preprocessors.preprocessResponse(
+                            Preprocessors.prettyPrint()
+                        ),
+                        PayloadDocumentation.relaxedResponseFields(
+                            PayloadDocumentation.fieldWithPath("id").type(JsonFieldType.STRING)
+                                .description("The id of the updated project"),
+                            PayloadDocumentation.fieldWithPath("client").type(JsonFieldType.STRING)
+                                .description("The updated name of the client of the project"),
+                            PayloadDocumentation.fieldWithPath("title").type(JsonFieldType.STRING)
+                                .description("The updated title of the project"),
+                            PayloadDocumentation.fieldWithPath("createdAt").type(JsonFieldType.STRING)
+                                .description("The date where the project was created at"),
+                            PayloadDocumentation.fieldWithPath("tester").type(JsonFieldType.STRING)
+                                .description("The updated user that is assigned as a tester in the project"),
+                            PayloadDocumentation.fieldWithPath("createdBy").type(JsonFieldType.STRING)
+                                .description("The id of the user that created the project")
+                        )
+                    )
+                )
+        }
+
+        val projectUpdate = Project(
+            id = "4f6567a8-76fd-487b-8602-f82d0ca4d1f9",
+            client = "Novatec_updated",
+            title = "log4j Pentest_updated",
+            createdAt = "2021-01-10T18:05:00Z",
+            tester = "Stipe_updated",
+            createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
+        )
+    }
+
     private fun persistBasicTestScenario() {
         // setup test data
         val projectOne = Project(

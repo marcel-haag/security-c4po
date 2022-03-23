@@ -7,6 +7,8 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono
 import reactor.kotlin.core.publisher.switchIfEmpty
+import java.time.Instant
+import java.util.*
 
 
 @Service
@@ -45,4 +47,30 @@ class ProjectService(private val projectRepository: ProjectRepository) {
             projectRepository.deleteProjectById(id).map{project}
         }
     }
+
+    fun updateProject(id: String, body: ProjectRequestBody): Mono<Project> {
+        return projectRepository.findProjectById(id).switchIfEmpty{
+            logger.info("Project with id $id not found. Updating not possible.")
+            Mono.empty()
+        }.flatMap{projectEntity: ProjectEntity ->
+            projectEntity.lastModified = Instant.now()
+            projectEntity.data = buildProject(body, projectEntity)
+            projectRepository.save(projectEntity).map{
+                it.toProject()
+            }.doOnError {
+                logger.warn("Project could not be updated in Database. Thrown exception: ", it)
+            }
+        }
+    }
+}
+
+private fun buildProject(body: ProjectRequestBody, projectEntity: ProjectEntity): Project{
+    return Project(
+        id = projectEntity.data.id,
+        client = body.client,
+        title = body.title,
+        createdAt = projectEntity.data.createdAt,
+        tester = body.tester,
+        createdBy = projectEntity.data.createdBy
+    )
 }

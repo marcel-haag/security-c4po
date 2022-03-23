@@ -50,10 +50,6 @@ data class ProjectRequestBody(
     val tester: String? = null
 )
 
-data class ProjectDeleteRequestBody(
-    val id: String
-)
-
 fun ProjectRequestBody.toProject(): Project {
     return Project(
         id = UUID.randomUUID().toString(),
@@ -65,5 +61,4 @@ fun ProjectRequestBody.toProject(): Project {
         createdBy = UUID.randomUUID().toString()
 
 )
-
 }

@@ -98,6 +98,45 @@
 						"url": null
 					},
 					"response": []
+				},
+				{
+					"name": "updateProject",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"client\": \"updatedProject\",\n    \"title\": \"log4j pentest\",\n    \"tester\" : \"Stipe\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8443/projects/f2738715-4005-4aca-8d34-27ce9b8efffe",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"projects",
+								"f2738715-4005-4aca-8d34-27ce9b8efffe"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
