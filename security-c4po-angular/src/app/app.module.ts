@@ -6,7 +6,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   NbLayoutModule,
   NbToastrModule,
-  NbIconModule, NbCardModule, NbButtonModule, NbDialogService, NbDialogModule,
+  NbIconModule, NbCardModule, NbButtonModule, NbDialogService, NbDialogModule, NbSelectModule,
 } from '@nebular/theme';
 import {NbEvaIconsModule} from '@nebular/eva-icons';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -48,6 +48,7 @@ import {OverlayContainer} from '@angular/cdk/overlay';
     BrowserAnimationsModule,
     ThemeModule.forRoot(),
     NbEvaIconsModule,
+    NbSelectModule,
     ConfirmDialogModule,
     NgxsModule.forRoot([SessionState], {developmentMode: !environment.production}),
     HttpClientModule,

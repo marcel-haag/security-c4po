@@ -1,6 +1,24 @@
 @import '~@nebular/theme/styles/global/breakpoints';
 @import "../../assets/@theme/styles/_variables.scss";
 
+.header {
+  flex: 1;
+
+  .filler {
+    flex-grow: 1;
+  }
+
+  .languageContainer {
+    display: flex;
+    max-width: 8rem;
+    min-width: 8rem;
+
+    .flag {
+      object-fit: contain;
+    }
+  }
+}
+
 @mixin nb-overrides {
   display: inline-flex;
   justify-content: space-between;

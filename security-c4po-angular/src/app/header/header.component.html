@@ -1,14 +1,15 @@
-<div class="header" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="2rem">
+<div class="header" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="2rem">
   <img *ngIf="currentTheme === 'corporate', else changeImage"
        src="../../assets/images/favicons/favicon.ico" alt="logo dark" class="header-icon" width="60rem" height="60rem">
   <ng-template #changeImage>
     <img src="../../assets/images/favicons/corporate_favicon.ico" alt="logo light" class="header-icon" width="60rem" height="60rem">
   </ng-template>
 
-  <div class="logo-container" fxLayoutAlign="center center">
+  <div class="logo-container">
     <h1 >{{SECURITYC4PO_TITLE}} </h1>
   </div>
-  <div fxLayoutAlign="end" fxLayoutGap="4rem">
+  <div class="filler"></div>
+  <div fxLayoutGap="4rem">
     <nb-actions size="medium">
       <nb-action class="toggle-theme">
         <button nbButton
@@ -21,6 +22,15 @@
         </button>
       </nb-action>
     </nb-actions>
+  </div>
+  <div *ngIf="selectedLanguage && languages" class="languageContainer">
+    <nb-select selected="{{selectedLanguage}}" fullWidth>
+      <nb-option *ngFor="let language of languages"
+                 value="{{language}}" (click)="onClickLanguage(language)" fxLayoutAlign="start center">
+          <img src="../../assets/images/flags/{{language}}.svg" class="flag" width="25rem" height="16rem" alt="">
+          <span fxFlexOffset="0.5rem"> {{'languageKeys.' + language | translate}} </span>
+      </nb-option>
+    </nb-select>
   </div>
 </div>
 

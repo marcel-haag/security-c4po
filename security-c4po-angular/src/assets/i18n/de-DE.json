@@ -11,6 +11,10 @@
     "username": "Nutzername",
     "password": "Passwort"
   },
+  "languageKeys":{
+    "de-DE": "Deutsch",
+    "en-US": "Englisch"
+  },
   "popup": {
     "success": "✔",
     "failure": "✘",

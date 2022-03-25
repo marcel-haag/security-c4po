@@ -4,20 +4,23 @@ import {NbThemeService} from '@nebular/theme';
 import {map} from 'rxjs/operators';
 import {untilDestroyed} from 'ngx-take-until-destroy';
 import {GlobalTitlesVariables} from '@shared/config/global-variables';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit, OnDestroy{
 
   readonly fa = FA;
   readonly SECURITYC4PO_TITLE = GlobalTitlesVariables.SECURITYC4PO_TITLE;
 
   currentTheme = '';
+  languages = ['en-US', 'de-DE'];
+  selectedLanguage = '';
 
-  constructor(private themeService: NbThemeService) { }
+  constructor(private themeService: NbThemeService, private translateService: TranslateService) { }
 
   ngOnInit(): void {
     this.themeService.onThemeChange()
@@ -26,6 +29,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         untilDestroyed(this),
       )
       .subscribe(themeName => this.currentTheme = themeName);
+    this.selectedLanguage = this.translateService.currentLang;
   }
 
   onClickSwitchTheme(): void {
@@ -34,6 +38,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     } else if (this.currentTheme === 'dark') {
       this.themeService.changeTheme('corporate');
     }
+  }
+
+  onClickLanguage(language: string): void {
+    this.translateService.use(language);
   }
 
   ngOnDestroy(): void {
