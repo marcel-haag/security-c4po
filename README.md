@@ -22,10 +22,10 @@
 * mongoDB Compass
 * Postman
 
-> Application Architecture
+## Application Architecture
 ![alt architecture](./wiki/SecurityC4PO_Architecture.png)
 
-> Data Structure
+## Data Structure
 ![alt architecture](./wiki/SecurityC4PO_Data_Structure.png)
 
 ### Conventions
