@@ -1,9 +1,10 @@
 @import "../assets/@theme/styles/_variables.scss";
 
 .content-container {
+  width: 100%;
+  height: calc(100% - #{$header-height});
 
   .scrollable-content {
     overflow: auto;
   }
-
 }

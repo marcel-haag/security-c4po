@@ -1,6 +1,23 @@
-<nb-layout>
-  <nb-layout-header>
-    <p>{{selectedProjectTitle}} works!</p>
-  </nb-layout-header>
-</nb-layout>
+<div fxFlex class="pentest-overview">
+  <nb-layout>
+    <nb-layout-header fxFlexAlign="center" class="header-column">
+      <app-pentest-header></app-pentest-header>
+    </nb-layout-header>
+
+    <nb-layout-column fxFlexFill fxLayout="row" fxLayoutGap="2rem">
+      <nb-card class="categories-column">
+        <nb-card-body>
+          <app-pentest-categories></app-pentest-categories>
+        </nb-card-body>
+      </nb-card>
+
+      <nb-card class="table-column">
+        <nb-card-body>
+          <app-pentest-table></app-pentest-table>
+        </nb-card-body>
+      </nb-card>
+    </nb-layout-column>
+  </nb-layout>
+</div>
+
 
