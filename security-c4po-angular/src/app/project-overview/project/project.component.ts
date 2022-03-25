@@ -7,8 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectComponent implements OnInit {
 
-  selectedProjectTitle: string = history?.state?.selectedProject ? history?.state?.selectedProject.title : '';
-
   constructor() { }
 
   ngOnInit(): void {

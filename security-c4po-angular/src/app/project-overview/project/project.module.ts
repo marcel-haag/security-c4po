@@ -7,6 +7,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {TranslateModule} from '@ngx-translate/core';
 import {ProjectDialogModule} from '@shared/modules/project-dialog/project-dialog.module';
 import {ProjectRoutingModule} from './project-routing.module';
+import {PentestOverviewModule} from '../../pentest-overview';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {ProjectRoutingModule} from './project-routing.module';
     TranslateModule,
     FlexLayoutModule,
     ProjectDialogModule,
+    PentestOverviewModule
   ]
 })
 export class ProjectModule {

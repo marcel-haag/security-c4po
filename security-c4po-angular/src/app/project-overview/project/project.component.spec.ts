@@ -10,8 +10,9 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {NgxsModule} from '@ngxs/store';
 import {SessionState} from '@shared/stores/session-state/session-state';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {NbLayoutModule} from '@nebular/theme';
+import {NbCardModule, NbLayoutModule} from '@nebular/theme';
 import {KeycloakService} from 'keycloak-angular';
+import {PentestOverviewModule} from '../../pentest-overview';
 
 describe('ProjectComponent', () => {
   let component: ProjectComponent;
@@ -25,6 +26,8 @@ describe('ProjectComponent', () => {
       imports: [
         CommonModule,
         NbLayoutModule,
+        NbCardModule,
+        PentestOverviewModule,
         ThemeModule.forRoot(),
         TranslateModule.forRoot({
           loader: {

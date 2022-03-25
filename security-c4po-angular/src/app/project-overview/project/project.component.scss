@@ -1,0 +1,22 @@
+@import '../../../assets/@theme/styles/themes';
+@import '../../../assets/@theme/styles/_variables.scss';
+
+.pentest-overview {
+  width: 100vw;
+  height: calc(100vh - #{$header-height});
+  overflow: hidden;
+
+  .header-column {
+    width: 100%
+  }
+
+  .categories-column {
+    width: 20%;
+    height: calc(100% - #{$pentest-header-height});
+  }
+
+  .table-column {
+    width: 80%;
+    height: calc(100% - #{$pentest-header-height});
+  }
+}
