@@ -28,6 +28,7 @@ import {httpInterceptorProviders} from '@shared/interceptors';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {DialogService} from '@shared/services/dialog-service/dialog.service';
 import {ConfirmDialogModule} from '@shared/modules/confirm-dialog/confirm-dialog.module';
+import {OverlayContainer} from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [
@@ -37,14 +38,15 @@ import {ConfirmDialogModule} from '@shared/modules/confirm-dialog/confirm-dialog
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    FontAwesomeModule,
-    NbToastrModule.forRoot(), // used for notification service
-    BrowserAnimationsModule,
-    ThemeModule.forRoot(),
     NbLayoutModule,
+    NbDialogModule.forRoot(),
     NbCardModule,
     NbIconModule,
     NbButtonModule,
+    NbToastrModule.forRoot(), // used for notification service
+    FontAwesomeModule,
+    BrowserAnimationsModule,
+    ThemeModule.forRoot(),
     NbEvaIconsModule,
     ConfirmDialogModule,
     NgxsModule.forRoot([SessionState], {developmentMode: !environment.production}),
@@ -56,7 +58,6 @@ import {ConfirmDialogModule} from '@shared/modules/confirm-dialog/confirm-dialog
         deps: [HttpClient]
       }
     }),
-    NbDialogModule.forRoot(),
     HeaderModule,
     HomeModule,
     FlexLayoutModule
@@ -69,11 +70,12 @@ import {ConfirmDialogModule} from '@shared/modules/confirm-dialog/confirm-dialog
       multi: true,
       deps: [KeycloakService]
     },
+    OverlayContainer,
     KeycloakService,
     httpInterceptorProviders,
     NotificationService,
+    DialogService,
     NbDialogService,
-    DialogService
   ],
   bootstrap: [
     AppComponent

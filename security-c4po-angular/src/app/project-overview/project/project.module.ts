@@ -2,28 +2,28 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {ProjectComponent} from './project.component';
-import {LoadingSpinnerComponent} from '@shared/widgets/loading-spinner/loading-spinner.component';
-import {NbCardModule, NbLayoutModule, NbSpinnerModule} from '@nebular/theme';
+import {NbCardModule, NbLayoutModule} from '@nebular/theme';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {TranslateModule} from '@ngx-translate/core';
+import {ProjectDialogModule} from '@shared/modules/project-dialog/project-dialog.module';
+import {ProjectRoutingModule} from './project-routing.module';
 
 @NgModule({
   declarations: [
-    ProjectComponent,
-    LoadingSpinnerComponent
-  ],
-  exports: [
-    LoadingSpinnerComponent
+    ProjectComponent
   ],
   imports: [
     CommonModule,
+    NbCardModule,
+    NbLayoutModule,
     RouterModule.forChild([{
       path: '',
       component: ProjectComponent
     }]),
-    NbCardModule,
-    NbSpinnerModule,
+    ProjectRoutingModule,
+    TranslateModule,
     FlexLayoutModule,
-    NbLayoutModule,
+    ProjectDialogModule,
   ]
 })
 export class ProjectModule {
