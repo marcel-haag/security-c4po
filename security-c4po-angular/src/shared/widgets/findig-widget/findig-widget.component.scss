@@ -1,0 +1,14 @@
+@import '../../../assets/@theme/styles/themes';
+
+.finding-widget {
+  align-items: center;
+
+  .finding-icon {
+    color: nb-theme(color-danger-default);
+  }
+
+  .findings-count {
+    margin-left: 0.45rem;
+    color: nb-theme(color-danger-default);
+  }
+}

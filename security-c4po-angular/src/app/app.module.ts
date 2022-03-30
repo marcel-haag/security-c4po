@@ -29,6 +29,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {DialogService} from '@shared/services/dialog-service/dialog.service';
 import {ConfirmDialogModule} from '@shared/modules/confirm-dialog/confirm-dialog.module';
 import {OverlayContainer} from '@angular/cdk/overlay';
+import {NgxsLoggerPluginModule} from '@shared/stores/plugins/store-logger-plugin';
+import {ProjectState} from '@shared/stores/project-state/project-state';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import {OverlayContainer} from '@angular/cdk/overlay';
     NbEvaIconsModule,
     NbSelectModule,
     ConfirmDialogModule,
-    NgxsModule.forRoot([SessionState], {developmentMode: !environment.production}),
+    NgxsModule.forRoot([SessionState, ProjectState], {developmentMode: !environment.production}),
+    NgxsLoggerPluginModule.forRoot({developmentMode: !environment.production}),
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

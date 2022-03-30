@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path: 'id',
     loadChildren: () => import('./project').then(mod => mod.ProjectModule),
-  },
+  }
 ];
 
 @NgModule({

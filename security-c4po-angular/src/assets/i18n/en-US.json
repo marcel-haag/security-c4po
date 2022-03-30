@@ -69,5 +69,143 @@
       "delete.success": "Project deleted successfully",
       "delete.failed": "Project could not be deleted"
     }
+  },
+  "pentest": {
+    "testId": "No.",
+    "title": "Title",
+    "findings": "Findings",
+    "comments": "Comments",
+    "status": "Status",
+    "statusText": {
+      "not_started": "Not Started",
+      "disabled": "Disabled",
+      "open": "Open",
+      "checked": "Checked",
+      "reported": "Reported",
+      "under_review": "Under Review",
+      "triaged": "Triaged"
+    },
+    "info": {
+      "001": "Conduct Search Engine Discovery and Reconnaissance for Information Leakage",
+      "002": "Fingerprint Web Server",
+      "003": "Review Webserver Metafiles for Information Leakage",
+      "004": "Enumerate Applications on Webserver",
+      "005": "Review Webpage Comments and Metadata for Information Leakage",
+      "006": "Identity application entry points",
+      "007": "Map execution paths through application",
+      "008": "Fingerprint Web Application Framework",
+      "009": "Fingerprint Web Application",
+      "010": "Map Application Architecture"
+    },
+    "config": {
+      "001": "Test Network/Infrastructure Configuration",
+      "002": "Test Application Platform Configuration",
+      "003": "Test File Extensions Handling for Sensitive Information",
+      "004": "Backup and Unreferenced Files for Sensitive Information",
+      "005": "Enumerate Infrastructure and Application Admin Interfaces",
+      "006": "Test HTTP Methods",
+      "007": "Test HTTP Strict Transport Security",
+      "008": "Test RIA cross domain policy"
+    },
+    "ident": {
+      "001": "Test Role Definitions",
+      "002": "Test User Registration Process",
+      "003": "Test Account Provisioning Process",
+      "004": "Testing for Account Enumeration and Guessable User Account",
+      "005": "Testing for Weak or unenforced username policy",
+      "006": "Test Permissions of Guest/Training Accounts",
+      "007": "Test Account Suspension/Resumption Process"
+    },
+    "authn": {
+      "001": "Testing for Credentials Transported over an Encrypted Channel",
+      "002": "Testing for default credentials",
+      "003": "Testing for Weak lock out mechanism",
+      "004": "Testing for bypassing authentication schema",
+      "005": "Test remember password functionality",
+      "006": "Testing for Browser cache weakness",
+      "007": "Testing for Weak password policy",
+      "008": "Testing for Weak security question/answer",
+      "009": "Testing for weak password change or reset functionalities",
+      "010": "Testing for Weaker authentication in alternative channel"
+    },
+    "authz": {
+      "001": "Testing Directory traversal/file include",
+      "002": "Testing for bypassing authorization schema",
+      "003": "Testing for Privilege Escalation",
+      "004": "Testing for Insecure Direct Object References"
+    },
+    "sess": {
+      "001": "Testing for Bypassing Session Management Schema",
+      "002": "Testing for Cookies attributes",
+      "003": "Testing for Session Fixation",
+      "004": "Testing for Exposed Session Variables",
+      "005": "Testing for Cross Site Request Forgery",
+      "006": "Testing for logout functionality",
+      "007": "Test Session Timeout",
+      "008": "Testing for Session puzzling"
+    },
+    "inpval": {
+      "001": "Testing for Reflected Cross Site Scripting",
+      "002": "Testing for Stored Cross Site Scripting",
+      "003": "Testing for HTTP Verb Tampering",
+      "004": "Testing for HTTP Parameter pollution",
+      "005": "N/A",
+      "006": "Testing for SQL Injection",
+      "006_1": "Oracle Testing",
+      "006_2": "SQL Server Testing",
+      "006_3": "Testing PostgreSQL",
+      "006_4": "MS Access Testing",
+      "006_5": "Testing for NoSQL Injection",
+      "007": "Testing for LDAP Injection",
+      "008": "Testing for ORM Injection",
+      "009": "Testing for XML Injection",
+      "010": "Testing for SSI Injection",
+      "011": "Testing for XPath Injection",
+      "012": "IMAP/SMTP Injection",
+      "013": "Testing for Code Injection",
+      "013_1": "Testing Local File Inclusion",
+      "013_2": "Testing Remote File Inclusion",
+      "014": "Testing for Command Injection",
+      "015": "Testing for Buffer overflow",
+      "015_1": "Testing for Heap overflow",
+      "015_2": "Testing for Stack overflow",
+      "015_3": "Testing for Format string",
+      "016": "Testing for incubated vulnerabilities",
+      "017": "Testing for HTTP Splitting/Smuggling"
+    },
+    "err": {
+      "001": "Analysis of Error Codes",
+      "002": "Analysis of Stack Traces"
+    },
+    "crypst": {
+      "001": "Testing for Weak SSL/TSL Ciphers, Insufficient Transport Layer Protection",
+      "002": "Testing for Padding Oracle",
+      "003": "Testing for Sensitive information sent via unencrypted channels"
+    },
+    "buslogic": {
+      "001": "Test Business Logic Data Validation",
+      "002": "Test Ability to Forge Requests",
+      "003": "Test Integrity Checks",
+      "004": "Test for Process Timing",
+      "005": "Test Number of Times a Function Can be Used Limits",
+      "006": "Testing for the Circumvention of Work Flows",
+      "007": "Test Defenses Against Application Mis-use",
+      "008": "Test Upload of Unexpected File Types",
+      "009": "Test Upload of Malicious Files"
+    },
+    "client": {
+      "001": "Testing for DOM based Cross Site Scripting",
+      "002": "Testing for JavaScript Execution",
+      "003": "Testing for HTML Injection",
+      "004": "Testing for Client Side URL Redirect",
+      "005": "Testing for CSS Injection",
+      "006": "Testing for Client Side Resource Manipulation",
+      "007": "Test Cross Origin Resource Sharing",
+      "008": "Testing for Cross Site Flashing",
+      "009": "Testing for Clickjacking",
+      "010": "Testing WebSockets",
+      "011": "Test Web Messaging",
+      "012": "Test Local Storage"
+    }
   }
 }

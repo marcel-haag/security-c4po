@@ -35,7 +35,6 @@ export class ProjectService {
    * @param project the information of the project
    */
   public updateProject(projectId: string, project: ProjectDialogBody): Observable<Project> {
-    console.log('update Project');
     return this.http.patch<Project>(`${this.apiBaseURL}/${projectId}`, project);
   }
 
