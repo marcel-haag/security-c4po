@@ -1,5 +1,9 @@
 @import "../assets/@theme/styles/_variables.scss";
 
+.header {
+  flex: 1;
+}
+
 .content-container {
   width: 100%;
   height: calc(100% - #{$header-height});
