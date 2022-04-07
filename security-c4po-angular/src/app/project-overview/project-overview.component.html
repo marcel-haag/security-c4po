@@ -66,7 +66,7 @@
   </div>
 </div>
 
-<div *ngIf="projects$.getValue().length === 0 && loading$.getValue() === false" fxLayout="row" fxLayoutAlign="center center">
+<div *ngIf="projects$.getValue() == null || projects$.getValue().length === 0 && loading$.getValue() === false" fxLayout="row" fxLayoutAlign="center center">
   <p class="error-text">
     {{'project.overview.no.projects' | translate}}
   </p>
