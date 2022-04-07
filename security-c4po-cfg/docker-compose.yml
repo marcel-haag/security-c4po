@@ -35,11 +35,9 @@ services:
     container_name: c4po-keycloak
     depends_on:
       - c4po-keycloak-postgres
-    links:
-      - c4po-keycloak-postgres
     image: jboss/keycloak:11.0.3
     volumes:
-      - /cfg/c4po_realm_export.json/:/tmp/c4po_realm_export.json
+      - ./cfg/c4po_realm_export.json:/tmp/c4po_realm_export.json
     ports:
       - 8888:8080
     env_file:
@@ -52,8 +50,6 @@ services:
     image: security-c4po-angular:latest
     container_name: c4po-angular
     depends_on:
-      - c4po-keycloak
-    links:
       - c4po-keycloak
     deploy:
       resources:
@@ -71,9 +67,6 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=COMPOSE
     depends_on:
-      - c4po-db
-      - c4po-keycloak
-    links:
       - c4po-db
       - c4po-keycloak
     deploy:
