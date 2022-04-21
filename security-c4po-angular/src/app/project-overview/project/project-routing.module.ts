@@ -7,6 +7,10 @@ const routes: Routes = [
     path: '',
     component: ProjectComponent
   },
+  {
+    path: 'pentest',
+    loadChildren: () => import('../../pentest-overview/pentest').then(mod => mod.PentestModule),
+  },
 ];
 
 @NgModule({

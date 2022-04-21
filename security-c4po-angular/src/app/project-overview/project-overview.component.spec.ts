@@ -26,6 +26,7 @@ import {DialogService} from '@shared/services/dialog-service/dialog.service';
 import {DialogServiceMock} from '@shared/services/dialog-service/dialog.service.mock';
 import {ProjectDialogService} from '@shared/modules/project-dialog/service/project-dialog.service';
 import {ProjectDialogServiceMock} from '@shared/modules/project-dialog/service/project-dialog.service.mock';
+import {MockComponent, MockPipe} from 'ng-mocks';
 
 describe('ProjectOverviewComponent', () => {
   let component: ProjectOverviewComponent;
@@ -35,8 +36,8 @@ describe('ProjectOverviewComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [
         ProjectOverviewComponent,
-        LoadingSpinnerComponent,
-        DateTimeFormatPipe
+        MockComponent(LoadingSpinnerComponent),
+        MockPipe(DateTimeFormatPipe)
       ],
       imports: [
         CommonModule,
@@ -49,6 +50,7 @@ describe('ProjectOverviewComponent', () => {
         TranslateModule,
         NbProgressBarModule,
         NbSpinnerModule,
+        HttpClientTestingModule,
         ThemeModule.forRoot(),
         TranslateModule.forRoot({
           loader: {
@@ -58,9 +60,7 @@ describe('ProjectOverviewComponent', () => {
           }
         }),
         RouterTestingModule.withRoutes([]),
-        NgxsModule.forRoot([SessionState]),
-        HttpClientModule,
-        HttpClientTestingModule
+        NgxsModule.forRoot([SessionState])
       ],
       providers: [
         KeycloakService,

@@ -69,5 +69,143 @@
       "delete.success": "Projekt erfolgreich gelöscht",
       "delete.failed": "Projekt konnte nicht gelöscht werden"
     }
+  },
+  "pentest": {
+    "testId": "Nr.",
+    "title": "Titel",
+    "findings": "Funde",
+    "comments": "Kommentare",
+    "status": "Status",
+    "statusText": {
+      "not_started": "Nicht angefangen",
+      "disabled": "Deaktiviert",
+      "open": "Offen",
+      "checked": "Geprüft",
+      "reported": "Gemeldet",
+      "under_review": "Unter Beurteilung",
+      "triaged": "Triagiert"
+    },
+    "info": {
+      "001": "Nutze Suchmaschinenerkennung und -aufklärung für Informationslecks",
+      "002": "Fingerabdruck-Webserver",
+      "003": "Prüfe Webserver-Metadateien auf Informationslecks",
+      "004": "Anwendungen auf dem Webserver auflisten",
+      "005": "Prüfe Webseitenkommentare und Metadaten auf Informationslecks",
+      "006": "Einstiegspunkte für Identitätsanträge",
+      "007": "Zuordnen von Ausführungspfade der Anwendung",
+      "008": "Framework für Fingerabdruck-Webanwendungen",
+      "009": "Fingerabdruck-Webanwendungen",
+      "010": "Zuordnen der Anwendungsarchitektur"
+    },
+    "config": {
+      "001": "Netzwerk-/Infrastrukturkonfiguration testen",
+      "002": "Testen Sie die Konfiguration der Anwendungsplattform",
+      "003": "Testen der Behandlung von Dateierweiterungen für vertrauliche Informationen",
+      "004": "Backup und nicht referenzierte Dateien für sensible Informationen",
+      "005": "Aufzählen der Infrastruktur- und Anwendungsverwaltungsschnittstellen",
+      "006": "HTTP-Methoden testen",
+      "007": "Testen Sie HTTP Strict Transport Security",
+      "008": "Testen der domänenübergreifende RIA-Richtlinie"
+    },
+    "ident": {
+      "001": "Rollendefinitionen testen",
+      "002": "Registrierungsprozess testen",
+      "003": "Konto-Bereitstellungsprozess testen",
+      "004": "Testen auf Kontoaufzählung und erratbares Benutzerkonto",
+      "005": "Test auf schwache oder nicht erzwungene Richtlinie für Benutzernamen",
+      "006": "Testberechtigungen von Gast-/Schulungskonten",
+      "007": "Sperrung/Wiederaufnahme des Kontos testen"
+    },
+    "authn": {
+      "001": "Testen auf Anmeldeinformationen, die über einen verschlüsselten Kanal transportiert werden",
+      "002": "Testen auf Standardanmeldeinformationen",
+      "003": "Test auf schwachen Sperrmechanismus",
+      "004": "Testen auf Umgehung des Authentifizierungsschemas",
+      "005": "Testen der Passwort speichern Funktion",
+      "006": "Test auf Browser-Cache-Schwäche",
+      "007": "Testen auf schwache Richtlinie für Kennwörter",
+      "008": "Prüfung auf schwache Sicherheitsfrage/Antwort",
+      "009": "Testen auf schwache Passwortänderungs- oder Zurücksetzungsfunktionen",
+      "010": "Testen auf schwächere Authentifizierung über alternativen Kanal"
+    },
+    "authz": {
+      "001": "Testen von Directory Traversal/File Include",
+      "002": "Testen auf Umgehung des Autorisierungsschemas",
+      "003": "Testen auf Rechteausweitung",
+      "004": "Testen auf unsichere direkte Objektreferenzen"
+    },
+    "sess": {
+      "001": "Testen auf Umgehung des Sitzungsverwaltungsschemas",
+      "002": "Testen auf Cookies-Attribute",
+      "003": "Testen auf Sitzungsfixierung",
+      "004": "Testen auf sichtbare Sitzungsvariablen",
+      "005": "Prüfung auf Cross-Site-Request-Forgery",
+      "006": "Testen der Abmeldefunktion",
+      "007": "Testen der Sitzungszeitüberschreitung",
+      "008": "Testen auf Session-Rätsel"
+    },
+    "inpval": {
+      "001": "Testen auf reflektiertes Cross-Site-Scripting",
+      "002": "Testen auf konserviertes Cross Site Scripting",
+      "003": "Testen auf HTTP-Verb-Manipulation",
+      "004": "Prüfung auf HTTP-Parameterverschmutzung",
+      "005": "N/A",
+      "006": "Testen auf SQL-Injection",
+      "006_1": "Oracle-Tests",
+      "006_2": "SQL Server-Tests",
+      "006_3": "Testen von PostgreSQL",
+      "006_4": "MS-Access-Tests",
+      "006_5": "Testen auf NoSQL-Injection",
+      "007": "Testen auf LDAP-Injection",
+      "008": "Prüfung auf ORM-Injection",
+      "009": "Testen auf XML-Injection",
+      "010": "Prüfung auf SSI-Injection",
+      "011": "Testen auf XPath-Injection",
+      "012": "IMAP/SMTP-Injection",
+      "013": "Testen auf Code-Injection",
+      "013_1": "Testen der lokalen Dateieinbindung",
+      "013_2": "Testen der Remote-Dateieinbindung",
+      "014": "Testen auf BefehlInjection",
+      "015": "Test auf Pufferüberlauf",
+      "015_1": "Test auf Heap-Überlauf",
+      "015_2": "Test auf Stack-Überlauf",
+      "015_3": "Testen auf Formatzeichenfolge",
+      "016": "Testen auf inkubierte Schwachstellen",
+      "017": "Testen auf HTTP-Splitting/-Schmuggel"
+    },
+    "err": {
+      "001": "Analyse von Fehlercodes",
+      "002": "Analyse von Stack-Traces"
+    },
+    "crypst": {
+      "001": "Testen auf schwache SSL/TSL-Chiffren, unzureichenden Transportschichtschutz",
+      "002": "Testen für Padding Oracle",
+      "003": "Prüfung auf sensible Informationen, die über unverschlüsselte Kanäle gesendet werden"
+    },
+    "buslogic": {
+      "001": "Testen Sie die Datenvalidierung der Geschäftslogik",
+      "002": "Testen Sie die Fähigkeit, Anfragen zu fälschen",
+      "003": "Integritätsprüfungen testen",
+      "004": "Testen Sie das Prozesstiming",
+      "005": "Testen Sie, wie oft eine Funktion verwendet werden kann",
+      "006": "Prüfung auf Umgehung von Arbeitsabläufen",
+      "007": "Testen Sie Abwehrmaßnahmen gegen Anwendungsmissbrauch",
+      "008": "Test-Upload von unerwarteten Dateitypen",
+      "009": "Test-Upload schädlicher Dateien"
+    },
+    "client": {
+      "001": "Testen auf DOM-basiertes Cross Site Scripting",
+      "002": "Testen auf JavaScript-Ausführung",
+      "003": "Testen auf HTML-Injection",
+      "004": "Testen der clientseitigen URL-Umleitung",
+      "005": "Testen auf CSS-Injektion",
+      "006": "Testen auf clientseitige Ressourcenmanipulation",
+      "007": "Testen Sie die ursprungsübergreifende Ressourcenfreigabe",
+      "008": "Testen auf Cross-Site-Flashing",
+      "009": "Test auf Clickjacking",
+      "010": "Testen von WebSockets",
+      "011": "Testen von Web-Messaging",
+      "012": "Lokalen Speicher testen"
+    }
   }
 }

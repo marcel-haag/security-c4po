@@ -12,11 +12,12 @@
 
   .categories-column {
     width: 20%;
-    height: calc(100% - #{$pentest-header-height});
+    height: calc(100vh - #{$pentest-header-height});
   }
 
   .table-column {
+    overflow: auto !important;
     width: 80%;
-    height: calc(100% - #{$pentest-header-height});
+    height: 80vh;
   }
 }

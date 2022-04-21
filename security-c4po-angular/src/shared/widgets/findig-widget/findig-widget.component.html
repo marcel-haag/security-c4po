@@ -1,0 +1,9 @@
+<div class="finding-widget">
+  <ng-container *ngIf="numberOfFindigs > 0; else noFindings">
+    <fa-icon [icon]="fa.faExclamationCircle" size="lg" class="finding-icon"></fa-icon>
+    <span class="findings-count">{{numberOfFindigs}}</span>
+  </ng-container>
+  <ng-template #noFindings>
+    {{'-'}}
+  </ng-template>
+</div>
