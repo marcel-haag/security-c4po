@@ -7,7 +7,7 @@
   overflow: hidden;
 
   .header-column {
-    width: 100%;
+    width: 100vw;
   }
 
   .column-wrapper {
@@ -15,7 +15,6 @@
 
     .categories-column {
       height: calc(100vh - #{$pentest-header-height});
-      height: 80vh;
     }
   }
 
@@ -24,7 +23,7 @@
 
     .table-column {
       overflow: auto !important;
-      height: 80vh;
+      height: calc(100vh - #{$pentest-header-height});
     }
   }
 }

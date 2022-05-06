@@ -6,9 +6,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   NbLayoutModule,
   NbToastrModule,
-  NbIconModule, NbCardModule, NbButtonModule, NbDialogService, NbDialogModule, NbSelectModule,
+  NbIconModule, NbCardModule, NbButtonModule, NbDialogService, NbDialogModule, NbSelectModule
 } from '@nebular/theme';
-import {NbEvaIconsModule} from '@nebular/eva-icons';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {HttpLoaderFactory} from './common-app.module';
@@ -49,7 +48,6 @@ import {ProjectState} from '@shared/stores/project-state/project-state';
     FontAwesomeModule,
     BrowserAnimationsModule,
     ThemeModule.forRoot(),
-    NbEvaIconsModule,
     NbSelectModule,
     ConfirmDialogModule,
     NgxsModule.forRoot([SessionState, ProjectState], {developmentMode: !environment.production}),

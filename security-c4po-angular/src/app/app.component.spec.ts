@@ -2,7 +2,6 @@ import {TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {AppComponent} from './app.component';
 import {NbLayoutModule, NbThemeModule} from '@nebular/theme';
-import {NbEvaIconsModule} from '@nebular/eva-icons';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpLoaderFactory} from './common-app.module';
 import {HttpClient} from '@angular/common/http';
@@ -27,7 +26,6 @@ describe('AppComponent', () => {
             deps: [HttpClient]
           }
         }),
-        NbEvaIconsModule,
         ThemeModule,
         HeaderModule,
         NgxsModule.forRoot([SessionState]),

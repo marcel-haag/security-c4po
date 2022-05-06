@@ -5,11 +5,12 @@ import {registerLocale} from 'i18n-iso-countries';
 import {registerLocaleData} from '@angular/common';
 import {Store} from '@ngxs/store';
 import {BehaviorSubject, Subscription} from 'rxjs';
-import {SessionState, SessionStateModel} from '../shared/stores/session-state/session-state';
-import {untilDestroyed} from 'ngx-take-until-destroy';
+import {SessionState, SessionStateModel} from '@shared/stores/session-state/session-state';
+import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';
 import {isNotNullOrUndefined} from 'codelyzer/util/isNotNullOrUndefined';
 import {filter} from 'rxjs/operators';
 
+@UntilDestroy()
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
