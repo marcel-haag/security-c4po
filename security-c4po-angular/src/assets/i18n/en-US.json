@@ -207,5 +207,18 @@
       "011": "Test Web Messaging",
       "012": "Test Local Storage"
     }
+  },
+  "categories": {
+    "INFORMATION_GATHERING": "Information Gathering",
+    "CONFIGURATION_AND_DEPLOY_MANAGEMENT_TESTING": "Configuration and deploy management testing",
+    "IDENTITY_MANAGEMENT_TESTING": "Identity Management testing",
+    "AUTHENTICATION_TESTING": "Authentication Testing",
+    "AUTHORIZATION_TESTING": "Authorization Testing",
+    "SESSION_MANAGEMENT_TESTING": "Session Management Testing",
+    "INPUT_VALIDATION_TESTING": "Input Validation Testing",
+    "ERROR_HANDLING": "Error Handling",
+    "CRYPTOGRAPHY": "Cryptography",
+    "BUSINESS_LOGIC_TESTING": "Business Logic Testing",
+    "CLIENT_SIDE_TESTING": "Client Side testing"
   }
 }

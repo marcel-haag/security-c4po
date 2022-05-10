@@ -207,5 +207,19 @@
       "011": "Testen von Web-Messaging",
       "012": "Lokalen Speicher testen"
     }
+  },
+  "categories": {
+    "INFORMATION_GATHERING": "Informationsbeschaffung",
+    "CONFIGURATION_AND_DEPLOY_MANAGEMENT_TESTING": "Konfigurations- und Bereitstellungsmanagement-Testing",
+    "IDENTITY_MANAGEMENT_TESTING": "Identitätsmanagement-Testing",
+    "AUTHENTICATION_TESTING": "Authentifizierungs-Testing",
+    "AUTHORIZATION_TESTING": "Autorisations-Testing",
+    "SESSION_MANAGEMENT_TESTING": "Sitzungsmanagement-Testing",
+    "INPUT_VALIDATION_TESTING": "Eingabevalidierungs-Testing",
+    "ERROR_HANDLING": "Fehlerbehandlung",
+    "CRYPTOGRAPHY": "Kryptographie",
+    "BUSINESS_LOGIC_TESTING": "Business-Logik-Testing",
+    "CLIENT_SIDE_TESTING": "Clientseitiges-Testing"
   }
 }
+
