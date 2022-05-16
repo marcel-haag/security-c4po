@@ -2,6 +2,8 @@
 @import '~@nebular/theme/styles/theming';
 // @nebular out of the box themes
 @import '~@nebular/theme/styles/themes';
+// enable custom css properties
+$nb-enable-css-custom-properties: true;
 
 $nb-themes: nb-register-theme((
   layout-padding-top: 2.25rem,

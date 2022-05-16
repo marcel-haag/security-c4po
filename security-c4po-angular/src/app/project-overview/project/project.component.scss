@@ -7,17 +7,25 @@
   overflow: hidden;
 
   .header-column {
-    width: 100%
+    width: 100%;
   }
 
-  .categories-column {
-    width: 20%;
-    height: calc(100vh - #{$pentest-header-height});
+  .column-wrapper {
+    padding-left: 0 !important;
+
+    .categories-column {
+      height: calc(100vh - #{$pentest-header-height});
+      height: 80vh;
+    }
   }
 
-  .table-column {
-    overflow: auto !important;
-    width: 80%;
-    height: 80vh;
+  .table-wrapper{
+    padding-right: 0 !important;
+
+    .table-column {
+      overflow: auto !important;
+      // width: 80%;
+      height: 80vh;
+    }
   }
 }
