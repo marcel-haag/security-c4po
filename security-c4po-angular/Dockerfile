@@ -8,7 +8,7 @@ WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 
 # increase memory limit to avoid "heap out of memory"-error
-#TODO investigate on root cause for "heap out of memory"-error
+# TODO investigate on root cause for "heap out of memory"-error
 ENV NODE_OPTIONS="--max_old_space_size=4096"
 
 # install and cache app dependencies
@@ -20,4 +20,4 @@ RUN npm install -g @angular/cli@12.2.17
 COPY . /app
 
 # start app
-CMD ng serve --host 0.0.0.0
+CMD ng serve -c compose --host 0.0.0.0
