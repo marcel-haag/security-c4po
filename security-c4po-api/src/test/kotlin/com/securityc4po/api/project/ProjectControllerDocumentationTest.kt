@@ -154,7 +154,8 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
     inner class DeleteProject {
         @Test
         fun deleteProject() {
-            webTestClient.delete().uri("/projects/${project.id}")
+            val id = project.id
+            webTestClient.delete().uri("/projects/{id}", id)
                 .header("Authorization", "Bearer $tokenAdmin")
                 .exchange()
                 .expectStatus().isOk
@@ -171,6 +172,9 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
                         ),
                         Preprocessors.preprocessResponse(
                             Preprocessors.prettyPrint()
+                        ),
+                        RequestDocumentation.relaxedPathParameters(
+                            RequestDocumentation.parameterWithName("id").description("The id of the project you want to delete")
                         ),
                         PayloadDocumentation.relaxedResponseFields(
                             PayloadDocumentation.fieldWithPath("id").type(JsonFieldType.STRING)
