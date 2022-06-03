@@ -6,7 +6,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   NbLayoutModule,
   NbToastrModule,
-  NbIconModule, NbCardModule, NbButtonModule, NbDialogService, NbDialogModule, NbSidebarModule, NbMenuModule, NbSelectModule,
+  NbIconModule, NbCardModule, NbButtonModule, NbDialogService, NbDialogModule, NbSelectModule,
 } from '@nebular/theme';
 import {NbEvaIconsModule} from '@nebular/eva-icons';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -41,8 +41,6 @@ import {ProjectState} from '@shared/stores/project-state/project-state';
     AppRoutingModule,
     RouterModule,
     NbLayoutModule,
-    NbSidebarModule.forRoot(),
-    NbMenuModule.forRoot(),
     NbDialogModule.forRoot(),
     NbCardModule,
     NbIconModule,

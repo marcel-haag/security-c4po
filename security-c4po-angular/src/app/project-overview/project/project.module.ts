@@ -10,28 +10,28 @@ import {ProjectRoutingModule} from './project-routing.module';
 import {PentestOverviewModule} from '../../pentest-overview';
 
 @NgModule({
-    declarations: [
-        ProjectComponent
-    ],
-    exports: [
-        ProjectComponent
-    ],
-    imports: [
-        CommonModule,
-        NbSidebarModule.forRoot(),
-        NbCardModule,
-        NbLayoutModule,
-        NbMenuModule,
-        RouterModule.forChild([{
-            path: '',
-            component: ProjectComponent
-        }]),
-        ProjectRoutingModule,
-        TranslateModule,
-        FlexLayoutModule,
-        ProjectDialogModule,
-        PentestOverviewModule
-    ]
+  declarations: [
+    ProjectComponent
+  ],
+  exports: [
+    ProjectComponent
+  ],
+  imports: [
+    CommonModule,
+    NbSidebarModule.forRoot(),
+    NbCardModule,
+    NbLayoutModule,
+    NbMenuModule,
+    RouterModule.forChild([{
+      path: '',
+      component: ProjectComponent
+    }]),
+    ProjectRoutingModule,
+    TranslateModule,
+    FlexLayoutModule,
+    ProjectDialogModule,
+    PentestOverviewModule
+  ]
 })
 export class ProjectModule {
 }

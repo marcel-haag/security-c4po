@@ -34,7 +34,6 @@ export class ProjectComponent implements OnInit, OnDestroy {
       [],
       []
     )).pipe(untilDestroyed(this)).subscribe();
-
   }
 
   ngOnDestroy(): void {
