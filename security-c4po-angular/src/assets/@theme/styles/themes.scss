@@ -2,6 +2,8 @@
 @import '~@nebular/theme/styles/theming';
 // @nebular out of the box themes
 @import '~@nebular/theme/styles/themes';
+// enable custom css properties
+$nb-enable-css-custom-properties: true;
 
 $nb-themes: nb-register-theme((
   layout-padding-top: 2.25rem,
@@ -44,3 +46,4 @@ $nb-themes: nb-register-theme((
   slide-out-shadow-color: 0 4px 14px 0 #8f9bb3,
   slide-out-shadow-color-rtl: 0 4px 14px 0 #8f9bb3,
 ), dark, dark);
+

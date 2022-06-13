@@ -11,6 +11,7 @@ import {Project} from '@shared/models/project.model';
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.scss']
 })
+
 export class ProjectComponent implements OnInit, OnDestroy {
 
   constructor(

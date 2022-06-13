@@ -8,4 +8,44 @@
       right: 0.41rem !important;
     }
   }
+
+  nb-menu {
+    background-color: nb-theme(menu-background-color);
+
+    ul.menu-items {
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu-item a {
+      font-family: Roboto, "Helvetica Neue", sans-serif;
+      font-size: 0.95rem;
+      font-weight: nb-theme(text-font-weight);;
+      line-height: nb-theme(menu-text-line-height);
+      padding: nb-theme(menu-item-padding);
+    }
+
+    .menu-item {
+      a {
+        color: nb-theme(menu-text-color);
+        border-radius: nb-theme(menu-item-border-radius);
+      }
+
+
+      a.active {
+        background-color: nb-theme(color-primary-hover) !important;
+        color: nb-theme(text-control-color) !important;
+        font-weight: nb-theme(menu-text-font-weight);
+      }
+
+      a:hover {
+        background-color: nb-theme(color-basic-transparent-focus);
+        color: nb-theme(menu-text-color);
+        cursor: nb-theme(menu-item-hover-cursor);
+        // Increases element size on hover
+        transform: scale(1.025);
+      }
+    }
+  }
 }
+

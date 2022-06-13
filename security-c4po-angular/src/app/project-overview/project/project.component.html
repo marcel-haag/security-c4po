@@ -1,22 +1,24 @@
 <div fxFlex class="pentest-overview">
-  <nb-layout>
+  <nb-layout fxFlex>
+
     <nb-layout-header fxFlexAlign="center" class="header-column">
       <app-pentest-header></app-pentest-header>
     </nb-layout-header>
 
-    <nb-layout-column fxFlexFill fxLayout="row" fxLayoutGap="2rem">
+    <nb-layout-column fxFlex="1 1 max-content" class="column-wrapper">
       <nb-card class="categories-column">
-        <nb-card-body>
-          <app-pentest-categories></app-pentest-categories>
-        </nb-card-body>
+        <app-pentest-categories></app-pentest-categories>
       </nb-card>
+    </nb-layout-column>
 
+    <nb-layout-column class="table-wrapper" fxFlex="4 1 85%">
       <nb-card class="table-column">
         <nb-card-body>
           <app-pentest-table></app-pentest-table>
         </nb-card-body>
       </nb-card>
     </nb-layout-column>
+
   </nb-layout>
 </div>
 
