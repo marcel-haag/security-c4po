@@ -210,7 +210,7 @@
   },
   "categories": {
     "INFORMATION_GATHERING": "Information Gathering",
-    "CONFIGURATION_AND_DEPLOY_MANAGEMENT_TESTING": "Configuration and Deploy Management Testing",
+    "CONFIGURATION_AND_DEPLOY_MANAGEMENT_TESTING": "Config & Deploy Management Testing",
     "IDENTITY_MANAGEMENT_TESTING": "Identity Management Testing",
     "AUTHENTICATION_TESTING": "Authentication Testing",
     "AUTHORIZATION_TESTING": "Authorization Testing",

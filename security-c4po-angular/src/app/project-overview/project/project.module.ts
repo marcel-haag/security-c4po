@@ -18,10 +18,8 @@ import {PentestOverviewModule} from '../../pentest-overview';
   ],
   imports: [
     CommonModule,
-    NbSidebarModule.forRoot(),
     NbCardModule,
     NbLayoutModule,
-    NbMenuModule,
     RouterModule.forChild([{
       path: '',
       component: ProjectComponent

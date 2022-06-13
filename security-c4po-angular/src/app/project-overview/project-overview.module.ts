@@ -19,7 +19,6 @@ import {LoadingSpinnerComponent} from '@shared/widgets/loading-spinner/loading-s
   imports: [
     CommonModule,
     NbCardModule,
-    NbMenuModule.forRoot(),
     NbButtonModule,
     NbSpinnerModule,
     NbProgressBarModule,

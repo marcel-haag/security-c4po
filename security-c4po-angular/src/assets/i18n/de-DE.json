@@ -210,7 +210,7 @@
   },
   "categories": {
     "INFORMATION_GATHERING": "Informationsbeschaffung",
-    "CONFIGURATION_AND_DEPLOY_MANAGEMENT_TESTING": "Konfigurations- und Bereitstellungsmanagement-Testing",
+    "CONFIGURATION_AND_DEPLOY_MANAGEMENT_TESTING": "Konfig- & Einsatzmanagement-Testing",
     "IDENTITY_MANAGEMENT_TESTING": "Identitätsmanagement-Testing",
     "AUTHENTICATION_TESTING": "Authentifizierungs-Testing",
     "AUTHORIZATION_TESTING": "Autorisations-Testing",
