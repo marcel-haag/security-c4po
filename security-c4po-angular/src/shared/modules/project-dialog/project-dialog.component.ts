@@ -1,15 +1,17 @@
-import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {NB_DIALOG_CONFIG, NbDialogRef} from '@nebular/theme';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {GenericFormFieldConfig, ProjectDialogData} from '@shared/models/project-dialog-data';
 import deepEqual from 'deep-equal';
+import {UntilDestroy} from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Component({
   selector: 'app-project-dialog',
   templateUrl: './project-dialog.component.html',
   styleUrls: ['./project-dialog.component.scss']
 })
-export class ProjectDialogComponent implements OnInit, OnDestroy {
+export class ProjectDialogComponent implements OnInit {
   // form control elements
   projectFormGroup: FormGroup;
   formArray: GenericFormFieldConfig[];
@@ -81,9 +83,5 @@ export class ProjectDialogComponent implements OnInit, OnDestroy {
         (value.controlsConfig[0].value ? value.controlsConfig[0].value : value.controlsConfig[0]) : '';
     });
     return projectData;
-  }
-
-  ngOnDestroy(): void {
-    // ToDo: Remove this after Angular upgrade and use @UnitDestroy() instead
   }
 }

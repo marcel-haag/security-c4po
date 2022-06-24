@@ -1,18 +1,18 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngxs/store';
 import {InitProjectState} from '@shared/stores/project-state/project-state.actions';
 import {Router} from '@angular/router';
 import {Route} from '@shared/models/route.enum';
-import {untilDestroyed} from 'ngx-take-until-destroy';
+import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';
 import {Project} from '@shared/models/project.model';
 
+@UntilDestroy()
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.scss']
 })
-
-export class ProjectComponent implements OnInit, OnDestroy {
+export class ProjectComponent implements OnInit {
 
   constructor(
     private store: Store,
@@ -34,10 +34,5 @@ export class ProjectComponent implements OnInit, OnDestroy {
       [],
       []
     )).pipe(untilDestroyed(this)).subscribe();
-  }
-
-  ngOnDestroy(): void {
-    // This method must be present when using ngx-take-until-destroy
-    // even when empty
   }
 }

@@ -1,8 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import * as FA from '@fortawesome/free-solid-svg-icons';
 import {Project, ProjectDialogBody} from '@shared/models/project.model';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {untilDestroyed} from 'ngx-take-until-destroy';
+import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';
 import {ProjectService} from '@shared/services/project.service';
 import {NotificationService, PopupType} from '@shared/services/notification.service';
 import {catchError, filter, mergeMap, switchMap, tap} from 'rxjs/operators';
@@ -10,12 +10,13 @@ import {DialogService} from '@shared/services/dialog-service/dialog.service';
 import {ProjectDialogComponent} from '@shared/modules/project-dialog/project-dialog.component';
 import {ProjectDialogService} from '@shared/modules/project-dialog/service/project-dialog.service';
 
+@UntilDestroy()
 @Component({
   selector: 'app-project-overview',
   templateUrl: './project-overview.component.html',
   styleUrls: ['./project-overview.component.scss']
 })
-export class ProjectOverviewComponent implements OnInit, OnDestroy {
+export class ProjectOverviewComponent implements OnInit {
 
   readonly fa = FA;
 
@@ -40,7 +41,7 @@ export class ProjectOverviewComponent implements OnInit, OnDestroy {
         tap(() => this.loading$.next(true))
       )
       .subscribe({
-        next: (projects) => {
+        next: (projects: Project[]) => {
           this.projects.next(projects);
           this.loading$.next(false);
         },
@@ -132,10 +133,5 @@ export class ProjectOverviewComponent implements OnInit, OnDestroy {
 
   isLoading(): Observable<boolean> {
     return this.loading$.asObservable();
-  }
-
-  ngOnDestroy(): void {
-    // This method must be present when using ngx-take-until-destroy
-    // even when empty
   }
 }

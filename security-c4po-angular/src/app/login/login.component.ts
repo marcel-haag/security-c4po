@@ -1,9 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Store} from '@ngxs/store';
 import {NotificationService, PopupType} from '../../shared/services/notification.service';
-import {untilDestroyed} from 'ngx-take-until-destroy';
+import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';
 import {User} from '../../shared/models/user.model';
 import {throwError} from 'rxjs';
 import {UpdateIsAuthenticated, UpdateUser} from '../../shared/stores/session-state/session-state.actions';
@@ -12,13 +12,14 @@ import {HttpClient} from '@angular/common/http';
 import {FieldStatus} from '../../shared/models/form-field-status.model';
 import {KeycloakService} from 'keycloak-angular';
 
+@UntilDestroy()
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 // ToDo: Exchange default Keycloak login with self made login
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit {
   readonly MIN_LENGTH: number = 2;
   readonly SECURITYC4PO_TITLE = GlobalTitlesVariables.SECURITYC4PO_TITLE;
   readonly NOVATEC_NAME = GlobalTitlesVariables.NOVATEC_NAME;
@@ -106,11 +107,6 @@ export class LoginComponent implements OnInit, OnDestroy {
    */
   isEmpty(ctrlValue: string): boolean {
     return ctrlValue === '';
-  }
-
-  ngOnDestroy(): void {
-    // This method must be present when using ngx-take-until-destroy
-    // even when empty
   }
 
   readAppVersion(): void {

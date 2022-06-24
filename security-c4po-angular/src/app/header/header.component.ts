@@ -2,16 +2,17 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import * as FA from '@fortawesome/free-solid-svg-icons';
 import {NbThemeService} from '@nebular/theme';
 import {map} from 'rxjs/operators';
-import {untilDestroyed} from 'ngx-take-until-destroy';
 import {GlobalTitlesVariables} from '@shared/config/global-variables';
 import {TranslateService} from '@ngx-translate/core';
+import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit, OnDestroy{
+export class HeaderComponent implements OnInit{
 
   readonly fa = FA;
   readonly SECURITYC4PO_TITLE = GlobalTitlesVariables.SECURITYC4PO_TITLE;
@@ -42,10 +43,5 @@ export class HeaderComponent implements OnInit, OnDestroy{
 
   onClickLanguage(language: string): void {
     this.translateService.use(language);
-  }
-
-  ngOnDestroy(): void {
-    // This method must be present when using ngx-take-until-destroy
-    // even when empty
   }
 }

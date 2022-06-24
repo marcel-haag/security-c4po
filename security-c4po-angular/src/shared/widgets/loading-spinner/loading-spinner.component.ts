@@ -1,13 +1,14 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Observable, of} from 'rxjs';
-import {untilDestroyed} from 'ngx-take-until-destroy';
+import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Component({
   selector: 'app-loading-spinner',
   templateUrl: './loading-spinner.component.html',
   styleUrls: ['./loading-spinner.component.scss']
 })
-export class LoadingSpinnerComponent implements OnInit, OnDestroy {
+export class LoadingSpinnerComponent implements OnInit {
 
   @Input() isLoading$: Observable<boolean> = of(false);
   loading: boolean;
@@ -19,8 +20,5 @@ export class LoadingSpinnerComponent implements OnInit, OnDestroy {
       .subscribe((value: boolean): void => {
         this.loading = value;
       });
-  }
-
-  ngOnDestroy(): void {
   }
 }
