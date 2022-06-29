@@ -7,7 +7,7 @@ import com.securityc4po.api.ResponseBody
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Mono
-import java.util.*
+import reactor.kotlin.core.publisher.switchIfEmpty
 
 @RestController
 @RequestMapping("/projects")
@@ -47,6 +47,8 @@ class ProjectController(private val projectService: ProjectService) {
     fun deleteProject(@PathVariable(value = "id") id: String): Mono<ResponseEntity<ResponseBody>> {
         return this.projectService.deleteProject(id).map{
             ResponseEntity.ok().body(it.toProjectDeleteResponseBody())
+        }.switchIfEmpty {
+            Mono.just(ResponseEntity.noContent().build<ResponseBody>())
         }
     }
 

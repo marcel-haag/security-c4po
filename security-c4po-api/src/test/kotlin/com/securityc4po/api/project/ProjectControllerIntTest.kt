@@ -128,6 +128,17 @@ class ProjectControllerIntTest : BaseIntTest() {
                 .expectBody().json(Json.write(projectTwo.toProjectDeleteResponseBody()))
         }
 
+        @Test
+        fun `delete not existing project`() {
+            val randomUUID = "f85ee127-83b7-4ba3-8940-7b8d1e0a1c6e"
+            webTestClient.delete().uri("/projects/{id}", randomUUID)
+                .header("Authorization", "Bearer $tokenAdmin")
+                .exchange()
+                .expectStatus().isNoContent
+                .expectHeader().valueEquals("Application-Name", "SecurityC4PO")
+                .expectBody().isEmpty
+        }
+
         val projectTwo = Project(
             id = "61360a47-796b-4b3f-abf9-c46c668596c5",
             client = "Allsafe",

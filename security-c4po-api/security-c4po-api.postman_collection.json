@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "1823096a-1cb2-438d-9872-73ec0ca94cfa",
+		"_postman_id": "6537da59-5c7a-478d-bf24-09a39022a690",
 		"name": "security-c4po-api",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5225213"
 	},
 	"item": [
 		{
@@ -93,9 +94,34 @@
 				{
 					"name": "deleteProject",
 					"request": {
-						"method": "GET",
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItdG1lbEV0ZHhGTnRSMW9aNXlRdE5jaFFpX0RVN2VNeV9YcU44aXY0S3hzIn0.eyJleHAiOjE2NTcwNDI3NDcsImlhdCI6MTY1NzA0MjQ0NywianRpIjoiZGFjYWY0MzItNWRlMS00ZGU1LWE0ZjgtZmExNmYyNDMwMDRhIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4ODg4L2F1dGgvcmVhbG1zL2M0cG9fcmVhbG1fbG9jYWwiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTBlMDZkN2EtOGRkMC00ZWNkLTg5NjMtMDU2YjQ1MDc5YzRmIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYzRwb19sb2NhbCIsInNlc3Npb25fc3RhdGUiOiI3Nzc1ZGExMS0xYWI3LTQyZjItYjJmZC0yNDFmZTE0NjAyYTgiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImM0cG9fdXNlciIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJjNHBvX2xvY2FsIjp7InJvbGVzIjpbInVzZXIiXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InRlc3QgdXNlciIsInByZWZlcnJlZF91c2VybmFtZSI6InR0dCIsImdpdmVuX25hbWUiOiJ0ZXN0IiwiZmFtaWx5X25hbWUiOiJ1c2VyIn0.EqTkweqw6KkmttmI7KyvZM-yoo4MczNo8Nlj1zRUHgzXDnQ2JbSCXLAFjvUFYTrCrGIlTn23Ojsx4WhVwvIkBmKmn8ZsrCifNwJfOYKbtu6rV0unMTJqXV1imdaRecti95wJLnFdKQf_gIPUALLzTIXH_klPZfz5zKup7OfWMXlrKhRHRzYbg0hFHBFlpd9QCYiNWzh4Z2_vq-V2YESViuCPxN6sFacR_fvz6-d2y-zWS6XHvHdblLBPKsMIn9EBTGfx49TQo-CDgUichi_w8VWMkk3vUyRUH2wl-CIz2qrYdA5y-PzAPju5yTxjgydGn-7LIIFCiOpDStdREPyFBA",
+									"type": "string"
+								},
+								{
+									"key": "undefined",
+									"type": "any"
+								}
+							]
+						},
+						"method": "DELETE",
 						"header": [],
-						"url": null
+						"url": {
+							"raw": "http://localhost:8443/projects/41051d0a-63ef-4290-b984-e6fbd736f218",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"projects",
+								"41051d0a-63ef-4290-b984-e6fbd736f218"
+							]
+						}
 					},
 					"response": []
 				},

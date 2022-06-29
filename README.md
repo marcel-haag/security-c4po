@@ -23,10 +23,10 @@
 * Postman
 
 ## Application Architecture
-![alt architecture](./wiki/SecurityC4PO_Architecture.png)
+![alt architecture](./wiki/C4PO-Architecture.png)
 
 ## Data Structure
-![alt architecture](./wiki/SecurityC4PO_Data_Structure.png)
+![alt datastructure](./wiki/C4PO-Datastructure.png)
 
 ### Conventions
 * Branch: `<initial>_c4po_<issuenumber>`
@@ -38,3 +38,6 @@ Execute 'c4po.sh' and all services will run on a dev server.
 ### Testuser Credentials:
 * Username: ttt
 * Password: Test1234!
+
+## C4PO Roadmap
+![alt roadmap](./wiki/C4PO-Roadmap.png)

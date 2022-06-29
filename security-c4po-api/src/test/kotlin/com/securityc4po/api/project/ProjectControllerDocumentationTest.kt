@@ -16,6 +16,7 @@ import org.springframework.data.mongodb.core.query.Query
 import org.springframework.restdocs.operation.preprocess.Preprocessors
 import org.springframework.restdocs.payload.JsonFieldType
 import org.springframework.restdocs.payload.PayloadDocumentation
+import org.springframework.restdocs.request.RequestDocumentation
 import org.springframework.restdocs.webtestclient.WebTestClientRestDocumentation
 import reactor.core.publisher.Mono
 
@@ -173,6 +174,34 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
                         ),
                         PayloadDocumentation.relaxedResponseFields(
                             PayloadDocumentation.fieldWithPath("id").type(JsonFieldType.STRING)
+                                .description("The id of the deleted project")
+                        )
+                    )
+                )
+        }
+
+        @Test
+        fun deleteNotExistingProject() {
+            val randomUUID = "f85ee127-83b7-4ba3-8940-7b8d1e0a1c6e"
+            webTestClient.delete().uri("/projects/{id}", randomUUID)
+                .header("Authorization", "Bearer $tokenAdmin")
+                .exchange()
+                .expectStatus().isNoContent
+                .expectHeader().valueEquals("Application-Name", "SecurityC4PO")
+                .expectBody()
+                .consumeWith(
+                    WebTestClientRestDocumentation.document(
+                        "{methodName}",
+                        Preprocessors.preprocessRequest(
+                            Preprocessors.prettyPrint(),
+                            Preprocessors.modifyUris().removePort(),
+                            Preprocessors.removeHeaders("Host", "Content-Length")
+                        ),
+                        Preprocessors.preprocessResponse(
+                            Preprocessors.prettyPrint()
+                        ),
+                        RequestDocumentation.relaxedPathParameters(
+                            RequestDocumentation.parameterWithName("id")
                                 .description("The id of the deleted project")
                         )
                     )
