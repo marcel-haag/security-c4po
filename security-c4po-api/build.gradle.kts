@@ -60,6 +60,7 @@ spotbugs {
 val snippetsDir = file("build/generated-snippets")
 
 dependencies {
+	implementation("org.json:json:20140107")
 	implementation("com.fasterxml.jackson.datatype:jackson-datatype-joda:2.11.3")
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
@@ -76,7 +77,10 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
 	implementation("org.modelmapper:modelmapper:2.3.2")
 
+	api("org.springframework.boot:spring-boot-starter-test")
 	api("org.springframework.security:spring-security-jwt:1.1.1.RELEASE")
+	api("net.logstash.logback:logstash-logback-encoder:6.2")
+	api("ch.qos.logback:logback-classic:1.2.3")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0")

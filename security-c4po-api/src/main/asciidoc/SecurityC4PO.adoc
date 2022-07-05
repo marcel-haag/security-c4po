@@ -67,6 +67,10 @@ include::{snippets}/deleteProject/http-request.adoc[]
 
 include::{snippets}/deleteProject/http-response.adoc[]
 
+If the project has already been deleted "204 No Content" is following.
+
+include::{snippets}/deleteNotExistingProject/http-response.adoc[]
+
 ==== Response structure
 
 include::{snippets}/deleteProject/response-fields.adoc[]

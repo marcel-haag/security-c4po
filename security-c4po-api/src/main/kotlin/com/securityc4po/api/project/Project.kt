@@ -17,6 +17,17 @@ data class Project(
     val createdBy: String
 )
 
+fun buildProject(body: ProjectRequestBody, projectEntity: ProjectEntity): Project{
+    return Project(
+        id = projectEntity.data.id,
+        client = body.client,
+        title = body.title,
+        createdAt = projectEntity.data.createdAt,
+        tester = body.tester,
+        createdBy = projectEntity.data.createdBy
+    )
+}
+
 fun Project.toProjectResponseBody(): ResponseBody {
     return mapOf(
             "id" to id,
@@ -47,8 +58,22 @@ fun ProjectOverview.toProjectOverviewResponseBody(): ResponseBody {
 data class ProjectRequestBody(
     val client: String,
     val title: String,
-    val tester: String? = null
+    val tester: String
 )
+
+/**
+ * Validates if a [ProjectRequestBody] is valid
+ *
+ * @return Boolean describing if the body is valid
+ */
+fun ProjectRequestBody.isValid(): Boolean {
+    return when {
+        this.client.isBlank() -> false
+        this.title.isBlank() -> false
+        this.tester.isBlank() -> false
+        else -> true
+    }
+}
 
 fun ProjectRequestBody.toProject(): Project {
     return Project(
