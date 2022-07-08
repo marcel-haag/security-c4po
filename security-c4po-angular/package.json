@@ -38,7 +38,7 @@
     "jwt-decode": "^3.1.2",
     "keycloak-angular": "^8.4.0",
     "keycloak-js": "^13.0.1",
-    "moment": "^2.29.1",
+    "moment": "^2.29.4",
     "moment-timezone": "latest",
     "ng-mocks": "^13.4.2",
     "ngx-moment": "^5.0.0",
