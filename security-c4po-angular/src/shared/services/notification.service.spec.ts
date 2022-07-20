@@ -1,7 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
 import { NotificationService } from './notification.service';
-import {NbToastrModule, NbToastrService} from '@nebular/theme';
 import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
 import {Observable, of} from 'rxjs';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
@@ -11,6 +10,7 @@ import {HttpClient} from '@angular/common/http';
 import {NgxsModule} from '@ngxs/store';
 import {SessionState} from '../stores/session-state/session-state';
 import {KeycloakService} from 'keycloak-angular';
+import {NbToastrModule, NbToastrService} from '@nebular/theme';
 
 describe('NotificationService', () => {
   let toastrServiceStub: Partial<NbToastrService>;

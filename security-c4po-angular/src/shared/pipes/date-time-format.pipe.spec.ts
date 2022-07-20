@@ -1,9 +1,5 @@
 import {DateTimeFormatPipe} from './date-time-format.pipe';
-import {formatDate, registerLocaleData} from '@angular/common';
-import localeDe from '@angular/common/locales/de';
-import {CustomPipe} from 'src/shared/models/custom-pipe.mode';
 import {User} from '@shared/models/user.model';
-import {UpdateUserSettings} from '@shared/stores/session-state/session-state.actions';
 import {NumberAndDateFormatSystem} from '@shared/models/number-and-date-time-format.model';
 import {SESSION_STATE_NAME, SessionState, SessionStateModel} from '@shared/stores/session-state/session-state';
 import {NgxsModule, Store} from '@ngxs/store';
@@ -13,6 +9,7 @@ import {HttpClient} from '@angular/common/http';
 import {HttpLoaderFactory} from '../../app/common-app.module';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {KeycloakService} from 'keycloak-angular';
 
 const DESIRED_STORE_STATE_SESSION: SessionStateModel = {
   userAccount: {
@@ -46,6 +43,7 @@ describe('DateTimeFormatPipe', () => {
       ],
       providers: [
         {provide: UserService},
+        {provide: KeycloakService}
       ]
     }).compileComponents();
   });

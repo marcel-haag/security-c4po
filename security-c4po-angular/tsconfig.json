@@ -22,5 +22,9 @@
       "@shared/*": ["./src/shared/*"],
       "@assets/*": ["./src/assets/*"]
     }
-  }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/assets/unfetch-polyfill.js"
+  ]
 }

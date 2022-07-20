@@ -22,13 +22,13 @@
     "@angular/platform-browser": "~12.2.16",
     "@angular/platform-browser-dynamic": "~12.2.16",
     "@angular/router": "~12.2.16",
-    "@briebug/jest-schematic": "^3.0.0",
     "@fortawesome/angular-fontawesome": "^0.8.2",
     "@fortawesome/fontawesome-common-types": "^0.2.36",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@nebular/theme": "^9.0.0",
+    "@nebular/eva-icons": "^8.0.0",
+    "@nebular/theme": "^8.0.0",
     "@ngneat/until-destroy": "~8.0.4",
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
@@ -47,25 +47,22 @@
     "roboto-fontface": "^0.10.0",
     "rxjs": "^6.6.7",
     "tslib": "^2.3.1",
-    "uuid": "^8.3.2",
+    "uuid": "^8.3.1",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-builders/jest": "14.0.0",
     "@angular-devkit/build-angular": "~12.2.16",
-    "@angular/cli": "~12.2.16",
+    "@angular/cli": "^12.2.16",
     "@angular/compiler-cli": "~12.2.16",
+    "@babel/preset-typescript": "^7.18.6",
     "@schematics/angular": "^10.2.4",
-    "@types/jasmine": "~3.6.0",
-    "@types/jasminewd2": "^2.0.10",
     "@types/jest": "28.1.1",
     "@types/node": "^12.20.47",
+    "@briebug/jest-schematic": "^3.0.0",
     "codelyzer": "^6.0.2",
     "font-awesome": "^4.7.0",
-    "jasmine-core": "~3.6.0",
-    "jasmine-spec-reporter": "~5.0.0",
     "jest": "28.1.1",
-    "jest-environment-jsdom": "^28.1.1",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
@@ -73,5 +70,8 @@
   },
   "resolutions": {
     "webpack": "^5.0.0"
-  }
+  },
+  "moduleDirectories": [
+    "src"
+  ]
 }
