@@ -6,6 +6,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {KeycloakService} from 'keycloak-angular';
 import {Project, ProjectDialogBody} from '@shared/models/project.model';
 import {environment} from '../../environments/environment';
+import {throwError} from 'rxjs';
 
 describe('ProjectService', () => {
   let service: ProjectService;
@@ -107,7 +108,7 @@ describe('ProjectService', () => {
           expect(value).toEqual(mockProject);
           done();
         },
-        fail);
+        throwError);
       // assert
       const req = httpMock.expectOne(`${apiBaseURL}`);
       expect(req.request.method).toBe('POST');
@@ -130,7 +131,7 @@ describe('ProjectService', () => {
           expect(value).toEqual(httpResponse.id);
           done();
         },
-        fail);
+        throwError);
       // assert
       const req = httpMock.expectOne(`${apiBaseURL}/${mockProjectId}`);
       expect(req.request.method).toBe('DELETE');

@@ -30,5 +30,23 @@ Object.defineProperty(document.body.style, 'transform', {
   },
 });
 
+Object.defineProperty(document.body.style, 'transformIgnorePatterns', {
+  value: () => {
+    return {
+      enumerable: true,
+      configurable: true,
+    };
+  },
+});
+
+Object.defineProperty(document.body.style, 'moduleNameMapper', {
+  value: () => {
+    return {
+      enumerable: true,
+      configurable: true,
+    };
+  },
+});
+
 /* output shorter and more meaningful Zone error stack traces */
 // Error.stackTraceLimit = 2;
