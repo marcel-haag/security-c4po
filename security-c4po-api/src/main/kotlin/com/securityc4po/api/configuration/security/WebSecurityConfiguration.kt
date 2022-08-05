@@ -1,6 +1,5 @@
 package com.securityc4po.api.configuration.security
 
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
@@ -34,6 +33,7 @@ class WebSecurityConfiguration(private val userAccountDetailsService: UserAccoun
                 .disable()
                 .authorizeExchange()
                 .pathMatchers(HttpMethod.GET, "/v1/projects/**").authenticated()
+                .pathMatchers(HttpMethod.GET, "/v1/pentests/**").authenticated()
                 .pathMatchers("/actuator/**").permitAll()
                 .pathMatchers("/docs/SecurityC4PO.html").permitAll()
                 .anyExchange().authenticated()
