@@ -131,6 +131,7 @@ export class ProjectOverviewComponent implements OnInit {
     });
   }
 
+  // HTML only
   isLoading(): Observable<boolean> {
     return this.loading$.asObservable();
   }
