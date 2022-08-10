@@ -30,7 +30,8 @@ class ProjectController(private val projectService: ProjectService) {
                 it.toProjectResponseBody()
             }
         }.map {
-            ResponseEntity.ok(it)
+            if (it.isEmpty()) ResponseEntity.noContent().build()
+            else ResponseEntity.ok(it)
         }
     }
 

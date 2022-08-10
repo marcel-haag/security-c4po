@@ -70,7 +70,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"client\": \"Novatec\",\n    \"title\": \"log4j pentest\",\n    \"tester\" : \"Stipe\",\n    \"createdBy\" : \"10e06d7a-8dd0-4ecd-8963-056b45079c4f\"\n}",
+							"raw": "{\n    \"client\": \"Novatec\",\n    \"title\": \"log4j pentest\",\n    \"tester\" : \"Stipe\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -142,7 +142,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"client\": \"updatedProject\",\n    \"title\": \"log4j pentest\",\n    \"tester\" : \"Stipe\"\n}",
+							"raw": "{\n    \"client\": \"Dio Stonemask Inc.\",\n    \"title\": \"log4jj bizarre adventure\",\n    \"tester\" : \"Jojo\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -150,7 +150,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8443/projects/f2738715-4005-4aca-8d34-27ce9b8efffe",
+							"raw": "http://localhost:8443/projects/5a4f126c-9471-43b8-80b9-6eb02b7c35d0",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -158,7 +158,7 @@
 							"port": "8443",
 							"path": [
 								"projects",
-								"f2738715-4005-4aca-8d34-27ce9b8efffe"
+								"5a4f126c-9471-43b8-80b9-6eb02b7c35d0"
 							]
 						}
 					},
@@ -261,10 +261,24 @@
 				{
 					"name": "getPentestsByProjectIdAndCategory",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItdG1lbEV0ZHhGTnRSMW9aNXlRdE5jaFFpX0RVN2VNeV9YcU44aXY0S3hzIn0.eyJleHAiOjE2NjAxNDI5NjMsImlhdCI6MTY2MDE0MjY2MywianRpIjoiNzk2YzY5NzYtZjBlYS00ZTM0LTk2MTItMjI5ZmE0ODgzOTM0IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4ODg4L2F1dGgvcmVhbG1zL2M0cG9fcmVhbG1fbG9jYWwiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTBlMDZkN2EtOGRkMC00ZWNkLTg5NjMtMDU2YjQ1MDc5YzRmIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYzRwb19sb2NhbCIsInNlc3Npb25fc3RhdGUiOiIyYWU1MmQyYy01MjA5LTQzMjEtOWY5OS0wMTQ2YjRkMmNkY2YiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImM0cG9fdXNlciIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJjNHBvX2xvY2FsIjp7InJvbGVzIjpbInVzZXIiXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InRlc3QgdXNlciIsInByZWZlcnJlZF91c2VybmFtZSI6InR0dCIsImdpdmVuX25hbWUiOiJ0ZXN0IiwiZmFtaWx5X25hbWUiOiJ1c2VyIn0.EO5CC1VXZzybIx-lndq3b61TZpWOnYDI4F2CUFuxj5ECxrlIfm_tlv0TbErDTX311YsA_nhzNHYSaffRzx0OkmmUKSyyH8k9aPRKXUTUmY7Y9PLv3UCKEmAFHAnJkr5kZV08g3UMYG2blpryYBg82abEVMxeMUbh-T4M-Z9dcgQyiZ4nyNMUs1bbfH_2kAtqfEXmP_9eZ42Kwa2ixFWFZDcvOp775bjkYcGvwSnHqmyBXivONzTxyPN6Ug7uFCvMTbeo10ctgOFfXJUZfoxRt-hCspTPJR8C4TzIK41fiy19uRpGjeezG5Ghwy9upXsomunwB4knTAn1otmj4afIxw",
+									"type": "string"
+								},
+								{
+									"key": "undefined",
+									"type": "any"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8443/pentests?projectId=8bc16303-f652-418a-b745-8a03d89356fb&category=INFORMATION_GATHERING",
+							"raw": "http://localhost:8443/pentests?projectId=5a4f126c-9471-43b8-80b9-6eb02b7c35d0&category=INFORMATION_GATHERING",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -276,7 +290,7 @@
 							"query": [
 								{
 									"key": "projectId",
-									"value": "8bc16303-f652-418a-b745-8a03d89356fb"
+									"value": "5a4f126c-9471-43b8-80b9-6eb02b7c35d0"
 								},
 								{
 									"key": "category",

@@ -2,7 +2,10 @@ package com.securityc4po.api.project
 
 import com.fasterxml.jackson.annotation.JsonFormat
 import com.securityc4po.api.ResponseBody
+import com.securityc4po.api.pentest.PentestStatus
 import org.springframework.data.mongodb.core.index.Indexed
+import java.math.RoundingMode
+import java.text.DecimalFormat
 import java.time.Instant
 import java.util.UUID
 
@@ -14,6 +17,7 @@ data class Project(
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ssZ")
     val createdAt: String = Instant.now().toString(),
     val tester: String? = null,
+    val projectPentests: List<ProjectPentest> = emptyList(),
     val createdBy: String
 )
 
@@ -24,6 +28,7 @@ fun buildProject(body: ProjectRequestBody, projectEntity: ProjectEntity): Projec
         title = body.title,
         createdAt = projectEntity.data.createdAt,
         tester = body.tester,
+        projectPentests = projectEntity.data.projectPentests,
         createdBy = projectEntity.data.createdBy
     )
 }
@@ -35,6 +40,8 @@ fun Project.toProjectResponseBody(): ResponseBody {
             "title" to title,
             "createdAt" to createdAt,
             "tester" to tester,
+            /* ToDo: Calculate percentage in BE type: float */
+            "testingProgress" to calculateProgress(),
             "createdBy" to createdBy
     )
 }
@@ -45,15 +52,30 @@ fun Project.toProjectDeleteResponseBody(): ResponseBody {
     )
 }
 
+fun Project.calculateProgress(): Float {
+    // Total number of pentests listet in the OWASP testing guide
+    // https://owasp.org/www-project-web-security-testing-guide/assets/archive/OWASP_Testing_Guide_v4.pdf
+    val TOTALPENTESTS = 95
+
+    return if (projectPentests.isEmpty())
+        0F
+    else {
+        var completedPentests = 0
+        projectPentests.forEach { projectPentest ->
+            if (projectPentest.status == PentestStatus.TRIAGED) {
+                completedPentests++
+            }
+        }
+        val df = DecimalFormat("#.##")
+        df.roundingMode = RoundingMode.DOWN
+        val progress = completedPentests / TOTALPENTESTS
+        df.format(progress).toFloat()
+    }
+}
+
 data class ProjectOverview(
         val projects: List<Project>
 )
-
-fun ProjectOverview.toProjectOverviewResponseBody(): ResponseBody {
-    return mapOf(
-            "projects" to projects
-    )
-}
 
 data class ProjectRequestBody(
     val client: String,

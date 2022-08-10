@@ -102,8 +102,10 @@ class ProjectService(private val projectRepository: ProjectRepository) {
             )
         )
         return projectRepository.findProjectById(id).switchIfEmpty{
-            logger.info("Project with id $id not found. Updating not possible.")
-            Mono.empty()
+            logger.warn("Project with id $id not found. Updating not possible.")
+            val msg = "Project with id $id not found."
+            val ex = EntityNotFoundException(msg, Errorcode.ProjectNotFound)
+            throw ex
         }.flatMap{projectEntity: ProjectEntity ->
             projectEntity.lastModified = Instant.now()
             projectEntity.data = buildProject(body, projectEntity)
@@ -119,5 +121,16 @@ class ProjectService(private val projectRepository: ProjectRepository) {
                 )
             }
         }
+    }
+
+
+    /**
+     * Update testing progress of [Project]
+     *
+     * @throws [TransactionInterruptedException] if the [Project] could not be updated
+     * @return updated list of [ProjectPentest]s
+     */
+    fun updateProjectTestingProgress(projectId: String, projectPentests: ProjectPentest)/*: Mono<List<ProjectPentest>>*/ {
+        // ToDo: update Project Entity with progress
     }
 }
