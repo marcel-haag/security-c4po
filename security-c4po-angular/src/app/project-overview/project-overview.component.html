@@ -34,13 +34,20 @@
         </span>
       </nb-card-body>
       <nb-card-footer>
-        <!--ToDo: Display correct progress of project-->
         <div fxLayout="row" fxLayoutGap="1rem" fxLayoutAlign="start end">
-          <nb-progress-bar class="project-progress"
-                           status="warning"
-                           [value]="40"
-                           [displayValue]="true">
-          </nb-progress-bar>
+          <div class="project-progress">
+
+            <nb-progress-bar *ngIf="project.testingProgress > 0; else altProgressBar"
+                             status="warning"
+                             [value]="project.testingProgress"
+                             [displayValue]="true">
+            </nb-progress-bar>
+
+            <ng-template #altProgressBar>
+              {{'popup.info' | translate}} {{'global.no.progress' | translate}}
+            </ng-template>
+          </div>
+
           <button nbButton
                   status="primary"
                   size="small"
@@ -61,7 +68,7 @@
   </div>
 </div>
 
-<div *ngIf="projects.getValue().length === 0 || !isLoading()" fxLayout="row" fxLayoutAlign="center center">
+<div *ngIf="projects.getValue().length === 0 && loading$.getValue() === false" fxLayout="row" fxLayoutAlign="center center">
   <p class="error-text">
     {{'project.overview.no.projects' | translate}}
   </p>

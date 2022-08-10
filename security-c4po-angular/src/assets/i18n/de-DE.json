@@ -11,7 +11,8 @@
     "action.yes": "Ja",
     "action.no": "Nein",
     "username": "Nutzername",
-    "password": "Passwort"
+    "password": "Passwort",
+    "no.progress": "Kein Fortschritt"
   },
   "languageKeys":{
     "de-DE": "Deutsch",

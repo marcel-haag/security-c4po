@@ -86,6 +86,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
             title = "Some Mock API (v1.0) Scanning",
             createdAt = "2021-01-10T18:05:00Z",
             tester = "Novatester",
+            projectPentests = emptyList<ProjectPentest>(),
             createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
         val projectTwo = Project(
@@ -94,6 +95,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
             title = "CashMyData (iOS)",
             createdAt = "2021-01-10T18:05:00Z",
             tester = "Elliot",
+            projectPentests = emptyList<ProjectPentest>(),
             createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
 
@@ -218,6 +220,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
             title = "Some Mock API (v1.0) Scanning",
             createdAt = "2021-01-10T18:05:00Z",
             tester = "Novatester",
+            projectPentests = emptyList<ProjectPentest>(),
             createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
     }
@@ -268,6 +271,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
             title = "log4j Pentest_updated",
             createdAt = "2021-01-10T18:05:00Z",
             tester = "Stipe_updated",
+            projectPentests = emptyList<ProjectPentest>(),
             createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
     }
@@ -280,6 +284,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
             title = "Some Mock API (v1.0) Scanning",
             createdAt = "2021-01-10T18:05:00Z",
             tester = "Novatester",
+            projectPentests = emptyList<ProjectPentest>(),
             createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
         val projectTwo = Project(
@@ -288,6 +293,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
             title = "CashMyData (iOS)",
             createdAt = "2021-01-10T18:05:00Z",
             tester = "Elliot",
+            projectPentests = emptyList<ProjectPentest>(),
             createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
         // persist test data in database

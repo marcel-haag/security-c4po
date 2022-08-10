@@ -1,16 +1,10 @@
 # security-c4po
 
-### Chief Innovator
-> Daniel Mader
+## Application Architecture
+![alt architecture](./wiki/C4PO-Architecture.png)
 
-### Project Leads
-* Andreas Falk
-* Christina Paule
-
-### Developers
-* Marcel Haag
-* Norman Schmidt
-* Stipe Knez
+## Data Structure
+![alt datastructure](./wiki/C4PO-Datastructure.png)
 
 ### Technical Requirements
 * Docker / Docker-compose
@@ -21,12 +15,6 @@
 ### Tools
 * mongoDB Compass
 * Postman
-
-## Application Architecture
-![alt architecture](./wiki/C4PO-Architecture.png)
-
-## Data Structure
-![alt datastructure](./wiki/C4PO-Datastructure.png)
 
 ### Conventions
 * Branch: `<initial>_c4po_<issuenumber>`
