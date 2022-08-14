@@ -15,7 +15,7 @@ By participating, you are expected to uphold this code.
 ## How Can I Contribute?
 
 ### Reporting Bugs
-This section guides you through submitting a bug report for Atom. Following these guidelines helps maintainers and the community understand your report
+This section guides you through submitting a bug report. Following these guidelines helps maintainers and the community understand your report.
 
 Explain the problem and include additional details to help maintainers reproduce the problem:
 
