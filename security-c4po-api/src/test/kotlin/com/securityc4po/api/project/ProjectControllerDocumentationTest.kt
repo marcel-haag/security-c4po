@@ -74,7 +74,9 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
                             PayloadDocumentation.fieldWithPath("[].tester").type(JsonFieldType.STRING)
                                 .description("The user that is assigned as a tester in the project"),
                             PayloadDocumentation.fieldWithPath("[].createdBy").type(JsonFieldType.STRING)
-                                .description("The id of the user that created the project")
+                                .description("The id of the user that created the project"),
+                            PayloadDocumentation.fieldWithPath("[].testingProgress").type(JsonFieldType.NUMBER)
+                                .description("The progress of the project from completed pentests")
                         )
                     )
                 )
@@ -139,7 +141,9 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
                             PayloadDocumentation.fieldWithPath("tester").type(JsonFieldType.STRING)
                                 .description("The user that is assigned as a tester in the project"),
                             PayloadDocumentation.fieldWithPath("createdBy").type(JsonFieldType.STRING)
-                                .description("The id of the user that created the project")
+                                .description("The id of the user that created the project"),
+                            PayloadDocumentation.fieldWithPath("testingProgress").type(JsonFieldType.NUMBER)
+                                .description("The progress of the project from completed pentests")
                         )
                     )
                 )
@@ -231,11 +235,11 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
         fun updateProject() {
             webTestClient.patch().uri("/projects/${projectUpdate.id}")
                 .header("Authorization", "Bearer $tokenAdmin")
-                .body(Mono.just(projectUpdate), ProjectRequestBody::class.java)
+                .body(Mono.just(projectUpdateRequest), ProjectRequestBody::class.java)
                 .exchange()
                 .expectStatus().isAccepted
                 .expectHeader().valueEquals("Application-Name", "SecurityC4PO")
-                .expectBody().json(Json.write(projectUpdate))
+                .expectBody().json(Json.write(projectUpdate.toProjectResponseBody()))
                 .consumeWith(
                     WebTestClientRestDocumentation.document(
                         "{methodName}",
@@ -259,11 +263,19 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
                             PayloadDocumentation.fieldWithPath("tester").type(JsonFieldType.STRING)
                                 .description("The updated user that is assigned as a tester in the project"),
                             PayloadDocumentation.fieldWithPath("createdBy").type(JsonFieldType.STRING)
-                                .description("The id of the user that created the project")
+                                .description("The id of the user that created the project"),
+                            PayloadDocumentation.fieldWithPath("testingProgress").type(JsonFieldType.NUMBER)
+                                .description("The progress of the project from completed pentests")
                         )
                     )
                 )
         }
+
+        val projectUpdateRequest = ProjectRequestBody(
+            client = "Novatec_updated",
+            title = "log4j Pentest_updated",
+            tester = "Stipe_updated"
+        )
 
         val projectUpdate = Project(
             id = "4f6567a8-76fd-487b-8602-f82d0ca4d1f9",
