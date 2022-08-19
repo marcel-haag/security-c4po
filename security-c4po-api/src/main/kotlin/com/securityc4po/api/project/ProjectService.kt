@@ -72,12 +72,12 @@ class ProjectService(private val projectRepository: ProjectRepository) {
      * @return status code of deleted [Project]
      */
     fun deleteProject(id: String): Mono<Project> {
-        return projectRepository.findProjectById(id).switchIfEmpty{
+        return projectRepository.findProjectById(id).switchIfEmpty {
             logger.info("Project with id $id not found. Deletion not necessary.")
             Mono.empty()
-        }.flatMap{ projectEntity: ProjectEntity ->
+        }.flatMap { projectEntity: ProjectEntity ->
             val project = projectEntity.toProject()
-            projectRepository.deleteProjectById(id).map{project}
+            projectRepository.deleteProjectById(id).map { project }
         }.onErrorMap {
             TransactionInterruptedException(
                 "Deleting Project failed!",
@@ -101,15 +101,15 @@ class ProjectService(private val projectRepository: ProjectRepository) {
                 "Project not valid.", Errorcode.ProjectInvalid
             )
         )
-        return projectRepository.findProjectById(id).switchIfEmpty{
+        return projectRepository.findProjectById(id).switchIfEmpty {
             logger.warn("Project with id $id not found. Updating not possible.")
             val msg = "Project with id $id not found."
             val ex = EntityNotFoundException(msg, Errorcode.ProjectNotFound)
             throw ex
-        }.flatMap{projectEntity: ProjectEntity ->
+        }.flatMap { projectEntity: ProjectEntity ->
             projectEntity.lastModified = Instant.now()
             projectEntity.data = buildProject(body, projectEntity)
-            projectRepository.save(projectEntity).map{
+            projectRepository.save(projectEntity).map {
                 it.toProject()
             }.doOnError {
                 throw wrappedException(
@@ -130,7 +130,10 @@ class ProjectService(private val projectRepository: ProjectRepository) {
      * @throws [TransactionInterruptedException] if the [Project] could not be updated
      * @return updated list of [ProjectPentest]s
      */
-    fun updateProjectTestingProgress(projectId: String, projectPentests: ProjectPentest)/*: Mono<List<ProjectPentest>>*/ {
+    fun updateProjectTestingProgress(
+        projectId: String,
+        projectPentests: ProjectPentest
+    )/*: Mono<List<ProjectPentest>>*/ {
         // ToDo: update Project Entity with progress
     }
 }
