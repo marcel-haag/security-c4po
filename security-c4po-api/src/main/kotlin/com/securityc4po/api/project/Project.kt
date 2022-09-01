@@ -3,6 +3,7 @@ package com.securityc4po.api.project
 import com.fasterxml.jackson.annotation.JsonFormat
 import com.securityc4po.api.ResponseBody
 import com.securityc4po.api.pentest.PentestStatus
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.data.mongodb.core.index.Indexed
 import java.math.RoundingMode
 import java.text.DecimalFormat
@@ -52,9 +53,13 @@ fun Project.toProjectDeleteResponseBody(): ResponseBody {
     )
 }
 
+
+
 fun Project.calculateProgress(): Float {
     // Total number of pentests listet in the OWASP testing guide
     // https://owasp.org/www-project-web-security-testing-guide/assets/archive/OWASP_Testing_Guide_v4.pdf
+    // @Value("\${owasp.web.pentests}")
+    // lateinit var TOTALPENTESTS: Int
     val TOTALPENTESTS = 95
 
     return if (projectPentests.isEmpty())
@@ -62,7 +67,7 @@ fun Project.calculateProgress(): Float {
     else {
         var completedPentests = 0
         projectPentests.forEach { projectPentest ->
-            if (projectPentest.status == PentestStatus.TRIAGED) {
+            if (projectPentest.status == PentestStatus.COMPLETED) {
                 completedPentests++
             }
         }

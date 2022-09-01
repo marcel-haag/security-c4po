@@ -2,13 +2,9 @@
   <nb-tag-list>
     <nb-tag *ngSwitchCase="status.OPEN" status="info" appearance="filled"
             text="{{getTranslationKey() | translate}}"></nb-tag>
-    <nb-tag *ngSwitchCase="status.CHECKED" status="primary" appearance="filled"
-            text="{{getTranslationKey() | translate}}"></nb-tag>
-    <nb-tag *ngSwitchCase="status.REPORTED" status="danger" appearance="filled"
-            text="{{getTranslationKey() | translate}}"></nb-tag>
-    <nb-tag *ngSwitchCase="status.UNDER_REVIEW" status="warning" appearance="filled"
+    <nb-tag *ngSwitchCase="status.IN_PROGRESS" status="warning" appearance="filled"
             text=" {{getTranslationKey() | translate}}"></nb-tag>
-    <nb-tag *ngSwitchCase="status.TRIAGED" status="success" appearance="filled"
+    <nb-tag *ngSwitchCase="status.COMPLETED" status="success" appearance="filled"
             text="{{getTranslationKey() | translate}}"></nb-tag>
     <nb-tag *ngSwitchDefault status="basic" appearance="filled"
             text="{{getTranslationKey() | translate}}"></nb-tag>
