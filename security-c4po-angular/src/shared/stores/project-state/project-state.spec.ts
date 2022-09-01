@@ -12,7 +12,7 @@ const INITIAL_PROJECT_STATE_SESSION: ProjectStateModel = {
   disabledCategories: [],
   selectedCategory: Category.INFORMATION_GATHERING,
   disabledPentests: [],
-  selectedPentestId: null
+  selectedPentest: null
 };
 
 const DESIRED_PROJECT_STATE_SESSION: ProjectStateModel = {
@@ -20,7 +20,7 @@ const DESIRED_PROJECT_STATE_SESSION: ProjectStateModel = {
   disabledCategories: [],
   selectedCategory: Category.INFORMATION_GATHERING,
   disabledPentests: [],
-  selectedPentestId: null
+  selectedPentest: null
 };
 
 describe('SessionState', () => {

@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
-import {Status} from '@shared/models/status.model';
+import {PentestStatus} from '@shared/models/pentest-status.model';
 
 @Component({
   selector: 'app-status-tag',
@@ -8,18 +8,16 @@ import {Status} from '@shared/models/status.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StatusTagComponent implements OnInit {
-  @Input() currentStatus: Status = Status.NOT_STARTED;
+  @Input() currentStatus: PentestStatus = PentestStatus.NOT_STARTED;
 
   // HTML only
-  status = Status;
+  status = PentestStatus;
   readonly statusTexts: Array<StatusText> = [
-    {value: Status.NOT_STARTED, translationText: 'pentest.statusText.not_started'},
-    {value: Status.DISABLED, translationText: 'pentest.statusText.disabled'},
-    {value: Status.OPEN, translationText: 'pentest.statusText.open'},
-    {value: Status.CHECKED, translationText: 'pentest.statusText.checked'},
-    {value: Status.REPORTED, translationText: 'pentest.statusText.reported'},
-    {value: Status.UNDER_REVIEW, translationText: 'pentest.statusText.under_review'},
-    {value: Status.TRIAGED, translationText: 'pentest.statusText.triaged'}
+    {value: PentestStatus.NOT_STARTED, translationText: 'pentest.statusText.not_started'},
+    {value: PentestStatus.DISABLED, translationText: 'pentest.statusText.disabled'},
+    {value: PentestStatus.OPEN, translationText: 'pentest.statusText.open'},
+    {value: PentestStatus.IN_PROGRESS, translationText: 'pentest.statusText.in_progress'},
+    {value: PentestStatus.COMPLETED, translationText: 'pentest.statusText.completed'}
   ];
 
   constructor() { }

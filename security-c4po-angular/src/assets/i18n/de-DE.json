@@ -2,10 +2,12 @@
   "global": {
     "action.login": "Einloggen",
     "action.retry": "Erneut Versuchen",
+    "action.info": "Info",
     "action.save": "Speichern",
     "action.confirm": "Bestätigen",
     "action.cancel": "Abbrechen",
     "action.return": "Zurück",
+    "action.exit": "Beenden",
     "action.update": "Speichern",
     "action.export": "Exportieren",
     "action.yes": "Ja",
@@ -83,10 +85,8 @@
       "not_started": "Nicht angefangen",
       "disabled": "Deaktiviert",
       "open": "Offen",
-      "checked": "Geprüft",
-      "reported": "Gemeldet",
-      "under_review": "Unter Beurteilung",
-      "triaged": "Triagiert"
+      "in_progress": "In Bearbeitung",
+      "completed": "Fertig"
     },
     "info": {
       "001": "Nutze Suchmaschinenerkennung und -aufklärung für Informationslecks",

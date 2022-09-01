@@ -1,5 +1,6 @@
 import {Project} from '@shared/models/project.model';
 import {Category} from '@shared/models/category.model';
+import {Pentest} from '@shared/models/pentest.model';
 
 
 export class InitProjectState {
@@ -29,6 +30,6 @@ export class ChangeCategory {
 export class ChangePentest {
   static readonly type = '[ProjectState] ChangePentest';
 
-  constructor(public pentestId: string) {
+  constructor(public pentest: Pentest) {
   }
 }

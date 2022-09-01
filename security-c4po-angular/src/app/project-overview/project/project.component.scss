@@ -8,13 +8,14 @@
 
   .header-column {
     width: 100vw;
+    height: $pentest-header-height;
   }
 
   .column-wrapper {
     padding-left: 0 !important;
 
     .categories-column {
-      height: calc(100vh - #{$pentest-header-height});
+      height: calc(100vh - #{$pentest-header-height} - #{$header-height});
     }
   }
 
@@ -23,7 +24,7 @@
 
     .table-column {
       overflow: auto !important;
-      height: calc(100vh - #{$pentest-header-height});
+      height: calc(100vh - #{$pentest-header-height} - #{$header-height});
     }
   }
 }

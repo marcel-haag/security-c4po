@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {Project} from '@shared/models/project.model';
 import {ChangeCategory, ChangePentest, ChangeProject, InitProjectState} from '@shared/stores/project-state/project-state.actions';
 import {Category} from '@shared/models/category.model';
+import {Pentest} from '@shared/models/pentest.model';
 
 export const PROJECT_STATE_NAME = 'project';
 
@@ -13,7 +14,7 @@ export interface ProjectStateModel {
   selectedCategory: Category;
   // Manages Pentests of Category
   disabledPentests: Array<string>;
-  selectedPentestId: string;
+  selectedPentest: Pentest;
 }
 
 @State<ProjectStateModel>({
@@ -23,7 +24,7 @@ export interface ProjectStateModel {
     disabledCategories: [],
     selectedCategory: Category.INFORMATION_GATHERING,
     disabledPentests: [],
-    selectedPentestId: null
+    selectedPentest: null
   }
 })
 @Injectable()
@@ -39,8 +40,8 @@ export class ProjectState {
   }
 
   @Selector()
-  static selectedPentestId(state: ProjectStateModel): string {
-    return state.selectedPentestId;
+  static pentest(state: ProjectStateModel): Pentest {
+    return state.selectedPentest;
   }
 
   @Action(InitProjectState)
@@ -50,7 +51,7 @@ export class ProjectState {
       disabledCategories: action.disabledCategories,
       selectedCategory: Category.INFORMATION_GATHERING,
       disabledPentests: action.disabledPentests,
-      selectedPentestId: null
+      selectedPentest: null
     });
   }
 
@@ -73,10 +74,10 @@ export class ProjectState {
   }
 
   @Action(ChangePentest)
-  changePentest(ctx: StateContext<ProjectStateModel>, {pentestId}: ChangePentest): void {
+  changePentest(ctx: StateContext<ProjectStateModel>, {pentest}: ChangePentest): void {
     const state = ctx.getState();
     ctx.patchState({
-      selectedPentestId: pentestId
+      selectedPentest: pentest
     });
   }
 }
