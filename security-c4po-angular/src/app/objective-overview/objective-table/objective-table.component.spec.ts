@@ -1,32 +1,37 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {PentestHeaderComponent} from './pentest-header.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {ThemeModule} from '@assets/@theme/theme.module';
+import {ObjectiveTableComponent} from './objective-table.component';
+import {NbCardModule, NbTreeGridModule} from '@nebular/theme';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpLoaderFactory} from '../../common-app.module';
 import {HttpClient} from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ThemeModule} from '@assets/@theme/theme.module';
 import {RouterTestingModule} from '@angular/router/testing';
+import {StatusTagComponent} from '@shared/widgets/status-tag/status-tag.component';
+import {FindigWidgetComponent} from '@shared/widgets/findig-widget/findig-widget.component';
+import {MockComponent} from 'ng-mocks';
 import {NgxsModule} from '@ngxs/store';
 import {ProjectState} from '@shared/stores/project-state/project-state';
-import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {NbActionsModule, NbIconModule} from '@nebular/theme';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
-describe('PentestHeaderComponent', () => {
-  let component: PentestHeaderComponent;
-  let fixture: ComponentFixture<PentestHeaderComponent>;
+describe('ObjectiveTableComponent', () => {
+  let component: ObjectiveTableComponent;
+  let fixture: ComponentFixture<ObjectiveTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PentestHeaderComponent],
+      declarations: [
+        ObjectiveTableComponent,
+        MockComponent(StatusTagComponent),
+        MockComponent(FindigWidgetComponent)
+      ],
       imports: [
         BrowserAnimationsModule,
         HttpClientTestingModule,
+        NbCardModule,
+        NbTreeGridModule,
         ThemeModule.forRoot(),
-        FontAwesomeModule,
-        NbIconModule,
-        NbActionsModule,
         TranslateModule.forRoot({
           loader: {
             provide: TranslateLoader,
@@ -42,7 +47,7 @@ describe('PentestHeaderComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PentestHeaderComponent);
+    fixture = TestBed.createComponent(ObjectiveTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

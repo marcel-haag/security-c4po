@@ -14,11 +14,11 @@ import {ChangePentest} from '@shared/stores/project-state/project-state.actions'
 
 @UntilDestroy()
 @Component({
-  selector: 'app-pentest-table',
-  templateUrl: './pentest-table.component.html',
-  styleUrls: ['./pentest-table.component.scss']
+  selector: 'app-objective-table',
+  templateUrl: './objective-table.component.html',
+  styleUrls: ['./objective-table.component.scss']
 })
-export class PentestTableComponent implements OnInit {
+export class ObjectiveTableComponent implements OnInit {
 
   loading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   columns: Array<PentestColumns> = [PentestColumns.TEST_ID, PentestColumns.TITLE, PentestColumns.STATUS, PentestColumns.FINDINGS];

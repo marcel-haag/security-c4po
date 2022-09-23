@@ -8,11 +8,11 @@ import {untilDestroyed} from 'ngx-take-until-destroy';
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-pentest-categories',
-  templateUrl: './pentest-categories.component.html',
-  styleUrls: ['./pentest-categories.component.scss']
+  selector: 'app-objective-categories',
+  templateUrl: './objective-categories.component.html',
+  styleUrls: ['./objective-categories.component.scss']
 })
-export class PentestCategoriesComponent implements OnInit, OnDestroy {
+export class ObjectiveCategoriesComponent implements OnInit, OnDestroy {
   categories: NbMenuItem[] = [];
   selectedCategory: Category = 0;
 
