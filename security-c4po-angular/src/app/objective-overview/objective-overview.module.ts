@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {PentestHeaderComponent} from './pentest-header/pentest-header.component';
-import {PentestCategoriesComponent} from './pentest-categories/pentest-categories.component';
-import {PentestTableComponent} from './pentest-table/pentest-table.component';
+import {ObjectiveHeaderComponent} from './objective-header/objective-header.component';
+import {ObjectiveCategoriesComponent} from './objective-categories/objective-categories.component';
+import {ObjectiveTableComponent} from './objective-table/objective-table.component';
 import {
   NbCardModule,
   NbLayoutModule,
@@ -24,9 +24,9 @@ import {LoadingSpinnerComponent} from '@shared/widgets/loading-spinner/loading-s
 
 @NgModule({
   declarations: [
-    PentestHeaderComponent,
-    PentestCategoriesComponent,
-    PentestTableComponent,
+    ObjectiveHeaderComponent,
+    ObjectiveCategoriesComponent,
+    ObjectiveTableComponent,
     // LoadingSpinnerComponent
   ],
   imports: [
@@ -51,11 +51,11 @@ import {LoadingSpinnerComponent} from '@shared/widgets/loading-spinner/loading-s
     NbActionsModule
   ],
   exports: [
-    PentestHeaderComponent,
-    PentestCategoriesComponent,
-    PentestTableComponent,
+    ObjectiveHeaderComponent,
+    ObjectiveCategoriesComponent,
+    ObjectiveTableComponent,
     // LoadingSpinnerComponent
   ]
 })
-export class PentestOverviewModule {
+export class ObjectiveOverviewModule {
 }

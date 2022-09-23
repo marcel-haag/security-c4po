@@ -8,5 +8,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PentestOverviewRoutingModule {
+export class ObjectiveOverviewRoutingModule {
 }

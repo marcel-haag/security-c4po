@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: 'pentest',
-    loadChildren: () => import('../../pentest-overview/pentest').then(mod => mod.PentestModule),
+    loadChildren: () => import('../../pentest').then(mod => mod.PentestModule),
   },
 ];
 

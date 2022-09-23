@@ -12,7 +12,7 @@ import {SessionState} from '@shared/stores/session-state/session-state';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {NbCardModule, NbLayoutModule} from '@nebular/theme';
 import {KeycloakService} from 'keycloak-angular';
-import {PentestOverviewModule} from '../../pentest-overview';
+import {ObjectiveOverviewModule} from '../../objective-overview';
 
 describe('ProjectComponent', () => {
   let component: ProjectComponent;
@@ -27,7 +27,7 @@ describe('ProjectComponent', () => {
         CommonModule,
         NbLayoutModule,
         NbCardModule,
-        PentestOverviewModule,
+        ObjectiveOverviewModule,
         ThemeModule.forRoot(),
         TranslateModule.forRoot({
           loader: {

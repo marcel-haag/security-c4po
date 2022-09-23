@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PentestCategoriesComponent } from './pentest-categories.component';
+import { ObjectiveCategoriesComponent } from './objective-categories.component';
 import {NbMenuModule, NbMenuService} from '@nebular/theme';
 import {NgxsModule} from '@ngxs/store';
 import {ProjectState} from '@shared/stores/project-state/project-state';
@@ -13,14 +13,14 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ThemeModule} from '@assets/@theme/theme.module';
 import {RouterTestingModule} from '@angular/router/testing';
 
-describe('PentestCategoriesComponent', () => {
-  let component: PentestCategoriesComponent;
-  let fixture: ComponentFixture<PentestCategoriesComponent>;
+describe('ObjectiveCategoriesComponent', () => {
+  let component: ObjectiveCategoriesComponent;
+  let fixture: ComponentFixture<ObjectiveCategoriesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
-        PentestCategoriesComponent
+        ObjectiveCategoriesComponent
       ],
       imports: [
         CommonModule,
@@ -47,7 +47,7 @@ describe('PentestCategoriesComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PentestCategoriesComponent);
+    fixture = TestBed.createComponent(ObjectiveCategoriesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

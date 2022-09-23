@@ -10,11 +10,11 @@ import {Project} from '@shared/models/project.model';
 
 @UntilDestroy()
 @Component({
-  selector: 'app-pentest-header',
-  templateUrl: './pentest-header.component.html',
-  styleUrls: ['./pentest-header.component.scss']
+  selector: 'app-objective-header',
+  templateUrl: './objective-header.component.html',
+  styleUrls: ['./objective-header.component.scss']
 })
-export class PentestHeaderComponent implements OnInit {
+export class ObjectiveHeaderComponent implements OnInit {
 
   readonly fa = FA;
   selectedProjectTitle$: BehaviorSubject<string> = new BehaviorSubject<string>('');

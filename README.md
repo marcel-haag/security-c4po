@@ -1,4 +1,5 @@
-# security-c4po
+
+![alt architecture](./wiki/repository-open-graph-c4po.png)
 
 ## Application Architecture
 ![alt architecture](./wiki/C4PO-Architecture.png)
