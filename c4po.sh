@@ -2,15 +2,9 @@
 baseDir=$(pwd)
 
 composeDir=$baseDir"/security-c4po-cfg"
+compose=$baseDir"/security-c4po-cfg/docker-compose.yml"
 keycloakVolume="security-c4po-cfg/volumes/keycloak/data/*"
 mongoVolume="security-c4po-cfg/volumes/mongodb/data/*"
-
-composeKeycloak=$baseDir"/security-c4po-cfg/kc/docker-compose.keycloak.yml"
-composeDatabase=$baseDir"/security-c4po-cfg/mongodb/docker-compose.mongodb.yml"
-composeFrontend=$baseDir"/security-c4po-cfg/frontend/docker-compose.frontend.yml"
-composeBackend=$baseDir"/security-c4po-cfg/backend/docker-compose.backend.yml"
-
-compose=$baseDir"/security-c4po-cfg/docker-compose.yml"
 
 echo -e "
 _______ _______ _______ _     _  ______ _____ _______ __   __
@@ -34,14 +28,12 @@ echo -e "\n"
 echo "-----------------Start Build------------------"
 echo -e "\n"
 echo " - Backend: "
-docker-compose -f ${composeBackend} build
+docker-compose -f ${compose} build c4po-api
 echo -e "\n"
 echo " - Frontend: "
-docker-compose -f ${composeFrontend} build
+#docker-compose -f ${compose} build c4po-angular
 echo -e "\n"
-# docker-compose -f ${compose} up
 
 echo "------------Start Docker Container------------"
 echo -e "\n"
-docker-compose -f ${composeKeycloak} -f ${composeDatabase} -f ${composeBackend} -f ${composeFrontend} up
-# docker-compose -f ${compose} up
+ docker-compose -f ${compose} up # --scale c4po-angular=0

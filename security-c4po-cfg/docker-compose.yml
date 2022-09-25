@@ -54,7 +54,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: "1G"
+          memory: "2G"
     ports:
       - 4200:4200
     networks:
@@ -72,7 +72,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: "1G"
+          memory: "2G"
     ports:
       - 8443:8443
     networks:
