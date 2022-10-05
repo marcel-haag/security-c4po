@@ -12,7 +12,7 @@ export interface ProjectStateModel {
   // Manages Categories
   disabledCategories: Array<string>;
   selectedCategory: Category;
-  // Manages Pentests of Category
+  // Manages objectives of Category
   disabledPentests: Array<string>;
   selectedPentest: Pentest;
 }
