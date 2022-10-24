@@ -4,8 +4,7 @@ import {PentestStatus} from '@shared/models/pentest-status.model';
 @Component({
   selector: 'app-status-tag',
   templateUrl: './status-tag.component.html',
-  styleUrls: ['./status-tag.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StatusTagComponent implements OnInit {
   @Input() currentStatus: PentestStatus = PentestStatus.NOT_STARTED;
@@ -29,7 +28,6 @@ export class StatusTagComponent implements OnInit {
     const index = this.statusTexts.findIndex(statusText => statusText.value === this.currentStatus);
     return this.statusTexts[index].translationText;
   }
-
 }
 
 interface StatusText {

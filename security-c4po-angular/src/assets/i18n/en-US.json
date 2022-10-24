@@ -88,6 +88,20 @@
     "BUSINESS_LOGIC_TESTING": "Business Logic Testing",
     "CLIENT_SIDE_TESTING": "Client Side Testing"
   },
+  "finding": {
+    "findingId": "Finding Id",
+    "title": "Title",
+    "impact": "Impact",
+    "severity": "Severity",
+    "add": "Add finding",
+    "no.findings": "No findings available"
+  },
+  "severities": {
+    "low": "Low",
+    "medium": "Medium",
+    "high": "High",
+    "critical": "Critical"
+  },
   "pentest": {
     "testId": "No.",
     "title": "Title",

@@ -21,7 +21,7 @@ export class ProjectOverviewComponent implements OnInit {
   readonly fa = FA;
 
   loading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
-  projects: BehaviorSubject<Project[]> = new BehaviorSubject<Project[]>([]);
+  projects$: BehaviorSubject<Project[]> = new BehaviorSubject<Project[]>([]);
 
   constructor(
     private readonly projectService: ProjectService,
@@ -42,7 +42,7 @@ export class ProjectOverviewComponent implements OnInit {
       )
       .subscribe({
         next: (projects: Project[]) => {
-          this.projects.next(projects);
+          this.projects$.next(projects);
           this.loading$.next(false);
         },
         error: err => {

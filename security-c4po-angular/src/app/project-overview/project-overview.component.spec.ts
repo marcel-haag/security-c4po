@@ -10,7 +10,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {ProjectService} from '@shared/services/project.service';
 import {HttpLoaderFactory} from '../common-app.module';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {RouterTestingModule} from '@angular/router/testing';
 import {NgxsModule} from '@ngxs/store';
 import {SessionState} from '@shared/stores/session-state/session-state';

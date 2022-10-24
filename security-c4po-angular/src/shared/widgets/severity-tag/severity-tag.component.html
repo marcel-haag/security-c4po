@@ -1,0 +1,14 @@
+<ng-container [ngSwitch]="currentSeverity">
+  <nb-tag-list>
+    <nb-tag *ngSwitchCase="severity.LOW" status="basic" appearance="filled"
+            text="{{getTranslationKey() | translate}}"></nb-tag>
+    <nb-tag *ngSwitchCase="severity.MEDIUM" status="info" appearance="filled"
+            text=" {{getTranslationKey() | translate}}"></nb-tag>
+    <nb-tag *ngSwitchCase="severity.HIGH" status="warning" appearance="filled"
+            text="{{getTranslationKey() | translate}}"></nb-tag>
+    <nb-tag *ngSwitchCase="severity.CRITICAL" status="danger" appearance="filled"
+            text="{{getTranslationKey() | translate}}"></nb-tag>
+    <nb-tag *ngSwitchDefault status="basic" appearance="filled"
+            text="{{getTranslationKey() | translate}}"></nb-tag>
+  </nb-tag-list>
+</ng-container>
