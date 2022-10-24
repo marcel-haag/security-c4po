@@ -1,4 +1,4 @@
-package com.securityc4po.api.pentest
+package finding
 
 enum class Severity {
     LOW,

@@ -90,17 +90,44 @@
   },
   "finding": {
     "findingId": "Finding Id",
+    "severity": "Severity",
     "title": "Title",
     "impact": "Impact",
-    "severity": "Severity",
     "add": "Add finding",
-    "no.findings": "No findings available"
+    "no.findings": "No findings available",
+    "popup": {
+      "not.found": "No finding found",
+      "save.success": "Finding saved successfully",
+      "save.failed": "Finding could not be saved",
+      "update.success": "Finding updated successfully",
+      "update.failed": "Finding could not be updated",
+      "delete.success": "Finding deleted successfully",
+      "delete.failed": "Finding could not be deleted"
+    }
   },
   "severities": {
     "low": "Low",
     "medium": "Medium",
     "high": "High",
     "critical": "Critical"
+  },
+  "comment": {
+    "commentId": "Comment Id",
+    "title": "Title",
+    "description": "Description",
+    "relatedFindings": "Related Findings",
+    "add": "Add comment",
+    "no.comments": "No comments available",
+    "no.relatedFindings": "Not related to finding",
+    "popup": {
+      "not.found": "No comment found",
+      "save.success": "Comment saved successfully",
+      "save.failed": "Comment could not be saved",
+      "update.success": "Comment updated successfully",
+      "update.failed": "Comment could not be updated",
+      "delete.success": "Comment deleted successfully",
+      "delete.failed": "Comment could not be deleted"
+    }
   },
   "pentest": {
     "testId": "No.",

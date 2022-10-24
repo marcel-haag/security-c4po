@@ -90,17 +90,44 @@
   },
   "finding": {
     "findingId": "Fund Id",
-    "title": "Title",
+    "title": "Titel",
     "impact": "Auswirkung",
     "severity": "Schwere",
     "add": "Fund hinzufügen",
-    "no.findings": "Keine Funde verfügbar"
+    "no.findings": "Keine Funde verfügbar",
+    "popup": {
+      "not.found": "Keine Funde gefunden",
+      "save.success": "Fund erfolgreich gespeichert",
+      "save.failed": "Fund konnte nicht gespeichert werden",
+      "update.success": "Fund erfolgreich aktualisiert",
+      "update.failed": "Fund konnte nicht aktualisiert werden",
+      "delete.success": "Fund erfolgreich gelöscht",
+      "delete.failed": "Fund konnte nicht gelöscht werden"
+    }
   },
   "severities": {
     "low": "Niedrig",
     "medium": "Mittel",
     "high": "Hoch",
     "critical": "Kritisch"
+  },
+  "comment": {
+    "commentId": "Kommentar Id",
+    "title": "Titel",
+    "description": "Beschreibung",
+    "relatedFindings": "Verwandte Funde",
+    "add": "Kommentar hinzufügen",
+    "no.relatedFindings": "Nicht verbunden mit Fund",
+    "no.comments": "Keine Kommentare verfügbar",
+    "popup": {
+      "not.found": "Keine Kommentare gefunden",
+      "save.success": "Kommentar erfolgreich gespeichert",
+      "save.failed": "Kommentar konnte nicht gespeichert werden",
+      "update.success": "Kommentar erfolgreich aktualisiert",
+      "update.failed": "Kommentar konnte nicht aktualisiert werden",
+      "delete.success": "Kommentar erfolgreich gelöscht",
+      "delete.failed": "Kommentar konnte nicht gelöscht werden"
+    }
   },
   "pentest": {
     "testId": "Nr.",
