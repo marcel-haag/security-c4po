@@ -8,13 +8,12 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {TranslateModule} from '@ngx-translate/core';
 import {DateTimeFormatPipe} from '@shared/pipes/date-time-format.pipe';
 import {ProjectDialogModule} from '@shared/modules/project-dialog/project-dialog.module';
-import {LoadingSpinnerComponent} from '@shared/widgets/loading-spinner/loading-spinner.component';
+import {CommonAppModule} from '../common-app.module';
 
 @NgModule({
   declarations: [
     ProjectOverviewComponent,
     DateTimeFormatPipe,
-    LoadingSpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -26,10 +25,8 @@ import {LoadingSpinnerComponent} from '@shared/widgets/loading-spinner/loading-s
     FlexLayoutModule,
     FontAwesomeModule,
     TranslateModule,
-    ProjectDialogModule
-  ],
-  exports: [
-    LoadingSpinnerComponent
+    ProjectDialogModule,
+    CommonAppModule
   ]
 })
 export class ProjectOverviewModule {

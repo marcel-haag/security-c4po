@@ -88,6 +88,20 @@
     "BUSINESS_LOGIC_TESTING": "Business-Logik-Testing",
     "CLIENT_SIDE_TESTING": "Clientseitiges-Testing"
   },
+  "finding": {
+    "findingId": "Fund Id",
+    "title": "Title",
+    "impact": "Auswirkung",
+    "severity": "Schwere",
+    "add": "Fund hinzufügen",
+    "no.findings": "Keine Funde verfügbar"
+  },
+  "severities": {
+    "low": "Niedrig",
+    "medium": "Mittel",
+    "high": "Hoch",
+    "critical": "Kritisch"
+  },
   "pentest": {
     "testId": "Nr.",
     "title": "Titel",

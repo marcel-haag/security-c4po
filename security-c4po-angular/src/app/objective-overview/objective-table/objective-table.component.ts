@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NbGetters, NbTreeGridDataSource, NbTreeGridDataSourceBuilder} from '@nebular/theme';
-import {Pentest, PentestEntry, transformPentestsToEntries} from '@shared/models/pentest.model';
+import {Pentest, ObjectiveEntry, transformPentestsToObjectiveEntries} from '@shared/models/pentest.model';
 import {PentestService} from '@shared/services/pentest.service';
 import {Store} from '@ngxs/store';
 import {PROJECT_STATE_NAME, ProjectState} from '@shared/stores/project-state/project-state';
@@ -21,21 +21,21 @@ import {ChangePentest} from '@shared/stores/project-state/project-state.actions'
 export class ObjectiveTableComponent implements OnInit {
 
   loading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
-  columns: Array<PentestColumns> = [PentestColumns.TEST_ID, PentestColumns.TITLE, PentestColumns.STATUS, PentestColumns.FINDINGS];
-  dataSource: NbTreeGridDataSource<PentestEntry>;
+  columns: Array<ObjectiveColumns> = [ObjectiveColumns.TEST_ID, ObjectiveColumns.TITLE, ObjectiveColumns.STATUS, ObjectiveColumns.FINDINGS];
+  dataSource: NbTreeGridDataSource<ObjectiveEntry>;
 
-  private data: PentestEntry[] = [];
+  private data: ObjectiveEntry[] = [];
 
-  getters: NbGetters<PentestEntry, PentestEntry> = {
-    dataGetter: (node: PentestEntry) => node,
-    childrenGetter: (node: PentestEntry) => node.childEntries || undefined,
-    expandedGetter: (node: PentestEntry) => !!node.expanded,
+  getters: NbGetters<ObjectiveEntry, ObjectiveEntry> = {
+    dataGetter: (node: ObjectiveEntry) => node,
+    childrenGetter: (node: ObjectiveEntry) => node.childEntries || undefined,
+    expandedGetter: (node: ObjectiveEntry) => !!node.expanded,
   };
 
   constructor(
     private store: Store,
     private pentestService: PentestService,
-    private dataSourceBuilder: NbTreeGridDataSourceBuilder<PentestEntry>,
+    private dataSourceBuilder: NbTreeGridDataSourceBuilder<ObjectiveEntry>,
     private readonly router: Router
   ) {
     this.dataSource = dataSourceBuilder.create(this.data, this.getters);
@@ -53,7 +53,7 @@ export class ObjectiveTableComponent implements OnInit {
       untilDestroyed(this)
     ).subscribe({
       next: (pentests: Pentest[]) => {
-        this.data = transformPentestsToEntries(pentests);
+        this.data = transformPentestsToObjectiveEntries(pentests);
         this.dataSource.setData(this.data, this.getters);
         this.loading$.next(false);
       },
@@ -88,7 +88,7 @@ export class ObjectiveTableComponent implements OnInit {
   }
 }
 
-enum PentestColumns {
+enum ObjectiveColumns {
   TEST_ID = 'testId',
   TITLE = 'title',
   STATUS = 'status',

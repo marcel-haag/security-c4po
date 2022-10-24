@@ -1,5 +1,5 @@
 <div fxLayout="row" fxLayoutGap="2rem">
-  <div *ngFor="let project of projects | async">
+  <div *ngFor="let project of projects$ | async">
     <nb-card class="project-card" accent="success">
       <nb-card-header fxLayoutAlign="start center"
                       routerLink="id"
@@ -68,15 +68,15 @@
   </div>
 </div>
 
-<div *ngIf="projects.getValue().length === 0 && loading$.getValue() === false" fxLayout="row" fxLayoutAlign="center center">
+<div *ngIf="projects$.getValue().length === 0 && loading$.getValue() === false" fxLayout="row" fxLayoutAlign="center center">
   <p class="error-text">
     {{'project.overview.no.projects' | translate}}
   </p>
 </div>
 
 <div fxLayoutAlign="end end">
-  <button nbButton
-          status="primary"
+  <button nbButton hero
+          status="info"
           size="large"
           shape="round"
           class="add-project-button"
@@ -87,5 +87,3 @@
 </div>
 
 <app-loading-spinner [isLoading$]="isLoading()" *ngIf="isLoading() | async"></app-loading-spinner>
-
-

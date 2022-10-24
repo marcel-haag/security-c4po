@@ -9,13 +9,16 @@ import {MomentModule} from 'ngx-moment';
 import {NotificationService} from '../shared/services/notification.service';
 import {NbToastrModule} from '@nebular/theme';
 import {ThemeModule} from '../assets/@theme/theme.module';
+import {LoadingSpinnerComponent} from '@shared/widgets/loading-spinner/loading-spinner.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
 }
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    LoadingSpinnerComponent
+  ],
   imports: [
     CommonModule,
     NbToastrModule, // used for notification service
@@ -37,6 +40,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     NotificationService
   ],
   exports: [
+    LoadingSpinnerComponent,
     // modules
     MomentModule
   ]
