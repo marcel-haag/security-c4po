@@ -1,7 +1,6 @@
 package finding
 
 import com.securityc4po.api.BaseEntity
-import comment.Comment
 import org.springframework.data.mongodb.core.mapping.Document
 
 @Document(collection = "findings")

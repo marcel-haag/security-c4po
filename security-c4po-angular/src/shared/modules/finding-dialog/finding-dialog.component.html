@@ -1,0 +1,180 @@
+<nb-card #dialog accent="{{dialogData?.options[0].accentColor}}" class="finding-dialog">
+  <nb-card-header fxLayoutAlign="start center" class="dialog-header">
+    {{ dialogData?.options[0].headerLabelKey | translate }}
+  </nb-card-header>
+  <nb-card-body>
+    <form *ngIf="formArray" [formGroup]="findingFormGroup">
+      <div>
+        <div fxLayout="row" fxLayoutGap="1rem" fxLayoutAlign="start start">
+          <!-- Form Text Layout -->
+          <div fxLayout="column" fxFlex="50" fxLayoutGap="1rem" fxLayoutAlign="start start">
+            <!-- Title Form Field -->
+            <nb-form-field class="finding-form-field">
+              <label for="{{formArray[0].fieldName}}" class="label">
+                {{formArray[0].labelKey | translate}}
+              </label>
+              <input formControlName="{{formArray[0].fieldName}}"
+                     type="formText" required fullWidth
+                     id="{{formArray[0].fieldName}}" nbInput
+                     class="form-field form-text"
+                     [status]="findingFormGroup.get(formArray[0].fieldName).dirty ? (findingFormGroup.get(formArray[0].fieldName).invalid  ? 'danger' : 'basic') : 'basic'"
+                     placeholder="{{formArray[0].placeholder | translate}} *">
+              <!-- FIXME: when the bug (https://github.com/angular/components/issues/7739) is fixed -->
+              <ng-template ngFor let-error [ngForOf]="formArray[0].errors"
+                           *ngIf="findingFormGroup.get(formArray[0].fieldName).dirty">
+                <span class="error-text"
+                      *ngIf="findingFormGroup.get(formArray[0].fieldName)?.hasError(error.errorCode) && error.errorCode === 'required'">
+                {{error.translationKey | translate}}
+                </span>
+              </ng-template>
+            </nb-form-field>
+            <!-- Description Form Field -->
+            <nb-form-field class="finding-form-field">
+              <label for="{{formArray[2].fieldName}}" class="label">
+                {{formArray[2].labelKey | translate}}
+              </label>
+              <textarea formControlName="{{formArray[2].fieldName}}"
+                        type="formText" required fullWidth
+                        id="{{formArray[2].fieldName}}" nbInput
+                        class="form-field form-text"
+                        [status]="findingFormGroup.get(formArray[2].fieldName).dirty ? (findingFormGroup.get(formArray[2].fieldName).invalid  ? 'danger' : 'basic') : 'basic'"
+                        placeholder="{{formArray[2].placeholder | translate}} *">
+              </textarea>
+              <!-- FIXME: when the bug (https://github.com/angular/components/issues/7739) is fixed -->
+              <ng-template ngFor let-error [ngForOf]="formArray[2].errors"
+                           *ngIf="findingFormGroup.get(formArray[2].fieldName).dirty">
+                <span class="error-text"
+                      *ngIf="findingFormGroup.get(formArray[2].fieldName)?.hasError(error.errorCode) && error.errorCode === 'required'">
+                {{error.translationKey | translate}}
+                </span>
+              </ng-template>
+            </nb-form-field>
+            <!-- Impact Form Field -->
+            <nb-form-field class="finding-form-field">
+              <label for="{{formArray[3].fieldName}}" class="label">
+                {{formArray[3].labelKey | translate}}
+              </label>
+              <textarea formControlName="{{formArray[3].fieldName}}"
+                        type="formText" required fullWidth
+                        id="{{formArray[3].fieldName}}" nbInput
+                        class="form-field form-text"
+                        [status]="findingFormGroup.get(formArray[3].fieldName).dirty ? (findingFormGroup.get(formArray[3].fieldName).invalid  ? 'danger' : 'basic') : 'basic'"
+                        placeholder="{{formArray[3].placeholder | translate}} *">
+              </textarea>
+              <!-- FIXME: when the bug (https://github.com/angular/components/issues/7739) is fixed -->
+              <ng-template ngFor let-error [ngForOf]="formArray[3].errors"
+                           *ngIf="findingFormGroup.get(formArray[3].fieldName).dirty">
+                <span class="error-text"
+                      *ngIf="findingFormGroup.get(formArray[3].fieldName)?.hasError(error.errorCode) && error.errorCode === 'required'">
+                {{error.translationKey | translate}}
+                </span>
+              </ng-template>
+            </nb-form-field>
+          </div>
+          <!-- Severity Layout -->
+          <!-- Severity Form Field -->
+          <div fxFlex class="severity-dialog">
+            <label for="{{formArray[1].fieldName}}" class="label">
+              {{formArray[1].labelKey | translate}}
+            </label>
+            <nb-select class="severities" placeholder="{{formArray[1].placeholder | translate}} *"
+                       [(selected)]="formArray[1].controlsConfig[0].value"
+                       status="{{getSeverityFillStatus(formArray[1].controlsConfig[0].value)}}" filled>
+              <nb-option *ngFor="let severity of severityTexts" [value]="severity.value">
+                {{ severity.translationText | translate }}
+              </nb-option>
+            </nb-select>
+          </div>
+        </div>
+        <!-- Affected URLs Layout -->
+        <!-- Affected URLs Form Field -->
+        <nb-form-field class="finding-form-field">
+          <label for="{{formArray[4].fieldName}}" class="label">
+            {{formArray[4].labelKey | translate}}
+          </label>
+          <input formControlName="{{formArray[4].fieldName}}"
+                 type="text"
+                 id="{{formArray[4].fieldName}}"
+                 nbTagInput fullWidth
+                 shape="rectangle"
+                 (tagAdd)="onAffectedUrlAdd()"
+                 class="form-field additionalUrl"
+                 [status]="findingFormGroup.get(formArray[4].fieldName).dirty ? (findingFormGroup.get(formArray[4].fieldName).invalid  ? 'danger' : 'basic') : 'basic'"
+                 placeholder="{{formArray[4].placeholder | translate}}">
+          <!-- FIXME: when the bug (https://github.com/angular/components/issues/7739) is fixed -->
+          <ng-template ngFor let-error [ngForOf]="formArray[4].errors"
+                       *ngIf="findingFormGroup.get(formArray[4].fieldName).dirty">
+            <span class="error-text"
+                  *ngIf="findingFormGroup.get(formArray[4].fieldName)?.hasError(error.errorCode) && error.errorCode === 'required'">
+                {{error.translationKey | translate}}
+            </span>
+          </ng-template>
+        </nb-form-field>
+        <!-- Add Affected URLs Button -->
+        <button nbButton status="primary" size="small" class="add-url-button"
+                (click)="onAffectedUrlAdd()">
+          <fa-icon [icon]="fa.faPlus" class="new-url-icon"></fa-icon>
+          <span> {{ 'finding.add.url' | translate }} </span>
+        </button>
+        <!---->
+        <nb-tag-list (tagRemove)="onAffectedUrlTagRemove($event)" class="url-tag-list">
+          <nb-tag status="info" appearance="outline" class="url-tag" removable *ngFor="let url of affectedUrls" [text]="url"></nb-tag>
+        </nb-tag-list>
+        <!-- Additional Text Layout -->
+        <div fxLayout="row" fxLayoutGap="1rem" fxLayoutAlign="start start">
+          <!-- Reproduction Form Field -->
+          <nb-form-field fxFlex="50" class="finding-form-field">
+            <label for="{{formArray[5].fieldName}}" class="label">
+              {{formArray[5].labelKey | translate}}
+            </label>
+            <textarea formControlName="{{formArray[5].fieldName}}"
+                      type="text" required fullWidth
+                      id="{{formArray[5].fieldName}}" nbInput
+                      class="form-field form-textarea"
+                      [status]="findingFormGroup.get(formArray[5].fieldName).dirty ? (findingFormGroup.get(formArray[5].fieldName).invalid  ? 'danger' : 'basic') : 'basic'"
+                      placeholder="{{formArray[5].placeholder | translate}} *">
+            </textarea>
+            <!-- FIXME: when the bug (https://github.com/angular/components/issues/7739) is fixed -->
+            <ng-template ngFor let-error [ngForOf]="formArray[5].errors"
+                         *ngIf="findingFormGroup.get(formArray[5].fieldName).dirty">
+              <span class="error-text"
+                    *ngIf="findingFormGroup.get(formArray[5].fieldName)?.hasError(error.errorCode) && error.errorCode === 'required'">
+                {{error.translationKey | translate}}
+              </span>
+            </ng-template>
+          </nb-form-field>
+          <!-- Mitigation Form Field -->
+          <nb-form-field fxFlex class="finding-form-field">
+            <label for="{{formArray[6].fieldName}}" class="label">
+              {{formArray[6].labelKey | translate}}
+            </label>
+            <textarea formControlName="{{formArray[6].fieldName}}"
+                      type="text" fullWidth
+                      id="{{formArray[6].fieldName}}" nbInput
+                      class="form-field form-textarea"
+                      [status]="findingFormGroup.get(formArray[6].fieldName).dirty ? (findingFormGroup.get(formArray[6].fieldName).invalid  ? 'danger' : 'basic') : 'basic'"
+                      placeholder="{{formArray[6].placeholder | translate}}">
+            </textarea>
+            <!-- FIXME: when the bug (https://github.com/angular/components/issues/7739) is fixed -->
+            <ng-template ngFor let-error [ngForOf]="formArray[6].errors"
+                         *ngIf="findingFormGroup.get(formArray[6].fieldName).dirty">
+              <span class="error-text"
+                    *ngIf="findingFormGroup.get(formArray[6].fieldName)?.hasError(error.errorCode) && error.errorCode === 'required'">
+              {{error.translationKey | translate}}
+              </span>
+            </ng-template>
+          </nb-form-field>
+        </div>
+      </div>
+    </form>
+  </nb-card-body>
+  <nb-card-footer fxLayout="row" fxLayoutGap="1.5rem" fxLayoutAlign="end end">
+    <button nbButton status="success" size="small" class="dialog-button" [disabled]="!allowSave()"
+            (click)="onClickSave(findingFormGroup.value)">
+      {{ dialogData?.options[0].buttonKey | translate}}
+    </button>
+    <button nbButton status="danger" size="small" class="dialog-button" (click)="onClickClose()">
+      {{ 'global.action.cancel' | translate }}
+    </button>
+  </nb-card-footer>
+</nb-card>

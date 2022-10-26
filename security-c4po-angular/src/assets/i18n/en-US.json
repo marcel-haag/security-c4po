@@ -92,9 +92,41 @@
     "findingId": "Finding Id",
     "severity": "Severity",
     "title": "Title",
+    "description": "Description",
     "impact": "Impact",
+    "affectedUrls": "Affected URL's",
+    "reproduction": "Reproduction",
+    "mitigation": "Mitigation",
     "add": "Add finding",
+    "add.url": "Add affected Url",
+    "affectedUrls.placeholder": "Enter affected URL here..",
+    "create": {
+      "header": "Create New Finding"
+    },
+    "edit": {
+      "header": "Edit Finding"
+    },
+    "delete": {
+      "title": "Delete Finding",
+      "key": "Do you want to permanently delete the finding \"{{name}}\"?"
+    },
+    "severity.label": "Severity of Finding",
+    "title.label": "Finding Title",
+    "description.label": "Description of Finding",
+    "impact.label": "Impacted Applicationparts",
+    "affectedUrls.label": "Affected URL's",
+    "reproduction.label": "Reproductionsteps",
+    "mitigation.label": "Suggest Mitigation",
     "no.findings": "No findings available",
+    "validationMessage": {
+      "titleRequired": "Title is required.",
+      "severityRequired": "Severity is required.",
+      "descriptionRequired": "Description is required.",
+      "impactRequired": "Impact is required.",
+      "affectedUrlsRequired": "Affected Url's required.",
+      "reproductionRequired": "Reproductionstep(s) are required.",
+      "mitigationRequired": "Mitigation is required."
+    },
     "popup": {
       "not.found": "No finding found",
       "save.success": "Finding saved successfully",
@@ -116,7 +148,7 @@
     "title": "Title",
     "description": "Description",
     "relatedFindings": "Related Findings",
-    "add": "Add comment",
+    "add": "Add Comment",
     "no.comments": "No comments available",
     "no.relatedFindings": "Not related to finding",
     "popup": {

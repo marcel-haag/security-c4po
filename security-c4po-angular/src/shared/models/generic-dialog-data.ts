@@ -1,4 +1,4 @@
-export interface ProjectDialogData {
+export interface GenericDialogData {
   form: {
     [key: string]: GenericFormFieldConfig // key is property name, e.g. title
   };

@@ -4,9 +4,7 @@ import {StatusTagComponent} from './status-tag.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpLoaderFactory} from '../../../app/common-app.module';
 import {HttpClient} from '@angular/common/http';
-import {NbCardModule, NbFocusMonitor, NbTagModule} from '@nebular/theme';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {CommonModule} from '@angular/common';
+import {NbCardModule, NbTagModule} from '@nebular/theme';
 import {MockModule} from 'ng-mocks';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 

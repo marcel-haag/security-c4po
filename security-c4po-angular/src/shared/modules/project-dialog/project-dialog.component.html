@@ -16,7 +16,7 @@
             <input formControlName="{{fieldConfig.fieldName}}"
                    type="text" required fullWidth
                    id="{{fieldConfig.fieldName}}" nbInput
-                   class="input"
+                   class="form-field"
                    [status]="projectFormGroup.get(fieldConfig.fieldName).dirty ? (projectFormGroup.get(fieldConfig.fieldName).invalid  ? 'danger' : 'basic') : 'basic'"
                    placeholder="{{fieldConfig.placeholder | translate}} *">
             <!-- FIXME: when the bug (https://github.com/angular/components/issues/7739) is fixed -->
