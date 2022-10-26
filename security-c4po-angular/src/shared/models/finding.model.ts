@@ -5,10 +5,10 @@ export class Finding {
   id?: string;
   severity: Severity;
   title: string;
-  description?: string;
+  description: string;
   impact: string;
   affectedUrls?: Array<string>;
-  reproduction?: string;
+  reproduction: string;
   mitigation?: string;
 
   constructor(title: string,
@@ -54,4 +54,14 @@ export function transformFindingsToObjectiveEntries(findings: Finding[]): Findin
     } as FindingEntry);
   });
   return findingEntries;
+}
+
+export interface FindingDialogBody {
+  title: string;
+  severity: Severity;
+  description: string;
+  impact: string;
+  affectedUrls: Array<string>;
+  reproduction: string;
+  mitigation: string;
 }

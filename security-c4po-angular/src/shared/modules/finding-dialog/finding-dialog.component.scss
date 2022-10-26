@@ -1,0 +1,92 @@
+@import "../../../assets/@theme/styles/_dialog.scss";
+@import '../../../assets/@theme/styles/themes';
+
+.finding-dialog {
+  width: 65.25rem !important;
+  height: 55rem;
+
+  .finding-dialog-header {
+    height: 8vh;
+    font-size: 1.5rem;
+  }
+
+  nb-form-field {
+    padding: 0.5rem 0 0.75rem;
+  }
+
+  .label {
+    display: block;
+    font-size: 0.95rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .form-field {
+    font-weight: normal;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-text {
+    width: 30rem !important;
+  }
+
+  .form-textarea {
+    width: 30rem !important;
+    height: 8rem;
+  }
+
+  .additionalUrl {
+    font-family: Courier, serif;
+    background-color: nb-theme(card-header-basic-background-color);
+    padding-left: 1.5rem;
+    width: 100% !important;
+  }
+
+  .add-url-button {
+    width: 100% !important;
+    margin-bottom: 1.5rem;
+
+    .new-url-icon {
+      padding-right: 0.5rem;
+    }
+  }
+
+  .url-tag-list {
+    margin-bottom: 1.5rem;
+
+    .url-tag {
+      max-width: 62rem !important;
+      overflow: hidden;
+      display: inline-block;
+      // Style
+      font-family: Courier, serif;
+      text-transform: none !important;
+    }
+  }
+
+  .error-text {
+    float: left;
+    color: nb-theme(color-danger-default);
+  }
+
+  .severity-dialog {
+    margin-left: auto;
+    margin-right: 0;
+    padding: 0.5rem 0 0.75rem;
+
+    .severities {
+      width: 8rem;
+    }
+
+    .severity-0 {
+    }
+    .severity-1 {
+      background-color: nb-theme(color-info-default);
+    }
+    .severity-2 {
+      background-color: nb-theme(color-warning-default);
+    }
+    .severity-3 {
+      background-color: nb-theme(color-danger-default);
+    }
+  }
+}

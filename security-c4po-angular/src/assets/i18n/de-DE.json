@@ -90,11 +90,43 @@
   },
   "finding": {
     "findingId": "Fund Id",
-    "title": "Titel",
-    "impact": "Auswirkung",
     "severity": "Schwere",
+    "title": "Titel",
+    "description": "Beschreibung",
+    "impact": "Auswirkung",
+    "affectedUrls": "Betroffene URL's",
+    "reproduction": "Reproduktion",
+    "mitigation": "Minderung",
     "add": "Fund hinzufügen",
+    "add.url": "Betroffene URL hinzufügen",
+    "affectedUrls.placeholder": "Betroffene URL hier eingeben..",
+    "create": {
+      "header": "Neuen Fund erstellen"
+    },
+    "edit": {
+      "header": "Fund editieren"
+    },
+    "delete": {
+      "title": "Fund löschen",
+      "key": "Möchten Sie den Fund \"{{name}}\" unwiderruflich löschen?"
+    },
+    "severity.label": "Schwere des Funds",
+    "title.label": "Fundtitel",
+    "description.label": "Beschreibung des Funds",
+    "impact.label": "Auswirkung auf Anwendung",
+    "affectedUrls.label": "Betroffene URL's",
+    "reproduction.label": "Reproduktionsschritte",
+    "mitigation.label": "Minderungsvorschlag",
     "no.findings": "Keine Funde verfügbar",
+    "validationMessage": {
+      "titleRequired": "Titel ist erforderlich.",
+      "severityRequired": "Schwere ist erforderlich.",
+      "descriptionRequired": "Beschreibung ist erforderlich.",
+      "impactRequired": "Auswirkung ist erforderlich.",
+      "affectedUrlsRequired": "Betroffene URL's erforderlich.",
+      "reproductionRequired": "Reproduktionschritt(e) sind erforderlich.",
+      "mitigationRequired": "Minderungsvorschlag ist erforderlich."
+    },
     "popup": {
       "not.found": "Keine Funde gefunden",
       "save.success": "Fund erfolgreich gespeichert",

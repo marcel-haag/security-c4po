@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {NB_DIALOG_CONFIG, NbDialogRef} from '@nebular/theme';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {GenericFormFieldConfig, ProjectDialogData} from '@shared/models/project-dialog-data';
+import {GenericFormFieldConfig, GenericDialogData} from '@shared/models/generic-dialog-data';
 import deepEqual from 'deep-equal';
 import {UntilDestroy} from '@ngneat/until-destroy';
 
@@ -16,10 +16,10 @@ export class ProjectDialogComponent implements OnInit {
   projectFormGroup: FormGroup;
   formArray: GenericFormFieldConfig[];
 
-  dialogData: ProjectDialogData;
+  dialogData: GenericDialogData;
 
   constructor(
-    @Inject(NB_DIALOG_CONFIG) private data: ProjectDialogData,
+    @Inject(NB_DIALOG_CONFIG) private data: GenericDialogData,
     private fb: FormBuilder,
     protected dialogRef: NbDialogRef<ProjectDialogComponent>
   ) {
@@ -75,7 +75,7 @@ export class ProjectDialogComponent implements OnInit {
    * @param dialogData of type ProjectDialogData
    * @return parsed projectData
    */
-  private parseInitializedProjectDialogData(dialogData: ProjectDialogData): any {
+  private parseInitializedProjectDialogData(dialogData: GenericDialogData): any {
     const projectData = {};
     Object.entries(dialogData.form).forEach(entry => {
       const [key, value] = entry;

@@ -24,7 +24,6 @@ import {DialogServiceMock} from '@shared/services/dialog-service/dialog.service.
 import {ReactiveFormsModule, Validators} from '@angular/forms';
 import {Project} from '@shared/models/project.model';
 import Mock = jest.Mock;
-import deepEqual from 'deep-equal';
 
 describe('ProjectDialogComponent', () => {
   let component: ProjectDialogComponent;
@@ -62,13 +61,13 @@ describe('ProjectDialogComponent', () => {
         {provide: NotificationService, useValue: new NotificationServiceMock()},
         {provide: DialogService, useClass: DialogServiceMock},
         {provide: NbDialogRef, useValue: dialogSpy},
-        {provide: NB_DIALOG_CONFIG, useValue: mockedDialogData}
+        {provide: NB_DIALOG_CONFIG, useValue: mockedProjectDialogData}
       ]
     }).compileComponents();
   });
 
   beforeEach(() => {
-    TestBed.overrideProvider(NB_DIALOG_CONFIG, {useValue: mockedDialogData});
+    TestBed.overrideProvider(NB_DIALOG_CONFIG, {useValue: mockedProjectDialogData});
     fixture = TestBed.createComponent(ProjectDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -97,7 +96,7 @@ export const mockProject: Project = {
   createdBy: 'UID-11-12-13'
 };
 
-export const mockedDialogData = {
+export const mockedProjectDialogData = {
   form: {
     projectTitle: {
       fieldName: 'projectTitle',

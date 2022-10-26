@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {Project} from '@shared/models/project.model';
 import {ProjectDialogComponent} from '@shared/modules/project-dialog/project-dialog.component';
 import {Validators} from '@angular/forms';
-import {ProjectDialogData} from '@shared/models/project-dialog-data';
+import {GenericDialogData} from '@shared/models/generic-dialog-data';
 
 @Injectable()
 export class ProjectDialogService {
@@ -17,7 +17,7 @@ export class ProjectDialogService {
 
   static addDataToDialogConfig(
     dialogOptions?: Partial<NbDialogConfig<Partial<any> | string>>,
-    projectData?: ProjectDialogData
+    projectData?: GenericDialogData
   ): Partial<NbDialogConfig<Partial<any> | string>> {
     return {
       context: {data: projectData},
@@ -32,7 +32,7 @@ export class ProjectDialogService {
                            project?: Project,
                            config?: Partial<NbDialogConfig<Partial<any> | string>>): Observable<any> {
     let dialogOptions: Partial<NbDialogConfig<Partial<any> | string>>;
-    let dialogData: ProjectDialogData;
+    let dialogData: GenericDialogData;
     // Setup ProjectDialogData
     dialogData = {
       form: {
@@ -91,7 +91,7 @@ export class ProjectDialogService {
         {
           headerLabelKey: 'project.create.header',
           buttonKey: 'global.action.save',
-          accentColor: 'primary'
+          accentColor: 'info'
         },
       ];
     }
