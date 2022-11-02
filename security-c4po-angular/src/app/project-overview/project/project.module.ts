@@ -5,9 +5,9 @@ import {ProjectComponent} from './project.component';
 import {NbCardModule, NbLayoutModule} from '@nebular/theme';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {TranslateModule} from '@ngx-translate/core';
-import {ProjectDialogModule} from '@shared/modules/project-dialog/project-dialog.module';
 import {ProjectRoutingModule} from './project-routing.module';
 import {ObjectiveOverviewModule} from '../../objective-overview';
+import {CommonAppModule} from '../../common-app.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +15,7 @@ import {ObjectiveOverviewModule} from '../../objective-overview';
   ],
   imports: [
     CommonModule,
+    CommonAppModule,
     NbCardModule,
     NbLayoutModule,
     RouterModule.forChild([{
@@ -24,7 +25,6 @@ import {ObjectiveOverviewModule} from '../../objective-overview';
     ProjectRoutingModule,
     TranslateModule,
     FlexLayoutModule,
-    ProjectDialogModule,
     ObjectiveOverviewModule
   ],
   exports: [

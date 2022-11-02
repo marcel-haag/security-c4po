@@ -24,10 +24,10 @@ export class ProjectOverviewComponent implements OnInit {
   projects$: BehaviorSubject<Project[]> = new BehaviorSubject<Project[]>([]);
 
   constructor(
-    private readonly projectService: ProjectService,
-    private readonly dialogService: DialogService,
-    private readonly projectDialogService: ProjectDialogService,
-    private readonly notificationService: NotificationService) {
+    private readonly notificationService: NotificationService,
+    private projectService: ProjectService,
+    private dialogService: DialogService,
+    private projectDialogService: ProjectDialogService) {
   }
 
   ngOnInit(): void {
@@ -37,8 +37,8 @@ export class ProjectOverviewComponent implements OnInit {
   loadProjects(): void {
     this.projectService.getProjects()
       .pipe(
-        untilDestroyed(this),
-        tap(() => this.loading$.next(true))
+        tap(() => this.loading$.next(true)),
+        untilDestroyed(this)
       )
       .subscribe({
         next: (projects: Project[]) => {
@@ -72,8 +72,8 @@ export class ProjectOverviewComponent implements OnInit {
         this.loadProjects();
         this.notificationService.showPopup('project.popup.save.success', PopupType.SUCCESS);
       },
-      error: error => {
-        console.error(error);
+      error: err => {
+        console.error(err);
         this.notificationService.showPopup('project.popup.save.failed', PopupType.FAILURE);
       }
     });

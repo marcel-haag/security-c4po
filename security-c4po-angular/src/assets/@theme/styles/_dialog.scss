@@ -1,5 +1,5 @@
 .dialog-header {
-  height: 6.75vh;
+  height: 6.75vh !important;
   font-size: 1.5rem;
 
   .dialog-headline {
@@ -8,11 +8,12 @@
 }
 
 .dialog-body {
-  font-size: 1.15rem;
+  font-size: 1rem;
 }
 
 .dialog-button {
-  width: 5.25rem;
-  height: 2.5rem;
-  // font-size: 0.85rem;
+  width: 5.75rem !important;
+  height: 2.15rem !important;
+  text-transform: none !important;
+  font-size: 0.85rem;
 }

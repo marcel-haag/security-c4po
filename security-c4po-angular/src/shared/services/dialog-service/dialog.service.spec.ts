@@ -14,7 +14,7 @@ describe('DialogService', () => {
       imports: [
         HttpClientTestingModule,
         BrowserAnimationsModule,
-        NbDialogModule.forRoot()
+        NbDialogModule.forChild()
       ],
       providers: [
         {provide: DialogService, useClass: DialogServiceMock},

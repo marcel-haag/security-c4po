@@ -20,43 +20,42 @@ import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {LoadingSpinnerComponent} from '@shared/widgets/loading-spinner/loading-spinner.component';
 import {CommonAppModule} from '../common-app.module';
+import {ObjectiveOverviewRoutingModule} from './objective-overview-routing.module';
 
 @NgModule({
   declarations: [
     ObjectiveHeaderComponent,
     ObjectiveCategoriesComponent,
     ObjectiveTableComponent,
-    // LoadingSpinnerComponent
   ],
-    imports: [
-        CommonModule,
-        NbLayoutModule,
-        NbCardModule,
-        NbMenuModule.forRoot(),
-        NbButtonModule,
-        // nbTooltip crashes app right now if used in component,
-        // workaround: use title in html for now
-        NbTooltipModule,
-        NbTreeGridModule,
-        TranslateModule,
-        StatusTagModule,
-        FindigWidgetModule,
-        RouterModule,
-        NbMenuModule,
-        FormsModule,
-        NbListModule,
-        FontAwesomeModule,
-        FlexLayoutModule,
-        NbActionsModule,
-        CommonAppModule
-    ],
+  imports: [
+    CommonModule,
+    CommonAppModule,
+    NbLayoutModule,
+    NbCardModule,
+    NbMenuModule.forRoot(),
+    NbButtonModule,
+    // nbTooltip crashes app right now if used in component,
+    // workaround: use title in html for now
+    NbTooltipModule,
+    NbTreeGridModule,
+    TranslateModule,
+    StatusTagModule,
+    FindigWidgetModule,
+    RouterModule,
+    NbMenuModule,
+    FormsModule,
+    NbListModule,
+    FontAwesomeModule,
+    FlexLayoutModule,
+    NbActionsModule,
+    ObjectiveOverviewRoutingModule
+  ],
   exports: [
     ObjectiveHeaderComponent,
     ObjectiveCategoriesComponent,
     ObjectiveTableComponent,
-    // LoadingSpinnerComponent
   ]
 })
 export class ObjectiveOverviewModule {

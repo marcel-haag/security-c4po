@@ -6,7 +6,13 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   NbLayoutModule,
   NbToastrModule,
-  NbIconModule, NbCardModule, NbButtonModule, NbDialogService, NbDialogModule, NbSelectModule
+  NbIconModule,
+  NbCardModule,
+  NbButtonModule,
+  NbSelectModule,
+  NbThemeModule,
+  NbOverlayContainerAdapter,
+  NbDialogModule,
 } from '@nebular/theme';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
@@ -25,11 +31,11 @@ import {HomeModule} from './home/home.module';
 import {KeycloakService} from 'keycloak-angular';
 import {httpInterceptorProviders} from '@shared/interceptors';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {DialogService} from '@shared/services/dialog-service/dialog.service';
-import {ConfirmDialogModule} from '@shared/modules/confirm-dialog/confirm-dialog.module';
-import {OverlayContainer} from '@angular/cdk/overlay';
 import {NgxsLoggerPluginModule} from '@shared/stores/plugins/store-logger-plugin';
 import {ProjectState} from '@shared/stores/project-state/project-state';
+import {CustomOverlayContainer} from '@shared/modules/custom-overlay-container.component';
+import {DialogService} from '@shared/services/dialog-service/dialog.service';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -40,16 +46,19 @@ import {ProjectState} from '@shared/stores/project-state/project-state';
     AppRoutingModule,
     RouterModule,
     NbLayoutModule,
-    NbDialogModule.forRoot(),
     NbCardModule,
     NbIconModule,
     NbButtonModule,
+    NbDialogModule.forRoot(),
+    NbThemeModule.forRoot(),
     NbToastrModule.forRoot(), // used for notification service
+    FlexLayoutModule,
+    ReactiveFormsModule,
+    FormsModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
     ThemeModule.forRoot(),
     NbSelectModule,
-    ConfirmDialogModule,
     NgxsModule.forRoot([SessionState, ProjectState], {developmentMode: !environment.production}),
     NgxsLoggerPluginModule.forRoot({developmentMode: !environment.production}),
     HttpClientModule,
@@ -62,7 +71,6 @@ import {ProjectState} from '@shared/stores/project-state/project-state';
     }),
     HeaderModule,
     HomeModule,
-    FlexLayoutModule
   ],
   providers: [
     HttpClient,
@@ -72,12 +80,11 @@ import {ProjectState} from '@shared/stores/project-state/project-state';
       multi: true,
       deps: [KeycloakService]
     },
-    OverlayContainer,
     KeycloakService,
     httpInterceptorProviders,
     NotificationService,
     DialogService,
-    NbDialogService,
+    {provide: NbOverlayContainerAdapter, useClass: CustomOverlayContainer}
   ],
   bootstrap: [
     AppComponent

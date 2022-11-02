@@ -14,7 +14,7 @@ describe('FindingDialogService', () => {
       imports: [
         HttpClientTestingModule,
         BrowserAnimationsModule,
-        NbDialogModule.forRoot()
+        NbDialogModule.forChild()
       ],
       providers: [
         {provide: FindingDialogService, useClass: FindingDialogServiceMock},

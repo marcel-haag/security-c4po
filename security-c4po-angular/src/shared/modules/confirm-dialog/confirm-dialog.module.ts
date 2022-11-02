@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {ConfirmDialogComponent} from '@shared/modules/confirm-dialog/confirm-dialog.component';
-import {NbButtonModule, NbCardModule} from '@nebular/theme';
+import {NbButtonModule, NbCardModule, NbLayoutModule, NbSelectModule} from '@nebular/theme';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {TranslateModule} from '@ngx-translate/core';
+import {CommonAppModule} from '../../../app/common-app.module';
 
 @NgModule({
   declarations: [
@@ -11,13 +12,17 @@ import {TranslateModule} from '@ngx-translate/core';
   ],
   imports: [
     CommonModule,
+    CommonAppModule,
     NbCardModule,
     NbButtonModule,
     FlexLayoutModule,
-    TranslateModule
+    TranslateModule,
+    NbLayoutModule,
+    NbSelectModule
   ],
   entryComponents: [
     ConfirmDialogComponent
   ]
 })
-export class ConfirmDialogModule { }
+export class ConfirmDialogModule {
+}

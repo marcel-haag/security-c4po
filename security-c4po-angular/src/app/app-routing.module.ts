@@ -2,17 +2,18 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {AuthGuardService} from '../shared/guards/auth-guard.service';
+import {Route} from '@shared/models/route.enum';
 
-export const START_PAGE = 'projects';
+export const START_PAGE = Route.PROJECT_OVERVIEW;
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: Route.HOME,
     component: HomeComponent,
     canActivate: [AuthGuardService]
   },
   {
-    path: 'projects',
+    path: Route.PROJECT_OVERVIEW,
     loadChildren: () => import('./project-overview').then(mod => mod.ProjectOverviewModule),
     canActivate: [AuthGuardService]
   },

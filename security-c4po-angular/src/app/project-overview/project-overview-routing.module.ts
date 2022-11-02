@@ -5,7 +5,7 @@ import {ProjectOverviewComponent} from './project-overview.component';
 const routes: Routes = [
   {
     path: '',
-    component: ProjectOverviewComponent
+    component: ProjectOverviewComponent,
   },
   {
     path: 'id',

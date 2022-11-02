@@ -1,5 +1,4 @@
 import {v4 as UUID} from 'uuid';
-import {Severity} from '@shared/models/severity.enum';
 
 export class Comment {
   id?: string;

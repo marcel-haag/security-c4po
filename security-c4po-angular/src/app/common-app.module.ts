@@ -6,9 +6,9 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {FlexLayoutModule, FlexModule} from '@angular/flex-layout';
 import {MomentModule} from 'ngx-moment';
-import {NotificationService} from '../shared/services/notification.service';
-import {NbToastrModule} from '@nebular/theme';
-import {ThemeModule} from '../assets/@theme/theme.module';
+import {NotificationService} from '@shared/services/notification.service';
+import {NbOverlayContainerAdapter, NbSpinnerModule, NbToastrModule} from '@nebular/theme';
+import {ThemeModule} from '@assets/@theme/theme.module';
 import {LoadingSpinnerComponent} from '@shared/widgets/loading-spinner/loading-spinner.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -22,6 +22,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   imports: [
     CommonModule,
     NbToastrModule, // used for notification service
+    NbSpinnerModule,
     FontAwesomeModule,
     FlexLayoutModule,
     ThemeModule.forRoot(),
@@ -37,7 +38,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   ],
   providers: [
     HttpClient,
-    NotificationService
+    NotificationService,
+    NbOverlayContainerAdapter
   ],
   exports: [
     LoadingSpinnerComponent,
