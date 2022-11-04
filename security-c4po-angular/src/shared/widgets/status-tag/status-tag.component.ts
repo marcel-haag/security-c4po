@@ -30,7 +30,7 @@ export class StatusTagComponent implements OnInit {
   }
 }
 
-interface StatusText {
+export interface StatusText {
   value: string;
   translationText: string;
 }
