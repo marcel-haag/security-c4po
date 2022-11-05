@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 cd keycloak/bin
 sleep 20
-./kcadm.sh config credentials --server http://localhost:8888/auth --realm master --user admin --password admin
+./kcadm.sh config credentials --server http://localhost:8080/auth --realm master --user admin --password admin
 
 USERID=$(./kcadm.sh create users -r c4po_realm_local -s username=test_admin \
 -s email=testadmin@test.de \

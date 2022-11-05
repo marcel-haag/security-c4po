@@ -7,7 +7,7 @@ export const environment = {
   production: false,
 
   // keycloak
-  keycloakURL: 'http://localhost:8888/auth',
+  keycloakURL: 'http://localhost:8080/auth',
   keycloakrealm: 'c4po_realm_local',
   keycloakclientId: 'c4po_local',
 
