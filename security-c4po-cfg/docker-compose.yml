@@ -5,23 +5,11 @@ volumes:
   c4po-db:
 
 services:
-  # Database
-  c4po-keycloak-postgres:
-    container_name: c4po-keycloak-postgres
-    image: postgres:latest
-    env_file:
-      - cfg/keycloakdb.env
-    ports:
-      - 5433:5432
-    volumes:
-      - /volumes/keycloak/data/:/var/lib/postgres/data
-    networks:
-      - c4po
   c4po-db:
     image: mongo:latest
     container_name: c4po-db
     volumes:
-      - /volumes/mongodb/data/:/db/data
+      - ./volumes/mongodb/data/:/db/data
     deploy:
       resources:
         limits:
@@ -30,20 +18,15 @@ services:
       - 27017:27017
     networks:
       - c4po
-  # Authentity Provider
+  # Authentication Provider
   c4po-keycloak:
     container_name: c4po-keycloak
-    depends_on:
-      - c4po-keycloak-postgres
-    links:
-      - c4po-keycloak-postgres
-    image: jboss/keycloak:11.0.3
+    image: quay.io/keycloak/keycloak:20.0.0
     volumes:
-      - /cfg/c4po_realm_export.json/:/tmp/c4po_realm_export.json
+      - ./cfg/c4po_realm_export.json/:/opt/keycloak/data/import/c4po_realm_export.json
     ports:
-      - 8888:8080
-    env_file:
-      - cfg/keycloak.env
+      - 8080:8080
+    entrypoint: /opt/keycloak/bin/kc.sh start-dev --import-realm --http-relative-path=/auth
     networks:
       - c4po
   # Services
@@ -53,8 +36,6 @@ services:
     container_name: c4po-angular
     depends_on:
       - c4po-keycloak
-    links:
-      - c4po-keycloak
     deploy:
       resources:
         limits:
@@ -63,7 +44,6 @@ services:
       - 4200:4200
     networks:
       - c4po
-
   c4po-api:
     build: '../security-c4po-api'
     image: security-c4po-api:latest
@@ -71,9 +51,6 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=COMPOSE
     depends_on:
-      - c4po-db
-      - c4po-keycloak
-    links:
       - c4po-db
       - c4po-keycloak
     deploy:

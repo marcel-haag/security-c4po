@@ -91,6 +91,7 @@ dependencies {
 	testImplementation("org.springframework.restdocs:spring-restdocs-webtestclient")
 	testImplementation("com.github.spotbugs:spotbugs-annotations:4.1.2")
 	testApi("org.testcontainers:junit-jupiter:1.15.2")
+    testImplementation("com.github.dasniko:testcontainers-keycloak:2.3.0")
 }
 
 jacoco {
