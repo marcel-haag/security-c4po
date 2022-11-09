@@ -34,4 +34,5 @@ enum class Errorcode(val code: Int) {
     PentestFetchingFailed(6005),
     ProjectInsertionFailed(6006),
     PentestInsertionFailed(6007),
+    ProjectPentestInsertionFailed(6008),
 }

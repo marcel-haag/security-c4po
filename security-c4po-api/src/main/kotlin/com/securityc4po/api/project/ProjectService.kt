@@ -125,15 +125,39 @@ class ProjectService(private val projectRepository: ProjectRepository) {
 
 
     /**
-     * Update testing progress of [Project]
+     * Update testing progress for specific Pentest of [Project]
      *
-     * @throws [TransactionInterruptedException] if the [Project] could not be updated
-     * @return updated list of [ProjectPentest]s
+     * @throws [TransactionInterruptedException] if the [Project] Pentest could not be updated
+     * @return updated [Project]
      */
     fun updateProjectTestingProgress(
         projectId: String,
-        projectPentests: ProjectPentest
-    )/*: Mono<List<ProjectPentest>>*/ {
-        // ToDo: update Project Entity with progress
+        projectPentest: ProjectPentest
+    ): Mono<Project> {
+        return this.projectRepository.findProjectById(projectId).switchIfEmpty {
+            logger.warn("Project with id $projectId not found. Updating not possible.")
+            val msg = "Project with id $projectId not found."
+            val ex = EntityNotFoundException(msg, Errorcode.ProjectNotFound)
+            throw ex
+        }.flatMap {projectEntity: ProjectEntity ->
+            val currentProjectPentestStatus = projectEntity.data.projectPentests.find { projectPentestData -> projectPentestData.pentestId == projectPentest.pentestId }
+            if (currentProjectPentestStatus !== null) {
+                projectEntity.data.projectPentests.find { data -> data.pentestId == projectPentest.pentestId }!!.status = projectPentest.status
+            } else {
+                projectEntity.data.projectPentests += projectPentest
+            }
+            projectEntity.lastModified = Instant.now()
+            this.projectRepository.save(projectEntity).map {
+                it.toProject()
+            }.doOnError {
+                throw wrappedException(
+                    logging = { logger.warn("Project Pentests could not be updated in Database. Thrown exception: ", it) },
+                    mappedException = TransactionInterruptedException(
+                        "Project could not be updated.",
+                        Errorcode.ProjectInsertionFailed
+                    )
+                )
+            }
+        }
     }
 }

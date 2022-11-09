@@ -3,12 +3,11 @@ import {NbGetters, NbTreeGridDataSource, NbTreeGridDataSourceBuilder} from '@neb
 import {Pentest, ObjectiveEntry, transformPentestsToObjectiveEntries} from '@shared/models/pentest.model';
 import {PentestService} from '@shared/services/pentest.service';
 import {Store} from '@ngxs/store';
-import {PROJECT_STATE_NAME, ProjectState} from '@shared/stores/project-state/project-state';
+import {ProjectState} from '@shared/stores/project-state/project-state';
 import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';
 import {catchError, switchMap, tap} from 'rxjs/operators';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {getTitleKeyForRefNumber} from '@shared/functions/categories/get-title-key-for-ref-number.function';
-import {Route} from '@shared/models/route.enum';
 import {Router} from '@angular/router';
 import {ChangePentest} from '@shared/stores/project-state/project-state.actions';
 
@@ -25,6 +24,7 @@ export class ObjectiveTableComponent implements OnInit {
   dataSource: NbTreeGridDataSource<ObjectiveEntry>;
 
   private data: ObjectiveEntry[] = [];
+  private pentests$: BehaviorSubject<Pentest[]> = new BehaviorSubject<Pentest[]>([]);
 
   getters: NbGetters<ObjectiveEntry, ObjectiveEntry> = {
     dataGetter: (node: ObjectiveEntry) => node,
@@ -53,6 +53,8 @@ export class ObjectiveTableComponent implements OnInit {
       untilDestroyed(this)
     ).subscribe({
       next: (pentests: Pentest[]) => {
+        // ToDo: Change assignement here
+        this.pentests$.next(pentests);
         this.data = transformPentestsToObjectiveEntries(pentests);
         this.dataSource.setData(this.data, this.getters);
         this.loading$.next(false);
@@ -64,7 +66,7 @@ export class ObjectiveTableComponent implements OnInit {
     });
   }
 
-  selectPentest(pentest: Pentest): void {
+  selectPentest(selectedPentest: Pentest): void {
     /* ToDo: Include again after fixing pentest route
     this.router.navigate([Route.PENTEST])
       .then(
@@ -74,7 +76,8 @@ export class ObjectiveTableComponent implements OnInit {
         })
       ).finally();
     */
-    this.store.dispatch(new ChangePentest(pentest));
+    const statePentest = this.pentests$.getValue().find(pentest => pentest.refNumber === selectedPentest.refNumber);
+    this.store.dispatch(new ChangePentest(statePentest));
   }
 
   // HTML only

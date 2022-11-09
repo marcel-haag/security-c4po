@@ -36,13 +36,11 @@
       <nb-card-footer>
         <div fxLayout="row" fxLayoutGap="1rem" fxLayoutAlign="start end">
           <div class="project-progress">
-
             <nb-progress-bar *ngIf="project.testingProgress > 0; else altProgressBar"
                              status="warning"
                              [value]="project.testingProgress"
                              [displayValue]="true">
             </nb-progress-bar>
-
             <ng-template #altProgressBar>
               {{'popup.info' | translate}} {{'global.no.progress' | translate}}
             </ng-template>
