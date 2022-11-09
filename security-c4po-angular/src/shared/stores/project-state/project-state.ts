@@ -77,7 +77,7 @@ export class ProjectState {
   changePentest(ctx: StateContext<ProjectStateModel>, {pentest}: ChangePentest): void {
     const state = ctx.getState();
     ctx.patchState({
-      selectedPentest: pentest
+      selectedPentest: {...pentest, projectId: state.selectedProject.id}
     });
   }
 }

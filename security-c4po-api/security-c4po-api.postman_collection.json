@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "58adc500-c0c6-47f3-b268-5fcc16e0944d",
+		"_postman_id": "6f244dd9-5264-497a-9ea4-1ae73e172624",
 		"name": "security-c4po-api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "5225213"
@@ -266,7 +266,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItdG1lbEV0ZHhGTnRSMW9aNXlRdE5jaFFpX0RVN2VNeV9YcU44aXY0S3hzIn0.eyJleHAiOjE2NjAxNDI5NjMsImlhdCI6MTY2MDE0MjY2MywianRpIjoiNzk2YzY5NzYtZjBlYS00ZTM0LTk2MTItMjI5ZmE0ODgzOTM0IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4ODg4L2F1dGgvcmVhbG1zL2M0cG9fcmVhbG1fbG9jYWwiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTBlMDZkN2EtOGRkMC00ZWNkLTg5NjMtMDU2YjQ1MDc5YzRmIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYzRwb19sb2NhbCIsInNlc3Npb25fc3RhdGUiOiIyYWU1MmQyYy01MjA5LTQzMjEtOWY5OS0wMTQ2YjRkMmNkY2YiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImM0cG9fdXNlciIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJjNHBvX2xvY2FsIjp7InJvbGVzIjpbInVzZXIiXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InRlc3QgdXNlciIsInByZWZlcnJlZF91c2VybmFtZSI6InR0dCIsImdpdmVuX25hbWUiOiJ0ZXN0IiwiZmFtaWx5X25hbWUiOiJ1c2VyIn0.EO5CC1VXZzybIx-lndq3b61TZpWOnYDI4F2CUFuxj5ECxrlIfm_tlv0TbErDTX311YsA_nhzNHYSaffRzx0OkmmUKSyyH8k9aPRKXUTUmY7Y9PLv3UCKEmAFHAnJkr5kZV08g3UMYG2blpryYBg82abEVMxeMUbh-T4M-Z9dcgQyiZ4nyNMUs1bbfH_2kAtqfEXmP_9eZ42Kwa2ixFWFZDcvOp775bjkYcGvwSnHqmyBXivONzTxyPN6Ug7uFCvMTbeo10ctgOFfXJUZfoxRt-hCspTPJR8C4TzIK41fiy19uRpGjeezG5Ghwy9upXsomunwB4knTAn1otmj4afIxw",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItdG1lbEV0ZHhGTnRSMW9aNXlRdE5jaFFpX0RVN2VNeV9YcU44aXY0S3hzIn0.eyJleHAiOjE2Njc5OTM4NzYsImlhdCI6MTY2Nzk5MzU3NiwianRpIjoiNTdhOWRiYTYtYzExYy00NGQzLWIzNzItNTQ1MmZjYTk5OTc3IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4ODg4L2F1dGgvcmVhbG1zL2M0cG9fcmVhbG1fbG9jYWwiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTBlMDZkN2EtOGRkMC00ZWNkLTg5NjMtMDU2YjQ1MDc5YzRmIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYzRwb19sb2NhbCIsInNlc3Npb25fc3RhdGUiOiI5NDY5OTJmNy03MDJhLTQ1NzYtYWI5Yi03MGM5Yzk1MzkwOTIiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImM0cG9fdXNlciIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJjNHBvX2xvY2FsIjp7InJvbGVzIjpbInVzZXIiXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InRlc3QgdXNlciIsInByZWZlcnJlZF91c2VybmFtZSI6InR0dCIsImdpdmVuX25hbWUiOiJ0ZXN0IiwiZmFtaWx5X25hbWUiOiJ1c2VyIn0.r9EHKziADP6FYV2dfUszNB3Mrm6HwJc5pFWzx-bZ83HGGZ7NRCMkmHhLjAZUdnLcQYDikxzg88KXOM5H9i_0RXtQTgwhYfhuAiOelJTQ8a4YHq0t5vNbG9XmIymtGU5wdiTMM0Z8Dz85sxB9dAl5uKDCh5Eo3gA3r42kJ4reFzU_ldjYGZf7J0yskgGv_JCn9MXYWW7Zp0StegE_XMF1Fl3yWE67uxHOd_fOQExbmGohP9fSmzjAaMfvCt3XtqP2oi9BXuV04zbvqP7-9r2yt58vpyQbRPy-xRgxTIU0wwmnDavKVoji2e8rNaSEuvr_Tu_PJ69uUzBu36vpA4aMxQ",
 									"type": "string"
 								},
 								{
@@ -296,6 +296,78 @@
 									"key": "category",
 									"value": "INFORMATION_GATHERING"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "savePentest",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItdG1lbEV0ZHhGTnRSMW9aNXlRdE5jaFFpX0RVN2VNeV9YcU44aXY0S3hzIn0.eyJleHAiOjE2NjgxNzYyNDYsImlhdCI6MTY2ODE3NTk0NiwianRpIjoiNTFmZWE5YjYtMGY3OS00M2QxLWI1YmItNmEyOTRhMjQyZDIxIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4ODg4L2F1dGgvcmVhbG1zL2M0cG9fcmVhbG1fbG9jYWwiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTBlMDZkN2EtOGRkMC00ZWNkLTg5NjMtMDU2YjQ1MDc5YzRmIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYzRwb19sb2NhbCIsInNlc3Npb25fc3RhdGUiOiI1NjU5ZDIyMS0yODdiLTQ1ZjktODUzMS00M2I3ZGNhOTExMmUiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImM0cG9fdXNlciIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJjNHBvX2xvY2FsIjp7InJvbGVzIjpbInVzZXIiXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InRlc3QgdXNlciIsInByZWZlcnJlZF91c2VybmFtZSI6InR0dCIsImdpdmVuX25hbWUiOiJ0ZXN0IiwiZmFtaWx5X25hbWUiOiJ1c2VyIn0.D30yLd7T0Qu4GgEYFbaVQXXqNrC_xJeMqaoBZxh4O0KR_hjn7Udsgdkrb8cs4kQinDasOiLaFBABKSF5pQNXJS_yeRsVW-D4_pBY1yD52_rKwHCjNFRkj1ads0CF4h8tHrJhXcBLQKYB9T0F5hu6q5dsP33q1ej25vJm6yoOu2U33TpqLlOOufNLyGJrtdDzpD9BYsAECLboO3X-KneNfYH_Xl7ECXT3hSMnagFchkQ_sDUuurnyBqg-2-sBGFhBgVgb-ku_aiSeZvRvRY9vPPRIyze6r-bgRM28cgjZvjFtMTjiJeFtwnjcEbAOquX2CRqDo7H3GfJGXrqGHrg8tw",
+									"type": "string"
+								},
+								{
+									"key": "undefined",
+									"type": "any"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"category\": \"INFORMATION_GATHERING\",\n    \"refNumber\": \"OTG-INFO-001\",\n    \"status\": \"IN_PROGRESS\",\n    \"projectId\": \"5a4f126c-9471-43b8-80b9-6eb02b7c35d0\",\n    \"findingIds\": [],\n    \"commentIds\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8443/pentests/5a4f126c-9471-43b8-80b9-6eb02b7c35d0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"pentests",
+								"5a4f126c-9471-43b8-80b9-6eb02b7c35d0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePentest",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"11601f51-bc17-47fd-847d-0c53df5405b5\",\n    \"category\": \"INFORMATION_GATHERING\",\n    \"refNumber\": \"OTG-INFO-001\",\n    \"status\": \"COMPLETED\",\n    \"projectId\": \"5a4f126c-9471-43b8-80b9-6eb02b7c35d0\",\n    \"findingIds\": [],\n    \"commentIds\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8443/pentests/pentestId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"pentests",
+								"pentestId"
 							]
 						}
 					},
