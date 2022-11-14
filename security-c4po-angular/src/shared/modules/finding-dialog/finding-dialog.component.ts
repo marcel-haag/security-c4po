@@ -58,7 +58,7 @@ export class FindingDialogComponent implements OnInit {
   onClickSave(value: any): void {
     this.dialogRef.close({
       title: value.findingTitle,
-      severity: value.findingSeverity,
+      severity: this.formArray[1].controlsConfig[0].value,
       description: value.findingDescription,
       impact: value.findingImpact,
       affectedUrls: this.affectedUrls ? this.affectedUrls : [],

@@ -10,6 +10,7 @@ import com.securityc4po.api.pentest.PentestService
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono
+import reactor.kotlin.core.publisher.switchIfEmpty
 
 @Service
 @SuppressFBWarnings(BC_BAD_CAST_TO_ABSTRACT_COLLECTION, MESSAGE_BAD_CAST_TO_ABSTRACT_COLLECTION)
@@ -53,6 +54,36 @@ class FindingService(private val findingRepository: FindingRepository, private v
                     Errorcode.FindingInsertionFailed
                 )
             )
+        }
+    }
+
+    /**
+     * Get [Finding] by findingId
+     *
+     * @return of [Finding]
+     */
+    fun getFindingById(findingId: String): Mono<Finding> {
+        return this.findingRepository.findFindingById(findingId).switchIfEmpty {
+            logger.warn("Finding with id $findingId not found.")
+            val msg = "Finding with id $findingId not found."
+            val ex = EntityNotFoundException(msg, Errorcode.FindingNotFound)
+            throw ex
+        }.map { it.toFinding() }
+    }
+
+    /**
+     * Get all [Finding]s by findingsId's
+     *
+     * @return list of [Finding]s
+     */
+    fun getFindingsByIds(findingIds: List<String>): Mono<List<Finding>> {
+        return findingRepository.findFindingsByIds(findingIds).collectList().map {
+            it.map { findingEntity -> findingEntity.toFinding() }
+        }.switchIfEmpty {
+            val msg = "Findings not found."
+            val ex = EntityNotFoundException(msg, Errorcode.FindingsNotFound)
+            logger.warn(msg, ex)
+            throw ex
         }
     }
 }

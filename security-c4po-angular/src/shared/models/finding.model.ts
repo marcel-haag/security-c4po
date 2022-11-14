@@ -1,7 +1,5 @@
 import {v4 as UUID} from 'uuid';
 import {Severity} from '@shared/models/severity.enum';
-import {Category} from '@shared/models/category.model';
-import {Pentest} from '@shared/models/pentest.model';
 
 export class Finding {
   id?: string;
@@ -47,13 +45,13 @@ export function transformFindingsToObjectiveEntries(findings: Finding[]): Findin
   findings.forEach((value: Finding) => {
     findingEntries.push({
       findingId: value.id,
-      severity: value.severity,
+      severity: typeof value.severity !== 'number' ? Severity[value.severity] : value.severity,
       title: value.title,
       impact: value.impact,
       kind: 'cell',
       childEntries: null,
       expanded: false
-    } as FindingEntry);
+    } as unknown as FindingEntry);
   });
   return findingEntries;
 }
