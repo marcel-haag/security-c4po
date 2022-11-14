@@ -29,6 +29,7 @@ data class FindingRequestBody(
 fun Finding.toFindingResponseBody(): ResponseBody {
     return mapOf(
         "id" to id,
+        "severity" to severity,
         "title" to title,
         "description" to description,
         "impact" to impact,

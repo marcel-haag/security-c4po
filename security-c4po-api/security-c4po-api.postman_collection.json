@@ -259,7 +259,7 @@
 			"name": "pentests",
 			"item": [
 				{
-					"name": "Finding",
+					"name": "findings",
 					"item": [
 						{
 							"name": "saveFinding",
@@ -300,6 +300,41 @@
 										"pentests",
 										"11601f51-bc17-47fd-847d-0c53df5405b5",
 										"finding"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getFindingsForPentesId",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItdG1lbEV0ZHhGTnRSMW9aNXlRdE5jaFFpX0RVN2VNeV9YcU44aXY0S3hzIn0.eyJleHAiOjE2Njg0MzUzNDAsImlhdCI6MTY2ODQzNTA0MCwianRpIjoiMTRiYjYyNTUtMTc5Zi00MTkyLWFmNGMtYjdiNTc3NTVmNmIxIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4ODg4L2F1dGgvcmVhbG1zL2M0cG9fcmVhbG1fbG9jYWwiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTBlMDZkN2EtOGRkMC00ZWNkLTg5NjMtMDU2YjQ1MDc5YzRmIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYzRwb19sb2NhbCIsInNlc3Npb25fc3RhdGUiOiIyYmI2NTU5Yi04MThlLTQxNjgtOGE5Yy1lYmNlZjVmN2M4NjUiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImM0cG9fdXNlciIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJjNHBvX2xvY2FsIjp7InJvbGVzIjpbInVzZXIiXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InRlc3QgdXNlciIsInByZWZlcnJlZF91c2VybmFtZSI6InR0dCIsImdpdmVuX25hbWUiOiJ0ZXN0IiwiZmFtaWx5X25hbWUiOiJ1c2VyIn0.DQRSUcwW4Im2wxp9t8Jm4rFsS3ZFydGsNEEZ0-yfoq0B46kgLD_dOfLzVCkhZfZHsbmFIZv704j_dzUDafqtzVilUV5LM5LCqKs0ByRYB9WA-wXKiRsbKfob_OnwlVrXu2ull2_7o4SXgTnF50yyAONkzegfP-I4cJko0yeKDmeYdWrZpwHJcDtZjZl6rZbQk3BLbICcNMO6F57LtU6tHfFIIxrvlbKGqA49PH7S6n5grTNoA9_fzHnn46DJvsRw0RtzFR-QTrCy3HNdPeClgXYJvSudvwUIuaKjbfpUNU3BzGSBOjvlDpWqkbuiUX1COhJbk83PQk8-mPoltiGSFA",
+											"type": "string"
+										},
+										{
+											"key": "undefined",
+											"type": "any"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8443/pentests/11601f51-bc17-47fd-847d-0c53df5405b5/findings",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8443",
+									"path": [
+										"pentests",
+										"11601f51-bc17-47fd-847d-0c53df5405b5",
+										"findings"
 									]
 								}
 							},

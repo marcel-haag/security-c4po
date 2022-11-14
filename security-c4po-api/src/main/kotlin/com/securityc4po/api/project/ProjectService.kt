@@ -28,7 +28,7 @@ class ProjectService(private val projectRepository: ProjectRepository) {
         return projectRepository.findAll().collectList().map {
             it.map { projectEntity -> projectEntity.toProject() }
         }.switchIfEmpty {
-            val msg = "No projects not found."
+            val msg = "Projects not found."
             val ex = EntityNotFoundException(msg, Errorcode.ProjectsNotFound)
             logger.warn(msg, ex)
             throw ex

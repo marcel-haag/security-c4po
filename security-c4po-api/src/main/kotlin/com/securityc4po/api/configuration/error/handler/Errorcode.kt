@@ -5,6 +5,8 @@ enum class Errorcode(val code: Int) {
     ProjectsNotFound(1001),
     ProjectNotFound(1002),
     PentestNotFound(1003),
+    FindingsNotFound(1004),
+    FindingNotFound(1005),
 
     // 2XXX Already Changed
     ProjectAlreadyChanged(2001),

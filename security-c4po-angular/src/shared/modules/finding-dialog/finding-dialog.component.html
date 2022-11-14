@@ -78,6 +78,7 @@
               {{formArray[1].labelKey | translate}}
             </label>
             <nb-select class="severities" placeholder="{{formArray[1].placeholder | translate}} *"
+                       type="severity-select"
                        [(selected)]="formArray[1].controlsConfig[0].value"
                        shape="round" status="{{getSeverityFillStatus(formArray[1].controlsConfig[0].value)}}" filled>
               <nb-option *ngFor="let severity of severityTexts" [value]="severity.value">
