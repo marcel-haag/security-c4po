@@ -17,6 +17,7 @@ enum class Errorcode(val code: Int) {
     InvalidToken(3003),
     TokenWithoutField(3004),
     UserIdIsEmpty(3005),
+    FindingInvalid(3006),
 
     // 4XXX Unauthorized
     ProjectAdjustmentNotAuthorized(4000),
@@ -35,4 +36,5 @@ enum class Errorcode(val code: Int) {
     ProjectInsertionFailed(6006),
     PentestInsertionFailed(6007),
     ProjectPentestInsertionFailed(6008),
+    FindingInsertionFailed(6009),
 }

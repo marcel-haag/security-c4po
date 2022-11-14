@@ -141,7 +141,7 @@ class ProjectService(private val projectRepository: ProjectRepository) {
             throw ex
         }.flatMap {projectEntity: ProjectEntity ->
             val currentProjectPentestStatus = projectEntity.data.projectPentests.find { projectPentestData -> projectPentestData.pentestId == projectPentest.pentestId }
-            if (currentProjectPentestStatus !== null) {
+            if (currentProjectPentestStatus != null) {
                 projectEntity.data.projectPentests.find { data -> data.pentestId == projectPentest.pentestId }!!.status = projectPentest.status
             } else {
                 projectEntity.data.projectPentests += projectPentest

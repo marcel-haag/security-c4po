@@ -259,6 +259,55 @@
 			"name": "pentests",
 			"item": [
 				{
+					"name": "Finding",
+					"item": [
+						{
+							"name": "saveFinding",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItdG1lbEV0ZHhGTnRSMW9aNXlRdE5jaFFpX0RVN2VNeV9YcU44aXY0S3hzIn0.eyJleHAiOjE2Njg0MjU2MjgsImlhdCI6MTY2ODQyNTMyOCwianRpIjoiODQyMjE5ODgtMDhkNC00YTg1LWEwNTYtZjI0N2QxZThkNDg2IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4ODg4L2F1dGgvcmVhbG1zL2M0cG9fcmVhbG1fbG9jYWwiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTBlMDZkN2EtOGRkMC00ZWNkLTg5NjMtMDU2YjQ1MDc5YzRmIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYzRwb19sb2NhbCIsInNlc3Npb25fc3RhdGUiOiJjYmMxMTJiNy03MGRlLTRhNjctYWRmYS1lNTA0NGE1ZDNjZDQiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImM0cG9fdXNlciIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJjNHBvX2xvY2FsIjp7InJvbGVzIjpbInVzZXIiXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InRlc3QgdXNlciIsInByZWZlcnJlZF91c2VybmFtZSI6InR0dCIsImdpdmVuX25hbWUiOiJ0ZXN0IiwiZmFtaWx5X25hbWUiOiJ1c2VyIn0.glSjoxDFWzA4ApXGLMMaurfzfm0z9QU2mo1ZmPsH24pNjdp4A5CgxOIGkU6SKeHaPfeHvdaxevAWrkFdNGTJn_XLmAcqitNIEsrbIv76LKkNN2KNSltm1cfPM1fJPOXy91egX0SB3WoHzylw7zZZTsDncAcJEa1OCf6UUpKmKxmaqQLLTS4CMN82PNxeZFNgripoH5WqlutPdYCBK8WCgNoDh1njCIwevY12yi0gzAFtAH0I5Eqa5QwWpMWzB_Zs4WlqzSiuJVI7aqTRfrmZHe_qjR9riLMvgVoobLB0stbRH5VnHom-MNuUIw6SKVA0I9DPQb4jpF7Q4vqz8UBOMQ",
+											"type": "string"
+										},
+										{
+											"key": "undefined",
+											"type": "any"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Test Title\",\n    \"severity\": \"LOW\",\n    \"description\": \"Test Description\",\n    \"impact\": \"Test Impact\",\n    \"affectedUrls\": [\n        \"https://akveo.github.io/nebular/docs/components/progress-bar/examples#nbprogressbarcomponent\"\n    ],\n    \"reproduction\": \"Step 1: Test\",\n    \"mitigation\": \"Test Mitigatin\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8443/pentests/11601f51-bc17-47fd-847d-0c53df5405b5/finding",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8443",
+									"path": [
+										"pentests",
+										"11601f51-bc17-47fd-847d-0c53df5405b5",
+										"finding"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "getPentestsByProjectIdAndCategory",
 					"request": {
 						"auth": {

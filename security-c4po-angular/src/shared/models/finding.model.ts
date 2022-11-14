@@ -1,5 +1,7 @@
 import {v4 as UUID} from 'uuid';
 import {Severity} from '@shared/models/severity.enum';
+import {Category} from '@shared/models/category.model';
+import {Pentest} from '@shared/models/pentest.model';
 
 export class Finding {
   id?: string;
@@ -54,6 +56,25 @@ export function transformFindingsToObjectiveEntries(findings: Finding[]): Findin
     } as FindingEntry);
   });
   return findingEntries;
+}
+
+export function transformFindingToRequestBody(finding: FindingDialogBody | Finding): Finding {
+  const transformedFinding = {
+    ...finding,
+    severity: typeof finding.severity === 'number' ? Severity[finding.severity] : finding.severity,
+    title: finding.title,
+    description: finding.description,
+    impact: finding.impact,
+    affectedUrls: finding.affectedUrls ? finding.affectedUrls : [],
+    reproduction: finding.reproduction,
+    mitigation: finding.mitigation,
+    /* Remove Table Entry Object Properties */
+    childEntries: undefined,
+    kind: undefined,
+    findings: undefined,
+    expanded: undefined,
+  } as unknown as Finding;
+  return transformedFinding;
 }
 
 export interface FindingDialogBody {
