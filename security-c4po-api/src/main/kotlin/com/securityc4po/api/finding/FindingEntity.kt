@@ -1,4 +1,4 @@
-package finding
+package com.securityc4po.api.finding
 
 import com.securityc4po.api.BaseEntity
 import org.springframework.data.mongodb.core.mapping.Document
@@ -9,7 +9,7 @@ open class FindingEntity(
 ) : BaseEntity<Finding>(data)
 
 fun FindingEntity.toFinding(): Finding {
-    return finding.Finding(
+    return Finding(
         this.data.id,
         this.data.severity,
         this.data.title,

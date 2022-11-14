@@ -17,7 +17,6 @@ import reactor.kotlin.core.publisher.switchIfEmpty
         allowedHeaders = ["*"],
         methods = [RequestMethod.GET, RequestMethod.DELETE, RequestMethod.POST, RequestMethod.PATCH]
 )
-
 @SuppressFBWarnings(BC_BAD_CAST_TO_ABSTRACT_COLLECTION)
 class ProjectController(private val projectService: ProjectService) {
 

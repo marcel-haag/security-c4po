@@ -1,4 +1,4 @@
-package comment
+package com.securityc4po.api.comment
 
 import com.securityc4po.api.BaseEntity
 import org.springframework.data.mongodb.core.mapping.Document

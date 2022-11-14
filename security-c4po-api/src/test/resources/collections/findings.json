@@ -1,0 +1,23 @@
+[{
+  "_id": {
+    "$oid": "6372223efea5724fd22bae8a"
+  },
+  "lastModified": {
+    "$date": {
+      "$numberLong": "1668424254533"
+    }
+  },
+  "data": {
+    "_id": "ef31449d-71ec-4736-952f-8b20e53117d5",
+    "severity": "LOW",
+    "title": "Test Title",
+    "description": "Test Description",
+    "impact": "Test Impact",
+    "affectedUrls": [
+      "https://akveo.github.io/nebular/docs/components/progress-bar/examples#nbprogressbarcomponent"
+    ],
+    "reproduction": "Step 1: Test",
+    "mitigation": "Test Mitigatin"
+  },
+  "_class": "com.securityc4po.api.finding.FindingEntity"
+}]
