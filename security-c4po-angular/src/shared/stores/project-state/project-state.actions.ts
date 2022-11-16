@@ -33,3 +33,10 @@ export class ChangePentest {
   constructor(public pentest: Pentest) {
   }
 }
+
+export class UpdatePentestFindings {
+  static readonly type = '[ProjectState] UpdatePentestFindings';
+
+  constructor(public findingId: string) {
+  }
+}

@@ -76,8 +76,24 @@ export class ObjectiveTableComponent implements OnInit {
         })
       ).finally();
     */
-    const statePentest = this.pentests$.getValue().find(pentest => pentest.refNumber === selectedPentest.refNumber);
-    this.store.dispatch(new ChangePentest(statePentest));
+    const statePentest: Pentest = this.pentests$.getValue().find(pentest => pentest.refNumber === selectedPentest.refNumber);
+    if (statePentest) {
+      this.store.dispatch(new ChangePentest(statePentest));
+    } else {
+      let childEntryStatePentest;
+      // ToDo: Fix wrong selection
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0; i < this.pentests$.getValue().length; i++) {
+        if (this.pentests$.getValue()[i].childEntries) {
+          const findingResult = this.pentests$.getValue()[i].childEntries.find(cE => cE.refNumber === selectedPentest.refNumber);
+          if (findingResult) {
+            childEntryStatePentest = findingResult;
+            break;
+          }
+        }
+      }
+      this.store.dispatch(new ChangePentest(childEntryStatePentest));
+    }
   }
 
   // HTML only

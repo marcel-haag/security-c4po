@@ -13,6 +13,15 @@
     <nb-actions size="medium">
       <nb-action class="toggle-theme">
         <button nbButton
+                (click)="onClickGoToLink('https://owasp.org/www-project-web-security-testing-guide/v42/')">
+          <fa-icon [icon]="fa.faFileInvoice" class="new-element-icon" href="https://www.google.com">
+          </fa-icon>
+          <span class="owasp-redirect-button">OWASP</span>
+        </button>
+      </nb-action>
+
+      <nb-action class="toggle-theme">
+        <button nbButton
                 (click)="onClickSwitchTheme()">
           <fa-icon *ngIf="currentTheme === 'corporate', else changeIcon" [icon]="fa.faMoon"
                    class="new-element-icon"></fa-icon>

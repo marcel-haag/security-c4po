@@ -1,7 +1,13 @@
 import {Action, Selector, State, StateContext} from '@ngxs/store';
 import {Injectable} from '@angular/core';
 import {Project} from '@shared/models/project.model';
-import {ChangeCategory, ChangePentest, ChangeProject, InitProjectState} from '@shared/stores/project-state/project-state.actions';
+import {
+  ChangeCategory,
+  ChangePentest,
+  ChangeProject,
+  InitProjectState,
+  UpdatePentestFindings
+} from '@shared/stores/project-state/project-state.actions';
 import {Category} from '@shared/models/category.model';
 import {Pentest} from '@shared/models/pentest.model';
 
@@ -78,6 +84,28 @@ export class ProjectState {
     const state = ctx.getState();
     ctx.patchState({
       selectedPentest: {...pentest, projectId: state.selectedProject.id}
+    });
+  }
+
+  @Action(UpdatePentestFindings)
+  updatePentestFindings(ctx: StateContext<ProjectStateModel>, {findingId}: UpdatePentestFindings): void {
+    const state = ctx.getState();
+    let stateSelectedPentest: Pentest = state.selectedPentest;
+    const stateFindingIds: Array<string> = stateSelectedPentest.findingIds || [];
+    let updatedFindingIds: Array<string> = [];
+    if (!stateFindingIds.includes(findingId)) {
+      updatedFindingIds = [...stateFindingIds, findingId];
+    } else {
+      // ToDo: Add logic to remove findingId from array
+    }
+    // overwrites only findingIds
+    stateSelectedPentest = {
+      ...stateSelectedPentest,
+      findingIds: updatedFindingIds
+    };
+    // path project state
+    ctx.patchState({
+      selectedPentest: stateSelectedPentest
     });
   }
 }

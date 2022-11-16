@@ -9,7 +9,8 @@
   .export-button-container {
     display: flex;
     align-content: flex-end;
-    margin-right: 0.5rem;
+    // ToDo: Fix so that longer / shorter name won't change needed margin
+    margin-right: 2.25rem;
 
     .export-element-icon {
     }

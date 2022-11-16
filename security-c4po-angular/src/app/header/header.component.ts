@@ -33,6 +33,11 @@ export class HeaderComponent implements OnInit{
     this.selectedLanguage = this.translateService.currentLang;
   }
 
+  // HTML only
+  onClickGoToLink(url: string): void {
+    window.open(url, '_blank');
+  }
+
   onClickSwitchTheme(): void {
     if (this.currentTheme === 'corporate') {
       this.themeService.changeTheme('dark');
