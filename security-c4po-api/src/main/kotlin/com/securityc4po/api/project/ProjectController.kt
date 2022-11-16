@@ -45,6 +45,7 @@ class ProjectController(private val projectService: ProjectService) {
 
     @DeleteMapping("/{id}")
     fun deleteProject(@PathVariable(value = "id") id: String): Mono<ResponseEntity<ResponseBody>> {
+        // ToDo: Delete all associated Pentests, Findings and Comments
         return this.projectService.deleteProject(id).map{
             ResponseEntity.ok().body(it.toProjectDeleteResponseBody())
         }.switchIfEmpty {
