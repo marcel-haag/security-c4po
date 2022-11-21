@@ -95,10 +95,114 @@ include::{snippets}/updateProject/http-response.adoc[]
 
 include::{snippets}/updateProject/response-fields.adoc[]
 
+== Pentest
+
+=== Get pentests for category
+
+To get pentests by projectId and category, call the GET request /pentests with the appropriate parameters.
+
+==== Request example
+
+include::{snippets}/getPentestsByProjectIdAndCategory/http-request.adoc[]
+
+==== Request structure
+
+include::{snippets}/getPentestsByProjectIdAndCategory/request-parameters.adoc[]
+
+==== Response example
+
+include::{snippets}/getPentestsByProjectIdAndCategory/http-response.adoc[]
+
+==== Response structure
+
+include::{snippets}/getPentestsByProjectIdAndCategory/response-fields.adoc[]
+
+=== Save pentest
+
+To save a pentest, call the POST request /pentests/+{projectId}+
+
+==== Request example
+
+include::{snippets}/savePentestByProjectId/http-request.adoc[]
+
+==== Request structure
+
+include::{snippets}/savePentestByProjectId/path-parameters.adoc[]
+
+==== Response example
+
+include::{snippets}/savePentestByProjectId/http-response.adoc[]
+
+==== Response structure
+
+include::{snippets}/savePentestByProjectId/response-fields.adoc[]
+
+=== Update pentest
+
+To update a pentest, call the PATCH request /pentests/+{pentestId}+
+
+==== Request example
+
+include::{snippets}/updatePentestByProjectId/http-request.adoc[]
+
+==== Response example
+
+include::{snippets}/updatePentestByProjectId/http-response.adoc[]
+
+==== Response structure
+
+include::{snippets}/updatePentestByProjectId/response-fields.adoc[]
+
+== Finding
+
+=== Get findings for pentest
+
+To get findings by pentestId, call the GET request /pentests/+{pentestId}+/findings.
+
+==== Request example
+
+include::{snippets}/getFindingsByPentestId/http-request.adoc[]
+
+==== Request structure
+
+include::{snippets}/getFindingsByPentestId/path-parameters.adoc[]
+
+==== Response example
+
+include::{snippets}/getFindingsByPentestId/http-response.adoc[]
+
+==== Response structure
+
+include::{snippets}/getFindingsByPentestId/response-fields.adoc[]
+
+=== Save finding
+
+To save a finding, call the POST request /pentests/+{pentestId}+/finding
+
+==== Request example
+
+include::{snippets}/saveFindingByPentestId/http-request.adoc[]
+
+==== Request structure
+
+include::{snippets}/saveFindingByPentestId/path-parameters.adoc[]
+
+==== Response example
+
+include::{snippets}/saveFindingByPentestId/http-response.adoc[]
+
+==== Response structure
+
+include::{snippets}/saveFindingByPentestId/response-fields.adoc[]
+
 == Change History
 
 |===
 |Date |Change
+|2022-12-02
+|Added GET and POST endpoint for Findings
+|2022-11-21
+|Added GET, POST and PATCH endpoint for Pentests
 |2022-03-07
 |Added PATCH endpoint to update Projects
 |2022-02-01
@@ -110,25 +214,3 @@ include::{snippets}/updateProject/response-fields.adoc[]
 |2021-02-12
 |Initial version
 |===
-
-== Pentest
-
-=== Get pentests by projectId and category
-
-To get pentests by projectId and category, call the GET request /pentests with the appropriate parameters.
-
-==== Request example
-
-include::{snippets}/getPentestsByProjectIdAndCategory/http-request.adoc[]
-
-==== Request Structure
-
-include::{snippets}/getPentestsByProjectIdAndCategory/request-parameters.adoc[]
-
-==== Response example
-
-include::{snippets}/getPentestsByProjectIdAndCategory/http-response.adoc[]
-
-==== Response structure
-
-include::{snippets}/getPentestsByProjectIdAndCategory/response-fields.adoc[]

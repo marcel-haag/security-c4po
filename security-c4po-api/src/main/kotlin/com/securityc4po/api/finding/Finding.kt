@@ -12,7 +12,7 @@ data class Finding (
     val description: String,
     val impact: String,
     val affectedUrls: List<String>? = emptyList(),
-    val reproduction: String?,
+    val reproduction: String,
     val mitigation: String?
 )
 
@@ -22,7 +22,7 @@ data class FindingRequestBody(
     val description: String,
     val impact: String,
     val affectedUrls: List<String>? = emptyList(),
-    val reproduction: String?,
+    val reproduction: String,
     val mitigation: String?
 )
 

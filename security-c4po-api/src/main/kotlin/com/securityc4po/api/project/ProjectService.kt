@@ -151,7 +151,7 @@ class ProjectService(private val projectRepository: ProjectRepository) {
                 it.toProject()
             }.doOnError {
                 throw wrappedException(
-                    logging = { logger.warn("Project Pentests could not be updated in Database. Thrown exception: ", it) },
+                    logging = { logger.warn("Project Pentests could not be updated or saved in Database. Thrown exception: ", it) },
                     mappedException = TransactionInterruptedException(
                         "Project could not be updated.",
                         Errorcode.ProjectInsertionFailed

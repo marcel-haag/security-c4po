@@ -92,7 +92,8 @@ class ProjectControllerIntTest : BaseIntTest() {
     inner class SaveProject {
         @Test
         fun `save project successfully`() {
-            webTestClient.post().uri("/projects")
+            webTestClient.post()
+                .uri("/projects")
                 .header("Authorization", "Bearer $tokenAdmin")
                 .body(Mono.just(project), ProjectRequestBody::class.java)
                 .exchange()
