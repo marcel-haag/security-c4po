@@ -34,6 +34,11 @@ export class FindingDialogService {
                            config?: Partial<NbDialogConfig<Partial<any> | string>>): Observable<any> {
     let dialogOptions: Partial<NbDialogConfig<Partial<any> | string>>;
     let dialogData: GenericDialogData;
+    let severity;
+    // transform severity of finding if existing
+    if (finding) {
+      severity = typeof finding.severity !== 'number' ? Severity[finding.severity] : finding.severity;
+    }
     // Setup FindingDialogBody
     dialogData = {
       form: {
@@ -56,7 +61,7 @@ export class FindingDialogService {
           labelKey: 'finding.severity.label',
           placeholder: 'finding.severity',
           controlsConfig: [
-            {value: finding ? finding.severity : Severity.LOW, disabled: false},
+            {value: finding ? severity : Severity.LOW, disabled: false},
             [Validators.required]
           ],
           errors: [
@@ -95,7 +100,7 @@ export class FindingDialogService {
           labelKey: 'finding.affectedUrls.label',
           placeholder: 'finding.affectedUrls.placeholder',
           controlsConfig: [
-            {value: '', disabled: false},
+            {value: finding ? finding.affectedUrls : [], disabled: false},
             []
           ],
           errors: [

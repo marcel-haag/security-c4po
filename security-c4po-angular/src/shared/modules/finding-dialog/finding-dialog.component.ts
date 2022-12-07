@@ -6,6 +6,7 @@ import deepEqual from 'deep-equal';
 import {UntilDestroy} from '@ngneat/until-destroy';
 import {Severity} from '@shared/models/severity.enum';
 import * as FA from '@fortawesome/free-solid-svg-icons';
+import {BehaviorSubject} from 'rxjs';
 
 @UntilDestroy()
 @Component({
@@ -33,6 +34,7 @@ export class FindingDialogComponent implements OnInit {
 
   // ToDo: Adjust for edit finding dialog to include existing urls
   affectedUrls: string[] = [];
+  initialAffectedUrls: string[] = [];
 
   constructor(
     @Inject(NB_DIALOG_CONFIG) private data: GenericDialogData,
@@ -44,6 +46,9 @@ export class FindingDialogComponent implements OnInit {
   ngOnInit(): void {
     this.findingFormGroup = this.generateFormCreationFieldArray();
     this.dialogData = this.data;
+    // Resets affected Urls input fields when finding was found in dialog context
+    // tslint:disable-next-line:no-string-literal
+    this.findingFormGroup.controls['findingAffectedUrls'].reset('');
   }
 
   generateFormCreationFieldArray(): FormGroup {
@@ -52,6 +57,11 @@ export class FindingDialogComponent implements OnInit {
       ...accumulator,
       [currentValue?.fieldName]: currentValue?.controlsConfig
     }), {});
+    // tslint:disable-next-line:no-string-literal
+    const affectedUrls = this.data.form['findingAffectedUrls'].controlsConfig[0].value;
+    if (affectedUrls) {
+      this.renderAffectedUrls(affectedUrls);
+    }
     return this.fb.group(config);
   }
 
@@ -65,6 +75,11 @@ export class FindingDialogComponent implements OnInit {
       reproduction: value.findingReproduction,
       mitigation: value.findingMitigation
     });
+  }
+
+  renderAffectedUrls(affectedUrls: string[]): void {
+    affectedUrls.forEach(url => this.initialAffectedUrls.push(url));
+    affectedUrls.forEach(url => this.affectedUrls.push(url));
   }
 
   onAffectedUrlAdd(): void {
@@ -127,11 +142,12 @@ export class FindingDialogComponent implements OnInit {
     const newFindingData = this.findingFormGroup.getRawValue();
     Object.entries(newFindingData).forEach(entry => {
       const [key, value] = entry;
-      if (value === null) {
+      // Affected Url form field can be ignored since changes here will be recognised inside affectedUrls of tag-list
+      if (value === null || key === 'findingAffectedUrls') {
         newFindingData[key] = '';
       }
     });
-    const didChange = !deepEqual(oldFindingData, newFindingData);
+    const didChange = !deepEqual(oldFindingData, newFindingData) || !deepEqual(this.initialAffectedUrls, this.affectedUrls);
     return didChange;
   }
 
@@ -143,8 +159,13 @@ export class FindingDialogComponent implements OnInit {
     const findingData = {};
     Object.entries(dialogData.form).forEach(entry => {
       const [key, value] = entry;
+      // console.info(key);
       findingData[key] = value.controlsConfig[0] ?
         (value.controlsConfig[0].value ? value.controlsConfig[0].value : value.controlsConfig[0]) : '';
+      // Affected Url form field can be ignored since changes here will be recognised inside affectedUrls of tag-list
+      if (key === 'findingAffectedUrls') {
+        findingData[key] = '';
+      }
     });
     return findingData;
   }

@@ -16,6 +16,19 @@ data class Finding (
     val mitigation: String?
 )
 
+fun buildFinding(body: FindingRequestBody, findingEntity: FindingEntity): Finding {
+    return Finding(
+        id = findingEntity.data.id,
+        severity = Severity.valueOf(body.severity),
+        title = body.title,
+        description = body.description,
+        impact = body.impact,
+        affectedUrls = body.affectedUrls,
+        reproduction = body.reproduction,
+        mitigation = body.mitigation
+    )
+}
+
 data class FindingRequestBody(
     val severity: String,
     val title: String,

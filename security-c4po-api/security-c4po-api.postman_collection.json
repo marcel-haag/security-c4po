@@ -339,6 +339,85 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "getFindingById",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItdG1lbEV0ZHhGTnRSMW9aNXlRdE5jaFFpX0RVN2VNeV9YcU44aXY0S3hzIn0.eyJleHAiOjE2NzA0MTQ3ODYsImlhdCI6MTY3MDQxNDQ4NiwianRpIjoiM2FmOWU5M2MtY2YzNi00MjQwLTkzNWEtNDkxYTJkZTY2MWU4IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4ODg4L2F1dGgvcmVhbG1zL2M0cG9fcmVhbG1fbG9jYWwiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTBlMDZkN2EtOGRkMC00ZWNkLTg5NjMtMDU2YjQ1MDc5YzRmIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYzRwb19sb2NhbCIsInNlc3Npb25fc3RhdGUiOiI5M2ExNTBlMC03ZWRkLTQxZTgtYWE4Yi0yZWY5YTgzOWU4NDciLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImM0cG9fdXNlciIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJjNHBvX2xvY2FsIjp7InJvbGVzIjpbInVzZXIiXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InRlc3QgdXNlciIsInByZWZlcnJlZF91c2VybmFtZSI6InR0dCIsImdpdmVuX25hbWUiOiJ0ZXN0IiwiZmFtaWx5X25hbWUiOiJ1c2VyIn0.QjUkCInyCJ5Wsz4q56gfsLqERr6pYlGjwNw-VsKNJ_3Jp-8Dazq9UmDGN8AmAkQ0sp0b-FMm3jArKMBpr84gKd65trvQx_qHvXev5x2MWBG4_9v3C9MmjxWcAYRVmfRdURUOhfto-4YfRwMwNRsKJfwMIjfS5VT8bHJWipcCDzaidN8h_LLORbmmQZ2o0l4Jnv5qrrWzUcSTeEeBpHGOjes1-T0gOlDJa34Z9x_xrsTsybKAylrmX03mDSI-f2h5XqqtgnrxtddtHXHatfxB1BHWq-FILDsGf0UG47FEQjqapFvn9bFiNyq0GVrgdK42miEO7ywOtCOKpCfAUnMwdQ",
+											"type": "string"
+										},
+										{
+											"key": "undefined",
+											"type": "any"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8443/pentests/cb33fad4-7965-4654-a9f9-f007edaca35c/finding",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8443",
+									"path": [
+										"pentests",
+										"cb33fad4-7965-4654-a9f9-f007edaca35c",
+										"finding"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateFinding",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItdG1lbEV0ZHhGTnRSMW9aNXlRdE5jaFFpX0RVN2VNeV9YcU44aXY0S3hzIn0.eyJleHAiOjE2NzA0MTQ3ODYsImlhdCI6MTY3MDQxNDQ4NiwianRpIjoiM2FmOWU5M2MtY2YzNi00MjQwLTkzNWEtNDkxYTJkZTY2MWU4IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4ODg4L2F1dGgvcmVhbG1zL2M0cG9fcmVhbG1fbG9jYWwiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTBlMDZkN2EtOGRkMC00ZWNkLTg5NjMtMDU2YjQ1MDc5YzRmIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYzRwb19sb2NhbCIsInNlc3Npb25fc3RhdGUiOiI5M2ExNTBlMC03ZWRkLTQxZTgtYWE4Yi0yZWY5YTgzOWU4NDciLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImM0cG9fdXNlciIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJjNHBvX2xvY2FsIjp7InJvbGVzIjpbInVzZXIiXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InRlc3QgdXNlciIsInByZWZlcnJlZF91c2VybmFtZSI6InR0dCIsImdpdmVuX25hbWUiOiJ0ZXN0IiwiZmFtaWx5X25hbWUiOiJ1c2VyIn0.QjUkCInyCJ5Wsz4q56gfsLqERr6pYlGjwNw-VsKNJ_3Jp-8Dazq9UmDGN8AmAkQ0sp0b-FMm3jArKMBpr84gKd65trvQx_qHvXev5x2MWBG4_9v3C9MmjxWcAYRVmfRdURUOhfto-4YfRwMwNRsKJfwMIjfS5VT8bHJWipcCDzaidN8h_LLORbmmQZ2o0l4Jnv5qrrWzUcSTeEeBpHGOjes1-T0gOlDJa34Z9x_xrsTsybKAylrmX03mDSI-f2h5XqqtgnrxtddtHXHatfxB1BHWq-FILDsGf0UG47FEQjqapFvn9bFiNyq0GVrgdK42miEO7ywOtCOKpCfAUnMwdQ",
+											"type": "string"
+										},
+										{
+											"key": "undefined",
+											"type": "any"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Test Title\",\n    \"severity\": \"CRITICAL\",\n    \"description\": \"Test Description\",\n    \"impact\": \"Test Impact\",\n    \"affectedUrls\": [\n        \"https://akveo.github.io/nebular/docs/components/progress-bar/examples#nbprogressbarcomponent\"\n    ],\n    \"reproduction\": \"Step 1: Test\",\n    \"mitigation\": \"Test Mitigatin\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8443/pentests/cb33fad4-7965-4654-a9f9-f007edaca35c/finding",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8443",
+									"path": [
+										"pentests",
+										"cb33fad4-7965-4654-a9f9-f007edaca35c",
+										"finding"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
