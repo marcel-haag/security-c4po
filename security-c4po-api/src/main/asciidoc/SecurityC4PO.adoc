@@ -175,6 +175,26 @@ include::{snippets}/getFindingsByPentestId/http-response.adoc[]
 
 include::{snippets}/getFindingsByPentestId/response-fields.adoc[]
 
+=== Get finding for id
+
+To get a finding by id, call the GET request /pentests/+{findingId}+/finding.
+
+==== Request example
+
+include::{snippets}/getFindingById/http-request.adoc[]
+
+==== Request structure
+
+include::{snippets}/getFindingById/path-parameters.adoc[]
+
+==== Response example
+
+include::{snippets}/getFindingById/http-response.adoc[]
+
+==== Response structure
+
+include::{snippets}/getFindingById/response-fields.adoc[]
+
 === Save finding
 
 To save a finding, call the POST request /pentests/+{pentestId}+/finding
@@ -195,10 +215,32 @@ include::{snippets}/saveFindingByPentestId/http-response.adoc[]
 
 include::{snippets}/saveFindingByPentestId/response-fields.adoc[]
 
+=== Update finding
+
+To update a finding, call the PATCH request /pentests/+{findingId}+/finding
+
+==== Request example
+
+include::{snippets}/updateFindingById/http-request.adoc[]
+
+==== Request structure
+
+include::{snippets}/updateFindingById/path-parameters.adoc[]
+
+==== Response example
+
+include::{snippets}/updateFindingById/http-response.adoc[]
+
+==== Response structure
+
+include::{snippets}/updateFindingById/response-fields.adoc[]
+
 == Change History
 
 |===
 |Date |Change
+|2022-12-09
+|Added GET and PATCH endpoint for Finding
 |2022-12-02
 |Added GET and POST endpoint for Findings
 |2022-11-21

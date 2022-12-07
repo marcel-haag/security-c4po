@@ -134,7 +134,8 @@
       "update.success": "Fund erfolgreich aktualisiert",
       "update.failed": "Fund konnte nicht aktualisiert werden",
       "delete.success": "Fund erfolgreich gelöscht",
-      "delete.failed": "Fund konnte nicht gelöscht werden"
+      "delete.failed": "Fund konnte nicht gelöscht werden",
+      "not.available": "Fund ist nicht mehr verfügbar"
     }
   },
   "severities": {

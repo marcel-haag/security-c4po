@@ -11,6 +11,7 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono
 import reactor.kotlin.core.publisher.switchIfEmpty
+import java.time.Instant
 
 @Service
 @SuppressFBWarnings(BC_BAD_CAST_TO_ABSTRACT_COLLECTION, MESSAGE_BAD_CAST_TO_ABSTRACT_COLLECTION)
@@ -49,6 +50,43 @@ class FindingService(private val findingRepository: FindingRepository, private v
         }.doOnError {
             throw wrappedException(
                 logging = { logger.warn("Finding could not be stored in Database. Thrown exception: ", it) },
+                mappedException = TransactionInterruptedException(
+                    "Finding could not be stored.",
+                    Errorcode.FindingInsertionFailed
+                )
+            )
+        }
+    }
+
+    /**
+     * Update [Finding]
+     *
+     * @throws [InvalidModelException] if the [Finding] is invalid
+     * @throws [TransactionInterruptedException] if the [Finding] could not be stored
+     * @return saved [Finding]
+     */
+    fun updateFinding(findingId: String, body: FindingRequestBody): Mono<Finding> {
+        validate(
+            require = body.isValid(),
+            logging = { logger.warn("Finding not valid.") },
+            mappedException = InvalidModelException(
+                "Finding not valid.", Errorcode.FindingInvalid
+            )
+        )
+        return this.findingRepository.findFindingById(findingId).switchIfEmpty {
+            logger.warn("Finding with id $findingId not found.")
+            val msg = "Finding with id $findingId not found."
+            val ex = EntityNotFoundException(msg, Errorcode.FindingNotFound)
+            throw ex
+        }.flatMap { currentFindingEntity: FindingEntity ->
+            currentFindingEntity.lastModified = Instant.now()
+            currentFindingEntity.data = buildFinding(body, currentFindingEntity)
+            findingRepository.save(currentFindingEntity).map {
+                it.toFinding()
+            }
+        }.doOnError {
+            throw wrappedException(
+                logging = { logger.warn("Finding could not be updated in Database. Thrown exception: ", it) },
                 mappedException = TransactionInterruptedException(
                     "Finding could not be stored.",
                     Errorcode.FindingInsertionFailed

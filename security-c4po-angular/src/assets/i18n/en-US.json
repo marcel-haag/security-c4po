@@ -134,7 +134,8 @@
       "update.success": "Finding updated successfully",
       "update.failed": "Finding could not be updated",
       "delete.success": "Finding deleted successfully",
-      "delete.failed": "Finding could not be deleted"
+      "delete.failed": "Finding could not be deleted",
+      "not.available": "Finding is not available anymore"
     }
   },
   "severities": {
