@@ -124,4 +124,32 @@ class FindingService(private val findingRepository: FindingRepository, private v
             throw ex
         }
     }
+
+    fun deleteFindingByPentestAndFindingId(pentestId: String, findingId: String): Mono<Finding> {
+        return findingRepository.findFindingById(findingId).switchIfEmpty {
+            logger.info("Finding with id $findingId not found. Deletion not necessary.")
+            Mono.empty()
+        }.flatMap { findingEntity: FindingEntity ->
+            val finding = findingEntity.toFinding()
+            findingRepository.deleteFindingById(findingId).flatMap {
+                // After successfully deleting finding remove its id from pentest
+                pentestService.removeFindingFromPentest(pentestId, findingId).onErrorMap {
+                    TransactionInterruptedException(
+                        "Pentest could not be updated in Database.",
+                        Errorcode.PentestInsertionFailed
+                    )
+                }.map {
+                    finding
+                }
+            }.doOnError {
+                throw wrappedException(
+                    logging = { logger.warn("Finding could not be deleted from Database. Thrown exception: ", it) },
+                    mappedException = TransactionInterruptedException(
+                        "Finding could not be deleted.",
+                        Errorcode.FindingDeletionFailed
+                    )
+                )
+            }
+        }
+    }
 }

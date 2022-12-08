@@ -14,6 +14,4 @@ interface ProjectRepository: ReactiveMongoRepository<ProjectEntity, String> {
 
     @DeleteQuery("{'data._id' : ?0}")
     fun deleteProjectById(id: String): Mono<Long>
-
-
 }
