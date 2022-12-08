@@ -39,4 +39,5 @@ enum class Errorcode(val code: Int) {
     PentestInsertionFailed(6007),
     ProjectPentestInsertionFailed(6008),
     FindingInsertionFailed(6009),
+    FindingDeletionFailed(6010),
 }

@@ -235,11 +235,33 @@ include::{snippets}/updateFindingById/http-response.adoc[]
 
 include::{snippets}/updateFindingById/response-fields.adoc[]
 
+=== Delete finding
+
+To delete a finding, call the PATCH request /pentests/+{pentestId}+/finding/+{findingId}+
+
+==== Request example
+
+include::{snippets}/deleteFindingByPentestAndFindingId/http-request.adoc[]
+
+==== Request structure
+
+include::{snippets}/deleteFindingByPentestAndFindingId/path-parameters.adoc[]
+
+==== Response example
+
+include::{snippets}/deleteFindingByPentestAndFindingId/http-response.adoc[]
+
+==== Response structure
+
+include::{snippets}/deleteFindingByPentestAndFindingId/response-fields.adoc[]
+
 == Change History
 
 |===
 |Date |Change
 |2022-12-09
+|Added DELETE endpoint for Finding
+|2022-12-08
 |Added GET and PATCH endpoint for Finding
 |2022-12-02
 |Added GET and POST endpoint for Findings

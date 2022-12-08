@@ -52,6 +52,12 @@ fun Finding.toFindingResponseBody(): ResponseBody {
     )
 }
 
+fun Finding.toFindingDeleteResponseBody(): ResponseBody {
+    return mapOf(
+        "id" to id
+    )
+}
+
 /**
  * Validates if a [FindingRequestBody] is valid
  *
