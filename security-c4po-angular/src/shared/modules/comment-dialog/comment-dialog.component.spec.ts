@@ -1,6 +1,10 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {FindingDialogComponent} from './finding-dialog.component';
+import {CommentDialogComponent} from './comment-dialog.component';
+import {PROJECT_STATE_NAME, ProjectState, ProjectStateModel} from '@shared/stores/project-state/project-state';
+import {Category} from '@shared/models/category.model';
+import {PentestStatus} from '@shared/models/pentest-status.model';
+import {NgxsModule, Store} from '@ngxs/store';
 import {CommonModule} from '@angular/common';
 import {
   NB_DIALOG_CONFIG,
@@ -9,7 +13,8 @@ import {
   NbDialogRef,
   NbFormFieldModule,
   NbInputModule,
-  NbLayoutModule, NbTagModule
+  NbLayoutModule, NbSelectModule,
+  NbTagModule
 } from '@nebular/theme';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ReactiveFormsModule, Validators} from '@angular/forms';
@@ -23,13 +28,10 @@ import {NotificationService} from '@shared/services/notification.service';
 import {NotificationServiceMock} from '@shared/services/notification.service.mock';
 import {DialogService} from '@shared/services/dialog-service/dialog.service';
 import {DialogServiceMock} from '@shared/services/dialog-service/dialog.service.mock';
-import {Severity} from '@shared/models/severity.enum';
-import {Finding} from '@shared/models/finding.model';
 import Mock = jest.Mock;
-import {Category} from '@shared/models/category.model';
-import {PentestStatus} from '@shared/models/pentest-status.model';
-import {PROJECT_STATE_NAME, ProjectState, ProjectStateModel} from '@shared/stores/project-state/project-state';
-import {NgxsModule, Store} from '@ngxs/store';
+import {Finding} from '@shared/models/finding.model';
+import {Severity} from '@shared/models/severity.enum';
+import {Comment} from '@shared/models/comment.model';
 
 const DESIRED_PROJECT_STATE_SESSION: ProjectStateModel = {
   selectedProject: {
@@ -52,14 +54,14 @@ const DESIRED_PROJECT_STATE_SESSION: ProjectStateModel = {
     refNumber: 'OTF-001',
     childEntries: [],
     status: PentestStatus.NOT_STARTED,
-    findingIds: ['56c47c56-3bcd-45f1-a05b-c197dbd33112'],
-    commentIds: []
+    findingIds: [],
+    commentIds: ['56c47c56-3bcd-45f1-a05b-c197dbd33112']
   },
 };
 
-describe('FindingDialogComponent', () => {
-  let component: FindingDialogComponent;
-  let fixture: ComponentFixture<FindingDialogComponent>;
+describe('CommentDialogComponent', () => {
+  let component: CommentDialogComponent;
+  let fixture: ComponentFixture<CommentDialogComponent>;
   let store: Store;
 
   beforeEach(async () => {
@@ -67,7 +69,7 @@ describe('FindingDialogComponent', () => {
 
     await TestBed.configureTestingModule({
       declarations: [
-        FindingDialogComponent
+        CommentDialogComponent
       ],
       imports: [
         CommonModule,
@@ -78,6 +80,7 @@ describe('FindingDialogComponent', () => {
         NbInputModule,
         NbFormFieldModule,
         NbTagModule,
+        NbSelectModule,
         ReactiveFormsModule,
         BrowserAnimationsModule,
         ThemeModule.forRoot(),
@@ -103,7 +106,7 @@ describe('FindingDialogComponent', () => {
 
   beforeEach(() => {
     TestBed.overrideProvider(NB_DIALOG_CONFIG, {useValue: mockedCommentDialogData});
-    fixture = TestBed.createComponent(FindingDialogComponent);
+    fixture = TestBed.createComponent(CommentDialogComponent);
     store = TestBed.inject(Store);
     store.reset({
       ...store.snapshot(),
@@ -126,114 +129,58 @@ export const createSpyObj = (baseName, methodNames): { [key: string]: Mock<any> 
   return obj;
 };
 
-export const mockFinding: Finding = {
+export const mockComment: Comment = {
   id: '11-22-33',
-  severity: Severity.LOW,
   title: 'Test Finding',
   description: 'Test Description',
-  impact: 'Test Impact',
-  affectedUrls: ['https://test.de'],
-  reproduction: 'Step N: Test',
-  mitigation: 'Mitigation Test'
+  relatedFindings: ['68c47c56-3bcd-45f1-a05b-c197dbd33224']
 };
 
 export const mockedCommentDialogData = {
   form: {
-    findingTitle: {
-      fieldName: 'findingTitle',
+    commentTitle: {
+      fieldName: 'commentTitle',
       type: 'formText',
-      labelKey: 'finding.title.label',
-      placeholder: 'finding.title',
+      labelKey: 'comment.title.label',
+      placeholder: 'comment.title',
       controlsConfig: [
-        {value: mockFinding ? mockFinding.title : '', disabled: false},
+        {value: mockComment ? mockComment.title : '', disabled: false},
         [Validators.required]
       ],
       errors: [
-        {errorCode: 'required', translationKey: 'finding.validationMessage.titleRequired'}
+        {errorCode: 'required', translationKey: 'comment.validationMessage.titleRequired'}
       ]
     },
-    findingSeverity: {
-      fieldName: 'findingSeverity',
-      type: 'severity-select',
-      labelKey: 'finding.severity.label',
-      placeholder: 'finding.severity',
-      controlsConfig: [
-        {value: mockFinding ? mockFinding.severity : Severity.LOW, disabled: false},
-        [Validators.required]
-      ],
-      errors: [
-        {errorCode: 'required', translationKey: 'finding.validationMessage.severityRequired'}
-      ]
-    },
-    findingDescription: {
-      fieldName: 'findingDescription',
+    commentDescription: {
+      fieldName: 'commentDescription',
       type: 'formText',
-      labelKey: 'finding.description.label',
-      placeholder: 'finding.description',
+      labelKey: 'comment.description.label',
+      placeholder: 'comment.description',
       controlsConfig: [
-        {value: mockFinding ? mockFinding.description : '', disabled: false},
+        {value: mockComment ? mockComment.description : '', disabled: false},
         [Validators.required]
       ],
       errors: [
-        {errorCode: 'required', translationKey: 'finding.validationMessage.descriptionRequired'}
+        {errorCode: 'required', translationKey: 'comment.validationMessage.descriptionRequired'}
       ]
     },
-    findingImpact: {
-      fieldName: 'findingImpact',
-      type: 'formText',
-      labelKey: 'finding.impact.label',
-      placeholder: 'finding.impact',
-      controlsConfig: [
-        {value: mockFinding ? mockFinding.impact : '', disabled: false},
-        [Validators.required]
-      ],
-      errors: [
-        {errorCode: 'required', translationKey: 'finding.validationMessage.impactRequired'}
-      ]
-    },
-    findingAffectedUrls: {
-      fieldName: 'findingAffectedUrls',
+    commentRelatedFindings: {
+      fieldName: 'commentRelatedFindings',
       type: 'text',
-      labelKey: 'finding.affectedUrls.label',
-      placeholder: 'finding.affectedUrls.placeholder',
+      labelKey: 'comment.relatedFindings.label',
+      placeholder: 'comment.relatedFindingsPlaceholder',
       controlsConfig: [
-        {value: '', disabled: false},
+        {value: mockComment ? mockComment.relatedFindings : [], disabled: false},
         []
       ],
       errors: [
-        {errorCode: 'required', translationKey: 'finding.validationMessage.affectedUrlsRequired'}
-      ]
-    },
-    findingReproduction: {
-      fieldName: 'findingReproduction',
-      type: 'text',
-      labelKey: 'finding.reproduction.label',
-      placeholder: 'finding.reproduction',
-      controlsConfig: [
-        {value: mockFinding ? mockFinding.reproduction : '', disabled: false},
-        [Validators.required]
-      ],
-      errors: [
-        {errorCode: 'required', translationKey: 'finding.validationMessage.reproductionRequired'}
-      ]
-    },
-    findingMitigation: {
-      fieldName: 'findingMitigation',
-      type: 'text',
-      labelKey: 'finding.mitigation.label',
-      placeholder: 'finding.mitigation',
-      controlsConfig: [
-        {value: mockFinding ? mockFinding.mitigation : '', disabled: false},
-        []
-      ],
-      errors: [
-        {errorCode: 'required', translationKey: 'finding.validationMessage.mitigationRequired'}
+        {errorCode: 'required', translationKey: 'finding.validationMessage.relatedFindings'}
       ]
     }
   },
   options: [
     {
-      headerLabelKey: 'finding.create.header',
+      headerLabelKey: 'comment.create.header',
       buttonKey: 'global.action.save',
       accentColor: 'info'
     },

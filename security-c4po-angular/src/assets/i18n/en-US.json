@@ -10,6 +10,7 @@
     "action.exit": "Exit",
     "action.update": "Update",
     "action.export": "Export",
+    "action.reset": "Reset",
     "action.yes": "Yes",
     "action.no": "No",
     "username": "Username",
@@ -150,8 +151,29 @@
     "description": "Description",
     "relatedFindings": "Related Findings",
     "add": "Add Comment",
+    "add.finding": "Add related finding",
     "no.comments": "No comments available",
     "no.relatedFindings": "Not related to finding",
+    "relatedFindingsPlaceholder": "Select a related finding",
+    "noFindingsInObjectivePlaceholder": "Objective doesn't have any findings to relate to.",
+    "create": {
+      "header": "Create New Comment"
+    },
+    "edit": {
+      "header": "Edit Comment"
+    },
+    "delete": {
+      "title": "Delete Comment",
+      "key": "Do you want to permanently delete the comment \"{{name}}\"?"
+    },
+    "title.label": "Comment Title",
+    "description.label": "Description of Comment",
+    "relatedFindings.label": "Related Findings",
+    "validationMessage": {
+      "titleRequired": "Title is required.",
+      "descriptionRequired": "Description is required.",
+      "relatedFindings": "Related findings required."
+    },
     "popup": {
       "not.found": "No comment found",
       "save.success": "Comment saved successfully",

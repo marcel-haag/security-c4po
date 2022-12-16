@@ -10,6 +10,7 @@
     "action.exit": "Beenden",
     "action.update": "Speichern",
     "action.export": "Exportieren",
+    "action.reset": "Zurücksetzen",
     "action.yes": "Ja",
     "action.no": "Nein",
     "username": "Nutzername",
@@ -148,10 +149,31 @@
     "commentId": "Kommentar Id",
     "title": "Titel",
     "description": "Beschreibung",
-    "relatedFindings": "Verwandte Funde",
+    "relatedFindings": "Verbundene Funde",
     "add": "Kommentar hinzufügen",
-    "no.relatedFindings": "Nicht verbunden mit Fund",
+    "add.finding": "Fund hinzufügen",
     "no.comments": "Keine Kommentare verfügbar",
+    "no.relatedFindings": "Nicht verbunden mit Fund",
+    "relatedFindingsPlaceholder": "Fund auswählen",
+    "noFindingsInObjectivePlaceholder": "Objective hat keine Befunde, auf die es sich beziehen könnte.",
+    "create": {
+      "header": "Neuen Kommentar erstellen"
+    },
+    "edit": {
+      "header": "Kommentar editieren"
+    },
+    "delete": {
+      "title": "Kommentar löschen",
+      "key": "Möchten Sie den Kommentar \"{{name}}\" unwiderruflich löschen?"
+    },
+    "title.label": "Kommentartitel",
+    "description.label": "Beschreibung des Kommentars",
+    "relatedFindings.label": "Verbundene Funde",
+    "validationMessage": {
+      "titleRequired": "Titel ist erforderlich.",
+      "descriptionRequired": "Beschreibung ist erforderlich.",
+      "relatedFindings": "Verwandte Funde erforderlich."
+    },
     "popup": {
       "not.found": "Keine Kommentare gefunden",
       "save.success": "Kommentar erfolgreich gespeichert",

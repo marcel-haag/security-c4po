@@ -1,0 +1,65 @@
+@import "../../../assets/@theme/styles/_dialog.scss";
+@import '../../../assets/@theme/styles/themes';
+
+.comment-dialog {
+  width: 45.25rem !important;
+  height: 45rem;
+
+  .comment-dialog-header {
+    height: 8vh;
+    font-size: 1.5rem;
+  }
+
+  nb-form-field {
+    padding: 0.5rem 0 0.75rem;
+  }
+
+  .label {
+    display: block;
+    font-size: 0.95rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .form-field {
+    font-weight: normal;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-text {
+    width: 42rem !important;
+  }
+
+  .form-textarea {
+    width: 42rem !important;
+    height: 8rem;
+  }
+
+  .comment-form-field {
+    align-items: center;
+
+    .finding-icon {
+      color: nb-theme(color-danger-default);
+    }
+  }
+
+  .relatedFindings {
+    // font-family: Courier, serif;
+    // background-color: nb-theme(card-header-basic-background-color);
+    width: 100% !important;
+
+    .finding-option {
+      color: nb-theme(color-danger-default) !important;
+      background-color: nb-theme(color-danger-default) !important;
+    }
+
+    .reset-option {
+      color: nb-theme(color-danger-default) !important;
+      background-color: nb-theme(color-danger-default) !important;
+    }
+  }
+
+  .error-text {
+    float: left;
+    color: nb-theme(color-danger-default);
+  }
+}

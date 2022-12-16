@@ -1,0 +1,80 @@
+<nb-card #dialog accent="{{dialogData?.options[0].accentColor}}" class="comment-dialog">
+  <nb-card-header fxLayoutAlign="start center" class="dialog-header">
+    {{ dialogData?.options[0].headerLabelKey | translate }}
+  </nb-card-header>
+  <nb-card-body>
+    <form *ngIf="formArray" [formGroup]="commentFormGroup">
+      <div fxLayout="row" fxLayoutGap="1rem" fxLayoutAlign="start start">
+        <!-- Form Text Layout -->
+        <div fxLayout="column" fxFlex fxLayoutGap="1rem" fxLayoutAlign="start start">
+          <!-- Title Form Field -->
+          <nb-form-field class="comment-form-field">
+            <label for="{{formArray[0].fieldName}}" class="label">
+              {{formArray[0].labelKey | translate}}
+            </label>
+            <input formControlName="{{formArray[0].fieldName}}"
+                   type="formText" required fullWidth
+                   id="{{formArray[0].fieldName}}" nbInput
+                   class="form-field form-text"
+                   [status]="commentFormGroup.get(formArray[0].fieldName).dirty ? (commentFormGroup.get(formArray[0].fieldName).invalid  ? 'danger' : 'basic') : 'basic'"
+                   placeholder="{{formArray[0].placeholder | translate}} *">
+            <!-- FIXME: when the bug (https://github.com/angular/components/issues/7739) is fixed -->
+            <ng-template ngFor let-error [ngForOf]="formArray[0].errors"
+                         *ngIf="commentFormGroup.get(formArray[0].fieldName).dirty">
+                <span class="error-text"
+                      *ngIf="commentFormGroup.get(formArray[0].fieldName)?.hasError(error.errorCode) && error.errorCode === 'required'">
+                {{error.translationKey | translate}}
+                </span>
+            </ng-template>
+          </nb-form-field>
+          <!-- Description Form Field -->
+          <nb-form-field class="comment-form-field">
+            <label for="{{formArray[1].fieldName}}" class="label">
+              {{formArray[1].labelKey | translate}}
+            </label>
+            <textarea formControlName="{{formArray[1].fieldName}}"
+                      type="formText" required fullWidth
+                      id="{{formArray[1].fieldName}}" nbInput
+                      class="form-field form-textarea"
+                      [status]="commentFormGroup.get(formArray[1].fieldName).dirty ? (commentFormGroup.get(formArray[1].fieldName).invalid  ? 'danger' : 'basic') : 'basic'"
+                      placeholder="{{formArray[1].placeholder | translate}} *">
+              </textarea>
+            <!-- FIXME: when the bug (https://github.com/angular/components/issues/7739) is fixed -->
+            <ng-template ngFor let-error [ngForOf]="formArray[1].errors"
+                         *ngIf="commentFormGroup.get(formArray[1].fieldName).dirty">
+                <span class="error-text"
+                      *ngIf="commentFormGroup.get(formArray[1].fieldName)?.hasError(error.errorCode) && error.errorCode === 'required'">
+                {{error.translationKey | translate}}
+                </span>
+            </ng-template>
+          </nb-form-field>
+        </div>
+      </div>
+      <!-- Related Findings Layout -->
+      <!-- Related Findings Form Field -->
+      <nb-form-field class="comment-form-field">
+        <label for="{{formArray[2].fieldName}}" class="label">
+          {{formArray[2].labelKey | translate}}
+        </label>
+        <!--<fa-icon nbPrefix [icon]="fa.faExclamationCircle" size="lg" class="finding-icon"></fa-icon>-->
+        <nb-select placeholder="{{formArray[2].placeholder | translate}}" formControlName="{{formArray[2].fieldName}}" multiple
+                   (selectedChange)="changeSelected($event)"
+                   fullWidth shape="semi-round" filled status="info" [size]="'large'" class="form-field relatedFindings">
+            <nb-option class="reset-option">{{'global.action.reset' | translate}}</nb-option>
+            <nb-option class="finding-option" *ngFor="let finding of relatedFindings" [value]="{value: finding}">
+              {{finding.title}}
+            </nb-option>
+        </nb-select>
+      </nb-form-field>
+    </form>
+  </nb-card-body>
+  <nb-card-footer fxLayout="row" fxLayoutGap="1.5rem" fxLayoutAlign="end end">
+    <button nbButton status="success" size="small" class="dialog-button" [disabled]="!allowSave()"
+            (click)="onClickSave(commentFormGroup.value)">
+      {{ dialogData?.options[0].buttonKey | translate}}
+    </button>
+    <button nbButton status="danger" size="small" class="dialog-button" (click)="onClickClose()">
+      {{ 'global.action.cancel' | translate }}
+    </button>
+  </nb-card-footer>
+</nb-card>

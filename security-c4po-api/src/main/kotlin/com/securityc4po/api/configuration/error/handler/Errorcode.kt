@@ -7,6 +7,8 @@ enum class Errorcode(val code: Int) {
     PentestNotFound(1003),
     FindingsNotFound(1004),
     FindingNotFound(1005),
+    CommentsNotFound(1006),
+    CommentNotFound(1007),
 
     // 2XXX Already Changed
     ProjectAlreadyChanged(2001),
@@ -20,6 +22,7 @@ enum class Errorcode(val code: Int) {
     TokenWithoutField(3004),
     UserIdIsEmpty(3005),
     FindingInvalid(3006),
+    CommentInvalid(3007),
 
     // 4XXX Unauthorized
     ProjectAdjustmentNotAuthorized(4000),
@@ -40,4 +43,6 @@ enum class Errorcode(val code: Int) {
     ProjectPentestInsertionFailed(6008),
     FindingInsertionFailed(6009),
     FindingDeletionFailed(6010),
+    CommentInsertionFailed(6011),
+    CommentDeletionFailed(6012),
 }

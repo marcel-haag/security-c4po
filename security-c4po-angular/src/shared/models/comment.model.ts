@@ -42,3 +42,30 @@ export function transformCommentsToObjectiveEntries(findings: Comment[]): Commen
   });
   return findingEntries;
 }
+
+export function transformCommentToRequestBody(comment: CommentDialogBody | Comment): Comment {
+  const transformedComment = {
+    ...comment,
+    title: comment.title,
+    description: comment.description,
+    // Transforms related findings from RelatedFindingOption to list of finding ids
+    relatedFindings: comment.relatedFindings ? comment.relatedFindings.map(finding => finding.value.id) : [],
+    /* Remove Table Entry Object Properties */
+    childEntries: undefined,
+    kind: undefined,
+    findings: undefined,
+    expanded: undefined,
+  } as unknown as Comment;
+  return transformedComment;
+}
+
+export interface CommentDialogBody {
+  title: string;
+  description: string;
+  relatedFindings: Array<RelatedFindingOption>;
+}
+
+export interface RelatedFindingOption {
+  id: string;
+  title: string;
+}
