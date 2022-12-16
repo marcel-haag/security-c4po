@@ -40,3 +40,10 @@ export class UpdatePentestFindings {
   constructor(public findingId: string) {
   }
 }
+
+export class UpdatePentestComments {
+  static readonly type = '[ProjectState] UpdatePentestComments';
+
+  constructor(public commentId: string) {
+  }
+}

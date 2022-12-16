@@ -6,7 +6,6 @@ import deepEqual from 'deep-equal';
 import {UntilDestroy} from '@ngneat/until-destroy';
 import {Severity} from '@shared/models/severity.enum';
 import * as FA from '@fortawesome/free-solid-svg-icons';
-import {BehaviorSubject} from 'rxjs';
 
 @UntilDestroy()
 @Component({

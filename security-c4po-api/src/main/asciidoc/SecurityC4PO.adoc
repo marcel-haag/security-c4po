@@ -255,10 +255,54 @@ include::{snippets}/deleteFindingByPentestAndFindingId/http-response.adoc[]
 
 include::{snippets}/deleteFindingByPentestAndFindingId/response-fields.adoc[]
 
+== Comment
+
+=== Get comments for pentest
+
+To get comments by pentestId, call the GET request /pentests/+{pentestId}+/comments.
+
+==== Request example
+
+include::{snippets}/getCommentsByPentestId/http-request.adoc[]
+
+==== Request structure
+
+include::{snippets}/getCommentsByPentestId/path-parameters.adoc[]
+
+==== Response example
+
+include::{snippets}/getCommentsByPentestId/http-response.adoc[]
+
+==== Response structure
+
+include::{snippets}/getCommentsByPentestId/response-fields.adoc[]
+
+=== Save comment
+
+To save a comment, call the POST request /pentests/+{pentestId}+/comment
+
+==== Request example
+
+include::{snippets}/saveCommentByPentestId/http-request.adoc[]
+
+==== Request structure
+
+include::{snippets}/saveCommentByPentestId/path-parameters.adoc[]
+
+==== Response example
+
+include::{snippets}/saveCommentByPentestId/http-response.adoc[]
+
+==== Response structure
+
+include::{snippets}/saveCommentByPentestId/response-fields.adoc[]
+
 == Change History
 
 |===
 |Date |Change
+|2022-12-22
+|Added GET, POST endpoint for Comment
 |2022-12-09
 |Added DELETE endpoint for Finding
 |2022-12-08

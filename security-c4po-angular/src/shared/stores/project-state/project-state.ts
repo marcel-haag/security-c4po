@@ -5,7 +5,7 @@ import {
   ChangeCategory,
   ChangePentest,
   ChangeProject,
-  InitProjectState,
+  InitProjectState, UpdatePentestComments,
   UpdatePentestFindings
 } from '@shared/stores/project-state/project-state.actions';
 import {Category} from '@shared/models/category.model';
@@ -102,6 +102,28 @@ export class ProjectState {
     stateSelectedPentest = {
       ...stateSelectedPentest,
       findingIds: updatedFindingIds
+    };
+    // path project state
+    ctx.patchState({
+      selectedPentest: stateSelectedPentest
+    });
+  }
+
+  @Action(UpdatePentestComments)
+  updatePentestComments(ctx: StateContext<ProjectStateModel>, {commentId}: UpdatePentestComments): void {
+    const state = ctx.getState();
+    let stateSelectedPentest: Pentest = state.selectedPentest;
+    const stateCommentIds: Array<string> = stateSelectedPentest.commentIds || [];
+    let updatedCommentIds: Array<string> = [];
+    if (!stateCommentIds.includes(commentId)) {
+      updatedCommentIds = [...stateCommentIds, commentId];
+    } else {
+      // ToDo: Add logic to remove commentId from array
+    }
+    // overwrites only findingIds
+    stateSelectedPentest = {
+      ...stateSelectedPentest,
+      commentIds: updatedCommentIds
     };
     // path project state
     ctx.patchState({

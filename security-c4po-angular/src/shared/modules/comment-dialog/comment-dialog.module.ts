@@ -1,24 +1,18 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FindingDialogComponent} from '@shared/modules/finding-dialog/finding-dialog.component';
-import {
-  NbButtonModule,
-  NbCardModule,
-  NbFormFieldModule,
-  NbInputModule,
-  NbSelectModule,
-  NbTagModule
-} from '@nebular/theme';
-import {FindingDialogService} from '@shared/modules/finding-dialog/service/finding-dialog.service';
+import {CommentDialogComponent} from '@shared/modules/comment-dialog/comment-dialog.component';
+import {CommentDialogService} from '@shared/modules/comment-dialog/service/comment-dialog.service';
+import {CommonAppModule} from '../../../app/common-app.module';
+import {NbButtonModule, NbCardModule, NbFormFieldModule, NbInputModule, NbSelectModule, NbTagModule} from '@nebular/theme';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {TranslateModule} from '@ngx-translate/core';
-import {CommonAppModule} from '../../../app/common-app.module';
 import {ReactiveFormsModule} from '@angular/forms';
+
 
 @NgModule({
   declarations: [
-    FindingDialogComponent
+    CommentDialogComponent
   ],
   imports: [
     CommonModule,
@@ -35,11 +29,11 @@ import {ReactiveFormsModule} from '@angular/forms';
     ReactiveFormsModule,
   ],
   providers: [
-    FindingDialogService,
+    CommentDialogService,
   ],
   entryComponents: [
-    FindingDialogComponent
+    CommentDialogComponent
   ]
 })
-export class FindingDialogModule {
+export class CommentDialogModule {
 }

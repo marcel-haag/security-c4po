@@ -458,6 +458,90 @@
 					]
 				},
 				{
+					"name": "comments",
+					"item": [
+						{
+							"name": "saveComment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItdG1lbEV0ZHhGTnRSMW9aNXlRdE5jaFFpX0RVN2VNeV9YcU44aXY0S3hzIn0.eyJleHAiOjE2NzE3MTM3MzQsImlhdCI6MTY3MTcxMzQzNCwiYXV0aF90aW1lIjoxNjcxNzEyNjkwLCJqdGkiOiJjNWYxYWZiZi1mZTczLTQ0NTAtYjA4YS1lMGEwMDcyNjMyOTgiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0Ojg4ODgvYXV0aC9yZWFsbXMvYzRwb19yZWFsbV9sb2NhbCIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiIxMGUwNmQ3YS04ZGQwLTRlY2QtODk2My0wNTZiNDUwNzljNGYiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJjNHBvX2xvY2FsIiwibm9uY2UiOiIyZTYyNjNhNC1lM2U2LTRlMzUtYjQ5Yy1lMjYyNzM1ZTk2MGQiLCJzZXNzaW9uX3N0YXRlIjoiMGNmYmY4MGEtNzAxMS00NmQzLTllNGQtNTUxYWU4NTA5NjZmIiwiYWNyIjoiMCIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJjNHBvX3VzZXIiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYzRwb19sb2NhbCI6eyJyb2xlcyI6WyJ1c2VyIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoidGVzdCB1c2VyIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidHR0IiwiZ2l2ZW5fbmFtZSI6InRlc3QiLCJmYW1pbHlfbmFtZSI6InVzZXIifQ.se43hq_vPjzAG6MpIxBiHb9vJHZmbLEko0tiN5m2hbhzd8s3YiBWpeiI6kgZ5kzl23iBQyMnXN4Sqpbt2ERKbKyUusezWcXhGTP22usi3b1vzFOAY9mqCI32i15sxCM2UDRYDFYcAblaKPxKsQf6EWduXpcn4L9_kQE4EpoLyWWWqFThGvFPSvkPGodffcEOz8BrnYDVUnwkodFsOWAnQmQHaR7jq1Y0hhZzWi3IlrRWlnRi0TKVWCZgUwO0PJttNq5wYZPsxgiS-khUCC1qtbKrRgBK_3sefxPkWDOQEubu0Kjyjq4rVZnq66anO3Qw82CSLn0nSCu-AL5Xd4Xchw",
+											"type": "string"
+										},
+										{
+											"key": "undefined",
+											"type": "any"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Test Comment\",\n    \"description\": \"Test Comment Description\",\n    \"affectedUrls\": []\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8443/pentests/11601f51-bc17-47fd-847d-0c53df5405b5/comment",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8443",
+									"path": [
+										"pentests",
+										"11601f51-bc17-47fd-847d-0c53df5405b5",
+										"comment"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCommentsForPentesId",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItdG1lbEV0ZHhGTnRSMW9aNXlRdE5jaFFpX0RVN2VNeV9YcU44aXY0S3hzIn0.eyJleHAiOjE2NzE3MTM3MzQsImlhdCI6MTY3MTcxMzQzNCwiYXV0aF90aW1lIjoxNjcxNzEyNjkwLCJqdGkiOiJjNWYxYWZiZi1mZTczLTQ0NTAtYjA4YS1lMGEwMDcyNjMyOTgiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0Ojg4ODgvYXV0aC9yZWFsbXMvYzRwb19yZWFsbV9sb2NhbCIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiIxMGUwNmQ3YS04ZGQwLTRlY2QtODk2My0wNTZiNDUwNzljNGYiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJjNHBvX2xvY2FsIiwibm9uY2UiOiIyZTYyNjNhNC1lM2U2LTRlMzUtYjQ5Yy1lMjYyNzM1ZTk2MGQiLCJzZXNzaW9uX3N0YXRlIjoiMGNmYmY4MGEtNzAxMS00NmQzLTllNGQtNTUxYWU4NTA5NjZmIiwiYWNyIjoiMCIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJjNHBvX3VzZXIiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYzRwb19sb2NhbCI6eyJyb2xlcyI6WyJ1c2VyIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoidGVzdCB1c2VyIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidHR0IiwiZ2l2ZW5fbmFtZSI6InRlc3QiLCJmYW1pbHlfbmFtZSI6InVzZXIifQ.se43hq_vPjzAG6MpIxBiHb9vJHZmbLEko0tiN5m2hbhzd8s3YiBWpeiI6kgZ5kzl23iBQyMnXN4Sqpbt2ERKbKyUusezWcXhGTP22usi3b1vzFOAY9mqCI32i15sxCM2UDRYDFYcAblaKPxKsQf6EWduXpcn4L9_kQE4EpoLyWWWqFThGvFPSvkPGodffcEOz8BrnYDVUnwkodFsOWAnQmQHaR7jq1Y0hhZzWi3IlrRWlnRi0TKVWCZgUwO0PJttNq5wYZPsxgiS-khUCC1qtbKrRgBK_3sefxPkWDOQEubu0Kjyjq4rVZnq66anO3Qw82CSLn0nSCu-AL5Xd4Xchw",
+											"type": "string"
+										},
+										{
+											"key": "undefined",
+											"type": "any"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8443/pentests/11601f51-bc17-47fd-847d-0c53df5405b5/comments",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8443",
+									"path": [
+										"pentests",
+										"11601f51-bc17-47fd-847d-0c53df5405b5",
+										"comments"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "getPentestsByProjectIdAndCategory",
 					"request": {
 						"auth": {
