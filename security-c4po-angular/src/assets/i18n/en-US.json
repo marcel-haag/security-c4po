@@ -153,7 +153,7 @@
     "add": "Add Comment",
     "add.finding": "Add related finding",
     "no.comments": "No comments available",
-    "no.relatedFindings": "Not related to finding",
+    "no.relatedFindings": "Not related to any finding",
     "relatedFindingsPlaceholder": "Select a related finding",
     "noFindingsInObjectivePlaceholder": "Objective doesn't have any findings to relate to.",
     "create": {

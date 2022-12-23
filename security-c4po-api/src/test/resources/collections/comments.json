@@ -10,7 +10,7 @@
   "data": {
     "_id": "89703b19-16c7-49e5-8e33-0c706313e5fe",
     "title": "Test Comment",
-    "description": "Test Comment Description",
+    "description": "No related findings",
     "relatedFindings": []
   },
   "_class": "com.securityc4po.api.comment.CommentEntity"
@@ -25,8 +25,8 @@
   },
   "data": {
     "_id": "df516de6-ca5e-44a6-ac50-db89bb17aac3",
-    "title": "New Test",
-    "description": "New Test",
+    "title": "New Test Comment",
+    "description": "Two related findings",
     "relatedFindings": [
       "0bda8950-94fa-4ec6-8fa7-e09f5a8cd3e8",
       "4ddb84f6-068c-4319-a8ee-1000008bb75a"
@@ -44,8 +44,8 @@
   },
   "data": {
     "_id": "e55e943b-6a48-4d84-8d72-b48d7d9de5b7",
-    "title": "Wow another one?",
-    "description": "Epic!",
+    "title": "Another Test Comment",
+    "description": "One related findings",
     "relatedFindings": [
       "5e22d38f-a4f6-4809-84ea-a803b5f1f9fc"
     ]

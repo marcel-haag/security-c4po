@@ -153,7 +153,7 @@
     "add": "Kommentar hinzufügen",
     "add.finding": "Fund hinzufügen",
     "no.comments": "Keine Kommentare verfügbar",
-    "no.relatedFindings": "Nicht verbunden mit Fund",
+    "no.relatedFindings": "Nicht verbunden mit einem Fund",
     "relatedFindingsPlaceholder": "Fund auswählen",
     "noFindingsInObjectivePlaceholder": "Objective hat keine Befunde, auf die es sich beziehen könnte.",
     "create": {

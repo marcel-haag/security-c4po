@@ -23,6 +23,10 @@ export interface ProjectStateModel {
   selectedPentest: Pentest;
 }
 
+export interface FindingMap {
+  [key: string]: string;
+}
+
 @State<ProjectStateModel>({
   name: PROJECT_STATE_NAME,
   defaults: {
@@ -91,12 +95,14 @@ export class ProjectState {
   updatePentestFindings(ctx: StateContext<ProjectStateModel>, {findingId}: UpdatePentestFindings): void {
     const state = ctx.getState();
     let stateSelectedPentest: Pentest = state.selectedPentest;
+    // State objects
     const stateFindingIds: Array<string> = stateSelectedPentest.findingIds || [];
     let updatedFindingIds: Array<string> = [];
     if (!stateFindingIds.includes(findingId)) {
       updatedFindingIds = [...stateFindingIds, findingId];
     } else {
-      // ToDo: Add logic to remove findingId from array
+      const findingIndex = stateFindingIds.indexOf(findingId);
+      updatedFindingIds = [...stateFindingIds.slice(0, findingIndex)];
     }
     // overwrites only findingIds
     stateSelectedPentest = {
@@ -113,12 +119,14 @@ export class ProjectState {
   updatePentestComments(ctx: StateContext<ProjectStateModel>, {commentId}: UpdatePentestComments): void {
     const state = ctx.getState();
     let stateSelectedPentest: Pentest = state.selectedPentest;
+    // State objects
     const stateCommentIds: Array<string> = stateSelectedPentest.commentIds || [];
     let updatedCommentIds: Array<string> = [];
     if (!stateCommentIds.includes(commentId)) {
       updatedCommentIds = [...stateCommentIds, commentId];
     } else {
-      // ToDo: Add logic to remove commentId from array
+      const commentIndex = stateCommentIds.indexOf(commentId);
+      updatedCommentIds = [...stateCommentIds.slice(0, commentIndex)];
     }
     // overwrites only findingIds
     stateSelectedPentest = {
