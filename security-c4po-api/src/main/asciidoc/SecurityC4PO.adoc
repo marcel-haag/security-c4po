@@ -237,7 +237,7 @@ include::{snippets}/updateFindingById/response-fields.adoc[]
 
 === Delete finding
 
-To delete a finding, call the PATCH request /pentests/+{pentestId}+/finding/+{findingId}+
+To delete a finding, call the DELETE request /pentests/+{pentestId}+/finding/+{findingId}+
 
 ==== Request example
 
@@ -297,10 +297,32 @@ include::{snippets}/saveCommentByPentestId/http-response.adoc[]
 
 include::{snippets}/saveCommentByPentestId/response-fields.adoc[]
 
+=== Delete comment
+
+To delete a comment, call the DELETE request /pentests/+{pentestId}+/comment/+{commentId}+
+
+==== Request example
+
+include::{snippets}/deleteCommentByPentestAndCommentId/http-request.adoc[]
+
+==== Request structure
+
+include::{snippets}/deleteCommentByPentestAndCommentId/path-parameters.adoc[]
+
+==== Response example
+
+include::{snippets}/deleteCommentByPentestAndCommentId/http-response.adoc[]
+
+==== Response structure
+
+include::{snippets}/deleteCommentByPentestAndCommentId/response-fields.adoc[]
+
 == Change History
 
 |===
 |Date |Change
+|2022-12-23
+|Added DELETE endpoint for Comment
 |2022-12-22
 |Added GET, POST endpoint for Comment
 |2022-12-09

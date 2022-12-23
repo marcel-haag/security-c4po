@@ -538,6 +538,42 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "deleteComment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItdG1lbEV0ZHhGTnRSMW9aNXlRdE5jaFFpX0RVN2VNeV9YcU44aXY0S3hzIn0.eyJleHAiOjE2NzE3OTg0OTQsImlhdCI6MTY3MTc5ODE5NCwianRpIjoiYjU0MTcxOGEtNjgxZC00ODI1LThkMGMtYzU5YWQ5Y2MzOGIyIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4ODg4L2F1dGgvcmVhbG1zL2M0cG9fcmVhbG1fbG9jYWwiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTBlMDZkN2EtOGRkMC00ZWNkLTg5NjMtMDU2YjQ1MDc5YzRmIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYzRwb19sb2NhbCIsInNlc3Npb25fc3RhdGUiOiI0NDFhZWU3Ny1iMzNkLTQ0ZDMtOTliYS04ODc2NWU5ZGM5OGUiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImM0cG9fdXNlciIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJjNHBvX2xvY2FsIjp7InJvbGVzIjpbInVzZXIiXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InRlc3QgdXNlciIsInByZWZlcnJlZF91c2VybmFtZSI6InR0dCIsImdpdmVuX25hbWUiOiJ0ZXN0IiwiZmFtaWx5X25hbWUiOiJ1c2VyIn0.23KYKKUgjPiXWNR0po_VzU8BCwdN2KFZSIr5EdbKkpnQyJZWp4ov-mP8bVVsc_kfO8BBLudbWvZE6NLS9rSuBVi25kA5soZqDOhacJfAXBomEpcModDCFxm4917QtZCMFsBx571cMipQMc7Oo5WAtSDwoVsi3ju_WbVVq4si40zI-B0qmhRCg6SGGqkxu0oQr_aZ9JUIHM8mT1YQSV6jBmTkFLpQBcY6ren2JCjL2sceXIcUaWd5bqVeGEdo3gbsIQMxFiOzH0UeHKJg0Zyw9n4TEl9jyv6ncrgOpJ41Xw_1jtmcjh16uCZrzyiTaFIG7hCEGRi2O8gezQ2ClMTlnw",
+											"type": "string"
+										},
+										{
+											"key": "undefined",
+											"type": "any"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8443/pentests/11601f51-bc17-47fd-847d-0c53df5405b5/comment/89703b19-16c7-49e5-8e33-0c706313e5fe",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8443",
+									"path": [
+										"pentests",
+										"11601f51-bc17-47fd-847d-0c53df5405b5",
+										"comment",
+										"89703b19-16c7-49e5-8e33-0c706313e5fe"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
