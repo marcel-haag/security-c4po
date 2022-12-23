@@ -34,4 +34,13 @@ export class CommentService {
   public saveComment(pentestId: string, comment: Comment): Observable<Comment> {
     return this.http.post<Comment>(`${this.apiBaseURL}/${pentestId}/comment`, comment);
   }
+
+  /**
+   * Delete Comment
+   * @param pentestId the id of the pentest
+   * @param commentId the id of the comment
+   */
+  public deleteCommentByPentestAndCommentId(pentestId: string, commentId: string): Observable<string> {
+    return this.http.delete<string>(`${this.apiBaseURL}/${pentestId}/comment/${commentId}`);
+  }
 }
