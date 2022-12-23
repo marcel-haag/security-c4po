@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Store} from '@ngxs/store';
 import {Observable} from 'rxjs';
 import {Comment} from '@shared/models/comment.model';
+import {Finding} from '@shared/models/finding.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,12 +28,29 @@ export class CommentService {
   }
 
   /**
+   * Get Comment by Id
+   * @param commentId the id of the comment
+   */
+  public getCommentById(commentId: string): Observable<Comment> {
+    return this.http.get<Comment>(`${this.apiBaseURL}/${commentId}/comment`);
+  }
+
+  /**
    * Save Comment
    * @param pentestId the id of the pentest
    * @param comment the information of the comment
    */
   public saveComment(pentestId: string, comment: Comment): Observable<Comment> {
     return this.http.post<Comment>(`${this.apiBaseURL}/${pentestId}/comment`, comment);
+  }
+
+  /**
+   * Update Comment
+   * @param commentId the id of the comment
+   * @param comment the information of the comment
+   */
+  public updateComment(commentId: string, comment: Comment): Observable<Comment> {
+    return this.http.patch<Comment>(`${this.apiBaseURL}/${commentId}/comment`, comment);
   }
 
   /**

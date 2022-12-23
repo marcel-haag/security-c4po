@@ -317,20 +317,63 @@ include::{snippets}/deleteCommentByPentestAndCommentId/http-response.adoc[]
 
 include::{snippets}/deleteCommentByPentestAndCommentId/response-fields.adoc[]
 
+=== Get comment for id
+
+To get a comment by id, call the GET request /pentests/+{commentId}+/comment.
+
+==== Request example
+
+include::{snippets}/getCommentById/http-request.adoc[]
+
+==== Request structure
+
+include::{snippets}/getCommentById/path-parameters.adoc[]
+
+==== Response example
+
+include::{snippets}/getCommentById/http-response.adoc[]
+
+==== Response structure
+
+include::{snippets}/getCommentById/response-fields.adoc[]
+
+=== Update comment
+
+To update a comment, call the PATCH request /pentests/+{commentId}+/comment
+
+==== Request example
+
+include::{snippets}/updateCommentById/http-request.adoc[]
+
+==== Request structure
+
+include::{snippets}/updateCommentById/path-parameters.adoc[]
+
+==== Response example
+
+include::{snippets}/updateCommentById/http-response.adoc[]
+
+==== Response structure
+
+include::{snippets}/updateCommentById/response-fields.adoc[]
+
+
 == Change History
 
 |===
 |Date |Change
+|2022-12-28
+|Added GET, PATCH endpoint for Comment
 |2022-12-23
 |Added DELETE endpoint for Comment
 |2022-12-22
-|Added GET, POST endpoint for Comment
+|Added GET, POST endpoint for Comment(s)
 |2022-12-09
 |Added DELETE endpoint for Finding
 |2022-12-08
 |Added GET and PATCH endpoint for Finding
 |2022-12-02
-|Added GET and POST endpoint for Findings
+|Added GET and POST endpoint for Finding(s)
 |2022-11-21
 |Added GET, POST and PATCH endpoint for Pentests
 |2022-03-07

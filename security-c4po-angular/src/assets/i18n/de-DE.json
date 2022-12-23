@@ -181,7 +181,8 @@
       "update.success": "Kommentar erfolgreich aktualisiert",
       "update.failed": "Kommentar konnte nicht aktualisiert werden",
       "delete.success": "Kommentar erfolgreich gelöscht",
-      "delete.failed": "Kommentar konnte nicht gelöscht werden"
+      "delete.failed": "Kommentar konnte nicht gelöscht werden",
+      "not.available": "Kommentar ist nicht mehr verfügbar"
     }
   },
   "pentest": {

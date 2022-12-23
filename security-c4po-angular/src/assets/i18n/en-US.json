@@ -181,7 +181,8 @@
       "update.success": "Comment updated successfully",
       "update.failed": "Comment could not be updated",
       "delete.success": "Comment deleted successfully",
-      "delete.failed": "Comment could not be deleted"
+      "delete.failed": "Comment could not be deleted",
+      "not.available": "Comment is not available anymore"
     }
   },
   "pentest": {

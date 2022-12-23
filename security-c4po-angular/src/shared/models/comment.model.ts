@@ -49,7 +49,7 @@ export function transformCommentToRequestBody(comment: CommentDialogBody | Comme
     title: comment.title,
     description: comment.description,
     // Transforms related findings from RelatedFindingOption to list of finding ids
-    relatedFindings: comment.relatedFindings ? comment.relatedFindings.map(finding => finding.value.id) : [],
+    relatedFindings: comment.relatedFindings ? comment.relatedFindings.map(finding => finding.id) : [],
     /* Remove Table Entry Object Properties */
     childEntries: undefined,
     kind: undefined,

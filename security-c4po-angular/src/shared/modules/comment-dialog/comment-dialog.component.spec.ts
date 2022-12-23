@@ -182,7 +182,8 @@ export const mockedCommentDialogData = {
     {
       headerLabelKey: 'comment.create.header',
       buttonKey: 'global.action.save',
-      accentColor: 'info'
+      accentColor: 'info',
+      additionalData: []
     },
   ]
 };

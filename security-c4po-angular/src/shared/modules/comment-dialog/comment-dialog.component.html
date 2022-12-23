@@ -57,13 +57,16 @@
           {{formArray[2].labelKey | translate}}
         </label>
         <!--<fa-icon nbPrefix [icon]="fa.faExclamationCircle" size="lg" class="finding-icon"></fa-icon>-->
-        <nb-select placeholder="{{formArray[2].placeholder | translate}}" formControlName="{{formArray[2].fieldName}}" multiple
+        <nb-select placeholder="{{formArray[2].placeholder | translate}}"
+                   id="{{formArray[2].fieldName}}"
+                   formControlName="{{formArray[2].fieldName}}"
                    (selectedChange)="changeSelected($event)"
-                   fullWidth shape="semi-round" filled status="info" [size]="'large'" class="form-field relatedFindings">
-            <nb-option class="reset-option">{{'global.action.reset' | translate}}</nb-option>
-            <nb-option class="finding-option" *ngFor="let finding of relatedFindings" [value]="{value: finding}">
-              {{finding.title}}
-            </nb-option>
+                   multiple fullWidth shape="semi-round" filled status="info"
+                   [size]="'large'" class="form-field relatedFindings">
+          <nb-option class="reset-option">{{'global.action.reset' | translate}}</nb-option>
+          <nb-option class="finding-option" *ngFor="let finding of relatedFindings" [value]="finding">
+            {{finding.title}}
+          </nb-option>
         </nb-select>
       </nb-form-field>
     </form>
