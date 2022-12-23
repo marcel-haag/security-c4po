@@ -12,6 +12,7 @@ import {Store} from '@ngxs/store';
 import {Finding} from '@shared/models/finding.model';
 import {RelatedFindingOption} from '@shared/models/comment.model';
 import {BehaviorSubject} from 'rxjs';
+import {FindingService} from '@shared/services/finding.service';
 
 @Component({
   selector: 'app-comment-dialog',
@@ -39,7 +40,7 @@ export class CommentDialogComponent implements OnInit {
     @Inject(NB_DIALOG_CONFIG) private data: GenericDialogData,
     private fb: FormBuilder,
     protected dialogRef: NbDialogRef<CommentDialogComponent>,
-    private readonly pentestService: PentestService,
+    private readonly findingService: FindingService,
     private store: Store
   ) {
   }
@@ -95,7 +96,7 @@ export class CommentDialogComponent implements OnInit {
   }
 
   requestRelatedFindingsData(pentestId: string, relatedFindings: any): void {
-    this.pentestService.getFindingsByPentestId(pentestId).pipe(
+    this.findingService.getFindingsByPentestId(pentestId).pipe(
       untilDestroyed(this)
     ).subscribe({
       next: (findings: Finding[]) => {

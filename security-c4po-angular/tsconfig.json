@@ -13,11 +13,8 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
-    "module": "es2020",
-    "lib": [
-      "es2018",
-      "dom"
-    ],
+    "module": "esNext",
+    "lib": ["es2019", "es2018", "dom"],
     "paths": {
       "@shared/*": ["./src/shared/*"],
       "@assets/*": ["./src/assets/*"]
