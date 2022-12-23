@@ -481,7 +481,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"title\": \"Test Comment\",\n    \"description\": \"Test Comment Description\",\n    \"affectedUrls\": []\n}",
+									"raw": "{\n    \"title\": \"Test Comment\",\n    \"description\": \"Test Comment Description\",\n    \"relatedFindings\": []\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -512,7 +512,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItdG1lbEV0ZHhGTnRSMW9aNXlRdE5jaFFpX0RVN2VNeV9YcU44aXY0S3hzIn0.eyJleHAiOjE2NzE3MTM3MzQsImlhdCI6MTY3MTcxMzQzNCwiYXV0aF90aW1lIjoxNjcxNzEyNjkwLCJqdGkiOiJjNWYxYWZiZi1mZTczLTQ0NTAtYjA4YS1lMGEwMDcyNjMyOTgiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0Ojg4ODgvYXV0aC9yZWFsbXMvYzRwb19yZWFsbV9sb2NhbCIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiIxMGUwNmQ3YS04ZGQwLTRlY2QtODk2My0wNTZiNDUwNzljNGYiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJjNHBvX2xvY2FsIiwibm9uY2UiOiIyZTYyNjNhNC1lM2U2LTRlMzUtYjQ5Yy1lMjYyNzM1ZTk2MGQiLCJzZXNzaW9uX3N0YXRlIjoiMGNmYmY4MGEtNzAxMS00NmQzLTllNGQtNTUxYWU4NTA5NjZmIiwiYWNyIjoiMCIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJjNHBvX3VzZXIiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYzRwb19sb2NhbCI6eyJyb2xlcyI6WyJ1c2VyIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoidGVzdCB1c2VyIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidHR0IiwiZ2l2ZW5fbmFtZSI6InRlc3QiLCJmYW1pbHlfbmFtZSI6InVzZXIifQ.se43hq_vPjzAG6MpIxBiHb9vJHZmbLEko0tiN5m2hbhzd8s3YiBWpeiI6kgZ5kzl23iBQyMnXN4Sqpbt2ERKbKyUusezWcXhGTP22usi3b1vzFOAY9mqCI32i15sxCM2UDRYDFYcAblaKPxKsQf6EWduXpcn4L9_kQE4EpoLyWWWqFThGvFPSvkPGodffcEOz8BrnYDVUnwkodFsOWAnQmQHaR7jq1Y0hhZzWi3IlrRWlnRi0TKVWCZgUwO0PJttNq5wYZPsxgiS-khUCC1qtbKrRgBK_3sefxPkWDOQEubu0Kjyjq4rVZnq66anO3Qw82CSLn0nSCu-AL5Xd4Xchw",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItdG1lbEV0ZHhGTnRSMW9aNXlRdE5jaFFpX0RVN2VNeV9YcU44aXY0S3hzIn0.eyJleHAiOjE2NzIyMzc2MjQsImlhdCI6MTY3MjIzNzMyNCwianRpIjoiMTI2MTBmOWUtMjY1OC00ZmE3LTlkNTItZGU4NzNiZDVjZGE3IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4ODg4L2F1dGgvcmVhbG1zL2M0cG9fcmVhbG1fbG9jYWwiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTBlMDZkN2EtOGRkMC00ZWNkLTg5NjMtMDU2YjQ1MDc5YzRmIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYzRwb19sb2NhbCIsInNlc3Npb25fc3RhdGUiOiI4NzQ5MTFkNS00ZTZlLTRjNmMtYmQxYy1hMzlmZjE2OTI0YWIiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImM0cG9fdXNlciIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJjNHBvX2xvY2FsIjp7InJvbGVzIjpbInVzZXIiXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InRlc3QgdXNlciIsInByZWZlcnJlZF91c2VybmFtZSI6InR0dCIsImdpdmVuX25hbWUiOiJ0ZXN0IiwiZmFtaWx5X25hbWUiOiJ1c2VyIn0.FOZNfhuWutaKUsVnr3A2jxJ6PM7fpX5BdB63SI_3CI7LFgnVmruprQC3ibhYGD77yX59yRWlGlIDlXvybd6v4tujKEL1Kuf4J-MSjj3dJcIx29PtqMe91I49MkIsjr3M24YW4bgOtdbUTYvT1l0IUisW1V_-t23qW_tsbXxviNr_9HSiJYZJZ7a47tmEptJaDZtAwjBaQc8s4BVIqiPbIcYE1Mj1Giu56C3k_v_boSxcl3rrRMXgIWTSO4TtV_jm2UfERzp82B6dZYdq0ZxeyaD0nCzXSkZ41pOeqFK4Qsm6ttCKe5OJ-RGpqvi0KH4YNuhUKHpzisVOL0cPDiWmLg",
 											"type": "string"
 										},
 										{
@@ -570,6 +570,85 @@
 										"11601f51-bc17-47fd-847d-0c53df5405b5",
 										"comment",
 										"89703b19-16c7-49e5-8e33-0c706313e5fe"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCommentById",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItdG1lbEV0ZHhGTnRSMW9aNXlRdE5jaFFpX0RVN2VNeV9YcU44aXY0S3hzIn0.eyJleHAiOjE2NzIyMzc2MjQsImlhdCI6MTY3MjIzNzMyNCwianRpIjoiMTI2MTBmOWUtMjY1OC00ZmE3LTlkNTItZGU4NzNiZDVjZGE3IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4ODg4L2F1dGgvcmVhbG1zL2M0cG9fcmVhbG1fbG9jYWwiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTBlMDZkN2EtOGRkMC00ZWNkLTg5NjMtMDU2YjQ1MDc5YzRmIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYzRwb19sb2NhbCIsInNlc3Npb25fc3RhdGUiOiI4NzQ5MTFkNS00ZTZlLTRjNmMtYmQxYy1hMzlmZjE2OTI0YWIiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImM0cG9fdXNlciIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJjNHBvX2xvY2FsIjp7InJvbGVzIjpbInVzZXIiXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InRlc3QgdXNlciIsInByZWZlcnJlZF91c2VybmFtZSI6InR0dCIsImdpdmVuX25hbWUiOiJ0ZXN0IiwiZmFtaWx5X25hbWUiOiJ1c2VyIn0.FOZNfhuWutaKUsVnr3A2jxJ6PM7fpX5BdB63SI_3CI7LFgnVmruprQC3ibhYGD77yX59yRWlGlIDlXvybd6v4tujKEL1Kuf4J-MSjj3dJcIx29PtqMe91I49MkIsjr3M24YW4bgOtdbUTYvT1l0IUisW1V_-t23qW_tsbXxviNr_9HSiJYZJZ7a47tmEptJaDZtAwjBaQc8s4BVIqiPbIcYE1Mj1Giu56C3k_v_boSxcl3rrRMXgIWTSO4TtV_jm2UfERzp82B6dZYdq0ZxeyaD0nCzXSkZ41pOeqFK4Qsm6ttCKe5OJ-RGpqvi0KH4YNuhUKHpzisVOL0cPDiWmLg",
+											"type": "string"
+										},
+										{
+											"key": "undefined",
+											"type": "any"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8443/pentests/df516de6-ca5e-44a6-ac50-db89bb17aac3/comment",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8443",
+									"path": [
+										"pentests",
+										"df516de6-ca5e-44a6-ac50-db89bb17aac3",
+										"comment"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateComment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItdG1lbEV0ZHhGTnRSMW9aNXlRdE5jaFFpX0RVN2VNeV9YcU44aXY0S3hzIn0.eyJleHAiOjE2NzA0MTQ3ODYsImlhdCI6MTY3MDQxNDQ4NiwianRpIjoiM2FmOWU5M2MtY2YzNi00MjQwLTkzNWEtNDkxYTJkZTY2MWU4IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4ODg4L2F1dGgvcmVhbG1zL2M0cG9fcmVhbG1fbG9jYWwiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTBlMDZkN2EtOGRkMC00ZWNkLTg5NjMtMDU2YjQ1MDc5YzRmIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYzRwb19sb2NhbCIsInNlc3Npb25fc3RhdGUiOiI5M2ExNTBlMC03ZWRkLTQxZTgtYWE4Yi0yZWY5YTgzOWU4NDciLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImM0cG9fdXNlciIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJjNHBvX2xvY2FsIjp7InJvbGVzIjpbInVzZXIiXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InRlc3QgdXNlciIsInByZWZlcnJlZF91c2VybmFtZSI6InR0dCIsImdpdmVuX25hbWUiOiJ0ZXN0IiwiZmFtaWx5X25hbWUiOiJ1c2VyIn0.QjUkCInyCJ5Wsz4q56gfsLqERr6pYlGjwNw-VsKNJ_3Jp-8Dazq9UmDGN8AmAkQ0sp0b-FMm3jArKMBpr84gKd65trvQx_qHvXev5x2MWBG4_9v3C9MmjxWcAYRVmfRdURUOhfto-4YfRwMwNRsKJfwMIjfS5VT8bHJWipcCDzaidN8h_LLORbmmQZ2o0l4Jnv5qrrWzUcSTeEeBpHGOjes1-T0gOlDJa34Z9x_xrsTsybKAylrmX03mDSI-f2h5XqqtgnrxtddtHXHatfxB1BHWq-FILDsGf0UG47FEQjqapFvn9bFiNyq0GVrgdK42miEO7ywOtCOKpCfAUnMwdQ",
+											"type": "string"
+										},
+										{
+											"key": "undefined",
+											"type": "any"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Test Comment\",\n    \"description\": \"Edited Test Comment Description\",\n    \"relatedFindings\": []\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8443/pentests/df516de6-ca5e-44a6-ac50-db89bb17aac3/comment",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8443",
+									"path": [
+										"pentests",
+										"df516de6-ca5e-44a6-ac50-db89bb17aac3",
+										"comment"
 									]
 								}
 							},

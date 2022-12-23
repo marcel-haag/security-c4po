@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {NbDialogConfig, NbDialogService} from '@nebular/theme';
 import {GenericDialogData} from '@shared/models/generic-dialog-data';
 import {ComponentType} from '@angular/cdk/overlay';
 import {Observable} from 'rxjs';
 import {Validators} from '@angular/forms';
 import {CommentDialogComponent} from '@shared/modules/comment-dialog/comment-dialog.component';
-import {Comment} from '@shared/models/comment.model';
+import {Comment, RelatedFindingOption} from '@shared/models/comment.model';
 
 @Injectable()
 export class CommentDialogService {
@@ -30,10 +30,20 @@ export class CommentDialogService {
 
   public openCommentDialog(componentOrTemplateRef: ComponentType<any>,
                            findingIds: string[],
+                           relatedFindings: RelatedFindingOption[],
                            comment?: Comment,
                            config?: Partial<NbDialogConfig<Partial<any> | string>>): Observable<any> {
     let dialogOptions: Partial<NbDialogConfig<Partial<any> | string>>;
     let dialogData: GenericDialogData;
+    // Preselect related findings
+    const selectedRelatedFindings: RelatedFindingOption[] = [];
+    if (comment && comment.relatedFindings.length > 0 && relatedFindings) {
+      relatedFindings.forEach(finding => {
+        if (comment.relatedFindings.includes(finding.id)) {
+          selectedRelatedFindings.push(finding);
+        }
+      });
+    }
     // Setup CommentDialogBody
     dialogData = {
       form: {
@@ -69,7 +79,10 @@ export class CommentDialogService {
           labelKey: 'comment.relatedFindings.label',
           placeholder: findingIds.length === 0 ? 'comment.noFindingsInObjectivePlaceholder' : 'comment.relatedFindingsPlaceholder',
           controlsConfig: [
-            {value: comment ? comment.relatedFindings : [], disabled: findingIds.length === 0},
+            {
+              value: comment ? selectedRelatedFindings : [],
+              disabled: findingIds.length === 0
+            },
             []
           ],
           errors: [
@@ -84,7 +97,8 @@ export class CommentDialogService {
         {
           headerLabelKey: 'comment.edit.header',
           buttonKey: 'global.action.update',
-          accentColor: 'warning'
+          accentColor: 'warning',
+          additionalData: relatedFindings
         },
       ];
     } else {
@@ -92,7 +106,8 @@ export class CommentDialogService {
         {
           headerLabelKey: 'comment.create.header',
           buttonKey: 'global.action.save',
-          accentColor: 'info'
+          accentColor: 'info',
+          additionalData: relatedFindings
         },
       ];
     }

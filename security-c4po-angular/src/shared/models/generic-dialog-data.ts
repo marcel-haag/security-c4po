@@ -23,4 +23,5 @@ export interface GenericFormFieldOption {
   headerLabelKey: string;
   buttonKey: string;
   accentColor: string;
+  additionalData?: any;
 }
