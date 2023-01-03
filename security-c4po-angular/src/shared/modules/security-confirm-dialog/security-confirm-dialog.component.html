@@ -1,0 +1,41 @@
+<nb-card #dialog>
+  <nb-card-header fxLayoutAlign="start center" class="dialog-header confirm">
+    {{ data?.title | translate }}
+  </nb-card-header>
+  <nb-card-body class="dialog-body">
+    {{ data?.key | translate: data?.data }}
+    <form id="inputForm">
+      <nb-form-field>
+        <input type="text" required
+               fullWidth nbInput
+               class="form-field"
+               cdkFocusInitial
+               fieldSize="medium"
+               [formControl]="inputCtrl"
+               [status]="inputCtrl.dirty ? (inputCtrl.invalid  ? 'danger' : 'basic') : 'basic'"
+               placeholder="{{ data?.inputPlaceholderKey | translate }}">
+        <div *ngIf="inputCtrl.hasError('wrongConfirmString')">
+          <span class="error-text">
+            {{ 'global.validationMessage.inputNotMatching' | translate }}
+          </span>
+        </div>
+      </nb-form-field>
+    </form>
+  </nb-card-body>
+  <nb-card-footer fxLayout="row" fxLayoutGap="1.5rem" fxLayoutAlign="end end">
+    <button nbButton size="small"
+            class="dialog-button"
+            status="danger"
+            type="submit"
+            [disabled]="inputCtrl.invalid"
+            (click)="onClickConfirm()">
+      {{ 'global.action.yes' | translate }}
+    </button>
+    <button nbButton size="small"
+            class="dialog-button"
+            type="button"
+            (click)="onClickClose()">
+      {{ 'global.action.no' | translate }}
+    </button>
+  </nb-card-footer>
+</nb-card>

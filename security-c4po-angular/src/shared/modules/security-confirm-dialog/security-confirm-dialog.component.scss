@@ -1,0 +1,17 @@
+@import "../../../assets/@theme/styles/_dialog.scss";
+@import '../../../assets/@theme/styles/themes';
+
+* {
+}
+
+#inputForm {
+  padding-top: 1rem;
+
+  .form-field{
+    margin-bottom: 0.5rem;
+  }
+
+  .error-text {
+    color: nb-theme(color-danger-default);
+  }
+}

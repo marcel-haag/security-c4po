@@ -15,7 +15,10 @@
     "action.no": "No",
     "username": "Username",
     "password": "Password",
-    "no.progress": "No progress"
+    "no.progress": "No progress",
+    "validationMessage": {
+      "inputNotMatching": "Input does not match!"
+    }
   },
   "languageKeys":{
     "de-DE": "German",
@@ -59,7 +62,9 @@
     },
     "delete": {
       "title": "Delete Project",
-      "key": "Do you want to permanently delete the project \"{{name}}\"?"
+      "key": "Do you want to permanently delete the project \"{{name}}\"?",
+      "confirmStringPlaceholder": "Enter project title to confirm",
+      "sec.key": "Do you want to permanently delete the project \"{{name}}\"? \nAll related data will also be deleted."
     },
     "validationMessage": {
       "titleRequired": "Title is required.",

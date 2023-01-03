@@ -1,8 +1,9 @@
 import {Injectable, TemplateRef} from '@angular/core';
 import {NbDialogConfig, NbDialogRef, NbDialogService} from '@nebular/theme';
 import {ComponentType} from '@angular/cdk/overlay';
-import {DialogMessage} from '@shared/services/dialog-service/dialog-message';
+import {DialogMessage, SecurityDialogMessage} from '@shared/services/dialog-service/dialog-message';
 import {ConfirmDialogComponent} from '@shared/modules/confirm-dialog/confirm-dialog.component';
+import {SecurityConfirmDialogComponent} from '@shared/modules/security-confirm-dialog/security-confirm-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class DialogService {
       context: config?.context || undefined,
       closeOnEsc: config?.closeOnEsc || false,
       hasScroll: config?.hasScroll || false,
-      autoFocus: config?.autoFocus || false,
+      autoFocus: config?.autoFocus || true,
       closeOnBackdropClick: config?.closeOnBackdropClick || false
     });
   }
@@ -37,7 +38,39 @@ export class DialogService {
     return this.dialog.open(ConfirmDialogComponent, {
       closeOnEsc: true,
       hasScroll: false,
-      autoFocus: false,
+      autoFocus: true,
+      closeOnBackdropClick: false,
+      context: {data: message}
+    });
+  }
+
+  /**
+   * @param message.key The translation key for the shown message
+   * @param message.data The data that may be used in the message translation key (Set it null if it's not required in the key)
+   * @param message.title The translation key for the dialog title
+   */
+  // ToDo: Implement later on..
+  /*openConfirmCheckBoxDialog(message: DialogMessage): NbDialogRef<any> {
+    return this.dialog.open(undefined, {
+      closeOnEsc: true,
+      hasScroll: false,
+      autoFocus: true,
+      closeOnBackdropClick: false,
+      context: {data: message}
+    });
+  }*/
+
+  /**
+   * @param message.key The translation key for the shown message
+   * @param message.confirmString The string to be entered for confirmation
+   * @param message.data The data that may be used in the message translation key (Set it null if it's not required in the key)
+   * @param message.title The translation key for the dialog title
+   */
+  openSecurityConfirmDialog(message: SecurityDialogMessage): NbDialogRef<SecurityConfirmDialogComponent> {
+    return this.dialog.open(SecurityConfirmDialogComponent, {
+      closeOnEsc: false,
+      hasScroll: false,
+      autoFocus: true,
       closeOnBackdropClick: false,
       context: {data: message}
     });
