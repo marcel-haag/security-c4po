@@ -2,7 +2,8 @@ import {DialogService} from '@shared/services/dialog-service/dialog.service';
 import {ComponentType} from '@angular/cdk/overlay';
 import {TemplateRef} from '@angular/core';
 import {NbDialogConfig, NbDialogRef} from '@nebular/theme';
-import {DialogMessage} from '@shared/services/dialog-service/dialog-message';
+import {DialogMessage, SecurityDialogMessage} from '@shared/services/dialog-service/dialog-message';
+import {SecurityConfirmDialogComponent} from '@shared/modules/security-confirm-dialog/security-confirm-dialog.component';
 
 export class DialogServiceMock implements Required<DialogService> {
 
@@ -17,5 +18,9 @@ export class DialogServiceMock implements Required<DialogService> {
 
   openConfirmDialog(message: DialogMessage): NbDialogRef<any> {
     return null;
+  }
+
+  openSecurityConfirmDialog(message: SecurityDialogMessage): NbDialogRef<SecurityConfirmDialogComponent> {
+    return undefined;
   }
 }

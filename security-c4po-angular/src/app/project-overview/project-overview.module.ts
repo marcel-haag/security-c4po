@@ -10,6 +10,7 @@ import {DateTimeFormatPipe} from '@shared/pipes/date-time-format.pipe';
 import {ProjectDialogModule} from '@shared/modules/project-dialog/project-dialog.module';
 import {CommonAppModule} from '../common-app.module';
 import {ConfirmDialogModule} from '@shared/modules/confirm-dialog/confirm-dialog.module';
+import {SecurityConfirmDialogModule} from '@shared/modules/security-confirm-dialog/security-confirm-dialog.module';
 
 @NgModule({
   declarations: [
@@ -26,8 +27,9 @@ import {ConfirmDialogModule} from '@shared/modules/confirm-dialog/confirm-dialog
     FlexLayoutModule,
     FontAwesomeModule,
     TranslateModule,
+    ProjectDialogModule,
     ConfirmDialogModule,
-    ProjectDialogModule
+    SecurityConfirmDialogModule
   ]
 })
 export class ProjectOverviewModule {

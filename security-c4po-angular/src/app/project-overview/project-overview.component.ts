@@ -60,7 +60,7 @@ export class ProjectOverviewComponent implements OnInit {
       {
         closeOnEsc: false,
         hasScroll: false,
-        autoFocus: false,
+        autoFocus: true,
         closeOnBackdropClick: false
       }
     ).pipe(
@@ -86,7 +86,7 @@ export class ProjectOverviewComponent implements OnInit {
       {
         closeOnEsc: false,
         hasScroll: false,
-        autoFocus: false,
+        autoFocus: true,
         closeOnBackdropClick: false
       }
     ).pipe(
@@ -106,29 +106,61 @@ export class ProjectOverviewComponent implements OnInit {
   }
 
   onClickDeleteProject(project: Project): void {
+    // Set dialog message
     const message = {
       title: 'project.delete.title',
       key: 'project.delete.key',
       data: {name: project.title},
-    };
-    this.dialogService.openConfirmDialog(
-      message
-    ).onClose.pipe(
-      filter((confirm) => !!confirm),
-      switchMap(() => this.projectService.deleteProjectById(project.id)),
-      catchError(() => {
-        this.notificationService.showPopup('project.popup.delete.failed', PopupType.FAILURE);
-        return [];
-      }),
-      untilDestroyed(this)
-    ).subscribe({
-      next: () => {
-        this.loadProjects();
-        this.notificationService.showPopup('project.popup.delete.success', PopupType.SUCCESS);
-      }, error: error => {
-        console.error(error);
-      }
-    });
+    } as any;
+    // Check if project is empty
+    if (project.testingProgress === 0) {
+      this.dialogService.openConfirmDialog(
+        message
+      ).onClose.pipe(
+        filter((confirm) => !!confirm),
+        switchMap(() => this.projectService.deleteProjectById(project.id)),
+        catchError(() => {
+          this.notificationService.showPopup('project.popup.delete.failed', PopupType.FAILURE);
+          return [];
+        }),
+        untilDestroyed(this)
+      ).subscribe({
+        next: () => {
+          this.loadProjects();
+          this.notificationService.showPopup('project.popup.delete.success', PopupType.SUCCESS);
+        }, error: error => {
+          console.error(error);
+        }
+      });
+    } else {
+      const secMessage = {
+        title: 'project.delete.title',
+        key: 'project.delete.sec.key',
+        confirmString: project.title.toString(),
+        inputPlaceholderKey: 'project.delete.confirmStringPlaceholder',
+        data: {name: project.title, confirmString: project.title.toString()},
+      } as any;
+      // Set confirm string
+      // message.data.confirmString = project.title;
+      this.dialogService.openSecurityConfirmDialog(
+        secMessage
+      ).onClose.pipe(
+        filter((confirm) => !!confirm),
+        switchMap(() => this.projectService.deleteProjectById(project.id)),
+        catchError(() => {
+          this.notificationService.showPopup('project.popup.delete.failed', PopupType.FAILURE);
+          return [];
+        }),
+        untilDestroyed(this)
+      ).subscribe({
+        next: () => {
+          this.loadProjects();
+          this.notificationService.showPopup('project.popup.delete.success', PopupType.SUCCESS);
+        }, error: error => {
+          console.error(error);
+        }
+      });
+    }
   }
 
   // HTML only

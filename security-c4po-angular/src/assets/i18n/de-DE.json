@@ -15,7 +15,10 @@
     "action.no": "Nein",
     "username": "Nutzername",
     "password": "Passwort",
-    "no.progress": "Kein Fortschritt"
+    "no.progress": "Kein Fortschritt",
+    "validationMessage": {
+      "inputNotMatching": "Eingabe stimmt nicht überein!"
+    }
   },
   "languageKeys":{
     "de-DE": "Deutsch",
@@ -59,7 +62,9 @@
     },
     "delete": {
       "title": "Projekt löschen",
-      "key": "Möchten Sie das Projekt \"{{name}}\" unwiderruflich löschen?"
+      "key": "Möchten Sie das Projekt \"{{name}}\" unwiderruflich löschen?",
+      "confirmStringPlaceholder": "Geben Sie zur Bestätigung den Projekttitel ein",
+      "sec.key": "Möchten Sie das Projekt \"{{name}}\" unwiderruflich löschen? \nSie löschen damit auch alle zugehörigen Daten."
     },
     "validationMessage": {
       "titleRequired": "Titel ist erforderlich.",
