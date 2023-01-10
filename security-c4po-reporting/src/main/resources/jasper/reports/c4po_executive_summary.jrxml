@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="C4PO_ExecutiveSummary" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a71c3e72-ee88-496d-967d-a33d331426ab">
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="ProjectPentestReportJasperData Template JSON Adapter"/>
+    <style name="PieChart">
+        <conditionalStyle>
+            <conditionExpression><![CDATA["LOW"]]></conditionExpression>
+            <style forecolor="#A4A8B0" backcolor="#A4A8B0"/>
+        </conditionalStyle>
+        <conditionalStyle>
+            <conditionExpression><![CDATA["MEDIUM"]]></conditionExpression>
+            <style backcolor="#35A4FE"/>
+        </conditionalStyle>
+        <conditionalStyle>
+            <conditionExpression><![CDATA["HIGH"]]></conditionExpression>
+            <style backcolor="#FFAB00"/>
+        </conditionalStyle>
+        <conditionalStyle>
+            <conditionExpression><![CDATA["CRITICAL"]]></conditionExpression>
+            <style backcolor="#FF3D70"/>
+        </conditionalStyle>
+        <conditionalStyle>
+            <conditionExpression><![CDATA["PRIMARY"]]></conditionExpression>
+            <style backcolor="#3267FE"/>
+        </conditionalStyle>
+        <conditionalStyle>
+            <conditionExpression><![CDATA["SUCCESS"]]></conditionExpression>
+            <style backcolor="#01D68F"/>
+        </conditionalStyle>
+    </style>
+    <subDataset name="CategoryFindingsPieChartDataSource" uuid="0ea170d1-b9d6-4209-b81e-f19a84332933">
+        <property name="com.jaspersoft.studio.data.defaultdataadapter" value="CategoryPieData"/>
+        <queryString language="json">
+            <![CDATA[CategoryPieData]]>
+        </queryString>
+        <field name="category" class="java.lang.String">
+            <property name="net.sf.jasperreports.json.field.expression" value="category"/>
+            <fieldDescription><![CDATA[category]]></fieldDescription>
+        </field>
+        <field name="numberOfFindings" class="java.lang.Integer">
+            <property name="net.sf.jasperreports.json.field.expression" value="numberOfFindings"/>
+            <fieldDescription><![CDATA[numberOfFindings]]></fieldDescription>
+        </field>
+        <group name="category">
+            <groupExpression><![CDATA[$F{category}]]></groupExpression>
+        </group>
+        <group name="numberOfFindings">
+            <groupExpression><![CDATA[$F{numberOfFindings}]]></groupExpression>
+        </group>
+    </subDataset>
+    <subDataset name="SeverityPieData" uuid="5beef60f-b9d1-4eae-8975-e07bc624c759">
+        <property name="com.jaspersoft.studio.data.defaultdataadapter" value="SeverityPieData"/>
+        <queryString language="json">
+            <![CDATA[SeverityPieData]]>
+        </queryString>
+        <field name="severity" class="java.lang.String">
+            <property name="net.sf.jasperreports.json.field.expression" value="severity"/>
+            <fieldDescription><![CDATA[severity]]></fieldDescription>
+        </field>
+        <field name="numberOfFindings" class="java.lang.Integer">
+            <property name="net.sf.jasperreports.json.field.expression" value="numberOfFindings"/>
+            <fieldDescription><![CDATA[numberOfFindings]]></fieldDescription>
+        </field>
+        <group name="severity">
+            <groupExpression><![CDATA[$F{severity}]]></groupExpression>
+        </group>
+        <group name="numberOfFindings">
+            <groupExpression><![CDATA[$F{numberOfFindings}]]></groupExpression>
+        </group>
+    </subDataset>
+    <parameter name="CategoryFindingsPieChartDataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+    <parameter name="SeverityFindingsPieChartDataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+    <queryString language="json">
+        <![CDATA[projectReportData]]>
+    </queryString>
+    <field name="id" class="java.lang.String">
+        <property name="net.sf.jasperreports.json.field.expression" value="id"/>
+        <fieldDescription><![CDATA[id]]></fieldDescription>
+    </field>
+    <field name="client" class="java.lang.String">
+        <property name="net.sf.jasperreports.json.field.expression" value="client"/>
+        <fieldDescription><![CDATA[client]]></fieldDescription>
+    </field>
+    <field name="title" class="java.lang.String">
+        <property name="net.sf.jasperreports.json.field.expression" value="title"/>
+        <fieldDescription><![CDATA[title]]></fieldDescription>
+    </field>
+    <field name="createdAt" class="java.lang.String">
+        <property name="net.sf.jasperreports.json.field.expression" value="createdAt"/>
+        <fieldDescription><![CDATA[createdAt]]></fieldDescription>
+    </field>
+    <field name="tester" class="java.lang.String">
+        <property name="net.sf.jasperreports.json.field.expression" value="tester"/>
+        <fieldDescription><![CDATA[tester]]></fieldDescription>
+    </field>
+    <field name="summary" class="java.lang.String">
+        <property name="net.sf.jasperreports.json.field.expression" value="summary"/>
+        <fieldDescription><![CDATA[summary]]></fieldDescription>
+    </field>
+    <field name="projectPentestReport" class="java.lang.String">
+        <property name="net.sf.jasperreports.json.field.expression" value="projectPentestReport"/>
+        <fieldDescription><![CDATA[projectPentestReport]]></fieldDescription>
+    </field>
+    <field name="createdBy" class="java.lang.String">
+        <property name="net.sf.jasperreports.json.field.expression" value="createdBy"/>
+        <fieldDescription><![CDATA[createdBy]]></fieldDescription>
+    </field>
+    <group name="id">
+        <groupExpression><![CDATA[$F{id}]]></groupExpression>
+    </group>
+    <group name="client">
+        <groupExpression><![CDATA[$F{client}]]></groupExpression>
+    </group>
+    <group name="title">
+        <groupExpression><![CDATA[$F{title}]]></groupExpression>
+    </group>
+    <group name="createdAt">
+        <groupExpression><![CDATA[$F{createdAt}]]></groupExpression>
+    </group>
+    <group name="tester">
+        <groupExpression><![CDATA[$F{tester}]]></groupExpression>
+    </group>
+    <group name="projectPentestReport">
+        <groupExpression><![CDATA[$F{projectPentestReport}]]></groupExpression>
+    </group>
+    <group name="createdBy">
+        <groupExpression><![CDATA[$F{createdBy}]]></groupExpression>
+    </group>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="41" splitType="Stretch">
+            <rectangle>
+                <reportElement x="-20" y="0" width="573" height="30" forecolor="#232B44" backcolor="#232B44" uuid="d35a1b95-3ef6-4626-8827-2509ce34d362"/>
+                <graphicElement>
+                    <pen lineWidth="0.0"/>
+                </graphicElement>
+            </rectangle>
+            <staticText>
+                <reportElement x="0" y="0" width="432" height="30" forecolor="#FFFFFF" uuid="727c5a22-9505-4eee-8697-c33c25770203"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Executive Summary]]></text>
+            </staticText>
+            <ellipse>
+                <reportElement x="537" y="0" width="30" height="30" backcolor="#232B44" uuid="94ae9350-4d6a-4660-a412-628324e3e766"/>
+                <graphicElement>
+                    <pen lineWidth="0.0"/>
+                </graphicElement>
+            </ellipse>
+            <image>
+                <reportElement x="539" y="3" width="23" height="24" uuid="e47a59e3-90b6-43d3-9d42-930a6d497a05"/>
+                <imageExpression><![CDATA["/Users/mhg/Documents/Projects/security-c4po/security-c4po-reporting/src/main/resources/jasper/Watermark.png"]]></imageExpression>
+            </image>
+        </band>
+    </title>
+    <columnHeader>
+        <band height="148" splitType="Stretch">
+            <textField textAdjust="StretchHeight">
+                <reportElement x="0" y="30" width="545" height="118" uuid="3364c8ce-4b56-4965-b4ad-6f7062fa7789"/>
+                <textElement>
+                    <font size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{summary}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="0" y="10" width="380" height="20" forecolor="#232B44" uuid="b508eb27-8cf7-40f3-86e8-6b7c9328d919"/>
+                <textElement>
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Assessment Overview and Recommendations]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="500" splitType="Stretch">
+            <staticText>
+                <reportElement x="0" y="20" width="380" height="20" forecolor="#232B44" uuid="43e826cd-e910-4ab5-a689-935baa555e58"/>
+                <textElement>
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Number of Findings per Category]]></text>
+            </staticText>
+            <staticText>
+                <reportElement positionType="Float" x="0" y="300" width="380" height="20" forecolor="#232B44" uuid="daae5600-96f6-4f4c-b3ce-a12aadf2696a"/>
+                <textElement>
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Severity Overview of Findings]]></text>
+            </staticText>
+            <pieChart>
+                <chart evaluationTime="Report">
+                    <reportElement key="" positionType="Float" stretchType="ElementGroupHeight" x="0" y="40" width="553" height="239" uuid="aaf04aa7-f7c5-48b9-b422-0f210e35d7be"/>
+                    <box>
+                        <topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                        <leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                        <bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                        <rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    </box>
+                    <chartTitle/>
+                    <chartSubtitle/>
+                    <chartLegend/>
+                </chart>
+                <pieDataset>
+                    <dataset resetType="Report">
+                        <datasetRun subDataset="CategoryFindingsPieChartDataSource" uuid="a4ca39d4-0e4d-4131-be73-97b5ae1e8945">
+                            <dataSourceExpression><![CDATA[$P{CategoryFindingsPieChartDataSource}]]></dataSourceExpression>
+                        </datasetRun>
+                    </dataset>
+                    <keyExpression><![CDATA[$F{category}]]></keyExpression>
+                    <valueExpression><![CDATA[$F{numberOfFindings}]]></valueExpression>
+                    <labelExpression><![CDATA[$F{numberOfFindings} + ""]]></labelExpression>
+                </pieDataset>
+                <piePlot>
+                    <plot>
+                        <seriesColor seriesOrder="0" color="#007AB5"/>
+                        <seriesColor seriesOrder="1" color="#5E0779"/>
+                        <seriesColor seriesOrder="2" color="#10C3F4"/>
+                        <seriesColor seriesOrder="3" color="#232B44"/>
+                        <seriesColor seriesOrder="4" color="#71BE52"/>
+                        <seriesColor seriesOrder="5" color="#174F28"/>
+                        <seriesColor seriesOrder="6" color="#FFE25C"/>
+                        <seriesColor seriesOrder="7" color="#EF4523"/>
+                        <seriesColor seriesOrder="8" color="#7C1124"/>
+                        <seriesColor seriesOrder="9" color="#8085E9"/>
+                        <seriesColor seriesOrder="10" color="#D021C4"/>
+                        <seriesColor seriesOrder="11" color="#A4A8B0"/>
+                    </plot>
+                    <itemLabel/>
+                </piePlot>
+            </pieChart>
+            <pieChart>
+                <chart evaluationTime="Report">
+                    <reportElement positionType="Float" stretchType="ElementGroupHeight" x="0" y="320" width="553" height="179" uuid="0082b083-fdcf-4d69-bd20-98c36c2825ff"/>
+                    <box>
+                        <topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                        <leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                        <bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                        <rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    </box>
+                    <chartTitle/>
+                    <chartSubtitle/>
+                    <chartLegend/>
+                </chart>
+                <pieDataset>
+                    <dataset resetType="Report">
+                        <datasetRun subDataset="SeverityPieData" uuid="43b5d9b9-7b09-4789-8311-09b39c30e70c">
+                            <dataSourceExpression><![CDATA[$P{SeverityFindingsPieChartDataSource}]]></dataSourceExpression>
+                        </datasetRun>
+                    </dataset>
+                    <keyExpression><![CDATA[$F{severity}]]></keyExpression>
+                    <valueExpression><![CDATA[$F{numberOfFindings}]]></valueExpression>
+                    <labelExpression><![CDATA[$F{numberOfFindings} + " " +$F{severity}]]></labelExpression>
+                </pieDataset>
+                <piePlot>
+                    <plot>
+                        <seriesColor seriesOrder="0" color="#01D68F"/>
+                        <seriesColor seriesOrder="1" color="#35A4FE"/>
+                        <seriesColor seriesOrder="2" color="#FFAB00"/>
+                        <seriesColor seriesOrder="3" color="#FF3D70"/>
+                        <seriesColor seriesOrder="4" color="#647687"/>
+                    </plot>
+                    <itemLabel/>
+                </piePlot>
+            </pieChart>
+        </band>
+    </detail>
+</jasperReport>

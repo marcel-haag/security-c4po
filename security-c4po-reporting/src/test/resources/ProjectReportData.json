@@ -1,0 +1,99 @@
+{
+  "id": "195809ed-9722-4ad5-a84b-0099a9a01652",
+  "client": "Dio Stonemask Inc.",
+  "title": "log4jj bizarre adventure",
+  "createdAt": "2022-08-10T14:47:40.140406Z",
+  "tester": "Jojo",
+  "summary": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet.",
+  "projectPentestReport": [
+    {
+      "id": "11601f51-bc17-47fd-847d-0c53df5405b5",
+      "category": "INFORMATION_GATHERING",
+      "refNumber": "OTG-INFO-001",
+      "findings": [
+        {
+          "id": "ef31449d-71ec-4736-952f-8b20e53117d5",
+          "severity": "LOW",
+          "title": "Test Title",
+          "description": "Test Description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tristique sodales leo, eget porta dolor porttitor vitae. Nunc semper a est in porttitor. Aliquam imperdiet mi eget orci egestas euismod. Fusce sit amet massa efficitur, egestas neque vitae, elementum orci. Nullam accumsan nunc id risus volutpat, quis sagittis lorem sollicitudin. Nam finibus justo non arcu vulputate dignissim. Etiam libero felis, dignissim non feugiat at, ornare non elit. Sed hendrerit risus id magna porttitor interdum. Cras vehicula odio id metus elementum porta. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur tempor eu purus ut aliquet. Nam.",
+          "impact": "Test Impact Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tristique sodales leo, eget porta dolor porttitor vitae. Nunc semper a est in porttitor. Aliquam imperdiet mi eget orci egestas euismod. Fusce sit amet massa efficitur, egestas neque vitae, elementum orci. Nullam accumsan nunc id risus volutpat, quis sagittis lorem sollicitudin.",
+          "affectedUrls": [
+            "https://akveo.github.io/nebular/docs/components/progress-bar/examples#nbprogressbarcomponent",
+            "https://www.google.de/"
+          ],
+          "reproduction": "Step 1: Test",
+          "mitigation": ""
+        },
+        {
+          "id": "58f63b4e-97fb-4fe8-8527-7996896089d2",
+          "severity": "MEDIUM",
+          "title": "Medium Finding",
+          "description": "Medium Description Nam finibus justo non arcu vulputate dignissim. Etiam libero felis, dignissim non feugiat at, ornare non elit. Sed hendrerit risus id magna porttitor interdum. Cras vehicula odio id metus elementum porta. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur tempor eu purus ut aliquet.",
+          "impact": "Medium Impact",
+          "affectedUrls": [],
+          "reproduction": "Step 1: Medium",
+          "mitigation": "Fusce sit amet massa efficitur, egestas neque vitae, elementum orci. Nullam accumsan nunc id risus volutpat, quis sagittis lorem sollicitudin. Nam finibus justo non arcu vulputate dignissim. Etiam libero felis, dignissim non feugiat at, ornare non elit. Sed hendrerit risus id magna porttitor interdum."
+        },
+        {
+          "id": "58f63b4e-97fb-4fe8-8527-7996896089d2",
+          "severity": "HIGH",
+          "title": "High Finding",
+          "description": "High Description Nam finibus justo non arcu vulputate dignissim. Etiam libero felis, dignissim non feugiat at, ornare non elit. Sed hendrerit risus id magna porttitor interdum. Cras vehicula odio id metus elementum porta. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur tempor eu purus ut aliquet.",
+          "impact": "High Impact",
+          "affectedUrls": [],
+          "reproduction": "Step 1: High",
+          "mitigation": ""
+        },
+        {
+          "id": "58f63b4e-97fb-4fe8-8527-7996896089d2",
+          "severity": "CRITICAL",
+          "title": "Critical Finding",
+          "description": "Critical Description Nam finibus justo non arcu vulputate dignissim. Etiam libero felis, dignissim non feugiat at, ornare non elit. Sed hendrerit risus id magna porttitor interdum. Cras vehicula odio id metus elementum porta. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur tempor eu purus ut aliquet.",
+          "impact": "Critical Impact",
+          "affectedUrls": [
+            "https://community.jaspersoft.com/system/files/restricted-docs/jaspersoft-studio-user-guide.pdf"
+          ],
+          "reproduction": "Step 1: Critical",
+          "mitigation": "Fusce sit amet massa efficitur, egestas neque vitae, elementum orci. Nullam accumsan nunc id risus volutpat, quis sagittis lorem sollicitudin. Nam finibus justo non arcu vulputate dignissim. Etiam libero felis, dignissim non feugiat at, ornare non elit. Sed hendrerit risus id magna porttitor interdum."
+        }
+      ],
+      "comments": [
+        {
+          "id": "89703b19-16c7-49e5-8e33-0c706313e5fe",
+          "title": "Test Comment",
+          "description": "Not related to findings",
+          "relatedFindings": [
+            "58f63b4e-97fb-4fe8-8527-7996896089d2"
+          ]
+        },
+        {
+          "id": "89703b19-16c7-49e5-8e33-0c706313e5fe",
+          "title": "Test Comment",
+          "description": "Test Decription",
+          "relatedFindings": []
+        }
+      ],
+      "status": "COMPLETED"
+    },
+    {
+      "id": "9a073a08-e4fc-4450-8202-c902455b66ec",
+      "category": "INFORMATION_GATHERING",
+      "refNumber": "OTG-INFO-002",
+      "findings": [
+        {
+          "id": "4ddb84f6-068c-4319-a8ee-1000008bb75a",
+          "severity": "HIGH",
+          "title": "Anothe High Issues",
+          "description": "High",
+          "impact": "High",
+          "affectedUrls": [],
+          "reproduction": "High",
+          "mitigation": ""
+        }
+      ],
+      "comments": [],
+      "status": "COMPLETED"
+    }
+  ],
+  "createdBy": "7fe49c8d-fee3-47e0-9224-94e0ac7436c6"
+}

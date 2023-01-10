@@ -1,0 +1,30 @@
+= ReportingC4PO REST API Documentation
+:doctype: book
+:source-highlighter: highlightjs
+:icons: font
+:toc: left
+:toclevels: 4
+:sectlinks:
+:data-uri:
+
+This documentation describes the REST API for the "ReportingC4PO".
+
+The service tries to adhere as closely as possible to standard HTTP and REST conventions in its use of HTTP verbs and status codes.
+
+== Error handling
+
+You can generally expect 4xx for client errors and 5xx for server errors.
+
+== Request Headers
+
+The request and response snippets shown in this documentation are generated from real interactions.
+When creating requests you must not follow the examples exactly, e.g. instead of providing the Accept Header `application/json, application/javascript, text/javascript` you can also provide only one value, typically `application/json`.
+
+
+== Change History
+
+|===
+|Date |Change
+|2023-01-10
+|Initial version
+|===

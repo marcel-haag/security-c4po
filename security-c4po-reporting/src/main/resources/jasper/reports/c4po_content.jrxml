@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="C4PO_Content" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3c42fdce-1295-4279-a59a-999f57d99afc">
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="ProjectReportData JSON Adapter"/>
+    <style name="Table_TH" mode="Opaque" backcolor="#FFFFFF">
+        <box>
+            <pen lineWidth="0.5" lineColor="#FFFFFF"/>
+            <topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+            <leftPen lineWidth="0.5" lineColor="#FFFFFF"/>
+            <bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+            <rightPen lineWidth="0.5" lineColor="#FFFFFF"/>
+        </box>
+    </style>
+    <style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+        <box>
+            <pen lineWidth="0.5" lineColor="#FFFFFF"/>
+            <topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+            <leftPen lineWidth="0.5" lineColor="#FFFFFF"/>
+            <bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+            <rightPen lineWidth="0.5" lineColor="#FFFFFF"/>
+        </box>
+    </style>
+    <style name="Table_CH" mode="Opaque" backcolor="#FFFFFF">
+        <box>
+            <pen lineWidth="0.5" lineColor="#FFFFFF"/>
+            <topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+            <leftPen lineWidth="0.5" lineColor="#FFFFFF"/>
+            <bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+            <rightPen lineWidth="0.5" lineColor="#FFFFFF"/>
+        </box>
+    </style>
+    <subDataset name="TableOfContent" uuid="ebd355ab-7b52-4ad9-8dcf-238c9d5465e5">
+        <property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+        <queryString>
+            <![CDATA[]]>
+        </queryString>
+        <field name="id" class="java.lang.String"/>
+        <field name="category" class="java.lang.String"/>
+        <field name="refNumber" class="java.lang.String"/>
+        <field name="findings" class="java.lang.String"/>
+        <field name="comments" class="java.lang.String"/>
+        <field name="status" class="java.lang.String"/>
+    </subDataset>
+    <parameter name="ProjectPentestReportDataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+    <queryString language="JSON">
+        <![CDATA[projectReportData]]>
+    </queryString>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="50" splitType="Stretch">
+            <rectangle>
+                <reportElement x="-20" y="0" width="573" height="30" forecolor="#232B44" backcolor="#232B44" uuid="be4caa3a-e834-45a6-82d3-587930118a1c"/>
+                <graphicElement>
+                    <pen lineWidth="0.0"/>
+                </graphicElement>
+            </rectangle>
+            <staticText>
+                <reportElement x="0" y="0" width="432" height="30" forecolor="#FFFFFF" uuid="59ee1bdf-8502-4520-8bd1-4f6e4d88df61"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Table of Contents]]></text>
+            </staticText>
+            <ellipse>
+                <reportElement x="537" y="0" width="30" height="30" backcolor="#232B44" uuid="afe21e22-58aa-4b83-ae86-c7ecd482d732"/>
+                <graphicElement>
+                    <pen lineWidth="0.0"/>
+                </graphicElement>
+            </ellipse>
+            <image>
+                <reportElement x="539" y="3" width="23" height="24" uuid="2ca905b3-37c8-40ae-a9ea-3beb016b504c"/>
+                <imageExpression><![CDATA["/Users/mhg/Documents/Projects/security-c4po/security-c4po-reporting/src/main/resources/jasper/Watermark.png"]]></imageExpression>
+            </image>
+        </band>
+    </title>
+    <detail>
+        <band height="464" splitType="Stretch">
+            <componentElement>
+                <reportElement x="0" y="0" width="560" height="464" forecolor="#FFFFFF" uuid="925ff93f-70df-4093-a209-f9faaecb205c">
+                    <property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+                    <property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+                    <property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+                    <property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+                    <property name="com.jaspersoft.studio.components.autoresize.proportional" value="true"/>
+                </reportElement>
+                <jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+                    <datasetRun subDataset="TableOfContent" uuid="ca33a240-1f7b-4729-a278-6148b82621a5">
+                        <dataSourceExpression><![CDATA[$P{ProjectPentestReportDataSource}]]></dataSourceExpression>
+                    </datasetRun>
+                    <jr:column width="400" uuid="e1ddda3b-a51b-4ebc-ab41-72ba37cb90fc">
+                        <property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+                        <jr:tableHeader style="Table_TH" height="30" rowSpan="1">
+                            <staticText>
+                                <reportElement x="0" y="0" width="400" height="30" uuid="dade4652-f819-4d79-8d3d-4b2b2d569f9f"/>
+                                <textElement verticalAlignment="Middle">
+                                    <font fontName="SansSerif" size="12" isBold="true"/>
+                                </textElement>
+                                <text><![CDATA[State of Confidentiality]]></text>
+                            </staticText>
+                        </jr:tableHeader>
+                        <jr:tableFooter style="Table_TH" height="100" rowSpan="1">
+                            <staticText>
+                                <reportElement x="0" y="0" width="400" height="25" uuid="75eee7d9-35ab-43f9-9a65-041cbeec379e"/>
+                                <textElement verticalAlignment="Middle">
+                                    <font fontName="SansSerif" size="12" isBold="true"/>
+                                </textElement>
+                                <text><![CDATA[Appendencies]]></text>
+                            </staticText>
+                            <staticText>
+                                <reportElement x="0" y="25" width="400" height="25" forecolor="#232B44" uuid="9c81fdd0-7620-4ac9-8554-a686bd61e868">
+                                    <property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+                                </reportElement>
+                                <textElement verticalAlignment="Middle">
+                                    <font fontName="SansSerif" size="12" isBold="true"/>
+                                    <paragraph leftIndent="10"/>
+                                </textElement>
+                                <text><![CDATA[Findings Severities]]></text>
+                            </staticText>
+                            <staticText>
+                                <reportElement x="0" y="50" width="400" height="25" forecolor="#232B44" uuid="c2e58188-b6bf-4184-afc4-f4fc122e4ac1">
+                                    <property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+                                </reportElement>
+                                <textElement verticalAlignment="Middle">
+                                    <font fontName="SansSerif" size="12" isBold="true"/>
+                                    <paragraph leftIndent="10"/>
+                                </textElement>
+                                <text><![CDATA[Risk Matrix]]></text>
+                            </staticText>
+                            <staticText>
+                                <reportElement x="0" y="75" width="400" height="25" forecolor="#232B44" uuid="76a14be3-8f39-4052-a22f-2f3dac68e0ae">
+                                    <property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+                                </reportElement>
+                                <textElement verticalAlignment="Middle">
+                                    <font fontName="SansSerif" size="12" isBold="true"/>
+                                    <paragraph leftIndent="10"/>
+                                </textElement>
+                                <text><![CDATA[Severity Rating Definitions]]></text>
+                            </staticText>
+                        </jr:tableFooter>
+                        <jr:columnHeader style="Table_CH" height="170" rowSpan="1">
+                            <staticText>
+                                <reportElement x="0" y="0" width="400" height="34" uuid="9d638d8b-7d1c-4fe2-b494-d8ee3c337a9f"/>
+                                <textElement verticalAlignment="Middle">
+                                    <font fontName="SansSerif" size="12" isBold="true"/>
+                                </textElement>
+                                <text><![CDATA[Executive Summary]]></text>
+                            </staticText>
+                            <staticText>
+                                <reportElement x="0" y="34" width="400" height="34" forecolor="#232B44" uuid="3089a5ee-9038-4d3d-b7c7-ff7be4a1a91e">
+                                    <property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+                                </reportElement>
+                                <textElement verticalAlignment="Middle">
+                                    <font fontName="SansSerif" size="12" isBold="true"/>
+                                    <paragraph leftIndent="10"/>
+                                </textElement>
+                                <text><![CDATA[Assessment Overview and Recommendations]]></text>
+                            </staticText>
+                            <staticText>
+                                <reportElement x="0" y="68" width="400" height="34" forecolor="#232B44" uuid="03912891-062e-41e2-88fb-1cd2dd0eb37c">
+                                    <property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+                                </reportElement>
+                                <textElement verticalAlignment="Middle">
+                                    <font fontName="SansSerif" size="12" isBold="true"/>
+                                    <paragraph leftIndent="10"/>
+                                </textElement>
+                                <text><![CDATA[Number of Findings per Category]]></text>
+                            </staticText>
+                            <staticText>
+                                <reportElement x="0" y="102" width="400" height="34" forecolor="#232B44" uuid="cf22afbf-5690-4d33-86be-f671daa668ac">
+                                    <property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+                                </reportElement>
+                                <textElement verticalAlignment="Middle">
+                                    <font fontName="SansSerif" size="12" isBold="true"/>
+                                    <paragraph leftIndent="10"/>
+                                </textElement>
+                                <text><![CDATA[Severity Overview of Findings]]></text>
+                            </staticText>
+                            <staticText>
+                                <reportElement x="0" y="136" width="400" height="34" uuid="642bc39c-e2fd-47bb-ae15-8a30fb59ad72">
+                                    <property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+                                </reportElement>
+                                <textElement verticalAlignment="Middle">
+                                    <font fontName="SansSerif" size="12" isBold="true"/>
+                                    <paragraph leftIndent="0"/>
+                                </textElement>
+                                <text><![CDATA[Technical Findings and Comments Details]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:detailCell style="Table_TD" height="30">
+                            <textField>
+                                <reportElement x="0" y="0" width="400" height="30" forecolor="#232B44" uuid="1930eea5-6835-498a-bcdd-d4fe0423a18a">
+                                    <property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+                                </reportElement>
+                                <textElement verticalAlignment="Middle">
+                                    <font fontName="SansSerif" size="12" isBold="true"/>
+                                    <paragraph leftIndent="10"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{category}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="160" uuid="76741c88-65a6-4032-8d17-c6ba755c1a64">
+                        <property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+                        <jr:tableHeader style="Table_TH" height="30" rowSpan="1"/>
+                        <jr:tableFooter style="Table_TH" height="100" rowSpan="1"/>
+                        <jr:columnHeader style="Table_CH" height="170" rowSpan="1"/>
+                        <jr:detailCell style="Table_TD" height="30">
+                            <textField>
+                                <reportElement x="0" y="0" width="160" height="30" forecolor="#232B44" uuid="4c14b6ea-020c-4527-b853-543ac119003b"/>
+                                <textElement verticalAlignment="Middle">
+                                    <font fontName="SansSerif" size="12" isBold="true"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{refNumber}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                </jr:table>
+            </componentElement>
+        </band>
+    </detail>
+    <columnFooter>
+        <band height="49" splitType="Stretch"/>
+    </columnFooter>
+    <pageFooter>
+        <band height="54" splitType="Stretch"/>
+    </pageFooter>
+</jasperReport>

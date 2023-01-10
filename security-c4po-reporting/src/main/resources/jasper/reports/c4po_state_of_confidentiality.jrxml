@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="C4PO_StateOfConfidentiality" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c9281989-500e-499e-a5f4-ede1c502fcbc">
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="ProjectReportJasperData Template JSON Adapter"/>
+    <queryString language="JSON">
+        <![CDATA[projectReportData]]>
+    </queryString>
+    <field name="id" class="java.lang.String">
+        <property name="net.sf.jasperreports.json.field.expression" value="id"/>
+        <fieldDescription><![CDATA[id]]></fieldDescription>
+    </field>
+    <field name="client" class="java.lang.String">
+        <property name="net.sf.jasperreports.json.field.expression" value="client"/>
+        <fieldDescription><![CDATA[client]]></fieldDescription>
+    </field>
+    <field name="title" class="java.lang.String">
+        <property name="net.sf.jasperreports.json.field.expression" value="title"/>
+        <fieldDescription><![CDATA[title]]></fieldDescription>
+    </field>
+    <field name="createdAt" class="java.lang.String">
+        <property name="net.sf.jasperreports.json.field.expression" value="createdAt"/>
+        <fieldDescription><![CDATA[createdAt]]></fieldDescription>
+    </field>
+    <field name="tester" class="java.lang.String">
+        <property name="net.sf.jasperreports.json.field.expression" value="tester"/>
+        <fieldDescription><![CDATA[tester]]></fieldDescription>
+    </field>
+    <field name="projectPentestReport" class="java.lang.String">
+        <property name="net.sf.jasperreports.json.field.expression" value="projectPentestReport"/>
+        <fieldDescription><![CDATA[projectPentestReport]]></fieldDescription>
+    </field>
+    <field name="createdBy" class="java.lang.String">
+        <property name="net.sf.jasperreports.json.field.expression" value="createdBy"/>
+        <fieldDescription><![CDATA[createdBy]]></fieldDescription>
+    </field>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="49" splitType="Stretch">
+            <rectangle>
+                <reportElement x="-20" y="0" width="573" height="30" forecolor="#232B44" backcolor="#232B44" uuid="91d6614c-09e9-48a1-87ca-fc8c33a04ae4"/>
+                <graphicElement>
+                    <pen lineWidth="0.0"/>
+                </graphicElement>
+            </rectangle>
+            <ellipse>
+                <reportElement x="537" y="0" width="30" height="30" backcolor="#232B44" uuid="3efa01f7-db61-406b-840b-8f2b5357d46c"/>
+                <graphicElement>
+                    <pen lineWidth="0.0"/>
+                </graphicElement>
+            </ellipse>
+            <image>
+                <reportElement x="539" y="3" width="23" height="24" uuid="75a577b3-42df-4d40-be10-d0991b2769e2"/>
+                <imageExpression><![CDATA["/Users/mhg/Documents/Projects/security-c4po/security-c4po-reporting/src/main/resources/jasper/Watermark.png"]]></imageExpression>
+            </image>
+            <staticText>
+                <reportElement x="0" y="0" width="432" height="30" forecolor="#FFFFFF" uuid="329f5881-cba9-4418-9ef0-99a6805906ba"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <text><![CDATA[State of Confidentiality]]></text>
+            </staticText>
+        </band>
+    </title>
+    <detail>
+        <band height="460" splitType="Stretch">
+            <textField textAdjust="StretchHeight">
+                <reportElement x="0" y="0" width="552" height="99" uuid="155d6f81-907f-49ed-ae21-2dae085f72b2"/>
+                <textElement>
+                    <font size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA["The contents of this document have been developed by " + $F{tester} + ". " + $F{tester} + " considers the contents of this document to be proprietary and business confidential information. This information is to be used only in the performance of its intended use. This document may not be released to another vendor, business partner or contractor without prior written consent from " + $F{tester} + ". Additionally, no portion of this document may be communicated, reproduced, copied or distributed without the prior consent of " + $F{tester} + "." ]]></textFieldExpression>
+            </textField>
+            <textField textAdjust="StretchHeight">
+                <reportElement positionType="Float" x="0" y="100" width="551" height="100" uuid="6b5626a8-ff7b-450b-8c53-93c2115bd56c"/>
+                <textElement>
+                    <font size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA["The contents of this document do not constitute legal advice. " + $F{tester}+"’s offer of services that relate to compliance, litigation or other legal interests are not intended as legal counsel and should not be taken as such. The assessment detailed herein is against the company " + $F{client} + " for examination purposes, and the vulnerabilities included in this document should be mitigated in order to secure " + $F{client} + " external or internal infrastructure."]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <pageFooter>
+        <band height="54" splitType="Stretch"/>
+    </pageFooter>
+</jasperReport>

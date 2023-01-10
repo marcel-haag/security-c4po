@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="C4PO_Coverpage" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1e81cc75-35cb-406c-934f-0bc56dfd965d">
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="ProjectReportJasperData Template JSON Adapter"/>
+    <!-- Ignores Issue about not finding a specific font -->
+    <property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+    <queryString language="JSON">
+        <![CDATA[projectReportData]]>
+    </queryString>
+    <field name="id" class="java.lang.String">
+        <property name="net.sf.jasperreports.json.field.expression" value="id"/>
+        <fieldDescription><![CDATA[id]]></fieldDescription>
+    </field>
+    <field name="client" class="java.lang.String">
+        <property name="net.sf.jasperreports.json.field.expression" value="client"/>
+        <fieldDescription><![CDATA[client]]></fieldDescription>
+    </field>
+    <field name="title" class="java.lang.String">
+        <property name="net.sf.jasperreports.json.field.expression" value="title"/>
+        <fieldDescription><![CDATA[title]]></fieldDescription>
+    </field>
+    <field name="createdAt" class="java.lang.String">
+        <property name="net.sf.jasperreports.json.field.expression" value="createdAt"/>
+        <fieldDescription><![CDATA[createdAt]]></fieldDescription>
+    </field>
+    <field name="tester" class="java.lang.String">
+        <property name="net.sf.jasperreports.json.field.expression" value="tester"/>
+        <fieldDescription><![CDATA[tester]]></fieldDescription>
+    </field>
+    <field name="summary" class="java.lang.String">
+        <property name="net.sf.jasperreports.json.field.expression" value="summary"/>
+        <fieldDescription><![CDATA[summary]]></fieldDescription>
+    </field>
+    <field name="projectPentestReport" class="java.lang.String">
+        <property name="net.sf.jasperreports.json.field.expression" value="projectPentestReport"/>
+        <fieldDescription><![CDATA[projectPentestReport]]></fieldDescription>
+    </field>
+    <field name="createdBy" class="java.lang.String">
+        <property name="net.sf.jasperreports.json.field.expression" value="createdBy"/>
+        <fieldDescription><![CDATA[createdBy]]></fieldDescription>
+    </field>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="390" splitType="Stretch">
+            <image>
+                <reportElement x="-20" y="-20" width="595" height="409" uuid="7b8866c7-8b72-43a8-9428-2404a75e803e"/>
+                <imageExpression><![CDATA["/Users/mhg/Documents/Projects/security-c4po/security-c4po-reporting/src/main/resources/jasper/C4POCoverBackground#1.jpeg"]]></imageExpression>
+            </image>
+            <rectangle>
+                <reportElement x="-20" y="-20" width="595" height="280" forecolor="#151B2E" backcolor="rgba(35, 43, 68, 0.5882353)" uuid="7412dfc2-c785-4584-b8e9-120df2ef41f2"/>
+                <graphicElement>
+                    <pen lineWidth="0.0"/>
+                </graphicElement>
+            </rectangle>
+            <rectangle>
+                <reportElement x="-20" y="241" width="595" height="120" forecolor="#232B44" backcolor="#232B44" uuid="c3646ed4-24af-4969-990a-322ff29697a9"/>
+            </rectangle>
+            <textField textAdjust="StretchHeight">
+                <reportElement x="6" y="280" width="543" height="51" forecolor="#FFFFFF" uuid="563ae593-7ae8-47fc-8728-01da0a717aad"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="SansSerif" size="26" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{client}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement mode="Transparent" x="5" y="0" width="544" height="219" forecolor="#FEFEFF" backcolor="#232B44" uuid="173fc927-62f1-4242-9c7e-638a21a9672f">
+                    <property name="net.sf.jasperreports.export.accessibility.tag" value="h1"/>
+                    <property name="net.sf.jasperreports.export.pdf.tag.table" value="full"/>
+                </reportElement>
+                <textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+                    <font fontName="SansSerif" size="36" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
+            </textField>
+            <rectangle>
+                <reportElement x="-2" y="220" width="577" height="40" forecolor="#232B44" backcolor="#151B2E" uuid="2d5d891c-1d0f-4d81-beab-6d6937f08b5b"/>
+                <graphicElement>
+                    <pen lineWidth="0.0"/>
+                </graphicElement>
+            </rectangle>
+            <ellipse>
+                <reportElement x="-20" y="220" width="38" height="40" backcolor="#151B2E" uuid="fefe65c4-59db-4810-9539-1865db235814"/>
+                <graphicElement>
+                    <pen lineWidth="0.0"/>
+                </graphicElement>
+            </ellipse>
+            <image>
+                <reportElement x="-14" y="224" width="31" height="37" uuid="ae84d484-ee44-436a-a0cd-e94a265ed665"/>
+                <imageExpression><![CDATA["/Users/mhg/Documents/Projects/security-c4po/security-c4po-reporting/src/main/resources/jasper/Watermark.png"]]></imageExpression>
+            </image>
+            <staticText>
+                <reportElement mode="Transparent" x="22" y="226" width="82" height="20" forecolor="#FEFEFF" backcolor="#151B2E" uuid="b40755db-f42b-47cf-9e73-57cd092f7bde"/>
+                <textElement>
+                    <font fontName="SansSerif&#xA;&#xA;" size="12" isBold="true" isItalic="false"/>
+                </textElement>
+                <text><![CDATA[C4PO]]></text>
+            </staticText>
+            <staticText>
+                <reportElement mode="Transparent" x="23" y="242" width="82" height="20" forecolor="#FEFEFF" backcolor="#151B2E" uuid="1e37e3b3-b3d2-4621-9928-08497bd4f667"/>
+                <textElement>
+                    <font fontName="SansSerif&#xA;&#xA;" size="10" isItalic="true"/>
+                </textElement>
+                <text><![CDATA[v.0.0.1]]></text>
+            </staticText>
+            <rectangle>
+                <reportElement x="-20" y="350" width="595" height="30" uuid="e6a81d95-840a-42a8-860d-cb1957d1775c"/>
+                <graphicElement>
+                    <pen lineWidth="0.0"/>
+                </graphicElement>
+            </rectangle>
+        </band>
+    </title>
+    <columnHeader>
+        <band height="190" splitType="Stretch">
+            <textField>
+                <reportElement x="107" y="20" width="340" height="40" forecolor="#232B44" uuid="0c2fdc55-5038-49f5-a972-3575837bb8a6"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="26" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Penetration Test"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="107" y="61" width="340" height="40" forecolor="#232B44" uuid="edce29e2-8963-43bd-8361-69e579e4a1e1"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="26" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Report of Findings"]]></textFieldExpression>
+            </textField>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="91" splitType="Stretch">
+            <textField>
+                <reportElement x="0" y="10" width="551" height="30" uuid="54c4a617-82ea-4ec4-aa3c-d52e8fd22406"/>
+                <textElement textAlignment="Right">
+                    <font fontName="SansSerif" size="20" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{tester}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="80" y="50" width="471" height="30" uuid="f13c2ce6-8960-4ac8-ba3a-f79823f07025"/>
+                <textElement textAlignment="Right">
+                    <font fontName="SansSerif" size="12" isBold="true" isItalic="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{createdAt}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <columnFooter>
+        <band height="70" splitType="Stretch">
+            <rectangle>
+                <reportElement x="-20" y="30" width="595" height="30" forecolor="#232B44" backcolor="#232B44" uuid="1ed47e2d-9d46-44b9-bad7-8eeb1143c83c"/>
+                <graphicElement>
+                    <pen lineWidth="0.0"/>
+                </graphicElement>
+            </rectangle>
+            <staticText>
+                <reportElement mode="Opaque" x="0" y="35" width="551" height="20" forecolor="#FEFEFF" backcolor="#232B44" uuid="fc82cf8c-f284-413c-9c49-ad924c765c48"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font fontName="SansSerif&#xA;&#xA;" size="12" isBold="false" isItalic="true"/>
+                </textElement>
+                <text><![CDATA[Version 1.0]]></text>
+            </staticText>
+            <rectangle>
+                <reportElement x="-20" y="20" width="595" height="10" forecolor="#151B2E" backcolor="#151B2E" uuid="b9a5cd43-3460-4177-97f5-a46eac874e7d"/>
+            </rectangle>
+        </band>
+    </columnFooter>
+    <pageFooter>
+        <band height="10" splitType="Stretch">
+            <rectangle>
+                <reportElement x="-20" y="-10" width="595" height="20" forecolor="#151B2E" backcolor="#151B2E" uuid="724a02c5-82c8-4a72-bf81-b77baa72c723"/>
+            </rectangle>
+            <staticText>
+                <reportElement mode="Opaque" x="0" y="-9" width="551" height="18" forecolor="#FEFEFF" backcolor="#151B2E" uuid="3291af19-09ed-453c-a068-90a951d4f7b5"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="SansSerif&#xA;&#xA;" size="8" isBold="true" isItalic="false"/>
+                </textElement>
+                <text><![CDATA[No part of this document may be disclosed to outside sources without the explicit written authorization of the tester]]></text>
+            </staticText>
+        </band>
+    </pageFooter>
+</jasperReport>
