@@ -16,7 +16,8 @@ data class Project(
     val title: String,
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ssZ")
     val createdAt: String = Instant.now().toString(),
-    val tester: String? = null,
+    val tester: String,
+    val summary: String? = null,
     var projectPentests: List<ProjectPentest> = emptyList(),
     val createdBy: String
 )
@@ -28,6 +29,7 @@ fun buildProject(body: ProjectRequestBody, projectEntity: ProjectEntity): Projec
         title = body.title,
         createdAt = projectEntity.data.createdAt,
         tester = body.tester,
+        summary = body.summary,
         projectPentests = projectEntity.data.projectPentests,
         createdBy = projectEntity.data.createdBy
     )
@@ -40,6 +42,7 @@ fun Project.toProjectResponseBody(): ResponseBody {
         "title" to title,
         "createdAt" to createdAt,
         "tester" to tester,
+        "summary" to summary,
         /* ToDo: Calculate percentage in BE type: float */
         "testingProgress" to calculateProgress(),
         "createdBy" to createdBy
@@ -84,7 +87,8 @@ data class ProjectOverview(
 data class ProjectRequestBody(
     val client: String,
     val title: String,
-    val tester: String
+    val tester: String,
+    val summary: String?
 )
 
 /**
@@ -108,6 +112,7 @@ fun ProjectRequestBody.toProject(): Project {
         title = this.title,
         createdAt = Instant.now().toString(),
         tester = this.tester,
+        summary = this.summary,
         // ToDo: Should be changed to SUB from Token after adding AUTH Header
         createdBy = UUID.randomUUID().toString()
     )

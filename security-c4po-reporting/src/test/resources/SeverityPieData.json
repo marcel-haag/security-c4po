@@ -1,0 +1,20 @@
+{
+  "SeverityPieData": [
+    {
+      "severity": "LOW",
+      "numberOfFindings": 4
+    },
+    {
+      "severity": "MEDIUM",
+      "numberOfFindings": 2
+    },
+    {
+      "severity": "HIGH",
+      "numberOfFindings": 1
+    },
+    {
+      "severity": "CRITICAL",
+      "numberOfFindings": 1
+    }
+  ]
+}

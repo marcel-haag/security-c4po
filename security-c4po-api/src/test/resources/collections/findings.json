@@ -20,4 +20,338 @@
     "mitigation": "Test Mitigatin"
   },
   "_class": "com.securityc4po.api.finding.FindingEntity"
+},{
+  "_id": {
+    "$oid": "63725fa6e612626e2c6956ee"
+  },
+  "lastModified": {
+    "$date": {
+      "$numberLong": "1668439974730"
+    }
+  },
+  "data": {
+    "_id": "0bda8950-94fa-4ec6-8fa7-e09f5a8cd3e8",
+    "severity": "HIGH",
+    "title": "High Title",
+    "description": "High Description",
+    "impact": "High Impact",
+    "affectedUrls": [
+      "https://angular.io/guide/routing-overview"
+    ],
+    "reproduction": "Step 1: Not be High",
+    "mitigation": ""
+  },
+  "_class": "com.securityc4po.api.finding.FindingEntity"
+},{
+  "_id": {
+    "$oid": "6374c3c4e0136563b96187b8"
+  },
+  "lastModified": {
+    "$date": {
+      "$numberLong": "1668596676210"
+    }
+  },
+  "data": {
+    "_id": "58f63b4e-97fb-4fe8-8527-7996896089d2",
+    "severity": "MEDIUM",
+    "title": "Medium Finding",
+    "description": "Medium",
+    "impact": "Medium",
+    "affectedUrls": [],
+    "reproduction": "Medium",
+    "mitigation": ""
+  },
+  "_class": "com.securityc4po.api.finding.FindingEntity"
+},{
+  "_id": {
+    "$oid": "6374c43be0136563b96187b9"
+  },
+  "lastModified": {
+    "$date": {
+      "$numberLong": "1668596795003"
+    }
+  },
+  "data": {
+    "_id": "72886128-b2d9-4a92-bbfe-b54373441321",
+    "severity": "CRITICAL",
+    "title": "Critical Issue",
+    "description": "Critical",
+    "impact": "Critical",
+    "affectedUrls": [],
+    "reproduction": "Critical",
+    "mitigation": ""
+  },
+  "_class": "com.securityc4po.api.finding.FindingEntity"
+},{
+  "_id": {
+    "$oid": "6374c488e0136563b96187ba"
+  },
+  "lastModified": {
+    "$date": {
+      "$numberLong": "1668596872152"
+    }
+  },
+  "data": {
+    "_id": "4ddb84f6-068c-4319-a8ee-1000008bb75a",
+    "severity": "HIGH",
+    "title": "Anothe High Issues",
+    "description": "High",
+    "impact": "High",
+    "affectedUrls": [],
+    "reproduction": "High",
+    "mitigation": ""
+  },
+  "_class": "com.securityc4po.api.finding.FindingEntity"
+},{
+  "_id": {
+    "$oid": "6374c624e0136563b96187bb"
+  },
+  "lastModified": {
+    "$date": {
+      "$numberLong": "1668597284983"
+    }
+  },
+  "data": {
+    "_id": "42831151-51fd-4348-b829-6b18ddd14fe1",
+    "severity": "MEDIUM",
+    "title": "Another Medium FInding",
+    "description": "Medium",
+    "impact": "Medium",
+    "affectedUrls": [],
+    "reproduction": "Medium",
+    "mitigation": ""
+  },
+  "_class": "com.securityc4po.api.finding.FindingEntity"
+},{
+  "_id": {
+    "$oid": "6374cb33e0136563b96187bc"
+  },
+  "lastModified": {
+    "$date": {
+      "$numberLong": "1668598579443"
+    }
+  },
+  "data": {
+    "_id": "559cd0ac-9e64-41f9-892a-4c8a9dd30357",
+    "severity": "LOW",
+    "title": "Another Low One",
+    "description": "Low",
+    "impact": "Low",
+    "affectedUrls": [],
+    "reproduction": "Low",
+    "mitigation": ""
+  },
+  "_class": "com.securityc4po.api.finding.FindingEntity"
+},{
+  "_id": {
+    "$oid": "6374cb98e0136563b96187bd"
+  },
+  "lastModified": {
+    "$date": {
+      "$numberLong": "1668598680140"
+    }
+  },
+  "data": {
+    "_id": "5e22d38f-a4f6-4809-84ea-a803b5f1f9fc",
+    "severity": "LOW",
+    "title": "common",
+    "description": "common",
+    "impact": "common",
+    "affectedUrls": [],
+    "reproduction": "common",
+    "mitigation": ""
+  },
+  "_class": "com.securityc4po.api.finding.FindingEntity"
+},{
+  "_id": {
+    "$oid": "6374cc51e0136563b96187be"
+  },
+  "lastModified": {
+    "$date": {
+      "$numberLong": "1668598865728"
+    }
+  },
+  "data": {
+    "_id": "0bfa7511-fe33-4ab5-9af2-d4ed70c1b350",
+    "severity": "HIGH",
+    "title": "Highihihi",
+    "description": "High",
+    "impact": "High",
+    "affectedUrls": [],
+    "reproduction": "High",
+    "mitigation": ""
+  },
+  "_class": "com.securityc4po.api.finding.FindingEntity"
+},{
+  "_id": {
+    "$oid": "6374cd00e0136563b96187bf"
+  },
+  "lastModified": {
+    "$date": {
+      "$numberLong": "1668599040593"
+    }
+  },
+  "data": {
+    "_id": "70e413b9-d736-40d2-b7d6-236768b1230c",
+    "severity": "MEDIUM",
+    "title": "Medium Rare",
+    "description": "Medium",
+    "impact": "Medium",
+    "affectedUrls": [],
+    "reproduction": "Medium",
+    "mitigation": ""
+  },
+  "_class": "com.securityc4po.api.finding.FindingEntity"
+},{
+  "_id": {
+    "$oid": "6374ec35e0136563b96187c8"
+  },
+  "lastModified": {
+    "$date": {
+      "$numberLong": "1668607029072"
+    }
+  },
+  "data": {
+    "_id": "672d9f87-fb3d-4fc5-8c6f-cadf97661ca5",
+    "severity": "HIGH",
+    "title": "Test",
+    "description": "Test",
+    "impact": "Test",
+    "affectedUrls": [],
+    "reproduction": "Test",
+    "mitigation": ""
+  },
+  "_class": "com.securityc4po.api.finding.FindingEntity"
+},{
+  "_id": {
+    "$oid": "637606830687d905ca60af1d"
+  },
+  "lastModified": {
+    "$date": {
+      "$numberLong": "1668679299814"
+    }
+  },
+  "data": {
+    "_id": "bddf810b-f20e-473e-a63d-34fcba7e48ef",
+    "severity": "CRITICAL",
+    "title": "Login SQL Injection ",
+    "description": "Inside Login Form using the  ' or TRUE-- Syntax will enable the user to login as the Admin.",
+    "impact": "Active User Session with Admin priviledges can affect the whole application.",
+    "affectedUrls": [
+      "http://localhost:3000/#/login"
+    ],
+    "reproduction": "Step 1:\nGo to login page.\n\nStep 2:\nEnter  ' or TRUE-- in the username field and enter a random password.",
+    "mitigation": ""
+  },
+  "_class": "com.securityc4po.api.finding.FindingEntity"
+},{
+  "_id": {
+    "$oid": "637612280687d905ca60af20"
+  },
+  "lastModified": {
+    "$date": {
+      "$numberLong": "1668682280551"
+    }
+  },
+  "data": {
+    "_id": "d7c95af7-5434-4768-b62c-5b11f9396276",
+    "severity": "MEDIUM",
+    "title": "Searchbar XSS",
+    "description": "Adding <iframe> in the search bar of the header results in XSS Vuln.",
+    "impact": "This impacts the Webapplication",
+    "affectedUrls": [
+      "http://localhost:3000/#/search?q=%3Ciframe%20src%3D%22javascript:alert(%60xss%60)%22%3E"
+    ],
+    "reproduction": "Step 1: \nClick on search bar of header.\n\nStep 2: \nEnter <iframe src=\"javascript:alert(`xss`)\">\n\nStep3: Press ENTER\n\nYou will now get a PopUp because the javascript code was executed inside the browser.",
+    "mitigation": "Sanitse Input Field."
+  },
+  "_class": "com.securityc4po.api.finding.FindingEntity"
+},{
+  "_id": {
+    "$oid": "63776860fcdda12bf2e51eb2"
+  },
+  "lastModified": {
+    "$date": {
+      "$numberLong": "1670489874240"
+    }
+  },
+  "data": {
+    "_id": "cb33fad4-7965-4654-a9f9-f007edaca35c",
+    "severity": "HIGH",
+    "title": "Searchbar XSS",
+    "description": "Adding <iframe src=\"javascript:alert('xss')\"> in the search bar of the header results in XSS Vuln.",
+    "impact": "This impacts the Webbapp.",
+    "affectedUrls": [
+      "http://localhost:3000/#/search?q=%3Ciframe%20src%3D%22javascript:alert('xss')%22%3E"
+    ],
+    "reproduction": "Step1: \nClick on search field of the header\n\nStep 2: \nEnter <iframe src=\"javascript:alert('xss')\">\n\nStep 3: \nPress ENTER\n\nYou will now get a PopUp",
+    "mitigation": "Sanitise Input Fields."
+  },
+  "_class": "com.securityc4po.api.finding.FindingEntity"
+},{
+  "_id": {
+    "$oid": "6391a364aceddd4dd1b32322"
+  },
+  "lastModified": {
+    "$date": {
+      "$numberLong": "1670488932489"
+    }
+  },
+  "data": {
+    "_id": "b6dfddde-9bc2-4658-8c18-668190053105",
+    "severity": "CRITICAL",
+    "title": "Searchbar XSS",
+    "description": "Adding <iframe src=\"javascript:alert('xss')\"> in the search bar of the header results in XSS Vuln.",
+    "impact": "This impacts the Webbapp.",
+    "affectedUrls": [
+      "http://localhost:3000/#/search?q=%3Ciframe%20src%3D%22javascript:alert('xss')%22%3E"
+    ],
+    "reproduction": "Step1: \nClick on search field of the header\n\nStep 2: \nEnter <iframe src=\"javascript:alert('xss')\">\n\nStep 3: \nPress ENTER\n\nYou will now get a PopUp",
+    "mitigation": "Sanitise Input Fields."
+  },
+  "_class": "com.securityc4po.api.finding.FindingEntity"
+},{
+  "_id": {
+    "$oid": "6391a39baceddd4dd1b32323"
+  },
+  "lastModified": {
+    "$date": {
+      "$numberLong": "1670488987700"
+    }
+  },
+  "data": {
+    "_id": "e9a50c5d-e9ea-4596-b1a9-8ad67eddef04",
+    "severity": "CRITICAL",
+    "title": "Searchbar XSS",
+    "description": "Adding <iframe src=\"javascript:alert('xss')\"> in the search bar of the header results in XSS Vuln.",
+    "impact": "This impacts the Webbapp.",
+    "affectedUrls": [
+      "http://localhost:3000/#/search?q=%3Ciframe%20src%3D%22javascript:alert('xss')%22%3E"
+    ],
+    "reproduction": "Step1: \nClick on search field of the header\n\nStep 2: \nEnter <iframe src=\"javascript:alert('xss')\">\n\nStep 3: \nPress ENTER\n\nYou will now get a PopUp",
+    "mitigation": "Sanitise Input Fields."
+  },
+  "_class": "com.securityc4po.api.finding.FindingEntity"
+},{
+  "_id": {
+    "$oid": "6391a3cbaceddd4dd1b32324"
+  },
+  "lastModified": {
+    "$date": {
+      "$numberLong": "1670489035954"
+    }
+  },
+  "data": {
+    "_id": "7f51e615-230f-4f90-a671-13e66e82370f",
+    "severity": "CRITICAL",
+    "title": "Searchbar XSS",
+    "description": "Adding <iframe src=\"javascript:alert('xss')\"> in the search bar of the header results in XSS Vuln.",
+    "impact": "This impacts the Webbapp.",
+    "affectedUrls": [
+      "http://localhost:3000/#/search?q=%3Ciframe%20src%3D%22javascript:alert('xss')%22%3E"
+    ],
+    "reproduction": "Step1: \nClick on search field of the header\n\nStep 2: \nEnter <iframe src=\"javascript:alert('xss')\">\n\nStep 3: \nPress ENTER\n\nYou will now get a PopUp",
+    "mitigation": "Sanitise Input Fields."
+  },
+  "_class": "com.securityc4po.api.finding.FindingEntity"
 }]

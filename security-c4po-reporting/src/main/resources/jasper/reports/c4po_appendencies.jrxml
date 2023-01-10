@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="C4PO_Appendencies" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dd2c2daf-6b71-4752-8ed0-e25ae2523a51">
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+    <queryString>
+        <![CDATA[]]>
+    </queryString>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="47" splitType="Stretch">
+            <rectangle>
+                <reportElement x="-20" y="0" width="573" height="30" forecolor="#232B44" backcolor="#232B44" uuid="cc5cd9d2-1739-472f-8591-007eee7de961"/>
+                <graphicElement>
+                    <pen lineWidth="0.0"/>
+                </graphicElement>
+            </rectangle>
+            <ellipse>
+                <reportElement x="537" y="0" width="30" height="30" backcolor="#232B44" uuid="ce224d19-10b2-46f4-8dd9-a397a5c7aef2"/>
+                <graphicElement>
+                    <pen lineWidth="0.0"/>
+                </graphicElement>
+            </ellipse>
+            <image>
+                <reportElement x="539" y="3" width="23" height="24" uuid="74214b7e-f089-49f2-9ef9-ef134386750c"/>
+                <imageExpression><![CDATA["/Users/mhg/Documents/Projects/security-c4po/security-c4po-reporting/src/main/resources/jasper/Watermark.png"]]></imageExpression>
+            </image>
+            <staticText>
+                <reportElement x="0" y="0" width="432" height="30" forecolor="#FFFFFF" uuid="cb237865-2647-4ee2-a85c-ebc5c8f84f9e"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Appendencies]]></text>
+            </staticText>
+        </band>
+    </title>
+    <detail>
+        <band height="540" splitType="Stretch">
+            <staticText>
+                <reportElement x="0" y="0" width="280" height="20" forecolor="#232B44" uuid="32713af0-e0bd-432b-b369-db31f8617e26"/>
+                <textElement>
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Findings Severities]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="0" y="20" width="553" height="50" uuid="e43d5ec6-84d5-4d8e-9aca-94c3c48697e8"/>
+                <textElement>
+                    <font size="12"/>
+                </textElement>
+                <text><![CDATA[Each finding has been assigned a severity rating of critical high, medium, or low. The rating is based off of an assessment of the priority with which each finding should be viewed and the potential impact each has on the confidentiality, integrity, and availability.]]></text>
+            </staticText>
+            <subreport>
+                <reportElement positionType="Float" x="-3" y="510" width="553" height="30" uuid="ca9b0ff4-30c6-43d0-8da2-458d1960ef0b"/>
+                <dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+                <subreportExpression><![CDATA["./src/main/resources/jasper/subreports/"+"SeverityRatingTableSubreport.jasper"]]></subreportExpression>
+            </subreport>
+            <staticText>
+                <reportElement x="0" y="83" width="280" height="20" forecolor="#232B44" uuid="147e164e-f290-4751-82ca-e4b55508408f"/>
+                <textElement>
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Risk Matrix]]></text>
+            </staticText>
+            <rectangle>
+                <reportElement x="0" y="162" width="70" height="27" backcolor="#232B44" uuid="71a50420-4cd9-4b6a-b84d-80d3f860562b"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="0" y="189" width="70" height="27" backcolor="#232B44" uuid="981168d3-aabf-4390-81f5-3da4accedacb"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="0" y="216" width="70" height="27" backcolor="#232B44" uuid="c5c0d73b-fa7d-4714-a56e-2b054dd07e90"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="0" y="243" width="70" height="27" backcolor="#232B44" uuid="cc5c4219-5c9f-451c-9ef1-f1b631625a53"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="70" y="162" width="120" height="27" backcolor="#232B44" uuid="2a0b9744-8651-4a13-ba0c-f2b74f81c58b"/>
+            </rectangle>
+            <textField>
+                <reportElement x="0" y="162" width="70" height="26" forecolor="#FFFFFF" uuid="e339fe11-71e6-4ca3-b0a6-ba6cc18bf655"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Risk score"]]></textFieldExpression>
+            </textField>
+            <rectangle>
+                <reportElement x="0" y="270" width="70" height="27" backcolor="#232B44" uuid="318d3354-5dd7-4585-b609-4e56c2db0cfc"/>
+            </rectangle>
+            <textField>
+                <reportElement x="70" y="162" width="120" height="26" forecolor="#FFFFFF" uuid="80821d8f-03fd-42bb-907b-2049ecdb8d43"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Risk level category"]]></textFieldExpression>
+            </textField>
+            <rectangle>
+                <reportElement x="0" y="297" width="70" height="135" backcolor="#232B44" uuid="87004217-c837-4b5a-98a5-8007ba939214"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="70" y="189" width="120" height="27" backcolor="#01D68F" uuid="dea95328-d4c3-4a63-bccd-022c65dd611d"/>
+            </rectangle>
+            <textField>
+                <reportElement x="80" y="189" width="100" height="26" forecolor="#FFFFFF" uuid="b21bdbfa-910d-45d6-8bb0-3797ee1b49e2"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Low"]]></textFieldExpression>
+            </textField>
+            <rectangle>
+                <reportElement x="70" y="216" width="120" height="27" backcolor="#35A4FE" uuid="3254bdd7-5edb-42cf-bab6-0e1a7008ca2b"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="70" y="243" width="120" height="27" backcolor="#FFAB00" uuid="cb019ffa-342a-4f3f-8b04-08ab4a486ea3"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="70" y="270" width="120" height="27" backcolor="#FF3D70" uuid="578bc2cd-50f2-4d6a-b2f7-f77c76007e7d"/>
+            </rectangle>
+            <textField>
+                <reportElement x="80" y="216" width="100" height="26" forecolor="#FFFFFF" uuid="23e08f29-89d8-4ce2-b320-1fac1074d8b2"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Medium"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="80" y="243" width="100" height="26" forecolor="#FFFFFF" uuid="076a9ebd-c3d6-4c0a-8b2a-df1a8e4600b8"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["High"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="80" y="270" width="100" height="26" forecolor="#FFFFFF" uuid="ee724a01-8cf0-4c92-a327-11c4002cfafe"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Critical"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="309" width="70" height="110" forecolor="#FFFFFF" uuid="44517da7-70bb-4224-957c-cb05dfb3be0c"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+                    <font size="14" isBold="true" isItalic="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Severity"]]></textFieldExpression>
+            </textField>
+            <rectangle>
+                <reportElement x="190" y="162" width="345" height="81" backcolor="#232B44" uuid="fcfd3c38-9b82-4492-b52e-037be743c7b5"/>
+            </rectangle>
+            <textField>
+                <reportElement x="190" y="172" width="344" height="60" forecolor="#FFFFFF" uuid="6a52e378-0f70-4a8d-943f-42b24454bd89"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+                    <font size="14" isBold="true" isItalic="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Likelihood"]]></textFieldExpression>
+            </textField>
+            <rectangle>
+                <reportElement x="190" y="243" width="69" height="55" backcolor="#232B44" uuid="d6f79cc1-0658-442e-8e95-f0af4e56043a"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="259" y="243" width="69" height="55" backcolor="#232B44" uuid="d0d15a53-6521-4524-a49e-e08a20bb24f3"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="328" y="243" width="69" height="55" backcolor="#232B44" uuid="563c3a03-e1de-43ba-936a-d0e8de05d3d3"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="397" y="243" width="69" height="55" backcolor="#232B44" uuid="24250a69-7294-459a-a114-77c49a11690c"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="466" y="243" width="69" height="55" backcolor="#232B44" uuid="d80b908b-0ef3-48fb-8282-914b07a9a6a1"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="70" y="297" width="121" height="27" backcolor="#232B44" uuid="c9bfbde3-2012-42dd-9702-2171734a83c0"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="328" y="297" width="69" height="27" backcolor="#FFAB00" uuid="81772667-1e77-4052-b360-6de4f6a685da"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="70" y="324" width="121" height="27" backcolor="#232B44" uuid="0add25ed-9cf2-4c31-88d8-f4df5c62e883"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="70" y="351" width="121" height="27" backcolor="#232B44" uuid="d72b969e-3537-49e1-a840-4030a2646bf3"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="70" y="378" width="130" height="27" backcolor="#232B44" uuid="e5566809-cb09-4d6b-abb5-a8d9c683b464"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="70" y="405" width="130" height="27" backcolor="#232B44" uuid="c2961bbe-9fe1-45fe-8940-baa8334b5dff"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="190" y="297" width="69" height="27" backcolor="#35A4FE" uuid="f79cf14d-d1dc-4072-a761-26cbfb2e2499"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="259" y="297" width="69" height="27" backcolor="#35A4FE" uuid="5cdf6b3c-c523-4486-8304-b5845a9e9219"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="397" y="297" width="69" height="27" backcolor="#FF3D70" uuid="b1f96b91-e01a-4ed7-a146-24d643ed93b6"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="466" y="297" width="69" height="27" backcolor="#FF3D70" uuid="51fd00e0-7252-4c94-b582-fcd6275d462a"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="190" y="405" width="69" height="27" backcolor="#01D68F" uuid="b67969c8-2f0c-4705-81a1-a3e378d775c5"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="190" y="324" width="69" height="27" backcolor="#01D68F" uuid="35b8dfe6-8283-4857-bdec-07f084cb7fcd"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="190" y="351" width="69" height="27" backcolor="#01D68F" uuid="ec9fcbbd-58ec-4215-8b28-d7f6459f0373"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="190" y="378" width="69" height="27" backcolor="#01D68F" uuid="f2a5dc00-f507-4704-8572-ac6856f85436"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="259" y="324" width="69" height="27" backcolor="#35A4FE" uuid="cba2c5ac-3e98-4073-b98c-aaca3120ef02"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="328" y="324" width="69" height="27" backcolor="#FFAB00" uuid="b9ae2fc9-5d74-4c7e-9b25-1d679497a3d6"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="397" y="324" width="69" height="27" backcolor="#FFAB00" uuid="739c6b7a-4916-4d5c-99a0-afba58103d81"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="466" y="324" width="69" height="27" backcolor="#FF3D70" uuid="42df19ae-22e2-41af-b855-4e8887ce4e9e"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="259" y="351" width="69" height="27" backcolor="#35A4FE" uuid="809167ab-3759-4785-9c7c-43e6550518be"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="259" y="378" width="69" height="27" backcolor="#01D68F" uuid="6d79a3ab-c876-4bc3-8ed4-3d022830bf6c"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="259" y="405" width="69" height="27" backcolor="#01D68F" uuid="8f085084-70b7-4bdb-96dc-adbf9a360522"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="328" y="405" width="69" height="27" backcolor="#01D68F" uuid="5e0a7a42-dbdc-4c3c-8d17-31f6de288e1e"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="328" y="351" width="69" height="27" backcolor="#35A4FE" uuid="3717f087-0c4a-41d3-b9be-f6f82156e292"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="328" y="378" width="69" height="27" backcolor="#35A4FE" uuid="3263c8d0-ab9a-4bce-bff9-80db704bc4ef"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="397" y="351" width="69" height="27" backcolor="#FFAB00" uuid="e8c0da95-97cf-493b-a47e-5fc7ddcc9900"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="397" y="378" width="69" height="27" backcolor="#35A4FE" uuid="8c7bc3ab-573b-4b9d-9ec3-a26555027520"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="397" y="405" width="69" height="27" backcolor="#01D68F" uuid="43c782fe-c312-463d-8eae-802fbafde71e"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="466" y="351" width="69" height="27" backcolor="#FFAB00" uuid="33ee43a1-05d0-4adf-9ccc-eaf8f6f5f745"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="466" y="378" width="69" height="27" backcolor="#35A4FE" uuid="688174a5-4f75-4576-abd2-3303073d9d0c"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="466" y="405" width="69" height="27" backcolor="#35A4FE" uuid="06224646-ed1a-442d-be03-4071cda7c249"/>
+            </rectangle>
+            <textField>
+                <reportElement x="191" y="324" width="67" height="26" forecolor="#FFFFFF" uuid="48472f37-d09b-41de-a4b4-accbeeff24dc"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Low"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="191" y="352" width="67" height="26" forecolor="#FFFFFF" uuid="f5bfd9b4-9e90-4688-829f-9a23670150a1"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Low"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="191" y="379" width="67" height="26" forecolor="#FFFFFF" uuid="708605ba-7dcb-4f2f-9c79-7900c78b5da5"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Low"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="191" y="405" width="67" height="26" forecolor="#FFFFFF" uuid="4dce76da-28cb-483b-b687-35ccf1da1079"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Low"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="260" y="379" width="67" height="26" forecolor="#FFFFFF" uuid="b162ba73-8beb-4bc5-8d49-15ef4fc3fe39"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Low"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="260" y="405" width="67" height="26" forecolor="#FFFFFF" uuid="a3edcc39-6cf9-44f4-9139-e237522d4792"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Low"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="398" y="406" width="67" height="26" forecolor="#FFFFFF" uuid="96ea36ed-5562-4ca3-bd25-15959ed630c1"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Low"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="329" y="406" width="67" height="26" forecolor="#FFFFFF" uuid="68343592-bf57-4c7d-bc96-bd4128215f66"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Low"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="398" y="298" width="67" height="26" forecolor="#FFFFFF" uuid="6e361aec-8e15-42d2-a1bb-8dd6aa605b5c"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Critical"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="467" y="298" width="67" height="26" forecolor="#FFFFFF" uuid="f2ed9687-fd93-40c8-a449-9ec035bee86a"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Critical"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="467" y="325" width="67" height="26" forecolor="#FFFFFF" uuid="648382ca-71be-434f-9dd2-fc18b3a9b782"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Critical"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="467" y="352" width="67" height="26" forecolor="#FFFFFF" uuid="34d48479-1f13-4a47-90cd-34e9b00b8ad5"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["High"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="398" y="352" width="67" height="26" forecolor="#FFFFFF" uuid="eff6813a-063b-4f07-ac52-077171d5e242"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["High"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="398" y="325" width="67" height="26" forecolor="#FFFFFF" uuid="b9b39f04-d428-47ac-b610-4c628a6eeef4"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["High"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="329" y="298" width="67" height="26" forecolor="#FFFFFF" uuid="2f8cfcdc-aca9-4232-9245-53792a4ccb77"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["High"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="329" y="325" width="67" height="26" forecolor="#FFFFFF" uuid="6c6ed175-6e42-4621-96f7-8b1fd18f0e59"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["High"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="260" y="298" width="67" height="26" forecolor="#FFFFFF" uuid="0dc1b554-4bb3-4778-bf71-c3762d1896d1"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Medium"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="260" y="325" width="67" height="26" forecolor="#FFFFFF" uuid="ee4a4104-166e-4f30-888f-33357fb3644b"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Medium"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="329" y="379" width="67" height="26" forecolor="#FFFFFF" uuid="443a9ff7-2032-46c3-9dc2-20972aa1271f"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Medium"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="329" y="352" width="67" height="26" forecolor="#FFFFFF" uuid="c0e34639-1a32-4ec1-b1f0-fee15c001e36"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Medium"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="467" y="406" width="67" height="26" forecolor="#FFFFFF" uuid="07ff00a4-d3d1-44f4-9ace-8384b67a72a5"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Medium"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="467" y="379" width="67" height="26" forecolor="#FFFFFF" uuid="ddfd14e3-5e0c-4e30-8487-499b137f0bf8"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Medium"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="398" y="379" width="67" height="26" forecolor="#FFFFFF" uuid="c42c4212-c598-44bf-92ee-4942ed09bdb1"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Medium"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="260" y="352" width="67" height="26" forecolor="#FFFFFF" uuid="269c7354-f692-4fba-99bd-5fe27ff705ea"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Medium"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="191" y="298" width="67" height="26" forecolor="#FFFFFF" uuid="2b025744-ec64-4c12-9588-01790f263d49"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Medium"]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="1" y="450" width="553" height="50" uuid="a2abe321-3344-4e53-9e2b-67a415b68e38"/>
+                <textElement>
+                    <font size="12"/>
+                </textElement>
+                <text><![CDATA[Example, if Likelihood = Possible (3) and Severity = Major (4), the risk level is determined by severity * likelihood, which is 3*4 = 12. The score 12 falls in 'High' risk range.]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="0" y="103" width="552" height="66" uuid="c91f1515-1d18-4c4f-91b8-6c4b957f46db"/>
+                <textElement>
+                    <font size="12"/>
+                </textElement>
+                <text><![CDATA[The risk matrix is used to assess the potential damage of a hazard, based on the likelihood and severity factors. The likelihood and severity scores are multiplied to obtain a score value. This score is looked up in the risk ranges to determine the risk level. An example of a hazard risk matrix is given below:
+]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="191" y="243" width="67" height="53" forecolor="#FFFFFF" uuid="0fd887e8-76e4-4098-9a1b-3db131529904"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Rare (1)"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="329" y="243" width="67" height="53" forecolor="#FFFFFF" uuid="2508e027-31fb-446d-b0b9-b8e580720852"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Possible (3)"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="398" y="243" width="67" height="53" forecolor="#FFFFFF" uuid="ce5f3ba9-6844-4a80-9a42-bf83f214167c"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Likely (4)"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="467" y="243" width="67" height="53" forecolor="#FFFFFF" uuid="a56ddfd6-2208-45ca-9520-4382473db1fe"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Almost certain (5)"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="70" y="298" width="119" height="26" forecolor="#FFFFFF" uuid="697fe7ea-d9b0-4987-b6bd-81bb86ae494b"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Catastrophic (5)"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="70" y="325" width="118" height="26" forecolor="#FFFFFF" uuid="d045b5f3-c8a3-4ccd-90e9-84665d513598"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Major (4)"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="70" y="353" width="118" height="26" forecolor="#FFFFFF" uuid="548ef559-8535-492d-a377-bfcea621c7e8"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Moderate (3)"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="70" y="380" width="118" height="26" forecolor="#FFFFFF" uuid="e63fdc52-3815-4bbe-982d-bc3407020a0d"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Minor (2)"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="70" y="406" width="118" height="26" forecolor="#FFFFFF" uuid="d6b54c01-00d8-46b7-b60f-76d14573a43c"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Insignificant (1)"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="189" width="70" height="26" forecolor="#FFFFFF" uuid="bca9c1cb-f112-41e2-8744-2567e75f1207"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[1 + " to " + 4]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="216" width="70" height="26" forecolor="#FFFFFF" uuid="d2414371-7103-4bd1-92a1-2ebc2b5810c8"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[5 + " to " + 10]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="244" width="70" height="26" forecolor="#FFFFFF" uuid="ff567b36-de30-4526-8e54-4a3d15ccc8db"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[11 + " to " + 18]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="270" width="70" height="26" forecolor="#FFFFFF" uuid="88308555-1cca-43b2-9e43-24ea40df5b8e"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[19 + " to " + 25]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="265" y="243" width="57" height="53" forecolor="#FFFFFF" uuid="8081c1bf-ddd0-4207-a9df-3337e0c84936"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Unlikely (2)"]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+</jasperReport>

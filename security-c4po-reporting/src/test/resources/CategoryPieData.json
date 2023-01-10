@@ -1,0 +1,12 @@
+{
+  "CategoryPieData": [
+    {
+      "category": "INFORMATION_GATHERING",
+      "numberOfFindings": 4
+    },
+    {
+      "category": "CONFIGURATION_AND_DEPLOY_MANAGEMENT_TESTING",
+      "numberOfFindings": 2
+    }
+  ]
+}

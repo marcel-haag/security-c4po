@@ -1,5 +1,4 @@
 = SecurityC4PO REST API Documentation
-Novatec Consulting GmbH;
 :doctype: book
 :source-highlighter: highlightjs
 :icons: font
