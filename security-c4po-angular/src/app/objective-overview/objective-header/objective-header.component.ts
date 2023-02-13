@@ -6,7 +6,14 @@ import {Router} from '@angular/router';
 import {PROJECT_STATE_NAME, ProjectState} from '@shared/stores/project-state/project-state';
 import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';
 import {BehaviorSubject} from 'rxjs';
-import {Project} from '@shared/models/project.model';
+import {Project, ProjectDialogBody} from '@shared/models/project.model';
+import {ProjectDialogComponent} from '@shared/modules/project-dialog/project-dialog.component';
+import {filter, mergeMap} from 'rxjs/operators';
+import {NotificationService, PopupType} from '@shared/services/notification.service';
+import {ProjectService} from '@shared/services/project.service';
+import {DialogService} from '@shared/services/dialog-service/dialog.service';
+import {ProjectDialogService} from '@shared/modules/project-dialog/service/project-dialog.service';
+import {InitProjectState} from '@shared/stores/project-state/project-state.actions';
 
 @UntilDestroy()
 @Component({
@@ -17,9 +24,13 @@ import {Project} from '@shared/models/project.model';
 export class ObjectiveHeaderComponent implements OnInit {
 
   readonly fa = FA;
-  selectedProjectTitle$: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  selectedProject$: BehaviorSubject<Project> = new BehaviorSubject<Project>(null);
 
   constructor(private store: Store,
+              private readonly notificationService: NotificationService,
+              private projectService: ProjectService,
+              private dialogService: DialogService,
+              private projectDialogService: ProjectDialogService,
               private readonly router: Router) {
   }
 
@@ -28,7 +39,7 @@ export class ObjectiveHeaderComponent implements OnInit {
       untilDestroyed(this)
     ).subscribe({
       next: (selectedProject: Project) => {
-        this.selectedProjectTitle$.next(selectedProject?.title);
+        this.selectedProject$.next(selectedProject);
       },
       error: err => {
         console.error(err);
@@ -44,6 +55,36 @@ export class ObjectiveHeaderComponent implements OnInit {
           [PROJECT_STATE_NAME]: undefined
         })
       ).finally();
+  }
+
+  onClickEditPentestProject(): void {
+    this.projectDialogService.openProjectDialog(
+      ProjectDialogComponent,
+      this.selectedProject$.getValue(),
+      {
+        closeOnEsc: false,
+        hasScroll: false,
+        autoFocus: true,
+        closeOnBackdropClick: false
+      }
+    ).pipe(
+      filter(value => !!value),
+      mergeMap((value: ProjectDialogBody) => this.projectService.updateProject(this.selectedProject$.getValue().id, value)),
+      untilDestroyed(this)
+    ).subscribe({
+      next: (project: Project) => {
+        this.store.dispatch(new InitProjectState(
+          project,
+          [],
+          []
+        )).pipe(untilDestroyed(this)).subscribe();
+        this.notificationService.showPopup('project.popup.update.success', PopupType.SUCCESS);
+      },
+      error: error => {
+        console.error(error);
+        this.notificationService.showPopup('project.popup.update.failed', PopupType.FAILURE);
+      }
+    });
   }
 
   onClickExportPentest(): void {

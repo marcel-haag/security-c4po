@@ -9,6 +9,7 @@
     "action.return": "Zurück",
     "action.exit": "Beenden",
     "action.update": "Speichern",
+    "action.edit": "Editieren",
     "action.export": "Exportieren",
     "action.reset": "Zurücksetzen",
     "action.yes": "Ja",
@@ -46,9 +47,12 @@
     "title.label": "Projekt Titel",
     "client.label": "Name des Auftraggebers",
     "tester.label": "Name des Pentester",
+    "summary.label": "Zusammenfassung",
+    "summary.placeholder": "Sollte eine Zusammenfassung, einen Ansatz, einen Umfang und eine Bewertungsübersicht sowie allgemeine Empfehlungen enthalten",
     "title": "Titel",
     "client": "Klient",
     "tester": "Tester",
+    "summary": "Zusammenfassung",
     "createdAt": "Erstellt am",
     "overview": {
       "add.project": "Projekt hinzufügen",
@@ -69,7 +73,8 @@
     "validationMessage": {
       "titleRequired": "Titel ist erforderlich.",
       "clientRequired": "Klient ist erforderlich.",
-      "testerRequired": "Tester ist erforderlich."
+      "testerRequired": "Tester ist erforderlich.",
+      "summaryRequired": "Zusammenfassung ist erforderlich."
     },
     "popup": {
       "not.found": "Keine Projekte gefunden",

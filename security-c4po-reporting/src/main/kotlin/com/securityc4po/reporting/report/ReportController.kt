@@ -41,11 +41,13 @@ class ReportController(private val apiService: APIService, private val reportSer
             jacksonObjectMapper().readValue<ProjectReport>(jsonProjectReportString)
         return this.reportService.createReport(jsonProjectReportCollection, "pdf").map { reportClassLoaderFilePatch ->
             val reportRessourceStream = ReportController::class.java.getResourceAsStream(reportClassLoaderFilePatch)
+            // Todo: Fix Error with IOUtils.toByteArray(reportRessourceStream) on first start of application
             val response = IOUtils.toByteArray(reportRessourceStream)
-            this.reportService.cleanUpFiles()
             ResponseEntity.ok().body(response)
         }.switchIfEmpty {
             Mono.just(notFound().build<ByteArray>())
+        }.doOnSuccess {
+            this.reportService.cleanUpFiles()
         }
     }
 

@@ -28,6 +28,27 @@
               </span>
             </ng-template>
           </nb-form-field>
+          <!-- Textarea styles -->
+          <nb-form-field *ngSwitchCase="'formText'" class="project-form-field">
+            <label for="{{fieldConfig.fieldName}}" class="label">
+              {{fieldConfig.labelKey | translate}}
+            </label>
+            <textarea formControlName="{{fieldConfig.fieldName}}"
+                      type="formText" required fullWidth
+                      id="{{fieldConfig.fieldName}}" nbInput
+                      class="form-field form-textarea"
+                      [status]="projectFormGroup.get(fieldConfig.fieldName).dirty ? (projectFormGroup.get(fieldConfig.fieldName).invalid  ? 'danger' : 'basic') : 'basic'"
+                      placeholder="{{fieldConfig.placeholder | translate}}">
+              </textarea>
+            <!-- FIXME: when the bug (https://github.com/angular/components/issues/7739) is fixed -->
+            <ng-template ngFor let-error [ngForOf]="fieldConfig.errors"
+                         *ngIf="projectFormGroup.get(fieldConfig.fieldName).dirty">
+              <span class="error-text"
+                    *ngIf="projectFormGroup.get(fieldConfig.fieldName)?.hasError(error.errorCode) && error.errorCode === 'required'">
+                {{error.translationKey | translate}}
+              </span>
+            </ng-template>
+          </nb-form-field>
         </ng-container>
       </ng-template>
     </form>

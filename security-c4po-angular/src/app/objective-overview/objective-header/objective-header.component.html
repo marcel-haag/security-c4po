@@ -9,18 +9,28 @@
     </button>
   </div>
 
-  <h4>{{selectedProjectTitle$.getValue()}}</h4>
+  <h4>{{selectedProject$.getValue().title}}</h4>
 
-  <div class="export-button-container">
+  <div class="button-container">
     <nb-actions size="medium">
+      <nb-action>
+        <button nbButton
+                status="button-outline-basic-text-color"
+                shape="round"
+                (click)="onClickEditPentestProject()">
+          <fa-icon [icon]="fa.faEdit"
+                   class="element-icon fa-lg"></fa-icon>
+          <span class="element-text">{{ 'global.action.edit' | translate }}</span>
+        </button>
+      </nb-action>
       <nb-action>
         <button nbButton hero
                 status="info"
                 shape="round"
                 (click)="onClickExportPentest()">
           <fa-icon [icon]="fa.faFileExport"
-                   class="export-element-icon fa-lg"></fa-icon>
-          <span class="export-element-text">{{ 'global.action.export' | translate }}</span>
+                   class="element-icon fa-lg"></fa-icon>
+          <span class="element-text">{{ 'global.action.export' | translate }}</span>
         </button>
       </nb-action>
     </nb-actions>
