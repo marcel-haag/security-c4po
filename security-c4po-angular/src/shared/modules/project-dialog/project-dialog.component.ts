@@ -43,7 +43,8 @@ export class ProjectDialogComponent implements OnInit {
     this.dialogRef.close({
       title: value.projectTitle,
       client: value.projectClient,
-      tester: value.projectTester
+      tester: value.projectTester,
+      summary: value.projectSummary
     });
   }
 

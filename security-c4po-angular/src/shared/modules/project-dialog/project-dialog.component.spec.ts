@@ -91,6 +91,7 @@ export const mockProject: Project = {
   title: 'Test Project',
   client: 'Testclient',
   tester: 'Testpentester',
+  summary: '',
   createdAt: new Date(),
   testingProgress: 0,
   createdBy: 'UID-11-12-13'

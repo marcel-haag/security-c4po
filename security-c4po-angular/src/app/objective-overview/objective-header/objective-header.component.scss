@@ -6,16 +6,16 @@
     }
   }
 
-  .export-button-container {
+  .button-container {
     display: flex;
     align-content: flex-end;
     // ToDo: Fix so that longer / shorter name won't change needed margin
-    margin-right: 2.25rem;
+    // margin-right: 2.25rem;
 
-    .export-element-icon {
+    .element-icon {
     }
 
-    .export-element-text {
+    .element-text {
       padding-left: 0.5rem;
       font-size: 0.85rem;
     }

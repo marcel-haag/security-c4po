@@ -163,7 +163,7 @@
                 <textElement>
                     <font size="12"/>
                 </textElement>
-                <textFieldExpression><![CDATA[$F{summary}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[(($F{summary}.length() == 0) ? "" + $F{client} +" contracted " + $F{tester} + " to perform a Penetration Test to identify security weaknesses, determine the impact to " + $F{client} +", document all findings in a clear and repeatable manner, and provide remediation recommendations."  : $F{summary})]]></textFieldExpression>
             </textField>
             <staticText>
                 <reportElement x="0" y="10" width="380" height="20" forecolor="#232B44" uuid="b508eb27-8cf7-40f3-86e8-6b7c9328d919"/>

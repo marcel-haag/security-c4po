@@ -9,6 +9,7 @@
     "action.return": "Return",
     "action.exit": "Exit",
     "action.update": "Update",
+    "action.edit": "Edit",
     "action.export": "Export",
     "action.reset": "Reset",
     "action.yes": "Yes",
@@ -46,9 +47,12 @@
     "title.label": "Project Title",
     "client.label": "Name of Client",
     "tester.label": "Name of Pentester",
+    "summary.label": "Summary",
+    "summary.placeholder": "Should include Executive Summary, Approach, Scope and Assessment Overview as well as General Recommendations",
     "title": "Title",
     "client": "Client",
     "tester": "Tester",
+    "summary": "Summary",
     "createdAt": "Created at",
     "overview": {
       "add.project": "Add Project",
@@ -69,7 +73,8 @@
     "validationMessage": {
       "titleRequired": "Title is required.",
       "clientRequired": "Client is required.",
-      "testerRequired": "Tester is required."
+      "testerRequired": "Tester is required.",
+      "summaryRequired": "Summary is required."
     },
     "popup": {
       "not.found": "No projects found",

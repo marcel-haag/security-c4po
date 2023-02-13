@@ -67,7 +67,7 @@ describe('ProjectOverviewComponent', () => {
         {provide: ProjectService, useValue: new ProjectServiceMock()},
         {provide: ProjectDialogService, useClass: ProjectDialogServiceMock},
         {provide: DialogService, useClass: DialogServiceMock},
-        {provide: NotificationService, useValue: new NotificationServiceMock()}
+        {provide: NotificationService, useClass: NotificationServiceMock}
       ]
     })
       .compileComponents();

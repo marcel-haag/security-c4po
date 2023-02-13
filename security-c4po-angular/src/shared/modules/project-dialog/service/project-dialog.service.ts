@@ -74,6 +74,19 @@ export class ProjectDialogService {
           errors: [
             {errorCode: 'required', translationKey: 'project.validationMessage.testerRequired'}
           ]
+        },
+        projectSummary: {
+          fieldName: 'projectSummary',
+          type: 'formText',
+          labelKey: 'project.summary.label',
+          placeholder: 'project.summary.placeholder',
+          controlsConfig: [
+            {value: project ? project.summary : '', disabled: !project},
+            [project ? Validators.required : []]
+          ],
+          errors: [
+            {errorCode: 'required', translationKey: 'project.validationMessage.summaryRequired'}
+          ]
         }
       },
       options: []
