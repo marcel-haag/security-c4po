@@ -15,12 +15,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8888/auth/realms/c4po_realm_local/.well-known/openid-configuration",
+							"raw": "http://localhost:8080/auth/realms/c4po_realm_local/.well-known/openid-configuration",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8888",
+							"port": "8080",
 							"path": [
 								"auth",
 								"realms",
@@ -75,12 +75,12 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8888/auth/realms/c4po_realm_local/protocol/openid-connect/token",
+							"raw": "http://localhost:8080/auth/realms/c4po_realm_local/protocol/openid-connect/token",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8888",
+							"port": "8080",
 							"path": [
 								"auth",
 								"realms",

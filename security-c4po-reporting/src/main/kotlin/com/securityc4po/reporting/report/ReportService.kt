@@ -5,12 +5,15 @@ import com.securityc4po.reporting.remote.model.*
 import net.sf.jasperreports.engine.*
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource
 import org.apache.commons.io.FileUtils
+import org.apache.pdfbox.io.MemoryUsageSetting
 import org.apache.pdfbox.multipdf.PDFMergerUtility
 import org.springframework.stereotype.Service
 import org.springframework.util.ResourceUtils
+import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
-import reactor.kotlin.core.publisher.toMono
+import java.io.ByteArrayOutputStream
 import java.io.File
+
 
 @Service
 /*
@@ -23,8 +26,10 @@ class ReportService {
 
     private val reportCoverDesignTemplate = "./src/main/resources/jasper/reports/c4po_cover.jrxml"
     private val reportContentDesignTemplate = "./src/main/resources/jasper/reports/c4po_content.jrxml"
-    private val reportStateOfConfidentialityDesignTemplate = "./src/main/resources/jasper/reports/c4po_state_of_confidentiality.jrxml"
-    private val reportExecutiveSummaryDesignTemplate = "./src/main/resources/jasper/reports/c4po_executive_summary.jrxml"
+    private val reportStateOfConfidentialityDesignTemplate =
+        "./src/main/resources/jasper/reports/c4po_state_of_confidentiality.jrxml"
+    private val reportExecutiveSummaryDesignTemplate =
+        "./src/main/resources/jasper/reports/c4po_executive_summary.jrxml"
     private val reportPentestsDesignTemplate = "./src/main/resources/jasper/reports/c4po_pentests.jrxml"
     private val reportAppendenciesDesignTemplate = "./src/main/resources/jasper/reports/c4po_appendencies.jrxml"
 
@@ -33,39 +38,31 @@ class ReportService {
 
     // Path where the created Reports are saved
     private val reportDestination = "./src/main/resources/jasper/reportPDFs/"
+
     // Path where the completed Report is saved
     private val reportFileDestination = "./src/main/resources/jasper/finalReport/"
+
     // Path where the completed Report can be found by class loader
     private val reportFileForClassLoader = "/jasper/finalReport/"
 
-    fun createReport(projectReportCollection: ProjectReport, reportFormat: String): Mono<String> {
-        val C4POPentestReport: PDFMergerUtility = PDFMergerUtility()
-        val reportFilePathDestination: String = reportFileDestination + projectReportCollection.title.replace(" ", "_") + "_report.pdf"
-        val reportFilePathForClassLoader: String = reportFileForClassLoader + projectReportCollection.title.replace(" ", "_") + "_report.pdf"
+    fun createReport(projectReportCollection: ProjectReport, reportFormat: String): Mono<ByteArray> {
+        // Setup Filepath destination
+        val reportFilePathDestination: String =
+            reportFileDestination + projectReportCollection.title.replace(" ", "_") + "_report.pdf"
+        // Setup PDFMergerUtility
+        val mergedC4POPentestReport: PDFMergerUtility = PDFMergerUtility()
+        // Setup ByteArrayOutputStream for "on the fly" file generation
+        val pdfDocOutputstream = ByteArrayOutputStream()
         // Try to create report files & merge them together
-        return try {
-            // Create report files
-            val coverFile: File = createCover(projectReportCollection, reportFormat)
-            val contentFile: File = createTableOfContent(projectReportCollection, reportFormat)
-            val confidentialityFile: File = createStateOfConfidentiality(projectReportCollection, reportFormat)
-            val summaryFile: File = createExecutiveSummary(projectReportCollection, reportFormat)
-            val pentestFiles: List<File> = createPentestReports(projectReportCollection, reportFormat)
-            val appendenciesFile: File = createAppendencies(reportFormat)
-            // Add files to [C4POPentestReport]
-            C4POPentestReport.addSource(coverFile)
-            C4POPentestReport.addSource(contentFile)
-            C4POPentestReport.addSource(confidentialityFile)
-            C4POPentestReport.addSource(summaryFile)
-            // Merge every Pentestreport file in List of File
-            pentestFiles.forEach { pentestFile -> C4POPentestReport.addSource(pentestFile) }
-            C4POPentestReport.addSource(appendenciesFile)
-            // Save completed report
-            C4POPentestReport.destinationFileName = reportFilePathDestination
-            C4POPentestReport.mergeDocuments()
-            reportFilePathForClassLoader.toMono()
-        } catch (e: Exception) {
+        return createPentestReportFiles(projectReportCollection, reportFormat, mergedC4POPentestReport).collectList().map {
+            // Merge report files
+            mergedC4POPentestReport.destinationFileName = reportFilePathDestination
+            mergedC4POPentestReport.destinationStream = pdfDocOutputstream
+            mergedC4POPentestReport.mergeDocuments(MemoryUsageSetting.setupTempFileOnly())
+        }.flatMap {
+            return@flatMap Mono.just(pdfDocOutputstream.toByteArray())
+        }.doOnError {
             logger.error("Report generation failed.")
-            Mono.just("")
         }
     }
 
@@ -78,7 +75,32 @@ class ReportService {
         } catch (e: Exception) {
             logger.error("Report file cleanup failed with exception: ", e)
         }
+    }
 
+    private fun createPentestReportFiles(
+        projectReportCollection: ProjectReport,
+        reportFormat: String,
+        mergedC4POPentestReport: PDFMergerUtility
+    ): Flux<Unit> {
+        return Flux.just(
+            // Create report files
+            createCover(projectReportCollection, reportFormat),
+            createTableOfContent(projectReportCollection, reportFormat),
+            createStateOfConfidentiality(projectReportCollection, reportFormat),
+            createExecutiveSummary(projectReportCollection, reportFormat),
+            createPentestReports(projectReportCollection, reportFormat),
+            createAppendencies(reportFormat)
+        ).map { jasperObject ->
+            if (jasperObject is File) {
+                mergedC4POPentestReport.addSource(jasperObject)
+            } else if (jasperObject is List<*>) {
+                jasperObject.forEach { jasperFile ->
+                    if (jasperFile is File) {
+                        mergedC4POPentestReport.addSource(jasperFile)
+                    }
+                }
+            }
+        }
     }
 
     private fun createCover(projectReportCollection: ProjectReport, reportFormat: String): File {
@@ -284,7 +306,7 @@ class ReportService {
         // Create File
         var finalFile: File = File(reportDefaultPdf)
         return if (reportFormat.equals("pdf")) {
-            JasperExportManager.exportReportToPdfFile(jasperPrintContent,reportDestination + "D_ExecutiveSummary.pdf")
+            JasperExportManager.exportReportToPdfFile(jasperPrintContent, reportDestination + "D_ExecutiveSummary.pdf")
             finalFile = File(reportDestination + "D_ExecutiveSummary.pdf")
             finalFile
         } else {
@@ -311,16 +333,18 @@ class ReportService {
             // val pentestCommentsDataSource =
             // Setup Parameter & add Sub-datasets
             val parameters = HashMap<String, Any>()
-            parameters["PentestFindingsDataSource"] = if (projectReportCollection.projectPentestReport[i].findings.isNotEmpty()) {
-                JRBeanCollectionDataSource(projectReportCollection.projectPentestReport[i].findings)
-            } else {
-                JRBeanCollectionDataSource(emptyList<Finding>())
-            }
-            parameters["PentestCommentsDataSource"] = if (projectReportCollection.projectPentestReport[i].comments.isNotEmpty()) {
-                JRBeanCollectionDataSource(projectReportCollection.projectPentestReport[i].comments)
-            } else {
-                JRBeanCollectionDataSource(emptyList<Comment>())
-            }
+            parameters["PentestFindingsDataSource"] =
+                if (projectReportCollection.projectPentestReport[i].findings.isNotEmpty()) {
+                    JRBeanCollectionDataSource(projectReportCollection.projectPentestReport[i].findings)
+                } else {
+                    JRBeanCollectionDataSource(emptyList<Finding>())
+                }
+            parameters["PentestCommentsDataSource"] =
+                if (projectReportCollection.projectPentestReport[i].comments.isNotEmpty()) {
+                    JRBeanCollectionDataSource(projectReportCollection.projectPentestReport[i].comments)
+                } else {
+                    JRBeanCollectionDataSource(emptyList<Comment>())
+                }
             // Fill Reports
             // Print one report for each objective and merge them together afterwards
             val jasperPrintPentests: JasperPrint =

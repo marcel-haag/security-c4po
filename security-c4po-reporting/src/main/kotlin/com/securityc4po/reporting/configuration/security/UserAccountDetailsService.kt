@@ -1,4 +1,4 @@
-package com.securityc4po.api.configuration.security
+package com.securityc4po.reporting.configuration.security
 
 import org.springframework.security.core.userdetails.ReactiveUserDetailsService
 import org.springframework.security.core.userdetails.UserDetails
