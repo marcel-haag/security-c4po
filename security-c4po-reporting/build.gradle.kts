@@ -63,10 +63,10 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
-    /*implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
     implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
-    api("org.springframework.security:spring-security-jwt:1.1.1.RELEASE")*/
+    api("org.springframework.security:spring-security-jwt:1.1.1.RELEASE")
 
     /* Reporting */
     implementation("net.sf.jasperreports:jasperreports:6.20.0")
