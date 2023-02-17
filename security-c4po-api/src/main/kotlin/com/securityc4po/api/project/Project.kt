@@ -2,7 +2,10 @@ package com.securityc4po.api.project
 
 import com.fasterxml.jackson.annotation.JsonFormat
 import com.securityc4po.api.ResponseBody
+import com.securityc4po.api.configuration.BC_BAD_CAST_TO_ABSTRACT_COLLECTION
+import com.securityc4po.api.configuration.MESSAGE_BAD_CAST_TO_ABSTRACT_COLLECTION
 import com.securityc4po.api.pentest.PentestStatus
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import org.springframework.data.mongodb.core.index.Indexed
 import java.math.BigDecimal
 import java.math.RoundingMode
@@ -45,6 +48,20 @@ fun Project.toProjectResponseBody(): ResponseBody {
         "summary" to summary,
         /* ToDo: Calculate percentage in BE type: float */
         "testingProgress" to calculateProgress(),
+        "createdBy" to createdBy
+    )
+}
+
+@SuppressFBWarnings(BC_BAD_CAST_TO_ABSTRACT_COLLECTION, MESSAGE_BAD_CAST_TO_ABSTRACT_COLLECTION)
+fun Project.toProjectCompletedPentestResponseBody(): ResponseBody {
+    return mapOf(
+        "id" to id,
+        "client" to client,
+        "title" to title,
+        "createdAt" to createdAt,
+        "tester" to tester,
+        "summary" to summary,
+        "projectPentests" to projectPentests.filter { pentest -> pentest.status == PentestStatus.COMPLETED },
         "createdBy" to createdBy
     )
 }

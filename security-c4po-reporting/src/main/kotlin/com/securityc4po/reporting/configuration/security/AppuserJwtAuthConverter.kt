@@ -9,20 +9,25 @@ import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.oauth2.jwt.Jwt
 import reactor.core.publisher.Mono
+import reactor.kotlin.core.publisher.toMono
 import java.util.stream.Collectors
 
-class AppuserJwtAuthConverter(private val appuserDetailsService: UserAccountDetailsService) :
+class AppuserJwtAuthConverter :
     Converter<Jwt, Mono<AbstractAuthenticationToken>> {
 
     override fun convert(jwt: Jwt): Mono<AbstractAuthenticationToken> {
-        val authorities = extractAuthorities(jwt)
+        /*val authorities = extractAuthorities(jwt)
         // val sub = extractSub(jwt)
         val username = extractUserName(jwt)
         return appuserDetailsService
             .findByUsername(username)
             .map { user ->
                 UsernamePasswordAuthenticationToken(user, "n/a", authorities);
-            }
+            }*/
+        val authorities = extractAuthorities(jwt)
+        val sub = extractSub(jwt)
+        val username = extractUserName(jwt)
+        return UsernamePasswordAuthenticationToken(Appuser(sub, username, jwt.tokenValue!!), "n/a", authorities).toMono()
     }
 
     private fun extractSub(jwt: Jwt): String {

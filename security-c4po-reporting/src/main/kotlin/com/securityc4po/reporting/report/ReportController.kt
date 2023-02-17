@@ -6,7 +6,6 @@ import com.securityc4po.reporting.configuration.security.Appuser
 import com.securityc4po.reporting.extensions.getLoggerFor
 import com.securityc4po.reporting.remote.APIService
 import com.securityc4po.reporting.remote.model.ProjectReport
-import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.http.ResponseEntity.notFound
@@ -34,18 +33,20 @@ class ReportController(private val apiService: APIService, private val reportSer
     )
     fun downloadPentestReportPDF(@PathVariable(value = "projectId") projectId: String, @AuthenticationPrincipal user: Appuser): Mono<ResponseEntity<ByteArray>> {
         // Todo: Create Report with Jasper
-        // this.apiService.requestProjectDataById(projectId, user.token)
-        val jsonProjectReportString: String =
-            File("./src/test/resources/ProjectReportData.json").readText(Charsets.UTF_8)
-        val jsonProjectReportCollection: ProjectReport =
-            jacksonObjectMapper().readValue<ProjectReport>(jsonProjectReportString)
-        // Setup headers
-        return this.reportService.createReport(jsonProjectReportCollection, "pdf").map { reportClassLoaderFilePath ->
-            ResponseEntity.ok().body(reportClassLoaderFilePath)
-        }.switchIfEmpty {
-            Mono.just(notFound().build<ByteArray>())
-        }.doOnSuccess {
-            this.reportService.cleanUpFiles()
+        return this.apiService.requestProjectReportDataById(projectId, user.token).flatMap {projectReport ->
+            /* ToDo: remove if jsonProjectReportCollection not needed for report generation */
+            val jsonProjectReportString: String =
+                File("./src/test/resources/ProjectReportData.json").readText(Charsets.UTF_8)
+            val jsonProjectReportCollection: ProjectReport =
+                jacksonObjectMapper().readValue<ProjectReport>(jsonProjectReportString)
+            /* jsonProjectReportCollection */
+            this.reportService.createReport(projectReport, "pdf").map { reportClassLoaderFilePath ->
+                ResponseEntity.ok().body(reportClassLoaderFilePath)
+            }.switchIfEmpty {
+                Mono.just(notFound().build<ByteArray>())
+            }.doOnSuccess {
+                this.reportService.cleanUpFiles()
+            }
         }
     }
 

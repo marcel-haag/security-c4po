@@ -2,6 +2,8 @@ package com.securityc4po.reporting.report
 
 import com.securityc4po.reporting.extensions.getLoggerFor
 import com.securityc4po.reporting.remote.model.*
+import com.securityc4po.reporting.remote.model.api.Comment
+import com.securityc4po.reporting.remote.model.api.Finding
 import net.sf.jasperreports.engine.*
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource
 import org.apache.commons.io.FileUtils
@@ -326,19 +328,16 @@ class ReportService {
         for (i in 0 until projectReportCollection.projectPentestReport.size) {
             val projectSinglePentestReportDataSource: JRBeanCollectionDataSource =
                 JRBeanCollectionDataSource(mutableListOf(projectReportCollection.projectPentestReport[i]))
-            // Setup Sub-dataset for Findings of Pentest
-            val pentestFindingsDataSource: JRBeanCollectionDataSource =
-                JRBeanCollectionDataSource(projectReportCollection.projectPentestReport[i].findings)
-            // Setup Sub-dataset for Comments of Pentest
-            // val pentestCommentsDataSource =
             // Setup Parameter & add Sub-datasets
             val parameters = HashMap<String, Any>()
+            // Setup Sub-dataset for Findings of Pentest
             parameters["PentestFindingsDataSource"] =
                 if (projectReportCollection.projectPentestReport[i].findings.isNotEmpty()) {
                     JRBeanCollectionDataSource(projectReportCollection.projectPentestReport[i].findings)
                 } else {
                     JRBeanCollectionDataSource(emptyList<Finding>())
                 }
+            // Setup Sub-dataset for Comments of Pentest
             parameters["PentestCommentsDataSource"] =
                 if (projectReportCollection.projectPentestReport[i].comments.isNotEmpty()) {
                     JRBeanCollectionDataSource(projectReportCollection.projectPentestReport[i].comments)

@@ -36,6 +36,23 @@ class ProjectService(private val projectRepository: ProjectRepository) {
     }
 
     /**
+     * Get [Project] by id
+     *
+     * @throws [EntityNotFoundException] if there is no [Project] in collection
+     * @return [Project]
+     */
+    fun getProjectById(projectId: String): Mono<Project> {
+        return projectRepository.findProjectById(projectId).map {
+            it.toProject()
+        }.switchIfEmpty {
+            val msg = "Project not found."
+            val ex = EntityNotFoundException(msg, Errorcode.ProjectNotFound)
+            logger.warn(msg, ex)
+            throw ex
+        }
+    }
+
+    /**
      * Save [Project]
      *
      * @throws [InvalidModelException] if the [Project] is invalid

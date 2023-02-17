@@ -1,6 +1,6 @@
 <ng-container [ngSwitch]="currentSeverity">
   <nb-tag-list>
-    <nb-tag *ngSwitchCase="severity.LOW" status="basic" appearance="filled"
+    <nb-tag *ngSwitchCase="severity.LOW" status="success" appearance="filled"
             text="{{getTranslationKey() | translate}}"></nb-tag>
     <nb-tag *ngSwitchCase="severity.MEDIUM" status="info" appearance="filled"
             text=" {{getTranslationKey() | translate}}"></nb-tag>
