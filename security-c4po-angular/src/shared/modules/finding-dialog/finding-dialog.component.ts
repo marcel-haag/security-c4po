@@ -110,7 +110,7 @@ export class FindingDialogComponent implements OnInit {
     let severityFillStatus;
     switch (value) {
       case 0: {
-        severityFillStatus = 'basic';
+        severityFillStatus = 'success';
         break;
       }
       case 1: {
@@ -126,7 +126,7 @@ export class FindingDialogComponent implements OnInit {
         break;
       }
       default: {
-        severityFillStatus = 'control';
+        severityFillStatus = 'basic';
         break;
       }
     }

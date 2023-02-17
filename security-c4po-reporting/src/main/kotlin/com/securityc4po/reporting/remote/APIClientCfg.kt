@@ -11,10 +11,7 @@ import java.net.URL
 class APIClientCfg {
     lateinit var url: URL
     var projects = ApiPath()
-    var projectReport = ApiPath()
     var pentests = ApiPath()
-    val findings = ApiPath()
-    val comments = ApiPath()
 }
 
 class ApiPath {

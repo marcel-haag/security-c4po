@@ -5,7 +5,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 import java.util.stream.Collectors
 
-class Appuser internal constructor() : UserDetails {
+class Appuser internal constructor(sub: String, username: String, val token: String) : UserDetails {
 
     override fun getAuthorities(): Collection<GrantedAuthority> {
         return listOf("user").stream().map {

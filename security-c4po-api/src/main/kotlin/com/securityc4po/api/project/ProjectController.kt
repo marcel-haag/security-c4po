@@ -34,7 +34,17 @@ class ProjectController(private val projectService: ProjectService) {
         }
     }
 
-    // ToDo: Add getProjectReportDataById Endpoint with return type ProjectReport
+    @GetMapping("/{projectId}")
+    fun getProjectById(
+        @PathVariable(value = "projectId") projectId: String
+    ): Mono<ResponseEntity<ResponseBody>> {
+        return projectService.getProjectById(projectId).map {
+            it.toProjectCompletedPentestResponseBody()
+        }.map {
+            if (it.isEmpty()) ResponseEntity.noContent().build()
+            else ResponseEntity.ok(it)
+        }
+    }
 
     @PostMapping
     fun saveProject(

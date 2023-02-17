@@ -3,7 +3,7 @@
 
 .project-dialog {
   width: 40rem !important;
-  height: 42.25rem;
+  height: 42.5rem;
 
   .project-dialog-header {
     height: 8vh;
@@ -29,6 +29,13 @@
   .form-textarea {
     width: 26.75rem !important;
     // width: 30rem !important;
+    height: 8rem;
+  }
+
+  .form-textarea:disabled {
+    width: 26.75rem !important;
+    // width: 30rem !important;
+    background-color: nb-theme(color-basic-transparent-focus);
     height: 8rem;
   }
 

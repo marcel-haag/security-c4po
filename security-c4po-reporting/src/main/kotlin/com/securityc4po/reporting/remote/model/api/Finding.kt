@@ -1,4 +1,4 @@
-package com.securityc4po.reporting.remote.model
+package com.securityc4po.reporting.remote.model.api
 
 data class Finding (
     val id: String,
