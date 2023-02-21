@@ -22,6 +22,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {CommonAppModule} from '../common-app.module';
 import {ObjectiveOverviewRoutingModule} from './objective-overview-routing.module';
+import {ExportReportDialogModule} from '@shared/modules/export-report-dialog/export-report-dialog.module';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import {ObjectiveOverviewRoutingModule} from './objective-overview-routing.modul
     FontAwesomeModule,
     FlexLayoutModule,
     NbActionsModule,
+    ExportReportDialogModule,
     ObjectiveOverviewRoutingModule
   ],
   exports: [

@@ -11,6 +11,8 @@
     "action.update": "Update",
     "action.edit": "Edit",
     "action.export": "Export",
+    "action.download": "Download",
+    "action.report": "Report",
     "action.reset": "Reset",
     "action.yes": "Yes",
     "action.no": "No",
@@ -19,7 +21,8 @@
     "no.progress": "No progress",
     "validationMessage": {
       "inputNotMatching": "Input does not match!"
-    }
+    },
+    "project": "Project"
   },
   "languageKeys":{
     "de-DE": "German",
@@ -42,6 +45,19 @@
     "title": "Login",
     "failed": "Wrong username or password",
     "unauthorized": "User not found. Please register and try again"
+  },
+  "report": {
+    "dialog": {
+      "header": "Export Penetrationtest Report",
+      "formatLabel": "Pick export format for report:",
+      "languageLabel": "Pick report language:"
+    },
+    "popup": {
+      "generation.success": "Report generation successful",
+      "generation.failed": "Report could not be generated"
+    },
+    "generate": "Generate Report",
+    "hint": "{{completedObjectivesNumber}} of your completed objective(s) will be included in the pentest report."
   },
   "project": {
     "title.label": "Project Title",

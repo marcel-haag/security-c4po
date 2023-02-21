@@ -5,7 +5,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {FetchUser, InitSession, ResetSession, UpdateIsAuthenticated, UpdateUser, UpdateUserSettings} from './session-state.actions';
 import deepEqual from 'deep-equal';
 import moment from 'moment';
-import {UserService} from '../../services/user.service';
+import {UserService} from '../../services/user-service/user.service';
 
 export interface SessionStateModel {
   userAccount: User;

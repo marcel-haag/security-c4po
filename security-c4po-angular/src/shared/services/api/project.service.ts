@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {environment} from '../../environments/environment';
+import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
-import {Project, ProjectDialogBody} from '../models/project.model';
+import {Project, ProjectDialogBody} from '../../models/project.model';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -19,6 +19,20 @@ export class ProjectService {
    */
   public getProjects(): Observable<Project[]> {
     return this.http.get<Project[]>(`${this.apiBaseURL}`);
+  }
+
+  /**
+   * Get completed project by id
+   */
+  public getCompletedProjectById(projectId: string): Observable<Project> {
+    return this.http.get<Project>(`${this.apiBaseURL}/${projectId}`);
+  }
+
+  /**
+   * Get evaluated project by id
+   */
+  public getEvaluatedProjectById(projectId: string): Observable<Project> {
+    return this.http.get<Project>(`${this.apiBaseURL}/evaluation/${projectId}`);
   }
 
   /**

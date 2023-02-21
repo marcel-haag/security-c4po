@@ -8,4 +8,5 @@ export const environment = {
 
   // backend service
   apiEndpoint: 'http://localhost:8443',
+  reportEndpoint: 'http://localhost:8444'
 };

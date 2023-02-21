@@ -3,8 +3,8 @@ import * as FA from '@fortawesome/free-solid-svg-icons';
 import {Project, ProjectDialogBody} from '@shared/models/project.model';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';
-import {ProjectService} from '@shared/services/project.service';
-import {NotificationService, PopupType} from '@shared/services/notification.service';
+import {ProjectService} from '@shared/services/api/project.service';
+import {NotificationService, PopupType} from '@shared/services/toaster-service/notification.service';
 import {catchError, filter, mergeMap, switchMap, tap} from 'rxjs/operators';
 import {DialogService} from '@shared/services/dialog-service/dialog.service';
 import {ProjectDialogComponent} from '@shared/modules/project-dialog/project-dialog.component';
@@ -17,7 +17,7 @@ import {ProjectDialogService} from '@shared/modules/project-dialog/service/proje
   styleUrls: ['./project-overview.component.scss']
 })
 export class ProjectOverviewComponent implements OnInit {
-
+  // HTML only
   readonly fa = FA;
 
   loading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);

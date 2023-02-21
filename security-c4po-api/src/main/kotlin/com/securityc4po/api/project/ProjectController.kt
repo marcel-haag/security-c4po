@@ -35,11 +35,23 @@ class ProjectController(private val projectService: ProjectService) {
     }
 
     @GetMapping("/{projectId}")
-    fun getProjectById(
+    fun getCompletedProjectById(
         @PathVariable(value = "projectId") projectId: String
     ): Mono<ResponseEntity<ResponseBody>> {
         return projectService.getProjectById(projectId).map {
             it.toProjectCompletedPentestResponseBody()
+        }.map {
+            if (it.isEmpty()) ResponseEntity.noContent().build()
+            else ResponseEntity.ok(it)
+        }
+    }
+
+    @GetMapping("/evaluation/{projectId}")
+    fun getProjectById(
+        @PathVariable(value = "projectId") projectId: String
+    ): Mono<ResponseEntity<ResponseBody>> {
+        return projectService.getProjectById(projectId).map {
+            it.toProjectEvaluatedPentestResponseBody()
         }.map {
             if (it.isEmpty()) ResponseEntity.noContent().build()
             else ResponseEntity.ok(it)

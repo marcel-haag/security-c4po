@@ -6,7 +6,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {FlexLayoutModule, FlexModule} from '@angular/flex-layout';
 import {MomentModule} from 'ngx-moment';
-import {NotificationService} from '@shared/services/notification.service';
+import {NotificationService} from '@shared/services/toaster-service/notification.service';
 import {NbOverlayContainerAdapter, NbSpinnerModule, NbToastrModule} from '@nebular/theme';
 import {ThemeModule} from '@assets/@theme/theme.module';
 import {LoadingSpinnerComponent} from '@shared/widgets/loading-spinner/loading-spinner.component';

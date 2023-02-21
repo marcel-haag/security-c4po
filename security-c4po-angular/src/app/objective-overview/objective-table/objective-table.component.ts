@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NbGetters, NbTreeGridDataSource, NbTreeGridDataSourceBuilder} from '@nebular/theme';
 import {Pentest, ObjectiveEntry, transformPentestsToObjectiveEntries} from '@shared/models/pentest.model';
-import {PentestService} from '@shared/services/pentest.service';
+import {PentestService} from '@shared/services/api/pentest.service';
 import {Store} from '@ngxs/store';
 import {ProjectState} from '@shared/stores/project-state/project-state';
 import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';

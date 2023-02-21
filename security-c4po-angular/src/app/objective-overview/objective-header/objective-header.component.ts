@@ -9,11 +9,13 @@ import {BehaviorSubject} from 'rxjs';
 import {Project, ProjectDialogBody} from '@shared/models/project.model';
 import {ProjectDialogComponent} from '@shared/modules/project-dialog/project-dialog.component';
 import {filter, mergeMap} from 'rxjs/operators';
-import {NotificationService, PopupType} from '@shared/services/notification.service';
-import {ProjectService} from '@shared/services/project.service';
+import {NotificationService, PopupType} from '@shared/services/toaster-service/notification.service';
+import {ProjectService} from '@shared/services/api/project.service';
 import {DialogService} from '@shared/services/dialog-service/dialog.service';
 import {ProjectDialogService} from '@shared/modules/project-dialog/service/project-dialog.service';
 import {InitProjectState} from '@shared/stores/project-state/project-state.actions';
+import {ExportReportDialogService} from '@shared/modules/export-report-dialog/service/export-report-dialog.service';
+import {ExportReportDialogComponent} from '@shared/modules/export-report-dialog/export-report-dialog.component';
 
 @UntilDestroy()
 @Component({
@@ -28,9 +30,10 @@ export class ObjectiveHeaderComponent implements OnInit {
 
   constructor(private store: Store,
               private readonly notificationService: NotificationService,
-              private projectService: ProjectService,
               private dialogService: DialogService,
               private projectDialogService: ProjectDialogService,
+              private projectService: ProjectService,
+              private exportReportDialogService: ExportReportDialogService,
               private readonly router: Router) {
   }
 
@@ -87,8 +90,30 @@ export class ObjectiveHeaderComponent implements OnInit {
     });
   }
 
-  onClickExportPentest(): void {
-    // tslint:disable-next-line:no-console
-    console.info('To be implemented..');
+  onClickExportPentestReport(): void {
+    this.exportReportDialogService.openExportReportDialog(
+      ExportReportDialogComponent,
+      this.selectedProject$.getValue(),
+      {
+        closeOnEsc: true,
+        hasScroll: false,
+        autoFocus: true,
+        closeOnBackdropClick: true
+      }
+    ).pipe(
+      filter(value => !!value),
+      /*ToDo: Needed?*/
+      /*mergeMap((value: ProjectDialogBody) => this.projectService.updateProject(this.selectedProject$.getValue().id, value)),*/
+      untilDestroyed(this)
+    ).subscribe({
+      next: () => {
+        // ToDo: Open report in new Tab or just download it?
+        // this.notificationService.showPopup('project.popup.update.success', PopupType.SUCCESS);
+      },
+      error: error => {
+        console.error(error);
+        // this.notificationService.showPopup('project.popup.update.failed', PopupType.FAILURE);
+      }
+    });
   }
 }

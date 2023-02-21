@@ -5,10 +5,10 @@ import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate
 import {Observable, of} from 'rxjs';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HttpLoaderFactory} from '../../app/common-app.module';
+import {HttpLoaderFactory} from '../../../app/common-app.module';
 import {HttpClient} from '@angular/common/http';
 import {NgxsModule} from '@ngxs/store';
-import {SessionState} from '../stores/session-state/session-state';
+import {SessionState} from '../../stores/session-state/session-state';
 import {KeycloakService} from 'keycloak-angular';
 import {NbToastrModule, NbToastrService} from '@nebular/theme';
 

@@ -17,6 +17,7 @@ export class TokenInterceptor implements HttpInterceptor {
   private static listOfKeycloakRelevantHosts(): { origin: string }[] {
     const relevantList = new Array<{ origin: string }>();
     relevantList.push({origin: getOriginByUrl(environment.apiEndpoint)});
+    relevantList.push({origin: getOriginByUrl(environment.reportEndpoint)});
     relevantList.push({origin: getOriginByUrl(environment.keycloakURL)});
     return relevantList;
 

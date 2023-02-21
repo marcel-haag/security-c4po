@@ -14,8 +14,9 @@
   <div class="button-container">
     <nb-actions size="medium">
       <nb-action>
+        <!--status="button-outline-basic-text-color"-->
         <button nbButton
-                status="button-outline-basic-text-color"
+                status="primary"
                 shape="round"
                 (click)="onClickEditPentestProject()">
           <fa-icon [icon]="fa.faEdit"
@@ -27,7 +28,7 @@
         <button nbButton hero
                 status="info"
                 shape="round"
-                (click)="onClickExportPentest()">
+                (click)="onClickExportPentestReport()">
           <fa-icon [icon]="fa.faFileExport"
                    class="element-icon fa-lg"></fa-icon>
           <span class="element-text">{{ 'global.action.export' | translate }}</span>

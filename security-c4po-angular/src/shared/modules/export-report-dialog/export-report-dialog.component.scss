@@ -1,13 +1,36 @@
 @import "../../../assets/@theme/styles/_dialog.scss";
 @import '../../../assets/@theme/styles/themes';
 
-.project-dialog {
-  width: 34rem !important;
-  height: 42.5rem;
+.export-report-dialog {
+  width: 45.25rem !important;
+  height: 54.25rem;
 
-  .project-dialog-header {
+  .export-report-header {
     height: 8vh;
     font-size: 1.5rem;
+  }
+
+  .languageContainer {
+    display: flex;
+    max-width: 8rem;
+    min-width: 8rem;
+
+    .flag {
+      // object-fit: contain;
+      margin-top: 0.5rem;
+    }
+  }
+
+  .hint {
+    padding-bottom: 0.5rem;
+    color: nb-theme(color-danger-default);
+  }
+
+  .export-radio-buttons {
+    float: left;
+    clear: none;
+    margin-left: 1rem;
+
   }
 
   nb-form-field {
@@ -18,6 +41,11 @@
     display: block;
     font-size: 0.95rem;
     padding-bottom: 0.5rem;
+  }
+
+  .project-title {
+    font-size: 1.5rem;
+    padding: 0.25rem 0.5rem 0.5rem;
   }
 
   .form-field {
@@ -37,6 +65,16 @@
     // width: 30rem !important;
     background-color: nb-theme(color-basic-transparent-focus);
     height: 8rem;
+  }
+
+  .generate-report-button {
+    width: calc(45.25rem - 5.75rem) !important;
+  }
+
+  .element-text {
+    font-size: 1rem !important;
+    text-transform: uppercase !important;
+    padding-left: 0.5rem;
   }
 
   .error-text {

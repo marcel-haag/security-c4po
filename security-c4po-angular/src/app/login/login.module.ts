@@ -4,7 +4,7 @@ import {LoginComponent} from './login.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpLoaderFactory} from '../common-app.module';
 import {HttpClient} from '@angular/common/http';
-import {NotificationService} from '../../shared/services/notification.service';
+import {NotificationService} from '@shared/services/toaster-service/notification.service';
 import {LoginRoutingModule} from './login-routing.module';
 import {NbButtonModule, NbCardModule, NbFormFieldModule, NbInputModule, NbLayoutModule} from '@nebular/theme';
 import {ReactiveFormsModule} from '@angular/forms';
