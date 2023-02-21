@@ -24,7 +24,7 @@ import {far} from '@fortawesome/free-regular-svg-icons';
 import {NgxsModule} from '@ngxs/store';
 import {SessionState} from '@shared/stores/session-state/session-state';
 import {environment} from '../environments/environment';
-import {NotificationService} from '@shared/services/notification.service';
+import {NotificationService} from '@shared/services/toaster-service/notification.service';
 import {ThemeModule} from '@assets/@theme/theme.module';
 import {HeaderModule} from './header/header.module';
 import {HomeModule} from './home/home.module';

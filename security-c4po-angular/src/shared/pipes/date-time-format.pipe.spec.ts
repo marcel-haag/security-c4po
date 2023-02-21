@@ -3,7 +3,7 @@ import {User} from '@shared/models/user.model';
 import {NumberAndDateFormatSystem} from '@shared/models/number-and-date-time-format.model';
 import {SESSION_STATE_NAME, SessionState, SessionStateModel} from '@shared/stores/session-state/session-state';
 import {NgxsModule, Store} from '@ngxs/store';
-import {UserService} from '@shared/services/user.service';
+import {UserService} from '@shared/services/user-service/user.service';
 import {inject, TestBed} from '@angular/core/testing';
 import {HttpClient} from '@angular/common/http';
 import {HttpLoaderFactory} from '../../app/common-app.module';

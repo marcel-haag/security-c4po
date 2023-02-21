@@ -21,8 +21,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {User} from '../../shared/models/user.model';
 import {CommonModule} from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NotificationService} from '../../shared/services/notification.service';
-import {NotificationServiceMock} from '../../shared/services/notification.service.mock';
+import {NotificationService} from '@shared/services/toaster-service/notification.service';
+import {NotificationServiceMock} from '@shared/services/toaster-service/notification.service.mock';
 import {KeycloakService} from 'keycloak-angular';
 
 const DESIRED_STORE_STATE_SESSION: SessionStateModel = {

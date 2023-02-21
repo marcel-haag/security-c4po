@@ -12,16 +12,18 @@ import {NgxsModule, Store} from '@ngxs/store';
 import {PROJECT_STATE_NAME, ProjectState, ProjectStateModel} from '@shared/stores/project-state/project-state';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {NbActionsModule, NbIconModule} from '@nebular/theme';
-import {ProjectService} from '@shared/services/project.service';
-import {ProjectServiceMock} from '@shared/services/project.service.mock';
+import {ProjectService} from '@shared/services/api/project.service';
+import {ProjectServiceMock} from '@shared/services/api/project.service.mock';
 import {ProjectDialogService} from '@shared/modules/project-dialog/service/project-dialog.service';
 import {ProjectDialogServiceMock} from '@shared/modules/project-dialog/service/project-dialog.service.mock';
 import {DialogService} from '@shared/services/dialog-service/dialog.service';
 import {DialogServiceMock} from '@shared/services/dialog-service/dialog.service.mock';
-import {NotificationService} from '@shared/services/notification.service';
-import {NotificationServiceMock} from '@shared/services/notification.service.mock';
+import {NotificationService} from '@shared/services/toaster-service/notification.service';
+import {NotificationServiceMock} from '@shared/services/toaster-service/notification.service.mock';
 import {Category} from '@shared/models/category.model';
 import {PentestStatus} from '@shared/models/pentest-status.model';
+import {ExportReportDialogService} from '@shared/modules/export-report-dialog/service/export-report-dialog.service';
+import {ExportReportDialogServiceMock} from '@shared/modules/export-report-dialog/service/export-report-dialog.service.mock';
 
 const DESIRED_PROJECT_STATE_SESSION: ProjectStateModel = {
   selectedProject: {
@@ -78,6 +80,7 @@ describe('ObjectiveHeaderComponent', () => {
       providers: [
         {provide: ProjectService, useValue: new ProjectServiceMock()},
         {provide: ProjectDialogService, useClass: ProjectDialogServiceMock},
+        {provide: ExportReportDialogService, useClass: ExportReportDialogServiceMock},
         {provide: DialogService, useClass: DialogServiceMock},
         {provide: NotificationService, useValue: new NotificationServiceMock()}
       ]

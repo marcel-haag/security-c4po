@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Store} from '@ngxs/store';
-import {NotificationService, PopupType} from '../../shared/services/notification.service';
+import {NotificationService, PopupType} from '@shared/services/toaster-service/notification.service';
 import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';
 import {User} from '../../shared/models/user.model';
 import {throwError} from 'rxjs';
@@ -22,7 +22,6 @@ import {KeycloakService} from 'keycloak-angular';
 export class LoginComponent implements OnInit {
   readonly MIN_LENGTH: number = 2;
   readonly SECURITYC4PO_TITLE = GlobalTitlesVariables.SECURITYC4PO_TITLE;
-  readonly NOVATEC_NAME = GlobalTitlesVariables.NOVATEC_NAME;
 
   // ToDo: Remove after adding real authentication
   private readonly user = new User('ttt', 'test', 'user', 'default.user@test.de', 'en-US');

@@ -1,0 +1,67 @@
+<nb-card #dialog accent="{{dialogData?.options[0].accentColor}}" class="export-report-dialog">
+  <nb-card-header fxLayoutAlign="start center" class="export-report-header">
+    {{ dialogData?.options[0].headerLabelKey | translate }}
+  </nb-card-header>
+  <nb-card-body>
+    <div fxLayout="column" fxLayoutGap="1rem" fxLayoutAlign="start start">
+      <label class="export-format-label">
+        {{ 'global.project' | translate }}:
+      </label>
+      <b class="project-title">
+        {{selectedProject$.getValue()?.title}}
+      </b>
+      <!--Chart Objective Component-->
+      <div fxLayout="column" fxLayoutGap="2rem" fxLayoutAlign="center center">
+        <app-objective-chart [projectPentestData]="selectedProject$.getValue().projectPentests"></app-objective-chart>
+        <span
+          class="hint"> {{'popup.info' | translate}} {{ 'report.hint' | translate: this.completedProjectPentests$?.getValue() }}
+          </span>
+      </div>
+      <!--Export Language Radio Selection-->
+      <label class="export-language-label">
+        {{ 'report.dialog.languageLabel' | translate }}
+      </label>
+      <nb-radio-group name="language" [formControl]="exportReportLanguageControl"
+                      class="export-radio-buttons languageContainer" status="info">
+        <nb-radio value="{{exportLanguages.ENGLISH}}">
+          <img src="../../assets/images/flags/{{exportLanguages.ENGLISH}}.svg" class="flag" width="25rem" height="16rem"
+               alt="">
+        </nb-radio>
+        <nb-radio disabled value="{{exportLanguages.GERMAN}}">
+          <img src="../../assets/images/flags/{{exportLanguages.GERMAN}}.svg" class="flag" width="25rem" height="16rem"
+               alt="">
+        </nb-radio>
+      </nb-radio-group>
+      <!--Export Format Radio Selection-->
+      <label class="export-format-label">
+        {{ 'report.dialog.formatLabel' | translate }}
+      </label>
+      <nb-radio-group name="format" [formControl]="exportReportFormatControl" class="export-radio-buttons"
+                      status="info">
+        <nb-radio value="{{exportFormats.PDF}}">
+          {{exportFormats.PDF}}
+        </nb-radio>
+        <nb-radio disabled value="{{exportFormats.CSV}}">
+          {{exportFormats.CSV}}
+        </nb-radio>
+        <nb-radio disabled value="{{exportFormats.HTML}}">
+          {{exportFormats.HTML}}
+        </nb-radio>
+      </nb-radio-group>
+    </div>
+  </nb-card-body>
+  <nb-card-footer fxLayout="row" fxLayoutGap="1.5rem" fxLayoutAlign="end end">
+    <button nbButton status="info" size="small" class="dialog-button generate-report-button"
+            [disabled]="(loading$.getValue() === true || completedProjectPentests$?.getValue().completedObjectivesNumber < 1)"
+            (click)="onClickExport(exportReportFormatControl.value, exportReportLanguageControl.value)">
+      <fa-icon [icon]="fa.faFileExport"
+               class="element-icon fa-lg"></fa-icon>
+      <span class="element-text"> {{ dialogData?.options[0].buttonKey | translate}} </span>
+    </button>
+    <button nbButton status="danger" size="small" class="dialog-button" (click)="onClickClose()">
+      {{ 'global.action.cancel' | translate }}
+    </button>
+  </nb-card-footer>
+</nb-card>
+
+<app-loading-spinner [isLoading$]="isLoading()" *ngIf="isLoading() | async"></app-loading-spinner>

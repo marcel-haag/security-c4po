@@ -15,7 +15,7 @@ import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';
 export class HeaderComponent implements OnInit{
 
   readonly fa = FA;
-  readonly SECURITYC4PO_TITLE = GlobalTitlesVariables.SECURITYC4PO_TITLE;
+  readonly SECURITYC4PO_TITLE: string = GlobalTitlesVariables.SECURITYC4PO_TITLE;
 
   currentTheme = '';
   languages = ['en-US', 'de-DE'];

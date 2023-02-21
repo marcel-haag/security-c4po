@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {User} from '../models/user.model';
+import {User} from '../../models/user.model';
 import {from, Observable, Subscriber} from 'rxjs';
 import {Store} from '@ngxs/store';
 import {KeycloakService} from 'keycloak-angular';

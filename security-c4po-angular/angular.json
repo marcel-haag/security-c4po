@@ -36,6 +36,8 @@
               "crypto-js/hmac-sha256",
               "crypto-js/lib-typedarrays",
               "js-cookie",
+              "chartjs-plugin-annotation",
+              "chart.js",
               "deep-equal",
               "moment-timezone",
               "uuid"

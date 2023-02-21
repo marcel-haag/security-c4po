@@ -5,7 +5,7 @@ import {HttpClientTestingModule, HttpTestingController} from '@angular/common/ht
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {KeycloakService} from 'keycloak-angular';
 import {Project, ProjectDialogBody} from '@shared/models/project.model';
-import {environment} from '../../environments/environment';
+import {environment} from '../../../environments/environment';
 import {throwError} from 'rxjs';
 
 describe('ProjectService', () => {
@@ -83,6 +83,7 @@ describe('ProjectService', () => {
       client: 'E Corp',
       title: 'Some Mock API (v1.0) Scanning',
       tester: 'Novatester',
+      summary: ''
     };
 
     const mockProject: Project = {

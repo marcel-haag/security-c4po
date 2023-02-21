@@ -1,4 +1,4 @@
-import {ProjectService} from '@shared/services/project.service';
+import {ProjectService} from '@shared/services/api/project.service';
 import {HttpClient} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {Project, ProjectDialogBody} from '@shared/models/project.model';
@@ -10,6 +10,14 @@ export class ProjectServiceMock implements Required<ProjectService> {
 
   getProjects(): Observable<Project[]> {
     return of([]);
+  }
+
+  getCompletedProjectById(projectId: string): Observable<Project> {
+    return of();
+  }
+
+  getEvaluatedProjectById(projectId: string): Observable<Project> {
+    return of();
   }
 
   saveProject(saveProject: ProjectDialogBody): Observable<Project> {

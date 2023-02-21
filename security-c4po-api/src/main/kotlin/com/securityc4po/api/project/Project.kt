@@ -66,6 +66,20 @@ fun Project.toProjectCompletedPentestResponseBody(): ResponseBody {
     )
 }
 
+@SuppressFBWarnings(BC_BAD_CAST_TO_ABSTRACT_COLLECTION, MESSAGE_BAD_CAST_TO_ABSTRACT_COLLECTION)
+fun Project.toProjectEvaluatedPentestResponseBody(): ResponseBody {
+    return mapOf(
+        "id" to id,
+        "client" to client,
+        "title" to title,
+        "createdAt" to createdAt,
+        "tester" to tester,
+        "summary" to summary,
+        "projectPentests" to projectPentests,
+        "createdBy" to createdBy
+    )
+}
+
 fun Project.toProjectDeleteResponseBody(): ResponseBody {
     return mapOf(
         "id" to id
@@ -76,9 +90,9 @@ fun Project.toProjectDeleteResponseBody(): ResponseBody {
 fun Project.calculateProgress(): BigDecimal {
     // Total number of pentests listet in the OWASP testing guide
     // https://owasp.org/www-project-web-security-testing-guide/assets/archive/OWASP_Testing_Guide_v4.pdf
-    // @Value("\${owasp.web.pentests}")
+    // @Value("\${owasp.web.objectives}")
     // lateinit var TOTALPENTESTS: Int
-    val TOTALPENTESTS = 95.0
+    val TOTAL_OWASP_OBJECTIVES = 95.0
 
     return if (projectPentests.isEmpty())
         BigDecimal.ZERO
@@ -92,7 +106,7 @@ fun Project.calculateProgress(): BigDecimal {
                 completedPentests += 0.5
             }
         }
-        val progress = (completedPentests * 100) / TOTALPENTESTS
+        val progress = (completedPentests * 100) / TOTAL_OWASP_OBJECTIVES
         BigDecimal(progress).setScale(2, RoundingMode.HALF_UP)
     }
 }
