@@ -216,6 +216,7 @@
     "title": "Title",
     "findings": "Findings",
     "comments": "Comments",
+    "findings&comments": "Findings & Comments",
     "status": "Status",
     "statusText": {
       "not_started": "Not Started",

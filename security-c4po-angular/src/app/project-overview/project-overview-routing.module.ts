@@ -1,14 +1,10 @@
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {ProjectOverviewComponent} from './project-overview.component';
+import {Route} from '@shared/models/route.enum';
 
 const routes: Routes = [
   {
-    path: '',
-    component: ProjectOverviewComponent,
-  },
-  {
-    path: 'id',
+    path: Route.OBJECTIVE_OVERVIEW,
     loadChildren: () => import('./project').then(mod => mod.ProjectModule),
   }
 ];

@@ -8,11 +8,12 @@
         {{ 'global.project' | translate }}:
       </label>
       <b class="project-title">
-        {{selectedProject$.getValue()?.title}}
+        {{dialogData.options[0].additionalData.title}}
       </b>
       <!--Chart Objective Component-->
       <div fxLayout="column" fxLayoutGap="2rem" fxLayoutAlign="center center">
-        <app-objective-chart [projectPentestData]="selectedProject$.getValue().projectPentests"></app-objective-chart>
+        <app-objective-chart
+          [projectPentestData]="selectedEvaluatedProject$.getValue().projectPentests"></app-objective-chart>
         <span
           class="hint"> {{'popup.info' | translate}} {{ 'report.hint' | translate: this.completedProjectPentests$?.getValue() }}
           </span>
@@ -64,4 +65,4 @@
   </nb-card-footer>
 </nb-card>
 
-<app-loading-spinner [isLoading$]="isLoading()" *ngIf="isLoading() | async"></app-loading-spinner>
+<app-loading-bar *ngIf="downloadPentestReport$ | async as download" [isLoading$]="isLoading()" [loadingProgress]="download?.progress"></app-loading-bar>

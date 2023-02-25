@@ -1,0 +1,14 @@
+@import '../../../assets/@theme/styles/themes';
+
+.comment-widget {
+  align-items: center;
+
+  .comment-icon {
+    color: nb-theme(basic-text-color);
+  }
+
+  .comments-count {
+    margin-left: 0.45rem;
+    color: nb-theme(basic-text-color);
+  }
+}

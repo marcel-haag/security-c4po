@@ -82,7 +82,7 @@ describe('ExportReportDialogComponent', () => {
     TestBed.overrideProvider(NB_DIALOG_CONFIG, {useValue: mockedExportPentestDialogData});
     fixture = TestBed.createComponent(ExportReportDialogComponent);
     component = fixture.componentInstance;
-    component.selectedProject$.next(mockProject);
+    component.selectedEvaluatedProject$.next(mockProject);
     fixture.detectChanges();
   });
 

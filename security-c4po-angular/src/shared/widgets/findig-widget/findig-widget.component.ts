@@ -7,7 +7,7 @@ import * as FA from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./findig-widget.component.scss']
 })
 export class FindigWidgetComponent implements OnInit {
-  @Input() numberOfFindigs: number;
+  @Input() numberOfFindings: number;
 
   // HTML only
   readonly fa = FA;

@@ -10,8 +10,10 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {NotificationService, PopupType} from '@shared/services/toaster-service/notification.service';
 import {ProjectService} from '@shared/services/api/project.service';
 import {PentestStatus} from '@shared/models/pentest-status.model';
-import {tap} from 'rxjs/operators';
+import {shareReplay, tap} from 'rxjs/operators';
 import {downloadFile} from '@shared/functions/download-file.function';
+import {Loading, LoadingState} from '@shared/models/loading.model';
+import {HttpEvent, HttpEventType} from '@angular/common/http';
 
 @Component({
   selector: 'app-export-report-dialog',
@@ -41,9 +43,13 @@ export class ExportReportDialogComponent implements OnInit {
 
   dialogData: GenericDialogData;
 
-  selectedProject$: BehaviorSubject<Project> = new BehaviorSubject<Project>(null);
+  selectedEvaluatedProject$: BehaviorSubject<Project> = new BehaviorSubject<Project>(null);
   completedProjectPentests$: BehaviorSubject<any> = new BehaviorSubject<any>({completedObjectivesNumber: 0});
   loading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+
+  // Loading Bar Property
+  downloadPentestReport$: Observable<Loading<ArrayBuffer>>;
+  progress = 0;
 
   ngOnInit(): void {
     this.dialogData = this.data;
@@ -61,7 +67,7 @@ export class ExportReportDialogComponent implements OnInit {
       )
       .subscribe({
         next: (project: Project) => {
-          this.selectedProject$.next(project);
+          this.selectedEvaluatedProject$.next(project);
           const completedPentestObjectives = project.projectPentests.filter(pentest => pentest.status === PentestStatus.COMPLETED);
           this.completedProjectPentests$.next({completedObjectivesNumber: completedPentestObjectives.length});
           this.loading$.next(false);
@@ -75,18 +81,26 @@ export class ExportReportDialogComponent implements OnInit {
   }
 
   onClickExport(reportFormat: string, reportLanguage: string): void {
+    // Get project id from dialog data
+    const projectId = this.dialogData.options[0].additionalData.id;
     // Loading is true as long as there is a response from the reporting service
     this.loading$.next(true);
     // Export pentest in choosen format
     switch (reportFormat) {
       case ExportFormatOptions.PDF: {
-        this.reportingService.getReportPDFforProjectById(this.selectedProject$.getValue().id).pipe(
-          untilDestroyed(this)
-        ).subscribe({
+        // @ts-ignore
+        this.downloadPentestReport$ = this.reportingService.getReportPDFforProjectById(projectId)
+          .pipe(
+            shareReplay(),
+            untilDestroyed(this)
+          );
+        this.downloadPentestReport$.subscribe({
           next: (response) => {
-            downloadFile(response, 'application/pdf');
-            this.loading$.next(false);
-            this.notificationService.showPopup('report.popup.generation.success', PopupType.SUCCESS);
+            if (response.state === LoadingState.DONE) {
+              downloadFile(response.content, 'application/pdf');
+              this.loading$.next(false);
+              this.notificationService.showPopup('report.popup.generation.success', PopupType.SUCCESS);
+            }
           },
           error: error => {
             console.error(error);

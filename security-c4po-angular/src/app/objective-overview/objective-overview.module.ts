@@ -23,6 +23,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {CommonAppModule} from '../common-app.module';
 import {ObjectiveOverviewRoutingModule} from './objective-overview-routing.module';
 import {ExportReportDialogModule} from '@shared/modules/export-report-dialog/export-report-dialog.module';
+import {ProjectDialogModule} from '@shared/modules/project-dialog/project-dialog.module';
+import {CommentWidgetModule} from '@shared/widgets/comment-widget/comment-widget.module';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,6 @@ import {ExportReportDialogModule} from '@shared/modules/export-report-dialog/exp
     NbTreeGridModule,
     TranslateModule,
     StatusTagModule,
-    FindigWidgetModule,
     RouterModule,
     NbMenuModule,
     FormsModule,
@@ -52,7 +53,11 @@ import {ExportReportDialogModule} from '@shared/modules/export-report-dialog/exp
     FlexLayoutModule,
     NbActionsModule,
     ExportReportDialogModule,
-    ObjectiveOverviewRoutingModule
+    ProjectDialogModule,
+    ObjectiveOverviewRoutingModule,
+    // Table Widgets
+    FindigWidgetModule,
+    CommentWidgetModule
   ],
   exports: [
     ObjectiveHeaderComponent,

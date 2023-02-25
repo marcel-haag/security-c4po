@@ -1,0 +1,22 @@
+@import '../../../assets/@theme/styles/themes';
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+
+  background-color: nb-theme(layout-background-color);
+  opacity: .5;
+
+  .progress-bar {
+    width: 80%;
+    height: max-content;
+    // Overwrites the loading overlay
+    opacity: 100 !important;
+    z-index: 1001 !important;
+  }
+}

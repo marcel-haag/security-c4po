@@ -11,6 +11,7 @@ import {ProjectDialogModule} from '@shared/modules/project-dialog/project-dialog
 import {CommonAppModule} from '../common-app.module';
 import {ConfirmDialogModule} from '@shared/modules/confirm-dialog/confirm-dialog.module';
 import {SecurityConfirmDialogModule} from '@shared/modules/security-confirm-dialog/security-confirm-dialog.module';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,10 @@ import {SecurityConfirmDialogModule} from '@shared/modules/security-confirm-dial
   imports: [
     CommonModule,
     CommonAppModule,
+    RouterModule.forChild([{
+      path: '',
+      component: ProjectOverviewComponent
+    }]),
     NbCardModule,
     NbButtonModule,
     NbProgressBarModule,

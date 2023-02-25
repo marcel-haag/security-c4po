@@ -216,6 +216,7 @@
     "title": "Titel",
     "findings": "Funde",
     "comments": "Kommentare",
+    "findings&comments": "Funde & Kommentare",
     "status": "Status",
     "statusText": {
       "not_started": "Nicht angefangen",

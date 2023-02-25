@@ -2,6 +2,9 @@ package com.securityc4po.reporting.remote.model.api
 
 import com.securityc4po.reporting.remote.model.PentestReport
 import com.securityc4po.reporting.remote.model.ProjectReport
+import java.time.Instant
+import java.util.Date
+
 
 data class Project(
     val id: String,
@@ -19,7 +22,8 @@ fun Project.toProjectReport(): ProjectReport {
         id = this.id,
         client = this.client,
         title = this.title,
-        createdAt = this.createdAt,
+        /* Use the time of report creation */
+        createdAt = Date.from(Instant.now()),
         tester = this.tester,
         summary = this.summary,
         projectPentestReport = mutableListOf<PentestReport>(),

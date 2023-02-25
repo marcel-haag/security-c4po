@@ -19,7 +19,7 @@
         <property name="net.sf.jasperreports.json.field.expression" value="title"/>
         <fieldDescription><![CDATA[title]]></fieldDescription>
     </field>
-    <field name="createdAt" class="java.lang.String">
+    <field name="createdAt" class="java.util.Date">
         <property name="net.sf.jasperreports.json.field.expression" value="createdAt"/>
         <fieldDescription><![CDATA[createdAt]]></fieldDescription>
     </field>
@@ -144,7 +144,7 @@
                 <textElement textAlignment="Right">
                     <font fontName="SansSerif" size="12" isBold="true" isItalic="true"/>
                 </textElement>
-                <textFieldExpression><![CDATA[$F{createdAt}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[(new SimpleDateFormat("dd/MM/yyyy").format($F{createdAt}))]]></textFieldExpression>
             </textField>
         </band>
     </detail>

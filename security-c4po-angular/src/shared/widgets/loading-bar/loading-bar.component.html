@@ -1,0 +1,7 @@
+<div fxFill fxLayout="row" fxLayoutAlign="center center" *ngIf="loading" class="loading-overlay">
+  <nb-progress-bar class="progress-bar"
+                   status="info"
+                   [value]="loadingProgress"
+                   [displayValue]="false">
+  </nb-progress-bar>
+</div>

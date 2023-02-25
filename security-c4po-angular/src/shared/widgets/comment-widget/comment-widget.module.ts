@@ -1,19 +1,20 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FindigWidgetComponent} from '@shared/widgets/findig-widget/findig-widget.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {CommentWidgetComponent} from '@shared/widgets/comment-widget/comment-widget.component';
+
 
 @NgModule({
   declarations: [
-    FindigWidgetComponent
+    CommentWidgetComponent
   ],
   imports: [
     CommonModule,
     FontAwesomeModule
   ],
   exports: [
-    FindigWidgetComponent
-  ],
+    CommentWidgetComponent
+  ]
 })
-export class FindigWidgetModule {
+export class CommentWidgetModule {
 }

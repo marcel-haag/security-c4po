@@ -8,6 +8,7 @@ export function downloadFile(data: any, type: string): void {
   const url = window.URL.createObjectURL(blob);
   const pwa = window.open(url);
   if (!pwa || pwa.closed || typeof pwa.closed === 'undefined') {
-    alert('Please disable your Pop-up blocker and try again.');
+    // ToDo: Do not use! Alert bugs loading progress bar
+    // alert('Please disable your Pop-up blocker and try again.');
   }
 }
