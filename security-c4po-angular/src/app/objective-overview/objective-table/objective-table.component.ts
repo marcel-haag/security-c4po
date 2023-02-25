@@ -3,13 +3,14 @@ import {NbGetters, NbTreeGridDataSource, NbTreeGridDataSourceBuilder} from '@neb
 import {Pentest, ObjectiveEntry, transformPentestsToObjectiveEntries} from '@shared/models/pentest.model';
 import {PentestService} from '@shared/services/api/pentest.service';
 import {Store} from '@ngxs/store';
-import {ProjectState} from '@shared/stores/project-state/project-state';
+import {PROJECT_STATE_NAME, ProjectState} from '@shared/stores/project-state/project-state';
 import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';
 import {catchError, switchMap, tap} from 'rxjs/operators';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {getTitleKeyForRefNumber} from '@shared/functions/categories/get-title-key-for-ref-number.function';
 import {Router} from '@angular/router';
 import {ChangePentest} from '@shared/stores/project-state/project-state.actions';
+import {Route} from '@shared/models/route.enum';
 
 @UntilDestroy()
 @Component({
@@ -20,7 +21,7 @@ import {ChangePentest} from '@shared/stores/project-state/project-state.actions'
 export class ObjectiveTableComponent implements OnInit {
 
   loading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
-  columns: Array<ObjectiveColumns> = [ObjectiveColumns.TEST_ID, ObjectiveColumns.TITLE, ObjectiveColumns.STATUS, ObjectiveColumns.FINDINGS];
+  columns: Array<ObjectiveColumns> = [ObjectiveColumns.TEST_ID, ObjectiveColumns.TITLE, ObjectiveColumns.STATUS, ObjectiveColumns.FINDINGS_AND_COMMENTS];
   dataSource: NbTreeGridDataSource<ObjectiveEntry>;
 
   private data: ObjectiveEntry[] = [];
@@ -36,7 +37,7 @@ export class ObjectiveTableComponent implements OnInit {
     private store: Store,
     private pentestService: PentestService,
     private dataSourceBuilder: NbTreeGridDataSourceBuilder<ObjectiveEntry>,
-    private readonly router: Router
+    private router: Router
   ) {
     this.dataSource = dataSourceBuilder.create(this.data, this.getters);
   }
@@ -53,7 +54,6 @@ export class ObjectiveTableComponent implements OnInit {
       untilDestroyed(this)
     ).subscribe({
       next: (pentests: Pentest[]) => {
-        // ToDo: Change assignement here
         this.pentests$.next(pentests);
         this.data = transformPentestsToObjectiveEntries(pentests);
         this.dataSource.setData(this.data, this.getters);
@@ -66,16 +66,14 @@ export class ObjectiveTableComponent implements OnInit {
     });
   }
 
-  selectPentest(selectedPentest: Pentest): void {
-    /* ToDo: Include again after fixing pentest route
-    this.router.navigate([Route.PENTEST])
+  onClickRouteToObjectivePentest(selectedPentest: Pentest): void {
+    this.router.navigate([Route.PENTEST_OBJECTIVE])
       .then(
         () => this.store.reset({
           ...this.store.snapshot(),
-          // [PROJECT_STATE_NAME]: pentest
         })
       ).finally();
-    */
+    // Change Pentest State
     const statePentest: Pentest = this.pentests$.getValue().find(pentest => pentest.refNumber === selectedPentest.refNumber);
     if (statePentest) {
       this.store.dispatch(new ChangePentest(statePentest));
@@ -111,5 +109,5 @@ enum ObjectiveColumns {
   TEST_ID = 'testId',
   TITLE = 'title',
   STATUS = 'status',
-  FINDINGS = 'findings'
+  FINDINGS_AND_COMMENTS = 'findings&comments'
 }

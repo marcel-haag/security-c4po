@@ -17,6 +17,16 @@ const routes: Routes = [
     loadChildren: () => import('./project-overview').then(mod => mod.ProjectOverviewModule),
     canActivate: [AuthGuardService]
   },
+  {
+    path: Route.OBJECTIVE_OVERVIEW,
+    loadChildren: () => import('./project-overview/project').then(mod => mod.ProjectModule),
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: Route.PENTEST_OBJECTIVE,
+    loadChildren: () => import('./pentest').then(mod => mod.PentestModule),
+    canActivate: [AuthGuardService]
+  },
   // ToDo: Remove after default Keycloak login mask got reworked
   /*{
     path: 'login',

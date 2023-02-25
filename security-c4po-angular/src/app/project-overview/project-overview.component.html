@@ -5,13 +5,13 @@
                       routerLink="id"
                       fragment="{{project.id}}"
                       class="project-link project-header"
-                      [state]="{selectedProject:project}">
+                      (click)="onClickRouteToProject(project)">
         <h4>{{project?.title}}</h4>
       </nb-card-header>
       <nb-card-body class="project-link"
                     routerLink="id"
                     fragment="{{project.id}}"
-                    [state]="{selectedProject:project}">
+                    (click)="onClickRouteToProject(project)">
         <p class="project-subheader">
           {{'project.client' | translate}}:
         </p>

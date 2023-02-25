@@ -10,25 +10,27 @@ import {ExportReportDialogComponent} from '@shared/modules/export-report-dialog/
 import {ExportReportDialogService} from '@shared/modules/export-report-dialog/service/export-report-dialog.service';
 import {ReportingService} from '@shared/services/reporting/reporting.service';
 import {ObjectiveChartModule} from '@shared/modules/objective-chart/objective-chart.module';
+import {LoadingBarModule} from '@shared/widgets/loading-bar/loading-bar.module';
 
 @NgModule({
   declarations: [
     ExportReportDialogComponent
   ],
-  imports: [
-    CommonModule,
-    CommonAppModule,
-    NbCardModule,
-    NbButtonModule,
-    NbFormFieldModule,
-    NbInputModule,
-    FlexLayoutModule,
-    FontAwesomeModule,
-    TranslateModule,
-    ReactiveFormsModule,
-    NbRadioModule,
-    ObjectiveChartModule
-  ],
+    imports: [
+        CommonModule,
+        CommonAppModule,
+        NbCardModule,
+        NbButtonModule,
+        NbFormFieldModule,
+        NbInputModule,
+        FlexLayoutModule,
+        FontAwesomeModule,
+        TranslateModule,
+        ReactiveFormsModule,
+        NbRadioModule,
+        ObjectiveChartModule,
+        LoadingBarModule
+    ],
   providers: [
     ExportReportDialogService,
     ReportingService

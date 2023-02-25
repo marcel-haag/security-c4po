@@ -3,10 +3,7 @@
     <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="columns"></tr>
     <tr nbTreeGridRow *nbTreeGridRowDef="let pentest; columns: columns"
         class="pentest-cell"
-        routerLink="pentest"
-        fragment="{{pentest.data['refNumber']}}"
-        (click)="selectPentest(pentest.data)"
-        [skipLocationChange]="true">
+        (click)="onClickRouteToObjectivePentest(pentest.data)">
     </tr>
     <!-- Test ID -->
     <ng-container [nbTreeGridColumnDef]="columns[0]">
@@ -44,11 +41,14 @@
     <!-- Findings -->
     <ng-container [nbTreeGridColumnDef]="columns[3]">
       <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>
-        {{ 'pentest.findings' | translate }}
+        {{ 'pentest.findings&comments' | translate }}
       </th>
       <td nbTreeGridCell *nbTreeGridCellDef="let pentest">
-        <app-findig-widget [numberOfFindigs]="pentest.data['findings']"></app-findig-widget>
-        <!--ToDo: Add comments {{pentest.data['comments'] || '-'}}-->
+        <div fxLayout="row" fxLayoutGap="0.5rem" fxLayoutAlign="start start">
+          <app-findig-widget [numberOfFindings]="pentest.data['findings']"></app-findig-widget>
+          <span> / </span>
+          <app-comment-widget [numberOfComments]="pentest.data['comments']"></app-comment-widget>
+        </div>
       </td>
     </ng-container>
   </table>

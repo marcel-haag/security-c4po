@@ -9,6 +9,10 @@ import {catchError, filter, mergeMap, switchMap, tap} from 'rxjs/operators';
 import {DialogService} from '@shared/services/dialog-service/dialog.service';
 import {ProjectDialogComponent} from '@shared/modules/project-dialog/project-dialog.component';
 import {ProjectDialogService} from '@shared/modules/project-dialog/service/project-dialog.service';
+import {Router} from '@angular/router';
+import {Route} from '@shared/models/route.enum';
+import {InitProjectState} from '@shared/stores/project-state/project-state.actions';
+import {Store} from '@ngxs/store';
 
 @UntilDestroy()
 @Component({
@@ -25,6 +29,8 @@ export class ProjectOverviewComponent implements OnInit {
 
   constructor(
     private readonly notificationService: NotificationService,
+    private store: Store,
+    private router: Router,
     private projectService: ProjectService,
     private dialogService: DialogService,
     private projectDialogService: ProjectDialogService) {
@@ -161,6 +167,18 @@ export class ProjectOverviewComponent implements OnInit {
         }
       });
     }
+  }
+
+  onClickRouteToProject(project): void {
+    this.router.navigate([Route.OBJECTIVE_OVERVIEW]).then(() => {
+      this.store.dispatch(new InitProjectState(
+        project,
+        [],
+        []
+      )).pipe(untilDestroyed(this)).subscribe();
+    }, err => {
+      console.error(err);
+    });
   }
 
   // HTML only

@@ -42,7 +42,11 @@ export class ObjectiveHeaderComponent implements OnInit {
       untilDestroyed(this)
     ).subscribe({
       next: (selectedProject: Project) => {
-        this.selectedProject$.next(selectedProject);
+        if (selectedProject) {
+          this.selectedProject$.next(selectedProject);
+        } else {
+          this.router.navigate([Route.PROJECT_OVERVIEW]);
+        }
       },
       error: err => {
         console.error(err);
@@ -90,7 +94,7 @@ export class ObjectiveHeaderComponent implements OnInit {
     });
   }
 
-  onClickExportPentestReport(): void {
+  onClickGeneratePentestReport(): void {
     this.exportReportDialogService.openExportReportDialog(
       ExportReportDialogComponent,
       this.selectedProject$.getValue(),

@@ -1,0 +1,9 @@
+<div class="comment-widget">
+  <ng-container *ngIf="numberOfComments > 0; else noComments">
+    <fa-icon [icon]="fa.faComment" size="lg" class="comment-icon"></fa-icon>
+    <span class="comments-count">{{numberOfComments}}</span>
+  </ng-container>
+  <ng-template #noComments>
+    {{'-'}}
+  </ng-template>
+</div>
