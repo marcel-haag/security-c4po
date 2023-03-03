@@ -4,16 +4,17 @@ export class Comment {
   id?: string;
   title: string;
   description?: string;
-  relatedFindings?: Array<string>;
+  // List of attachment id's for file upload
+  attachments?: Array<string>;
 
   constructor(title: string,
               description: string,
               id?: string,
-              relatedFindings?: Array<string>) {
+              attachments?: Array<string>) {
     this.id = id ? id : UUID();
     this.title = title;
     this.description = description;
-    this.relatedFindings = relatedFindings;
+    this.attachments = attachments;
   }
 }
 
@@ -21,7 +22,7 @@ export interface CommentEntry {
   commentId: string;
   title: string;
   description: string;
-  relatedFindings: Array<string>;
+  attachments: Array<string>;
   kind?: string;
   childEntries?: [];
   expanded?: boolean;
@@ -34,7 +35,7 @@ export function transformCommentsToObjectiveEntries(findings: Comment[]): Commen
       commentId: value.id,
       title: value.title,
       description: value.description,
-      relatedFindings: value.relatedFindings,
+      attachments: value.attachments,
       kind: 'cell',
       childEntries: null,
       expanded: false
@@ -48,8 +49,7 @@ export function transformCommentToRequestBody(comment: CommentDialogBody | Comme
     ...comment,
     title: comment.title,
     description: comment.description,
-    // Transforms related findings from RelatedFindingOption to list of finding ids
-    relatedFindings: comment.relatedFindings ? comment.relatedFindings.map(finding => finding.id) : [],
+    attachments: comment.attachments,
     /* Remove Table Entry Object Properties */
     childEntries: undefined,
     kind: undefined,
@@ -62,10 +62,6 @@ export function transformCommentToRequestBody(comment: CommentDialogBody | Comme
 export interface CommentDialogBody {
   title: string;
   description: string;
-  relatedFindings: Array<RelatedFindingOption>;
+  attachments: Array<string>;
 }
 
-export interface RelatedFindingOption {
-  id: string;
-  title: string;
-}

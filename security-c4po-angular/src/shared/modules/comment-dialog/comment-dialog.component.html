@@ -50,25 +50,6 @@
           </nb-form-field>
         </div>
       </div>
-      <!-- Related Findings Layout -->
-      <!-- Related Findings Form Field -->
-      <nb-form-field class="comment-form-field">
-        <label for="{{formArray[2].fieldName}}" class="label">
-          {{formArray[2].labelKey | translate}}
-        </label>
-        <!--<fa-icon nbPrefix [icon]="fa.faExclamationCircle" size="lg" class="finding-icon"></fa-icon>-->
-        <nb-select placeholder="{{formArray[2].placeholder | translate}}"
-                   id="{{formArray[2].fieldName}}"
-                   formControlName="{{formArray[2].fieldName}}"
-                   (selectedChange)="changeSelected($event)"
-                   multiple fullWidth shape="semi-round" filled status="info"
-                   [size]="'large'" class="form-field relatedFindings">
-          <nb-option class="reset-option">{{'global.action.reset' | translate}}</nb-option>
-          <nb-option class="finding-option" *ngFor="let finding of relatedFindings" [value]="finding">
-            {{finding.title}}
-          </nb-option>
-        </nb-select>
-      </nb-form-field>
     </form>
   </nb-card-body>
   <nb-card-footer fxLayout="row" fxLayoutGap="1.5rem" fxLayoutAlign="end end">

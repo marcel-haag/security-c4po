@@ -8,7 +8,9 @@ data class Finding (
     val impact: String,
     val affectedUrls: List<String>? = emptyList(),
     val reproduction: String,
-    val mitigation: String?
+    val mitigation: String?,
+    // List of attachment id's for file upload
+    val attachments: List<String>? = emptyList()
 )
 
 enum class Severity {

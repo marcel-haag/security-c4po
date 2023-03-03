@@ -106,7 +106,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItdG1lbEV0ZHhGTnRSMW9aNXlRdE5jaFFpX0RVN2VNeV9YcU44aXY0S3hzIn0.eyJleHAiOjE2NzY5ODY0NTgsImlhdCI6MTY3Njk4NjE1OCwianRpIjoiMzk2NjcwM2UtMTk4My00MWU4LTkyNjAtYjhmNDExOWRmYzYwIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL2M0cG9fcmVhbG1fbG9jYWwiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTBlMDZkN2EtOGRkMC00ZWNkLTg5NjMtMDU2YjQ1MDc5YzRmIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYzRwb19sb2NhbCIsInNlc3Npb25fc3RhdGUiOiIxZDBmMTk4YS03MTg5LTQ4ZmItYWQ0Ny00NTllNjVkOWU3ZjciLCJhbGxvd2VkLW9yaWdpbnMiOlsiKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiYzRwb191c2VyIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImM0cG9fbG9jYWwiOnsicm9sZXMiOlsidXNlciJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwic2lkIjoiMWQwZjE5OGEtNzE4OS00OGZiLWFkNDctNDU5ZTY1ZDllN2Y3IiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoidGVzdCB1c2VyIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidHR0IiwiZ2l2ZW5fbmFtZSI6InRlc3QiLCJmYW1pbHlfbmFtZSI6InVzZXIifQ.m1aOgFK_8ADYS6EdPLWT_wQNTsptSM9XipQQcttSd1lZKdZu6FgFVRSsW39fdgVLGurKxaglGoNgsywGDeomPS7hJuowzmYIEoDZr13MXCBqX9-YAsEDbwvrGcUI4jVXwKl8E-rTLpl3c5Ckj4tbDeUD3EuLk7yTYbkUnijqwsFlZpwJ_gbjZAfNiZCZpJlvh95cQKvFBbyzP7sfxkYikzpxY-1UHSUpoHBxJaOcJ6hoh-PIQVUw-8mvuoOyd5dMmavl5njvijr716_2loj6B6YHLueHIGlenI5Aob9DEOcL17SXivvcEyM5xTKyfqx3Jt1XY7jQ8mOIT4_iqxTc_w",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItdG1lbEV0ZHhGTnRSMW9aNXlRdE5jaFFpX0RVN2VNeV9YcU44aXY0S3hzIn0.eyJleHAiOjE2NzgyNjg2NTksImlhdCI6MTY3ODI2ODM1OSwianRpIjoiNTkzODgzZWYtZDZkZS00MGJjLWE3MGQtMTU5MDE3YzBlY2Q4IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL2M0cG9fcmVhbG1fbG9jYWwiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTBlMDZkN2EtOGRkMC00ZWNkLTg5NjMtMDU2YjQ1MDc5YzRmIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYzRwb19sb2NhbCIsInNlc3Npb25fc3RhdGUiOiIxNGUwNzYwNy02YTUyLTRmZTItODA0MC00Zjc4NDc4ZjI3ZGQiLCJhbGxvd2VkLW9yaWdpbnMiOlsiKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiYzRwb191c2VyIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImM0cG9fbG9jYWwiOnsicm9sZXMiOlsidXNlciJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwic2lkIjoiMTRlMDc2MDctNmE1Mi00ZmUyLTgwNDAtNGY3ODQ3OGYyN2RkIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoidGVzdCB1c2VyIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidHR0IiwiZ2l2ZW5fbmFtZSI6InRlc3QiLCJmYW1pbHlfbmFtZSI6InVzZXIifQ.gHG1z-amLiv4mv6DujwEMPIjfn8ojROSmypOG4_A2GvF6ekmSi36WQO8I2IjPJZ4XB1amKgeG5pAI6I4AYU8DwYIOsDrqKgPSitDEyY9lCjUtxFHZpmemkQljdJw3UNjDKgDuyYpu-lPcapcEwN75BeSxmnkNVQ7ri3dLHf5AhLlQExlVD0ts4ux4kQ4X82cn_iPGRa869jZEWbVHKnhZaHufsA0444qgw45mBJu1ycG7_4VzKmoeprSV5RSH_DxMMZaDCUb0_Xf1QZ58VVEpjW1WRNvvAip5uVNnyduQe2SJ7TlZqNy5DzDyzBko8d4LnWjE_-qdo4JmwztApkOww",
 									"type": "string"
 								},
 								{
@@ -124,7 +124,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8444/reports/5a4f126c-9471-43b8-80b9-6eb02b7c35d0/pdf",
+							"raw": "http://localhost:8444/reports/575dd9d4-cb3c-4df3-981e-8a18bf8dc1d2/pdf",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -132,7 +132,7 @@
 							"port": "8444",
 							"path": [
 								"reports",
-								"5a4f126c-9471-43b8-80b9-6eb02b7c35d0",
+								"575dd9d4-cb3c-4df3-981e-8a18bf8dc1d2",
 								"pdf"
 							]
 						}

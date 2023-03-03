@@ -1,6 +1,6 @@
 <ng-container [ngSwitch]="currentStatus">
   <nb-tag-list>
-    <nb-tag *ngSwitchCase="status.OPEN" status="info" appearance="filled"
+    <nb-tag *ngSwitchCase="status.PAUSED" status="info" appearance="filled"
             text="{{getTranslationKey() | translate}}"></nb-tag>
     <nb-tag *ngSwitchCase="status.IN_PROGRESS" status="warning" appearance="filled"
             text=" {{getTranslationKey() | translate}}"></nb-tag>

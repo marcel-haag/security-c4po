@@ -5,7 +5,6 @@ import * as FA from '@fortawesome/free-solid-svg-icons';
 import deepEqual from 'deep-equal';
 import {NB_DIALOG_CONFIG, NbDialogRef} from '@nebular/theme';
 import {UntilDestroy} from '@ngneat/until-destroy';
-import {RelatedFindingOption} from '@shared/models/comment.model';
 
 @Component({
   selector: 'app-comment-dialog',
@@ -24,11 +23,6 @@ export class CommentDialogComponent implements OnInit {
   // HTML only
   readonly fa = FA;
 
-  relatedFindings: RelatedFindingOption[] = [];
-  // Includes the findings that got selected as an option
-  selectedFindings: RelatedFindingOption[] = [];
-  initialSelectedFindings: RelatedFindingOption[] = [];
-
   constructor(
     @Inject(NB_DIALOG_CONFIG) private data: GenericDialogData,
     private fb: FormBuilder,
@@ -38,7 +32,6 @@ export class CommentDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.dialogData = this.data;
-    this.relatedFindings = this.dialogData.options[0].additionalData;
     this.commentFormGroup = this.generateFormCreationFieldArray();
   }
 
@@ -48,29 +41,19 @@ export class CommentDialogComponent implements OnInit {
       ...accumulator,
       [currentValue?.fieldName]: currentValue?.controlsConfig
     }), {});
-    // tslint:disable-next-line:no-string-literal
-    const preSelectedRelatedFindings = this.data.form['commentRelatedFindings'].controlsConfig[0].value;
-    if (preSelectedRelatedFindings && preSelectedRelatedFindings.length > 0) {
-      this.relatedFindings.forEach(finding => {
-        if (preSelectedRelatedFindings.includes(finding)) {
-          this.initialSelectedFindings.push(finding);
-          this.selectedFindings.push(finding);
-        }
-      });
-    }
     return this.fb.group(config);
   }
 
-  changeSelected($event): void {
+  changeAttachments($event): void {
     // tslint:disable-next-line:no-string-literal
-    this.selectedFindings = this.commentFormGroup.controls['commentRelatedFindings'].value;
+    // this.commentFormGroup.controls['commentAttachments'].value;
   }
 
   onClickSave(value: any): void {
     this.dialogRef.close({
       title: value.commentTitle,
       description: value.commentDescription,
-      relatedFindings: this.selectedFindings ? this.selectedFindings : []
+      // relatedFindings: this.selectedFindings ? this.selectedFindings : []
     });
   }
 
@@ -90,12 +73,8 @@ export class CommentDialogComponent implements OnInit {
     const newCommentData = this.commentFormGroup.getRawValue();
     Object.entries(newCommentData).forEach(entry => {
       const [key, value] = entry;
-      // Related Findings form field can be ignored since changes here will be recognised inside commentRelatedFindings of tag-list
-      if (value === null || key === 'commentRelatedFindings') {
-        newCommentData[key] = '';
-      }
     });
-    const didChange = !deepEqual(oldCommentData, newCommentData) || !deepEqual(this.initialSelectedFindings, this.selectedFindings);
+    const didChange = !deepEqual(oldCommentData, newCommentData);
     return didChange;
   }
 
@@ -109,10 +88,6 @@ export class CommentDialogComponent implements OnInit {
       const [key, value] = entry;
       commentData[key] = value.controlsConfig[0] ?
         (value.controlsConfig[0].value ? value.controlsConfig[0].value : value.controlsConfig[0]) : '';
-      // Related Findings form field can be ignored since changes here will be recognised inside commentRelatedFindings of tag-list
-      if (key === 'commentRelatedFindings') {
-        commentData[key] = '';
-      }
     });
     return commentData;
   }

@@ -1,54 +1,33 @@
 [{
   "_id": {
-    "$oid": "63a4530b9bb2aa2c3bc77b52"
+    "$oid": "6405dbf113ae975803a09901"
   },
   "lastModified": {
     "$date": {
-      "$numberLong": "1671713547508"
+      "$numberLong": "1678105585081"
     }
   },
   "data": {
-    "_id": "89703b19-16c7-49e5-8e33-0c706313e5fe",
-    "title": "Test Comment",
-    "description": "No related findings",
-    "relatedFindings": []
+    "_id": "85935303-e5b7-48ca-a504-910c1a94fb1f",
+    "title": "Uninteresting comment",
+    "description": "Nothing",
+    "attachments": []
   },
-  "_class": "com.securityc4po.api.comment.CommentEntity"
+  "_class": "com.securityc4po.api.pentest.comment.CommentEntity"
 },{
   "_id": {
-    "$oid": "63a453e4377c3f53f86d27d8"
+    "$oid": "6405dc0513ae975803a09902"
   },
   "lastModified": {
     "$date": {
-      "$numberLong": "1671713764781"
+      "$numberLong": "1678105605811"
     }
   },
   "data": {
-    "_id": "df516de6-ca5e-44a6-ac50-db89bb17aac3",
-    "title": "New Test Comment",
-    "description": "Two related findings",
-    "relatedFindings": [
-      "0bda8950-94fa-4ec6-8fa7-e09f5a8cd3e8",
-      "4ddb84f6-068c-4319-a8ee-1000008bb75a"
-    ]
+    "_id": "a785aaf0-1feb-429e-beb1-31bfcf70c404",
+    "title": "Interesting comment",
+    "description": "I know where your house lives",
+    "attachments": []
   },
-  "_class": "com.securityc4po.api.comment.CommentEntity"
-},{
-  "_id": {
-    "$oid": "63a454b5377c3f53f86d27d9"
-  },
-  "lastModified": {
-    "$date": {
-      "$numberLong": "1671713973541"
-    }
-  },
-  "data": {
-    "_id": "e55e943b-6a48-4d84-8d72-b48d7d9de5b7",
-    "title": "Another Test Comment",
-    "description": "One related findings",
-    "relatedFindings": [
-      "5e22d38f-a4f6-4809-84ea-a803b5f1f9fc"
-    ]
-  },
-  "_class": "com.securityc4po.api.comment.CommentEntity"
+  "_class": "com.securityc4po.api.pentest.comment.CommentEntity"
 }]

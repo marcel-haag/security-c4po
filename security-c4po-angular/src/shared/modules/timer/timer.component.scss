@@ -1,0 +1,28 @@
+@import '../../../assets/@theme/styles/themes';
+
+.timer-module {
+  width: 12rem;
+  max-width: 12rem;
+
+  // height: 3rem;
+  // max-height: 3rem;
+
+  // overflow: auto;
+
+  background-color: nb-theme(color-basic-transparent-focus);
+  border-radius: 10px;
+
+
+  .time {
+    //font-family: Courier, serif;
+
+    .stopwatch-icon {
+      padding-right: 1.5rem;
+    }
+  }
+
+  .stopwatch-player-button {
+    margin-left: 1rem;
+    width: 3.25rem !important;
+  }
+}

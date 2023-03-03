@@ -23,7 +23,8 @@
                 "https://akveo.github.io/nebular/docs/components/progress-bar/examples#nbprogressbarcomponent"
               ],
               "reproduction": "Step 1: Test",
-              "mitigation": "Test Mitigation"
+              "mitigation": "Test Mitigation",
+              "attachments": []
             },
             {
               "id": "58f63b4e-97fb-4fe8-8527-7996896089d2",
@@ -33,7 +34,8 @@
               "impact": "Medium",
               "affectedUrls": [],
               "reproduction": "Medium",
-              "mitigation": ""
+              "mitigation": "",
+              "attachments": []
             }
           ],
           "comments": [
@@ -41,7 +43,7 @@
               "id": "89703b19-16c7-49e5-8e33-0c706313e5fe",
               "title": "Test Comment",
               "description": "No related findings",
-              "relatedFindings": []
+              "attachments": []
             }
           ],
           "status": "COMPLETED"
@@ -59,7 +61,8 @@
               "impact": "High",
               "affectedUrls": [],
               "reproduction": "High",
-              "mitigation": ""
+              "mitigation": "",
+              "attachments": []
             }
           ],
           "comments": [],

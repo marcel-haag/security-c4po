@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SeverityRatingTableSubreport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6a3399a9-b8f7-4c58-a21d-8578e392dc84">
+	<style name="Table_TH" mode="Opaque" backcolor="#232B44">
+		<box>
+			<pen lineWidth="0.5" lineColor="#232B44"/>
+			<topPen lineWidth="0.5" lineColor="#232B44"/>
+			<leftPen lineWidth="0.5" lineColor="#232B44"/>
+			<bottomPen lineWidth="0.5" lineColor="#232B44"/>
+			<rightPen lineWidth="0.5" lineColor="#232B44"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#FEFEFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#232B44"/>
+			<topPen lineWidth="0.5" lineColor="#232B44"/>
+			<leftPen lineWidth="0.5" lineColor="#232B44"/>
+			<bottomPen lineWidth="0.5" lineColor="#232B44"/>
+			<rightPen lineWidth="0.5" lineColor="#232B44"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#232B44"/>
+			<topPen lineWidth="0.5" lineColor="#232B44"/>
+			<leftPen lineWidth="0.5" lineColor="#232B44"/>
+			<bottomPen lineWidth="0.5" lineColor="#232B44"/>
+			<rightPen lineWidth="0.5" lineColor="#232B44"/>
+		</box>
+	</style>
+	<subDataset name="SeverityRatingDefinition" uuid="adea3afd-3a9c-4386-b540-562fde7a2419">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="620" splitType="Stretch">
+			<componentElement>
+				<reportElement positionType="Float" x="-20" y="-20" width="560" height="620" uuid="10d88177-713d-4c60-9266-5afb31684f19">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+					<property name="com.jaspersoft.studio.components.autoresize.proportional" value="true"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="SeverityRatingDefinition" uuid="297fe663-872d-43d4-a947-9106a126a556">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="112" uuid="dd4a463a-7807-42ae-9419-7a17135a2a58">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:tableHeader style="Table_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="112" height="30" forecolor="#FFFFFF" uuid="140fe665-f028-4805-a55f-4b4190be3140"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Rating]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="Table_CH" height="200" rowSpan="1">
+							<staticText>
+								<reportElement positionType="Float" stretchType="ContainerHeight" x="0" y="0" width="112" height="200" forecolor="#03C886" uuid="bb091668-8003-45fc-a4aa-e54a96f7fa87"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="16" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Low]]></text>
+							</staticText>
+						</jr:tableFooter>
+						<jr:columnHeader style="Table_CH" height="90" rowSpan="1">
+							<staticText>
+								<reportElement positionType="Float" stretchType="ContainerHeight" x="0" y="0" width="112" height="90" forecolor="#FF3D70" uuid="d742063f-e537-400f-bb31-bb55fa9f20fd"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="16" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Critical]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="200" rowSpan="1">
+							<staticText>
+								<reportElement positionType="Float" stretchType="ContainerHeight" x="0" y="0" width="112" height="200" forecolor="#35A4FE" uuid="a8b12a40-8144-4226-870f-0e0a1e5ea752"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="16" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Medium]]></text>
+							</staticText>
+						</jr:columnFooter>
+						<jr:detailCell style="Table_TD" height="100">
+							<staticText>
+								<reportElement positionType="Float" stretchType="ContainerHeight" x="0" y="0" width="112" height="100" forecolor="#FFAB00" uuid="4a1dd484-384f-45ca-a41a-8d1d2b5fb1e6"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="16" isBold="true"/>
+								</textElement>
+								<text><![CDATA[High]]></text>
+							</staticText>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="448" uuid="ab851b91-c506-48d4-a4e6-77292e4c42ef">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:tableHeader style="Table_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="448" height="30" forecolor="#FFFFFF" uuid="7c3f036d-ed06-4aa2-bba2-f45c7eb91316">
+									<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+								</reportElement>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+									<paragraph leftIndent="2"/>
+								</textElement>
+								<text><![CDATA[Severity Rating Definition]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="Table_CH" height="200" rowSpan="1">
+							<staticText>
+								<reportElement positionType="Float" stretchType="ContainerHeight" x="0" y="0" width="448" height="200" uuid="9e066b11-0381-46ce-a05b-99b2293ce66c">
+									<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+								</reportElement>
+								<textElement>
+									<font size="12"/>
+									<paragraph leftIndent="2"/>
+								</textElement>
+								<text><![CDATA[Exploitation of the technical or procedural vulnerability will cause minimal impact to operations. The
+Confidentiality, Integrity and Availability (CIA) of sensitive information are not at risk of compromise.
+Exploitation of the vulnerability may cause slight financial loss or public embarrassment. The threat exposure is
+moderate-to-low. Security controls are in place to contain the severity of impact if the vulnerability were
+exploited, such that further political, financial, or legal damage will not occur.
+- OR -
+The vulnerability is such that it would otherwise be considered Medium Risk, but the threat exposure is so limited
+that the likelihood of occurrence is minimal.]]></text>
+							</staticText>
+						</jr:tableFooter>
+						<jr:columnHeader style="Table_CH" height="90" rowSpan="1">
+							<staticText>
+								<reportElement positionType="Float" stretchType="ContainerHeight" x="0" y="0" width="448" height="90" uuid="628591b9-4f90-45cf-896c-e38355ed9de8">
+									<property name="com.jaspersoft.studio.unit.firstLineIndent" value="pixel"/>
+									<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+								</reportElement>
+								<textElement textAlignment="Left">
+									<font size="12"/>
+									<paragraph lineSpacingSize="1.0" leftIndent="2"/>
+								</textElement>
+								<text><![CDATA[Exploitation of the technical or procedural vulnerability will cause substantial harm. Significant political,
+financial, and/or legal damage is likely to result. The threat exposure is critical, and a publicly available mechanism exists to exploit the vulnerability. Security controls are not effectively implemented to reduce the severity of impact if the vulnerability were exploited.]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="200" rowSpan="1">
+							<staticText>
+								<reportElement positionType="Float" stretchType="ContainerHeight" x="0" y="0" width="448" height="200" uuid="b9e7a6f9-946f-4824-8a9e-24bc3279589a">
+									<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+								</reportElement>
+								<textElement>
+									<font size="12"/>
+									<paragraph leftIndent="2"/>
+								</textElement>
+								<text><![CDATA[Exploitation of the technical or procedural vulnerability will significantly impact the confidentiality, integrity,
+and/or availability of the system, application, or data. Exploitation of the vulnerability may cause moderate
+financial loss or public embarrassment. The threat exposure is moderate-to-high, thereby increasing the
+likelihood of occurrence. Security controls are in place to contain the severity of impact if the vulnerability were
+exploited, such that further political, financial, or legal damage will not occur.
+- OR -
+The vulnerability is such that it would otherwise be considered High Risk, but the threat exposure is so limited
+that the likelihood of occurrence is minimal.]]></text>
+							</staticText>
+						</jr:columnFooter>
+						<jr:detailCell style="Table_TD" height="100">
+							<staticText>
+								<reportElement positionType="Float" stretchType="ContainerHeight" x="0" y="0" width="448" height="100" uuid="8a292592-81b2-49a1-bfda-e9540ecb3aa9">
+									<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+								</reportElement>
+								<textElement>
+									<font size="12"/>
+									<paragraph leftIndent="2"/>
+								</textElement>
+								<text><![CDATA[Exploitation of the technical or procedural vulnerability will cause substantial harm. Significant political,
+financial, and/or legal damage is likely to result. The threat exposure is high, thereby increasing the likelihood of
+occurrence. Security controls are not effectively implemented to reduce the severity of impact if the vulnerability
+were exploited.]]></text>
+							</staticText>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>

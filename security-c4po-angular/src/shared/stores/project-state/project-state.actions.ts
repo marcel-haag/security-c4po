@@ -1,6 +1,7 @@
 import {Project} from '@shared/models/project.model';
 import {Category} from '@shared/models/category.model';
 import {Pentest} from '@shared/models/pentest.model';
+import {PentestStatus} from '@shared/models/pentest-status.model';
 
 
 export class InitProjectState {
@@ -31,6 +32,20 @@ export class ChangePentest {
   static readonly type = '[ProjectState] ChangePentest';
 
   constructor(public pentest: Pentest) {
+  }
+}
+
+export class UpdatePentestStatus {
+  static readonly type = '[ProjectState] UpdatePentestStatus';
+
+  constructor(public newPentestStatus: PentestStatus) {
+  }
+}
+
+export class UpdatePentestTime {
+  static readonly type = '[ProjectState] UpdatePentestTime';
+
+  constructor(public time: number) {
   }
 }
 

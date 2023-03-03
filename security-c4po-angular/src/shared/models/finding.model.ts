@@ -10,6 +10,8 @@ export class Finding {
   affectedUrls?: Array<string>;
   reproduction: string;
   mitigation?: string;
+  // List of attachment id's for file upload
+  attachments?: Array<string>;
 
   constructor(title: string,
               severity: Severity,
@@ -18,7 +20,8 @@ export class Finding {
               reproduction: string,
               id?: string,
               affectedUrls?: Array<string>,
-              mitigation?: string) {
+              mitigation?: string,
+              attachments?: Array<string>) {
     this.id = id ? id : UUID();
     this.severity = severity;
     this.title = title;
@@ -27,13 +30,15 @@ export class Finding {
     this.affectedUrls = affectedUrls ? affectedUrls : null;
     this.reproduction = reproduction;
     this.mitigation = mitigation ? mitigation : null;
+    this.attachments = attachments ? attachments : null;
   }
 }
 
 export interface FindingEntry {
   findingId: string;
-  severity: Severity;
   title: string;
+  severity: Severity;
+  description: string;
   impact: string;
   kind?: string;
   childEntries?: [];
@@ -45,8 +50,9 @@ export function transformFindingsToObjectiveEntries(findings: Finding[]): Findin
   findings.forEach((value: Finding) => {
     findingEntries.push({
       findingId: value.id,
-      severity: typeof value.severity !== 'number' ? Severity[value.severity] : value.severity,
       title: value.title,
+      severity: typeof value.severity !== 'number' ? Severity[value.severity] : value.severity,
+      description: value.description,
       impact: value.impact,
       kind: 'cell',
       childEntries: null,

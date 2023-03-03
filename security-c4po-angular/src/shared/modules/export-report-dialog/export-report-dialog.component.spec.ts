@@ -1,7 +1,6 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ExportReportDialogComponent} from './export-report-dialog.component';
-import {CommonModule} from '@angular/common';
 import {
   NB_DIALOG_CONFIG,
   NbButtonModule,
@@ -9,11 +8,10 @@ import {
   NbDialogRef,
   NbFormFieldModule,
   NbInputModule,
-  NbLayoutModule, NbRadioModule,
-  NbTagModule
+  NbRadioModule
 } from '@nebular/theme';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ThemeModule} from '@assets/@theme/theme.module';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -29,7 +27,6 @@ import {createSpyObj} from '@shared/modules/finding-dialog/finding-dialog.compon
 import {Project, ProjectPentests} from '@shared/models/project.model';
 import {PentestStatus} from '@shared/models/pentest-status.model';
 import {ObjectiveChartModule} from '@shared/modules/objective-chart/objective-chart.module';
-import {forwardRef} from '@angular/core';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 describe('ExportReportDialogComponent', () => {
