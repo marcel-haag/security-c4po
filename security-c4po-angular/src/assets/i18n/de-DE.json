@@ -14,6 +14,7 @@
     "action.download": "Herunterladen",
     "action.report": "Bericht",
     "action.reset": "Zurücksetzen",
+    "action.complete": "Fertig",
     "action.yes": "Ja",
     "action.no": "Nein",
     "username": "Nutzername",
@@ -222,11 +223,14 @@
       "not_started": "Nicht angefangen",
       "disabled": "Deaktiviert",
       "open": "Offen",
+      "paused": "Pausiert",
       "in_progress": "In Bearbeitung",
       "completed": "Fertig"
     },
     "popup": {
       "not.found": "Keine pentests gefunden",
+      "initial.save.success": "Initialer Pentest erfolgreich aufgesetzt",
+      "initial.save.failed": "Initialer Pentest konnte nicht aufgesetzt werden",
       "save.success": "Pentest erfolgreich gespeichert",
       "save.failed": "Pentest konnte nicht gespeichert werden",
       "update.success": "Pentest erfolgreich aktualisiert",

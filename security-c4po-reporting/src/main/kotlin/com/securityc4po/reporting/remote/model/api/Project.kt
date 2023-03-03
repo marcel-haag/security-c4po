@@ -12,7 +12,7 @@ data class Project(
     val title: String,
     val createdAt: String,
     val tester: String,
-    val summary: String? = null,
+    val summary: String? = "",
     var projectPentests: List<ProjectPentest>? = emptyList(),
     val createdBy: String
 )

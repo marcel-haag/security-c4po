@@ -1,351 +1,269 @@
 [{
   "_id": {
-    "$oid": "62f3c50c7acde34f740ba737"
+    "$oid": "6405d84a13ae975803a098fa"
   },
   "lastModified": {
     "$date": {
-      "$numberLong": "1668425376081"
+      "$numberLong": "1678109612474"
     }
   },
   "data": {
-    "_id": "5a4f126c-9471-43b8-80b9-6eb02b7c35d0",
+    "_id": "575dd9d4-cb3c-4df3-981e-8a18bf8dc1d2",
     "client": "Dio Stonemask Inc.",
     "title": "log4jj bizarre adventure",
-    "createdAt": "2022-08-10T14:47:40.140406Z",
+    "createdAt": "2023-03-06T12:10:50.835664Z",
     "tester": "Jojo",
+    "summary": "This report includes an Executeive Summary, the rules in regards to the scope of the pentest and the choosen approach of the pentester.\nDio Stonemask Inc. contracted Jojo to perform a Penetration Test to identify security weaknesses,\ndetermine the impact to Dio Stonemask Inc., document all findings in a clear and repeatable manner,\nand provide remediation recommendations",
     "projectPentests": [
       {
-        "pentestId": "11601f51-bc17-47fd-847d-0c53df5405b5",
-        "status": "IN_PROGRESS"
+        "pentestId": "54f3ce12-784a-4e44-b9b3-0a986119ec50",
+        "status": "COMPLETED"
       },
       {
-        "pentestId": "9a073a08-e4fc-4450-8202-c902455b66ec",
-        "status": "OPEN"
+        "pentestId": "d724df75-e85a-4124-a5be-bccadc78beaf",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "981c5e24-7276-47f8-a821-ff5976292ad4",
-        "status": "OPEN"
+        "pentestId": "c9c1c2f4-14dd-43f4-bc0d-bac03755f798",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "2d46a183-8f11-4fbc-bbf1-e439f7282bb9",
-        "status": "OPEN"
+        "pentestId": "288599c2-c295-4825-b1ff-db20e99f45ba",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "eb4f80f3-caac-4fef-a5dd-53616701f171",
-        "status": "OPEN"
+        "pentestId": "7c1c1d64-000d-461b-b60f-50bfc70868e6",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "0ab8de31-9d5e-4b6b-a43c-12207c160863",
-        "status": "IN_PROGRESS"
+        "pentestId": "415528d1-a92c-4e14-adf1-2846b2ce0f70",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "3ed9e894-58e8-46b9-9859-cde675fec17c",
-        "status": "OPEN"
+        "pentestId": "8d91e25f-eaeb-42f6-800c-4e7113656321",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "53fdab75-ea52-4cea-85ed-df8b67f41b72",
-        "status": "OPEN"
+        "pentestId": "ed9595bb-cc80-4daa-873e-e7470fc0b7d1",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "6270d4bc-5f39-4358-ad0a-fd5791191f28",
-        "status": "IN_PROGRESS"
+        "pentestId": "35481ca5-5672-4a11-a2b8-38ece069ca70",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "1a90f468-470a-4b1e-9783-cc761b1770ee",
-        "status": "OPEN"
+        "pentestId": "538f8e15-8d0e-43ac-b7a6-d6b5959581eb",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "6eb37869-baef-4a5b-9ac0-bf202a49874f",
-        "status": "OPEN"
+        "pentestId": "3bff597e-d680-4b87-8352-be32f40db074",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "da89c933-1413-4186-ad2c-f1967cb8dbb4",
-        "status": "OPEN"
+        "pentestId": "27ca5852-aa9f-44ed-b2fe-c46c31b415f4",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "b3682591-f6c3-4969-bf15-69f4d495ef18",
-        "status": "OPEN"
+        "pentestId": "60cf0cf9-f62a-4669-87a7-f519e7be0613",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "9e8e2736-afc9-4f63-b29f-567f9f316c83",
-        "status": "OPEN"
+        "pentestId": "05251dfd-a382-47af-85d5-798dd1a6171a",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "3405bdd6-1ae2-4876-9c18-443a791cec9c",
-        "status": "OPEN"
+        "pentestId": "be6780a2-b66e-42a6-a725-805633589921",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "2fd387b3-b7a5-4297-9790-5d7845214c05",
-        "status": "OPEN"
+        "pentestId": "192b9fed-596b-4345-b33d-ca3882ba9bdd",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "a61116c5-1859-4df3-8252-7788c31472d8",
-        "status": "OPEN"
+        "pentestId": "6d3f0b58-b311-465e-9f01-e3e45d165902",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "47d8b39d-9fa7-4772-8605-84aa0531f49e",
-        "status": "OPEN"
+        "pentestId": "058dd5c7-63a5-40cb-a4ed-46e5cdcb87ff",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "bd2b8899-0cd9-41fd-a975-257aac48b81f",
-        "status": "OPEN"
+        "pentestId": "36e1c198-d425-4a38-ad0b-2f9d6759931e",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "b9bde632-c275-4566-b693-c57a3dad47f3",
-        "status": "OPEN"
+        "pentestId": "b3063d09-237f-493e-b0db-603a11829d88",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "32cc5c4e-7234-42b7-8031-c2e231bc0404",
-        "status": "OPEN"
+        "pentestId": "6ae89321-678f-4191-b008-8abfc42401c3",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "07e34e95-7dda-499a-8be8-0e8378f0e0d0",
-        "status": "OPEN"
+        "pentestId": "3334d254-87bf-4115-8d88-e2fed022ad06",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "b70f6720-ee17-49d6-8838-bd776cd18d0a",
-        "status": "OPEN"
+        "pentestId": "8e97f1e0-b02c-4be2-b30e-372d09614038",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "9fb260ea-333f-44c6-884b-e46352564e2a",
-        "status": "OPEN"
+        "pentestId": "e9c9eecb-116b-4a8c-ac8c-4a279f77e1f4",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "87f492f7-991b-4e04-9531-5dba0bc34b1b",
-        "status": "OPEN"
+        "pentestId": "f0531d71-18d3-41a7-a37a-2c15f6b26dcb",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "6d846445-d470-447a-96b3-8f4b57df3221",
-        "status": "OPEN"
+        "pentestId": "d73543ef-a66f-4878-9ecb-ab5207ed734f",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "123c43ae-6870-4883-a1c5-2f99946e2c2d",
-        "status": "OPEN"
+        "pentestId": "22130f1e-53c2-404b-8f77-750e82d12768",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "8be5b377-3eb0-4b54-81d2-8cfd5ea1f0f1",
-        "status": "OPEN"
+        "pentestId": "54db12f1-1fdc-48f9-9b1d-b6b1fb39bc07",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "6b1d2b71-9e31-4e78-a82e-5325c699658c",
-        "status": "OPEN"
+        "pentestId": "7853a95c-7ee3-4b31-af18-401c104efc7e",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "77e765ef-40fb-4b6e-9d80-1e06cae7d4a3",
-        "status": "OPEN"
+        "pentestId": "7ca78e39-7d4c-46c5-a9c3-ba58c7fba844",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "5821cd2c-aa17-4339-b697-1b4089d3bf93",
-        "status": "OPEN"
+        "pentestId": "dca5b8b3-e994-4d5c-8740-b21ee806a4e5",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "bb57b94f-c8bc-4dd9-b4bf-e14d0a97cc31",
-        "status": "OPEN"
+        "pentestId": "5e7b999c-e878-4d48-9ce8-9b65ef578dae",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "a5e3aaba-268e-4a40-92f9-05c0dae4cc0f",
-        "status": "OPEN"
+        "pentestId": "8bc131f4-b9c8-4dd5-927b-0675dff6344e",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "18ed1ddb-524a-4333-af90-7716bd51dc7b",
-        "status": "OPEN"
+        "pentestId": "ed134842-6578-4d22-af57-282161c5306b",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "c2d19d1e-39e5-4862-82c9-d88c5d91f630",
-        "status": "OPEN"
+        "pentestId": "f35f30fb-f246-4a1f-ae26-ce864647a341",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "728e294f-e27d-4bef-903b-d9eeb54cf086",
-        "status": "OPEN"
+        "pentestId": "47021e69-95ab-4d93-ac13-aac0379ca809",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "91cd7aee-acda-4c95-ba35-16932448f29f",
-        "status": "OPEN"
+        "pentestId": "f19a5176-64bc-452b-aa63-8861aab75059",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "e496d9ba-7775-479e-8904-864c04fec3f9",
-        "status": "OPEN"
+        "pentestId": "c60ac6e5-39e8-4fae-8d65-d71ea69a2404",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "ee87e923-63d7-40bc-b41e-049fe087e1dd",
-        "status": "OPEN"
+        "pentestId": "2764e64b-0a7e-456c-9999-cdd05c5ef50b",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "cbe94eaf-c734-4d6f-96ec-7d84a4a5b5cc",
-        "status": "IN_PROGRESS"
+        "pentestId": "1247dd20-2986-4887-9c17-74806ce56eef",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "c9ecfc9f-23f1-4744-a578-54b0c96a9e87",
-        "status": "IN_PROGRESS"
+        "pentestId": "e01d1a34-15fa-4f29-8054-8209a422e505",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "ca0c10a1-8fcc-4b0b-98c0-2403709d7e50",
-        "status": "OPEN"
+        "pentestId": "c55343b0-c99c-4bfd-8f30-b8464b442dad",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "bce6f266-2c70-4e45-a1db-d767e4bcc1f8",
-        "status": "OPEN"
+        "pentestId": "47ff61bb-2e4f-45e3-9630-136f9d704882",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "be0b07a3-64e4-4122-a362-dd657b8b6b0a",
-        "status": "OPEN"
+        "pentestId": "0b353e67-3092-4586-9558-172354beaf8b",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "8f2230fb-bd5c-4047-9db6-74bc49be9cc1",
-        "status": "OPEN"
+        "pentestId": "5804e2ce-8c5b-4f3d-8674-433042e61a7f",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "a1b00a90-cb14-475f-ba3a-5807a21df704",
-        "status": "OPEN"
+        "pentestId": "4fc1260b-8b5b-47a7-bdee-61261e23919d",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "af2e7766-ecd1-4015-b4e1-c0b978643a0f",
-        "status": "OPEN"
+        "pentestId": "39dfbf25-e97d-4bd8-9943-a9eec183bfcf",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "27b64044-b3ff-48bf-9220-837b420f3904",
-        "status": "OPEN"
+        "pentestId": "53668fb6-471d-4363-9e47-8f73e4f1a7d4",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "b5eb1683-700a-4522-8b53-45809e665643",
-        "status": "OPEN"
+        "pentestId": "86637ffd-8e6e-4e00-9179-42f52780427a",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "86b4d382-e433-4bac-ab6e-530a0dce299d",
-        "status": "OPEN"
+        "pentestId": "04f9532e-3c05-4eff-9e9f-b2d733a14a77",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "7a118a29-f983-4219-834c-f01554231910",
-        "status": "OPEN"
+        "pentestId": "1e58f29e-81fb-48d2-94bf-7b89e227f590",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "ac9bc697-a53f-4278-98b9-05d8ba19a50d",
-        "status": "OPEN"
+        "pentestId": "2c78589b-558e-4b99-a182-df4df3c1439b",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "13cecebb-321a-4ef8-8116-f6814652f7d7",
-        "status": "OPEN"
+        "pentestId": "9383b9c1-6c2e-422b-b16f-31a9640d1647",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "048287bc-c41b-49a1-aeb5-2cc98a5bad06",
-        "status": "OPEN"
+        "pentestId": "2f87faf9-611f-40ae-9c0e-412d0bfd0481",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "4d1b424e-05ea-468c-9902-3626a79ccfe6",
-        "status": "OPEN"
+        "pentestId": "0f47fcbc-f567-4009-ae56-a894cf17cc46",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "377d73b8-f8da-461e-909b-524a38a37ed6",
-        "status": "OPEN"
+        "pentestId": "ba0fa19c-5533-4be8-8169-9ffa7d449ab0",
+        "status": "PAUSED"
       },
       {
-        "pentestId": "16e10ad9-f49d-4a74-9de7-10a49e2401e2",
-        "status": "OPEN"
-      },
-      {
-        "pentestId": "4c68c22e-6073-4ec8-aebb-45ad2a3cc848",
-        "status": "OPEN"
-      },
-      {
-        "pentestId": "276e5823-b517-445c-b182-e6eda6478d44",
-        "status": "OPEN"
-      },
-      {
-        "pentestId": "84c661c0-2775-440a-97c5-ff35f345cabb",
-        "status": "OPEN"
-      },
-      {
-        "pentestId": "fb6d909c-8d16-48e3-b0e5-aba9bf3e8eae",
-        "status": "OPEN"
-      },
-      {
-        "pentestId": "0b211e22-dd63-46cc-a12f-be7ac73d7a64",
-        "status": "OPEN"
-      },
-      {
-        "pentestId": "63310549-e2a8-4dd0-a91a-9cfa06e2dc41",
-        "status": "OPEN"
-      },
-      {
-        "pentestId": "ac8d52d0-f0c8-47ec-ab13-24f40dc4f9e6",
-        "status": "OPEN"
-      },
-      {
-        "pentestId": "3ddc4950-f662-4ec1-9a04-b9c3591d8b06",
-        "status": "OPEN"
-      },
-      {
-        "pentestId": "4c11d176-2ec5-4ed9-9c8a-c1edd33b262c",
-        "status": "OPEN"
-      },
-      {
-        "pentestId": "b9a6f4ba-62e6-442b-a274-b3ffe209d248",
-        "status": "OPEN"
-      },
-      {
-        "pentestId": "705e28a2-b0a4-4b8c-9922-10c5c67faf65",
-        "status": "OPEN"
-      },
-      {
-        "pentestId": "4c59259d-4a24-43ef-8738-fe214e0b0673",
-        "status": "OPEN"
-      },
-      {
-        "pentestId": "a7ab3344-db7d-495a-8e55-dd572ea7c5e0",
-        "status": "OPEN"
-      },
-      {
-        "pentestId": "195e7f58-a7b2-4571-9c66-1e91a0dfca28",
-        "status": "OPEN"
-      },
-      {
-        "pentestId": "543a9768-4e5c-4c70-9aae-977afa542afa",
-        "status": "OPEN"
-      },
-      {
-        "pentestId": "a17516de-e92a-43b9-a415-203dce48fb0e",
-        "status": "OPEN"
+        "pentestId": "0f47ac3b-d19a-4115-9ddf-dc9b2f11abae",
+        "status": "PAUSED"
       }
     ],
-    "createdBy": "3c4ae87f-0d56-4634-a824-b4883c403c8a"
+    "createdBy": "ce650edd-aebc-4478-9e17-40545ff66280"
   },
   "_class": "com.securityc4po.api.project.ProjectEntity"
 },{
   "_id": {
-    "$oid": "62f3c5317acde34f740ba738"
+    "$oid": "6405e92813ae975803a09905"
   },
   "lastModified": {
     "$date": {
-      "$numberLong": "1660142897912"
+      "$numberLong": "1678108968564"
     }
   },
   "data": {
-    "_id": "42b8c0df-b70e-4526-8ed0-7c022195fe85",
+    "_id": "d6e83738-4251-44ac-ad40-21b360780c98",
     "client": "Allsafe",
     "title": "CashMyData (iOS)",
-    "createdAt": "2022-08-10T14:48:17.912592Z",
+    "createdAt": "2023-03-06T13:22:48.564351Z",
     "tester": "Elliot",
     "projectPentests": [],
-    "createdBy": "6740ad72-8f42-486a-bcf3-e057e6afb0de"
-  },
-  "_class": "com.securityc4po.api.project.ProjectEntity"
-},{
-  "_id": {
-    "$oid": "62ff7534ac2b4d14d86215c4"
-  },
-  "lastModified": {
-    "$date": {
-      "$numberLong": "1660908852340"
-    }
-  },
-  "data": {
-    "_id": "195809ed-9722-4ad5-a84b-0099a9a01652",
-    "client": "Novatec",
-    "title": "log4j pentest",
-    "createdAt": "2022-08-19T11:34:12.339990Z",
-    "tester": "Stipe",
-    "projectPentests": [],
-    "createdBy": "7fe49c8d-fee3-47e0-9224-94e0ac7436c6"
+    "createdBy": "5f104d76-bd8d-4258-852a-d000c7f0666d"
   },
   "_class": "com.securityc4po.api.project.ProjectEntity"
 }]

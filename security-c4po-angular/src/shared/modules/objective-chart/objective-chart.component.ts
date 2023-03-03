@@ -41,7 +41,7 @@ export class ObjectiveChartComponent implements OnInit {
   readonly pentestStatusLabels: Array<string> = [
     'pentest.statusText.disabled',
     'pentest.statusText.not_started',
-    'pentest.statusText.open',
+    'pentest.statusText.paused',
     'pentest.statusText.in_progress',
     'pentest.statusText.completed'
   ];
@@ -58,7 +58,7 @@ export class ObjectiveChartComponent implements OnInit {
     const disabledPentests: ProjectPentests[]
       = this.projectPentestData.filter(projectPentest => projectPentest.status === PentestStatus.DISABLED);
     const openPentests: ProjectPentests[]
-      = this.projectPentestData.filter(projectPentest => projectPentest.status === PentestStatus.OPEN);
+      = this.projectPentestData.filter(projectPentest => projectPentest.status === PentestStatus.PAUSED);
     const inProgressPentests: ProjectPentests[]
       = this.projectPentestData.filter(projectPentest => projectPentest.status === PentestStatus.IN_PROGRESS);
     const completedPentests: ProjectPentests[]

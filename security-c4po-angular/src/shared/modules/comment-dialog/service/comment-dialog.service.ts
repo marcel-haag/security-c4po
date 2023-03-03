@@ -5,7 +5,7 @@ import {ComponentType} from '@angular/cdk/overlay';
 import {Observable} from 'rxjs';
 import {Validators} from '@angular/forms';
 import {CommentDialogComponent} from '@shared/modules/comment-dialog/comment-dialog.component';
-import {Comment, RelatedFindingOption} from '@shared/models/comment.model';
+import {Comment} from '@shared/models/comment.model';
 
 @Injectable()
 export class CommentDialogService {
@@ -30,18 +30,15 @@ export class CommentDialogService {
 
   public openCommentDialog(componentOrTemplateRef: ComponentType<any>,
                            findingIds: string[],
-                           relatedFindings: RelatedFindingOption[],
                            comment?: Comment,
                            config?: Partial<NbDialogConfig<Partial<any> | string>>): Observable<any> {
     let dialogOptions: Partial<NbDialogConfig<Partial<any> | string>>;
     let dialogData: GenericDialogData;
-    // Preselect related findings
-    const selectedRelatedFindings: RelatedFindingOption[] = [];
-    if (comment && comment.relatedFindings.length > 0 && relatedFindings) {
-      relatedFindings.forEach(finding => {
-        if (comment.relatedFindings.includes(finding.id)) {
-          selectedRelatedFindings.push(finding);
-        }
+    // Preselect attachments
+    const attachments: string[] = [];
+    if (comment && comment.attachments.length > 0) {
+      comment.attachments.forEach(attachment => {
+        // Load attachment to show
       });
     }
     // Setup CommentDialogBody
@@ -72,22 +69,6 @@ export class CommentDialogService {
           errors: [
             {errorCode: 'required', translationKey: 'comment.validationMessage.descriptionRequired'}
           ]
-        },
-        commentRelatedFindings: {
-          fieldName: 'commentRelatedFindings',
-          type: 'text',
-          labelKey: 'comment.relatedFindings.label',
-          placeholder: findingIds.length === 0 ? 'comment.noFindingsInObjectivePlaceholder' : 'comment.relatedFindingsPlaceholder',
-          controlsConfig: [
-            {
-              value: comment ? selectedRelatedFindings : [],
-              disabled: findingIds.length === 0
-            },
-            []
-          ],
-          errors: [
-            {errorCode: 'required', translationKey: 'finding.validationMessage.relatedFindings'}
-          ]
         }
       },
       options: []
@@ -97,8 +78,7 @@ export class CommentDialogService {
         {
           headerLabelKey: 'comment.edit.header',
           buttonKey: 'global.action.update',
-          accentColor: 'warning',
-          additionalData: relatedFindings
+          accentColor: 'warning'
         },
       ];
     } else {
@@ -106,8 +86,7 @@ export class CommentDialogService {
         {
           headerLabelKey: 'comment.create.header',
           buttonKey: 'global.action.save',
-          accentColor: 'info',
-          additionalData: relatedFindings
+          accentColor: 'info'
         },
       ];
     }

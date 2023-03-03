@@ -550,7 +550,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"title\": \"Test Comment\",\n    \"description\": \"Test Comment Description\",\n    \"relatedFindings\": []\n}",
+									"raw": "{\n    \"title\": \"Test Comment\",\n    \"description\": \"Test Comment Description\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -700,7 +700,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"title\": \"Test Comment\",\n    \"description\": \"Edited Test Comment Description\",\n    \"relatedFindings\": []\n}",
+									"raw": "{\n    \"title\": \"Test Comment\",\n    \"description\": \"Edited Test Comment Description\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"

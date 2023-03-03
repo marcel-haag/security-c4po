@@ -14,6 +14,7 @@
     "action.download": "Download",
     "action.report": "Report",
     "action.reset": "Reset",
+    "action.complete": "Complete",
     "action.yes": "Yes",
     "action.no": "No",
     "username": "Username",
@@ -222,11 +223,14 @@
       "not_started": "Not Started",
       "disabled": "Disabled",
       "open": "Open",
+      "paused": "Paused",
       "in_progress": "In progress",
       "completed": "Completed"
     },
     "popup": {
       "not.found": "No pentest found",
+      "initial.save.success": "Initial Pentest successfully setup",
+      "initial.save.failed": "Initial Pentest could not be setup",
       "save.success": "Pentest saved successfully",
       "save.failed": "Pentest could not be saved",
       "update.success": "Pentest updated successfully",

@@ -5,11 +5,14 @@ import {
   ChangeCategory,
   ChangePentest,
   ChangeProject,
-  InitProjectState, UpdatePentestComments,
-  UpdatePentestFindings
+  InitProjectState,
+  UpdatePentestComments,
+  UpdatePentestFindings, UpdatePentestStatus,
+  UpdatePentestTime
 } from '@shared/stores/project-state/project-state.actions';
 import {Category} from '@shared/models/category.model';
 import {Pentest} from '@shared/models/pentest.model';
+import {PentestStatus} from '@shared/models/pentest-status.model';
 
 export const PROJECT_STATE_NAME = 'project';
 
@@ -91,6 +94,40 @@ export class ProjectState {
     });
   }
 
+  @Action(UpdatePentestStatus)
+  updatePentestStatus(ctx: StateContext<ProjectStateModel>, {newPentestStatus}: UpdatePentestStatus): void {
+    const state = ctx.getState();
+    let stateSelectedPentest: Pentest = state.selectedPentest;
+    // State object
+    const statePentestStatus: PentestStatus = stateSelectedPentest.status || PentestStatus.NOT_STARTED;
+    // overwrites only timeSpent
+    stateSelectedPentest = {
+      ...stateSelectedPentest,
+      status: newPentestStatus
+    };
+    // patch project state
+    ctx.patchState({
+      selectedPentest: stateSelectedPentest
+    });
+  }
+
+  @Action(UpdatePentestTime)
+  updatePentestTime(ctx: StateContext<ProjectStateModel>, {time}: UpdatePentestTime): void {
+    const state = ctx.getState();
+    let stateSelectedPentest: Pentest = state.selectedPentest;
+    // State object
+    const statePentestTimeSpent: number = stateSelectedPentest.timeSpent || 0;
+    // overwrites only timeSpent
+    stateSelectedPentest = {
+      ...stateSelectedPentest,
+      timeSpent: time
+    };
+    // patch project state
+    ctx.patchState({
+      selectedPentest: stateSelectedPentest
+    });
+  }
+
   @Action(UpdatePentestFindings)
   updatePentestFindings(ctx: StateContext<ProjectStateModel>, {findingId}: UpdatePentestFindings): void {
     const state = ctx.getState();
@@ -109,7 +146,7 @@ export class ProjectState {
       ...stateSelectedPentest,
       findingIds: updatedFindingIds
     };
-    // path project state
+    // patch project state
     ctx.patchState({
       selectedPentest: stateSelectedPentest
     });
@@ -133,7 +170,7 @@ export class ProjectState {
       ...stateSelectedPentest,
       commentIds: updatedCommentIds
     };
-    // path project state
+    // patch project state
     ctx.patchState({
       selectedPentest: stateSelectedPentest
     });

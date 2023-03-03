@@ -31,7 +31,8 @@
 
   .form-textarea {
     width: 42rem !important;
-    height: 8rem;
+    // Change back to 16rem after attachments can be uploaded
+    height: 24rem;
   }
 
   .comment-form-field {

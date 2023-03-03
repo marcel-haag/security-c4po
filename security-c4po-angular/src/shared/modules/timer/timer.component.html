@@ -1,0 +1,18 @@
+<div class="timer-module" fxLayout="row" fxLayoutGap="0.5rem" fxLayoutAlign="end center">
+  <div class="time">
+    <fa-icon [icon]="fa.faStopwatch" class="stopwatch-icon fa-xl"></fa-icon>
+    <span>{{ timer | timerDuration }}</span>
+  </div>
+  <!-- status="{{getStopwatchButtonStatus()}}" -->
+  <button nbButton outline
+          shape="semi-round"
+          status="{{timerRunning$.getValue() === true ? 'warning' : 'info'}}"
+          class="stopwatch-player-button"
+          (click)="onClickTriggerTimer()">
+    <fa-icon *ngIf="timerRunning$.getValue(), else changeTimerIcon" [icon]="fa.faPause"
+             class="new-element-icon"></fa-icon>
+    <ng-template #changeTimerIcon>
+      <fa-icon [icon]="fa.faPlay" class="stopwatch-player-icon"></fa-icon>
+    </ng-template>
+  </button>
+</div>

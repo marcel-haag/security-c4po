@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CommentsSubreport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2d64b016-bc6c-4109-8b3a-f9f818c7397d">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="ProjectReportJasperData Template JSON Adapter"/>
+	<queryString language="json">
+		<![CDATA[projectReportData.projectPentestReport.comments]]>
+	</queryString>
+	<field name="id" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="id"/>
+		<fieldDescription><![CDATA[id]]></fieldDescription>
+	</field>
+	<field name="title" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="title"/>
+		<fieldDescription><![CDATA[title]]></fieldDescription>
+	</field>
+	<field name="description" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="description"/>
+		<fieldDescription><![CDATA[description]]></fieldDescription>
+	</field>
+	<field name="attachments" class="java.util.ArrayList"/>
+	<group name="id">
+		<groupExpression><![CDATA[$F{id}]]></groupExpression>
+	</group>
+	<group name="title">
+		<groupExpression><![CDATA[$F{title}]]></groupExpression>
+	</group>
+	<group name="description">
+		<groupExpression><![CDATA[$F{description}]]></groupExpression>
+	</group>
+	<group name="relatedFindings">
+		<groupExpression><![CDATA[$F{attachments}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="280" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="50" width="100" height="19" forecolor="#232B44" uuid="27e653a4-f25c-4e14-a2dd-98639beaa958"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Title:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="120" width="100" height="20" forecolor="#232B44" uuid="4f0f0eaf-177b-4af7-99d8-a46b0faa9357"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Description:]]></text>
+			</staticText>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="0" y="70" width="530" height="30" uuid="62ff1e8e-7987-4cd0-a79e-536859418d32"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement positionType="Float" x="0" y="140" width="530" height="40" uuid="7e9aa6ea-d9f7-4879-bbca-753e3d654996"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="0" y="-12" width="575" height="33" forecolor="#35A4FE" backcolor="#35A4FE" uuid="6b56d210-7a17-4ac9-bab8-b27008e039e4"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<ellipse>
+				<reportElement x="-19" y="-12" width="40" height="33" forecolor="#35A4FE" backcolor="#35A4FE" uuid="fa27cf34-9e98-4d59-9cd2-9f436f0b6c25"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</ellipse>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="80" y="-12" width="480" height="32" forecolor="#FFFFFF" uuid="f3b19575-bca9-450c-93bf-f9abbfe15bde"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="-12" width="80" height="32" forecolor="#FFFFFF" uuid="06c9b872-ccec-44a6-854f-ef7b5dcedec9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comment:]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

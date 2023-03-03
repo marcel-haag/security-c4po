@@ -14,7 +14,7 @@ export class StatusTagComponent implements OnInit {
   readonly statusTexts: Array<StatusText> = [
     {value: PentestStatus.NOT_STARTED, translationText: 'pentest.statusText.not_started'},
     {value: PentestStatus.DISABLED, translationText: 'pentest.statusText.disabled'},
-    {value: PentestStatus.OPEN, translationText: 'pentest.statusText.open'},
+    {value: PentestStatus.PAUSED, translationText: 'pentest.statusText.paused'},
     {value: PentestStatus.IN_PROGRESS, translationText: 'pentest.statusText.in_progress'},
     {value: PentestStatus.COMPLETED, translationText: 'pentest.statusText.completed'}
   ];
