@@ -81,7 +81,6 @@ describe('LoginComponent', () => {
       ...store.snapshot(),
       [SESSION_STATE_NAME]: DESIRED_STORE_STATE_SESSION
     });
-
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     httpMock = TestBed.inject(HttpTestingController);

@@ -37,7 +37,6 @@ import {CommentWidgetModule} from '@shared/widgets/comment-widget/comment-widget
     CommonAppModule,
     NbLayoutModule,
     NbCardModule,
-    NbMenuModule.forRoot(),
     NbButtonModule,
     // nbTooltip crashes app right now if used in component,
     // workaround: use title in html for now
@@ -46,7 +45,6 @@ import {CommentWidgetModule} from '@shared/widgets/comment-widget/comment-widget
     TranslateModule,
     StatusTagModule,
     RouterModule,
-    NbMenuModule,
     FormsModule,
     NbListModule,
     FontAwesomeModule,
@@ -57,7 +55,8 @@ import {CommentWidgetModule} from '@shared/widgets/comment-widget/comment-widget
     ObjectiveOverviewRoutingModule,
     // Table Widgets
     FindigWidgetModule,
-    CommentWidgetModule
+    CommentWidgetModule,
+    NbMenuModule
   ],
   exports: [
     ObjectiveHeaderComponent,
