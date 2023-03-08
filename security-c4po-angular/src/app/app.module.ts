@@ -12,7 +12,7 @@ import {
   NbSelectModule,
   NbThemeModule,
   NbOverlayContainerAdapter,
-  NbDialogModule,
+  NbDialogModule, NbMenuModule,
 } from '@nebular/theme';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
@@ -58,6 +58,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     FontAwesomeModule,
     BrowserAnimationsModule,
     ThemeModule.forRoot(),
+    NbMenuModule.forRoot(),
     NbSelectModule,
     NgxsModule.forRoot([SessionState, ProjectState], {developmentMode: !environment.production}),
     NgxsLoggerPluginModule.forRoot({developmentMode: !environment.production}),

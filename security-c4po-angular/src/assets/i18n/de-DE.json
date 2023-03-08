@@ -1,6 +1,7 @@
 {
   "global": {
     "action.login": "Einloggen",
+    "action.logout": "Ausloggen",
     "action.retry": "Erneut Versuchen",
     "action.info": "Info",
     "action.save": "Speichern",
@@ -233,6 +234,8 @@
       "initial.save.failed": "Initialer Pentest konnte nicht aufgesetzt werden",
       "save.success": "Pentest erfolgreich gespeichert",
       "save.failed": "Pentest konnte nicht gespeichert werden",
+      "complete.success":  "Pentest erfolgreich vervollständigt",
+      "complete.failed": "Pentest konnte nicht vervollständigt werden",
       "update.success": "Pentest erfolgreich aktualisiert",
       "update.failed": "Pentest konnte nicht aktualisiert werden",
       "delete.success": "Pentest erfolgreich gelöscht",

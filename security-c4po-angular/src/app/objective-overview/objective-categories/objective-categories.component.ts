@@ -54,10 +54,10 @@ export class ObjectiveCategoriesComponent implements OnInit, OnDestroy {
           category.selected = false;
         });
         menuBag.item.selected = true;
-        this.store.dispatch(new ChangeCategory(this.selectedCategory));
+        if (this.selectedCategory) {
+          this.store.dispatch(new ChangeCategory(this.selectedCategory));
+        }
       });
-
-
   }
 
   private initTranslation(): void {

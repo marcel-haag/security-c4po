@@ -11,6 +11,7 @@
   <div class="filler"></div>
   <div fxLayoutGap="4rem">
     <nb-actions size="medium">
+      <!--Theme Action-->
       <nb-action class="toggle-theme">
         <button nbButton
                 (click)="onClickGoToLink('https://owasp.org/www-project-web-security-testing-guide/v42/')">
@@ -19,7 +20,6 @@
           <span class="owasp-redirect-button">OWASP</span>
         </button>
       </nb-action>
-
       <nb-action class="toggle-theme">
         <button nbButton
                 (click)="onClickSwitchTheme()">
@@ -30,16 +30,29 @@
           </ng-template>
         </button>
       </nb-action>
+      <!--Language Action-->
+      <nb-action class="language-menu">
+        <div *ngIf="selectedLanguage && languages" class="languageContainer">
+          <nb-select selected="{{selectedLanguage}}" fullWidth>
+            <nb-option *ngFor="let language of languages"
+                       value="{{language}}" (click)="onClickLanguage(language)" fxLayoutAlign="start center">
+              <img src="../../assets/images/flags/{{language}}.svg" class="flag" width="25rem" height="16rem" alt="">
+              <span fxFlexOffset="0.5rem"> {{'languageKeys.' + language | translate}} </span>
+            </nb-option>
+          </nb-select>
+        </div>
+      </nb-action>
+      <!--User Action-->
+      <nb-action class="user">
+        <!--<fa-icon [icon]="fa.faUser" class="user-icon">
+        </fa-icon>-->
+        <nb-user [nbContextMenu]="userMenu"
+                 [picture]="FALLBACK_IMG"
+                 name="{{user?.getValue()?.username}}"
+                 title="Pentester">
+        </nb-user>
+      </nb-action>
     </nb-actions>
-  </div>
-  <div *ngIf="selectedLanguage && languages" class="languageContainer">
-    <nb-select selected="{{selectedLanguage}}" fullWidth>
-      <nb-option *ngFor="let language of languages"
-                 value="{{language}}" (click)="onClickLanguage(language)" fxLayoutAlign="start center">
-          <img src="../../assets/images/flags/{{language}}.svg" class="flag" width="25rem" height="16rem" alt="">
-          <span fxFlexOffset="0.5rem"> {{'languageKeys.' + language | translate}} </span>
-      </nb-option>
-    </nb-select>
   </div>
 </div>
 

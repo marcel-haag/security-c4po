@@ -133,8 +133,7 @@ export const createSpyObj = (baseName, methodNames): { [key: string]: Mock<any> 
 export const mockComment: Comment = {
   id: '11-22-33',
   title: 'Test Finding',
-  description: 'Test Description',
-  relatedFindings: ['68c47c56-3bcd-45f1-a05b-c197dbd33224']
+  description: 'Test Description'
 };
 
 export const mockedCommentDialogData = {
@@ -163,19 +162,6 @@ export const mockedCommentDialogData = {
       ],
       errors: [
         {errorCode: 'required', translationKey: 'comment.validationMessage.descriptionRequired'}
-      ]
-    },
-    commentRelatedFindings: {
-      fieldName: 'commentRelatedFindings',
-      type: 'text',
-      labelKey: 'comment.relatedFindings.label',
-      placeholder: 'comment.relatedFindingsPlaceholder',
-      controlsConfig: [
-        {value: mockComment ? mockComment.relatedFindings : [], disabled: false},
-        []
-      ],
-      errors: [
-        {errorCode: 'required', translationKey: 'finding.validationMessage.relatedFindings'}
       ]
     }
   },

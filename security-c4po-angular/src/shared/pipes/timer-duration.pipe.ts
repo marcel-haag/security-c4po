@@ -18,7 +18,7 @@ export class TimerDurationPipe implements PipeTransform {
     let seconds: string | number = 0;
     if (time) {
       // tslint:disable-next-line:variable-name
-      const sec_num = parseInt(time, 10); // don't forget the second param
+      const sec_num = parseInt(time, 10);
       hours   = Math.floor(sec_num / 3600);
       minutes = Math.floor((sec_num - (hours * 3600)) / 60);
       seconds = sec_num - (hours * 3600) - (minutes * 60);

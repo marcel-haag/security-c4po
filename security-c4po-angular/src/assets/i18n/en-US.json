@@ -1,6 +1,7 @@
 {
   "global": {
     "action.login": "Login",
+    "action.logout": "Logout",
     "action.retry": "Try again",
     "action.info": "Info",
     "action.confirm": "Confirm",
@@ -233,6 +234,8 @@
       "initial.save.failed": "Initial Pentest could not be setup",
       "save.success": "Pentest saved successfully",
       "save.failed": "Pentest could not be saved",
+      "complete.success":  "Pentest completed successfully",
+      "complete.failed": "Pentest could not be completed",
       "update.success": "Pentest updated successfully",
       "update.failed": "Pentest could not be updated",
       "delete.success": "Pentest deleted successfully",
