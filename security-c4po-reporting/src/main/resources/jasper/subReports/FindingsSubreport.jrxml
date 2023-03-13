@@ -72,7 +72,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<detail>
-		<band height="600" splitType="Stretch">
+		<band height="611" splitType="Stretch">
 			<ellipse>
 				<reportElement key="" style="SeverityStyles" mode="Opaque" x="445" y="45" width="30" height="30" uuid="5dfe3093-6943-446e-8126-d7230d895b0c"/>
 				<graphicElement>
@@ -183,7 +183,7 @@
 			<textField textAdjust="StretchHeight">
 				<reportElement x="460" y="50" width="70" height="20" forecolor="#FEFEFF" uuid="c2c6ef50-1470-41aa-80a1-44db4bbc1b64"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="12"/>
+					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{severity}]]></textFieldExpression>
 			</textField>

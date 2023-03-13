@@ -53,8 +53,8 @@ export class ObjectiveCategoriesComponent implements OnInit, OnDestroy {
         this.categories.forEach(category => {
           category.selected = false;
         });
-        menuBag.item.selected = true;
-        if (this.selectedCategory) {
+        if (this.selectedCategory >= 0) {
+          menuBag.item.selected = true;
           this.store.dispatch(new ChangeCategory(this.selectedCategory));
         }
       });
