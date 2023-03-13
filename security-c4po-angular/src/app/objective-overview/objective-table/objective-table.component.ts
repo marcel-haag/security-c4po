@@ -21,6 +21,7 @@ import {Route} from '@shared/models/route.enum';
 export class ObjectiveTableComponent implements OnInit {
 
   loading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+  // tslint:disable-next-line:max-line-length
   columns: Array<ObjectiveColumns> = [ObjectiveColumns.TEST_ID, ObjectiveColumns.TITLE, ObjectiveColumns.STATUS, ObjectiveColumns.FINDINGS_AND_COMMENTS];
   dataSource: NbTreeGridDataSource<ObjectiveEntry>;
 

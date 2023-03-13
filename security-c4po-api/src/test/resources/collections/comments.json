@@ -3,9 +3,7 @@
     "$oid": "6405dbf113ae975803a09901"
   },
   "lastModified": {
-    "$date": {
-      "$numberLong": "1678105585081"
-    }
+    "$date": "2023-03-06T12:26:25.081Z"
   },
   "data": {
     "_id": "85935303-e5b7-48ca-a504-910c1a94fb1f",
@@ -19,9 +17,7 @@
     "$oid": "6405dc0513ae975803a09902"
   },
   "lastModified": {
-    "$date": {
-      "$numberLong": "1678105605811"
-    }
+    "$date": "2023-03-06T12:26:45.811Z"
   },
   "data": {
     "_id": "a785aaf0-1feb-429e-beb1-31bfcf70c404",

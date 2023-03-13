@@ -32,7 +32,9 @@ class ReportService {
         "./src/main/resources/jasper/reports/c4po_state_of_confidentiality.jrxml"
     private val reportExecutiveSummaryDesignTemplate =
         "./src/main/resources/jasper/reports/c4po_executive_summary.jrxml"
-    private val reportPentestsDesignTemplate = "./src/main/resources/jasper/reports/c4po_pentests.jrxml"
+    private val reportPentestsFindingsAndCommentsDesignTemplate = "./src/main/resources/jasper/reports/c4po_pentests_findings_and_comments.jrxml"
+    private val reportPentestsFindingsOnlyDesignTemplate = "./src/main/resources/jasper/reports/c4po_pentests_findings_only.jrxml"
+    private val reportPentestsCommentsOnlyDesignTemplate = "./src/main/resources/jasper/reports/c4po_pentests_comments_only.jrxml"
     private val reportAppendenciesDesignTemplate = "./src/main/resources/jasper/reports/c4po_appendencies.jrxml"
 
     // Path to default pdf file
@@ -321,9 +323,13 @@ class ReportService {
         // Create List of Files
         var finalFiles: List<File> = emptyList()
         // Load Jasper Files
-        val filePentests: File = ResourceUtils.getFile(reportPentestsDesignTemplate)
+        val filePentestsFindingsAndComments: File = ResourceUtils.getFile(reportPentestsFindingsAndCommentsDesignTemplate)
+        val filePentestsFindingsOnly: File = ResourceUtils.getFile(reportPentestsFindingsOnlyDesignTemplate)
+        val filePentestsCommentsOnly: File = ResourceUtils.getFile(reportPentestsCommentsOnlyDesignTemplate)
         // Compile Jasper Reports
-        val jasperReportPentests: JasperReport = JasperCompileManager.compileReport(filePentests.absolutePath)
+        val jasperReportPentestsFindingsAndComments: JasperReport = JasperCompileManager.compileReport(filePentestsFindingsAndComments.absolutePath)
+        val jasperReportPentestsFindingsOnly: JasperReport = JasperCompileManager.compileReport(filePentestsFindingsOnly.absolutePath)
+        val jasperReportPentestsCommentsOnly: JasperReport = JasperCompileManager.compileReport(filePentestsCommentsOnly.absolutePath)
         // Create pentestReport content for every objective
         for (i in 0 until projectReportCollection.projectPentestReport.size) {
             val projectSinglePentestReportDataSource: JRBeanCollectionDataSource =
@@ -331,23 +337,18 @@ class ReportService {
             // Setup Parameter & add Sub-datasets
             val parameters = HashMap<String, Any>()
             // Setup Sub-dataset for Findings of Pentest
-            parameters["PentestFindingsDataSource"] =
-                if (projectReportCollection.projectPentestReport[i].findings.isNotEmpty()) {
-                    JRBeanCollectionDataSource(projectReportCollection.projectPentestReport[i].findings)
-                } else {
-                    JRBeanCollectionDataSource(emptyList<Finding>())
-                }
+            parameters["PentestFindingsDataSource"] = JRBeanCollectionDataSource(projectReportCollection.projectPentestReport[i].findings)
             // Setup Sub-dataset for Comments of Pentest
-            parameters["PentestCommentsDataSource"] =
-                if (projectReportCollection.projectPentestReport[i].comments.isNotEmpty()) {
-                    JRBeanCollectionDataSource(projectReportCollection.projectPentestReport[i].comments)
-                } else {
-                    JRBeanCollectionDataSource(emptyList<Comment>())
-                }
+            parameters["PentestCommentsDataSource"] = JRBeanCollectionDataSource(projectReportCollection.projectPentestReport[i].comments)
             // Fill Reports
             // Print one report for each objective and merge them together afterwards
-            val jasperPrintPentests: JasperPrint =
-                JasperFillManager.fillReport(jasperReportPentests, parameters, projectSinglePentestReportDataSource)
+            val jasperPrintPentests: JasperPrint = if (projectReportCollection.projectPentestReport[i].findings.isEmpty()) {
+                JasperFillManager.fillReport(jasperReportPentestsCommentsOnly, parameters, projectSinglePentestReportDataSource)
+            } else if (projectReportCollection.projectPentestReport[i].comments.isEmpty()) {
+                JasperFillManager.fillReport(jasperReportPentestsFindingsOnly, parameters, projectSinglePentestReportDataSource)
+            } else {
+                JasperFillManager.fillReport(jasperReportPentestsFindingsAndComments, parameters, projectSinglePentestReportDataSource)
+            }
             // Create File
             var finalFile: File = File(reportDefaultPdf)
             if (reportFormat.equals("pdf")) {
@@ -358,6 +359,7 @@ class ReportService {
                 finalFile = File(reportDestination + "E" + i.toString() + "_Pentestreport.pdf")
                 finalFiles += (finalFile)
             } else {
+                println("NONONO")
                 // ToDo: Implement different report formats
                 finalFiles += (finalFile)
             }

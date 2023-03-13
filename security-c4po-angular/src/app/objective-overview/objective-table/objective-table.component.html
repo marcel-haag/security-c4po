@@ -45,9 +45,9 @@
       </th>
       <td nbTreeGridCell *nbTreeGridCellDef="let pentest">
         <div fxLayout="row" fxLayoutGap="0.5rem" fxLayoutAlign="start start">
-          <app-findig-widget [numberOfFindings]="pentest.data['findings']"></app-findig-widget>
+          <app-findig-widget [numberOfFindings]="pentest.data['findingIds'] ? pentest.data['findingIds'].length : 0"></app-findig-widget>
           <span> / </span>
-          <app-comment-widget [numberOfComments]="pentest.data['comments']"></app-comment-widget>
+          <app-comment-widget [numberOfComments]="pentest.data['commentIds'] ? pentest.data['commentIds'].length : 0"></app-comment-widget>
         </div>
       </td>
     </ng-container>

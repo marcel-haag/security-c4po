@@ -32,14 +32,7 @@ class ReportController(private val apiService: APIService, private val reportSer
         produces = [MediaType.APPLICATION_PDF_VALUE]
     )
     fun downloadPentestReportPDF(@PathVariable(value = "projectId") projectId: String, @AuthenticationPrincipal user: Appuser): Mono<ResponseEntity<ByteArray>> {
-        // Todo: Create Report with Jasper
         return this.apiService.requestProjectReportDataById(projectId, user.token).flatMap {projectReport ->
-            /* ToDo: remove if jsonProjectReportCollection not needed for report generation */
-            val jsonProjectReportString: String =
-                File("./src/test/resources/ProjectReportData.json").readText(Charsets.UTF_8)
-            val jsonProjectReportCollection: ProjectReport =
-                jacksonObjectMapper().readValue<ProjectReport>(jsonProjectReportString)
-            /* jsonProjectReportCollection */
             this.reportService.createReport(projectReport, "pdf").map { reportClassLoaderFilePath ->
                 ResponseEntity.ok().body(reportClassLoaderFilePath)
             }.switchIfEmpty {
@@ -56,7 +49,14 @@ class ReportController(private val apiService: APIService, private val reportSer
         "/{projectId}/csv",
         produces = ["text/csv"]
     )
-    fun downloadPentestReportCSV() {}
+    fun downloadPentestReportCSV() {
+     /* ToDo: remove if jsonProjectReportCollection not needed for report generation */
+            val jsonProjectReportString: String =
+                File("./src/test/resources/ProjectReportData.json").readText(Charsets.UTF_8)
+            val jsonProjectReportCollection: ProjectReport =
+                jacksonObjectMapper().readValue<ProjectReport>(jsonProjectReportString)
+            /* jsonProjectReportCollection */
+    }
     */
     // ToDo: Add download API for html report
     /*
@@ -64,6 +64,13 @@ class ReportController(private val apiService: APIService, private val reportSer
         "/{projectId}/html",
         produces = ["text/html"]
     )
-    fun downloadPentestReportHTML() {}
+    fun downloadPentestReportHTML() {
+     /* ToDo: remove if jsonProjectReportCollection not needed for report generation */
+            val jsonProjectReportString: String =
+                File("./src/test/resources/ProjectReportData.json").readText(Charsets.UTF_8)
+            val jsonProjectReportCollection: ProjectReport =
+                jacksonObjectMapper().readValue<ProjectReport>(jsonProjectReportString)
+            /* jsonProjectReportCollection */
+    }
     */
 }

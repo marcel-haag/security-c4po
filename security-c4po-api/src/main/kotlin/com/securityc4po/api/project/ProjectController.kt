@@ -4,6 +4,7 @@ import com.securityc4po.api.configuration.BC_BAD_CAST_TO_ABSTRACT_COLLECTION
 import com.securityc4po.api.extensions.getLoggerFor
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import com.securityc4po.api.ResponseBody
+import com.securityc4po.api.pentest.PentestDeletionService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Mono
@@ -18,7 +19,7 @@ import reactor.kotlin.core.publisher.switchIfEmpty
         methods = [RequestMethod.GET, RequestMethod.DELETE, RequestMethod.POST, RequestMethod.PATCH]
 )
 @SuppressFBWarnings(BC_BAD_CAST_TO_ABSTRACT_COLLECTION)
-class ProjectController(private val projectService: ProjectService) {
+class ProjectController(private val projectService: ProjectService, private val pentestDeletionService: PentestDeletionService) {
 
     var logger = getLoggerFor<ProjectController>()
 
@@ -69,9 +70,16 @@ class ProjectController(private val projectService: ProjectService) {
 
     @DeleteMapping("/{id}")
     fun deleteProject(@PathVariable(value = "id") id: String): Mono<ResponseEntity<ResponseBody>> {
-        // ToDo: Delete all associated Pentests, Findings and Comments
-        return this.projectService.deleteProject(id).map{
-            ResponseEntity.ok().body(it.toProjectDeleteResponseBody())
+        return this.projectService.deleteProject(id).flatMap { project: Project ->
+            // If the project has pentest the will be deleted as well as all associated findings & comments
+            if (project.projectPentests.isNotEmpty()) {
+                this.pentestDeletionService.deletePentestsAndAllAssociatedFindingsAndComments(project).collectList()
+                    .flatMap { prunedProject: Any ->
+                        Mono.just(ResponseEntity.ok().body(project.toProjectDeleteResponseBody()))
+                    }
+            } else {
+                Mono.just(ResponseEntity.ok().body(project.toProjectDeleteResponseBody()))
+            }
         }.switchIfEmpty {
             Mono.just(ResponseEntity.noContent().build<ResponseBody>())
         }

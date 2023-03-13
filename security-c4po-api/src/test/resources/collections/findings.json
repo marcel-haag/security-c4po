@@ -1,32 +1,9 @@
 [{
   "_id": {
-    "$oid": "6405d88b13ae975803a098fb"
-  },
-  "lastModified": {
-    "$date": {
-      "$numberLong": "1678104715816"
-    }
-  },
-  "data": {
-    "_id": "a343150a-91c9-4564-9638-d0377eecc7c9",
-    "severity": "LOW",
-    "title": "Low Prio Finding",
-    "description": "This is Low Prio.",
-    "impact": "Impacts nothing.",
-    "affectedUrls": [],
-    "reproduction": "Open App.",
-    "mitigation": "",
-    "attachments": []
-  },
-  "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
-},{
-  "_id": {
     "$oid": "6405db8a13ae975803a098fe"
   },
   "lastModified": {
-    "$date": {
-      "$numberLong": "1678105482494"
-    }
+    "$date": "2023-03-06T12:24:42.494Z"
   },
   "data": {
     "_id": "5bf1b2e1-69b7-463b-a1ca-4ac6ac66b10f",
@@ -45,9 +22,7 @@
     "$oid": "6405dba513ae975803a098ff"
   },
   "lastModified": {
-    "$date": {
-      "$numberLong": "1678105509645"
-    }
+    "$date": "2023-03-06T12:25:09.645Z"
   },
   "data": {
     "_id": "f6e6c632-ab34-479e-9584-565f61c5862a",
@@ -66,9 +41,7 @@
     "$oid": "6405dbcc13ae975803a09900"
   },
   "lastModified": {
-    "$date": {
-      "$numberLong": "1678105548815"
-    }
+    "$date": "2023-03-06T12:25:48.815Z"
   },
   "data": {
     "_id": "176f5d93-0fe3-40b1-8a25-f11a6f760148",
@@ -84,21 +57,19 @@
   "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
 },{
   "_id": {
-    "$oid": "640854a01d5b385d85c60ba7"
+    "$oid": "641d94fb28aed92b289a61c7"
   },
   "lastModified": {
-    "$date": {
-      "$numberLong": "1678267552968"
-    }
+    "$date": "2023-03-24T12:18:03.350Z"
   },
   "data": {
-    "_id": "1ffc2215-b8ae-43b7-bbb7-bfcfb414d534",
+    "_id": "82076448-7ec0-4d64-a75d-b9bf6f4920be",
     "severity": "LOW",
-    "title": "Low Prio Title",
+    "title": "Low Prio Finding",
     "description": "Low Prio Description",
     "impact": "Low Prio Impact",
     "affectedUrls": [],
-    "reproduction": "Do Nothing",
+    "reproduction": "Step 1: Do Nothing",
     "mitigation": "",
     "attachments": []
   },

@@ -153,7 +153,7 @@
             <rectangle>
                 <reportElement x="-20" y="30" width="595" height="30" forecolor="#232B44" backcolor="#232B44" uuid="1ed47e2d-9d46-44b9-bad7-8eeb1143c83c"/>
                 <graphicElement>
-                    <pen lineWidth="0.0"/>
+                    <pen lineWidth="1.0"/>
                 </graphicElement>
             </rectangle>
             <staticText>
