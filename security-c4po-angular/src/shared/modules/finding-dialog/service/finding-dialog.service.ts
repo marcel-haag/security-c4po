@@ -7,6 +7,7 @@ import {Validators} from '@angular/forms';
 import {FindingDialogComponent} from '@shared/modules/finding-dialog/finding-dialog.component';
 import {Finding} from '@shared/models/finding.model';
 import {Severity} from '@shared/models/severity.enum';
+import {Pentest} from '@shared/models/pentest.model';
 
 @Injectable()
 export class FindingDialogService {
@@ -31,7 +32,8 @@ export class FindingDialogService {
 
   public openFindingDialog(componentOrTemplateRef: ComponentType<any>,
                            finding?: Finding,
-                           config?: Partial<NbDialogConfig<Partial<any> | string>>): Observable<any> {
+                           config?: Partial<NbDialogConfig<Partial<any> | string>>,
+                           pentestInfo?: Pentest): Observable<any> {
     let dialogOptions: Partial<NbDialogConfig<Partial<any> | string>>;
     let dialogData: GenericDialogData;
     let severity;
@@ -141,7 +143,8 @@ export class FindingDialogService {
         {
           headerLabelKey: 'finding.edit.header',
           buttonKey: 'global.action.update',
-          accentColor: 'warning'
+          accentColor: 'warning',
+          additionalData: finding
         },
       ];
     } else {
@@ -149,7 +152,8 @@ export class FindingDialogService {
         {
           headerLabelKey: 'finding.create.header',
           buttonKey: 'global.action.save',
-          accentColor: 'info'
+          accentColor: 'info',
+          additionalData: pentestInfo
         },
       ];
     }

@@ -14,6 +14,7 @@ import {shareReplay, tap} from 'rxjs/operators';
 import {downloadFile} from '@shared/functions/download-file.function';
 import {Loading, LoadingState} from '@shared/models/loading.model';
 import {HttpEvent, HttpEventType} from '@angular/common/http';
+import {DialogService} from '@shared/services/dialog-service/dialog.service';
 
 @Component({
   selector: 'app-export-report-dialog',
@@ -28,7 +29,8 @@ export class ExportReportDialogComponent implements OnInit {
     private projectService: ProjectService,
     private reportingService: ReportingService,
     private readonly notificationService: NotificationService,
-    protected dialogRef: NbDialogRef<ExportReportDialogComponent>
+    protected dialogRef: NbDialogRef<ExportReportDialogComponent>,
+    private dialogService: DialogService
   ) {
   }
 
@@ -105,6 +107,7 @@ export class ExportReportDialogComponent implements OnInit {
           error: error => {
             console.error(error);
             this.loading$.next(false);
+            this.onRequestFailed(reportFormat, reportLanguage);
             this.notificationService.showPopup('report.popup.generation.failed', PopupType.FAILURE);
           }
         });
@@ -135,6 +138,19 @@ export class ExportReportDialogComponent implements OnInit {
   // HTML only
   isLoading(): Observable<boolean> {
     return this.loading$.asObservable();
+  }
+
+  onRequestFailed(reportFormat: string, reportLanguage: string): void {
+    this.dialogService.openRetryDialog({key: 'global.retry.dialog', data: null}).onClose
+      .pipe(
+        untilDestroyed(this)
+      )
+      .subscribe((ref) => {
+        if (ref.retry) {
+          // ToDo: Send same request again
+          this.onClickExport(reportFormat, reportLanguage);
+        }
+      });
   }
 }
 

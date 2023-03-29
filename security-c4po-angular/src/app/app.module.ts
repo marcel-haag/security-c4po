@@ -36,6 +36,7 @@ import {ProjectState} from '@shared/stores/project-state/project-state';
 import {CustomOverlayContainer} from '@shared/modules/custom-overlay-container.component';
 import {DialogService} from '@shared/services/dialog-service/dialog.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {RetryDialogModule} from '@shared/modules/retry-dialog/retry-dialog.module';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     }),
     HeaderModule,
     HomeModule,
+    RetryDialogModule
   ],
   providers: [
     HttpClient,

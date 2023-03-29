@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
 import {Validators} from '@angular/forms';
 import {CommentDialogComponent} from '@shared/modules/comment-dialog/comment-dialog.component';
 import {Comment} from '@shared/models/comment.model';
+import {Pentest} from '@shared/models/pentest.model';
 
 @Injectable()
 export class CommentDialogService {
@@ -31,16 +32,18 @@ export class CommentDialogService {
   public openCommentDialog(componentOrTemplateRef: ComponentType<any>,
                            findingIds: string[],
                            comment?: Comment,
-                           config?: Partial<NbDialogConfig<Partial<any> | string>>): Observable<any> {
+                           config?: Partial<NbDialogConfig<Partial<any> | string>>,
+                           pentestInfo?: Pentest): Observable<any> {
     let dialogOptions: Partial<NbDialogConfig<Partial<any> | string>>;
     let dialogData: GenericDialogData;
     // Preselect attachments
     const attachments: string[] = [];
+    /* ToDo: Use after file upload is implemented
     if (comment && comment.attachments.length > 0) {
       comment.attachments.forEach(attachment => {
         // Load attachment to show
       });
-    }
+    }*/
     // Setup CommentDialogBody
     dialogData = {
       form: {
@@ -78,7 +81,8 @@ export class CommentDialogService {
         {
           headerLabelKey: 'comment.edit.header',
           buttonKey: 'global.action.update',
-          accentColor: 'warning'
+          accentColor: 'warning',
+          additionalData: comment
         },
       ];
     } else {
@@ -86,7 +90,8 @@ export class CommentDialogService {
         {
           headerLabelKey: 'comment.create.header',
           buttonKey: 'global.action.save',
-          accentColor: 'info'
+          accentColor: 'info',
+          additionalData: pentestInfo
         },
       ];
     }

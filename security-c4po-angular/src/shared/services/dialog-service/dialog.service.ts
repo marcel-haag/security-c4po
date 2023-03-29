@@ -4,6 +4,7 @@ import {ComponentType} from '@angular/cdk/overlay';
 import {DialogMessage, SecurityDialogMessage} from '@shared/services/dialog-service/dialog-message';
 import {ConfirmDialogComponent} from '@shared/modules/confirm-dialog/confirm-dialog.component';
 import {SecurityConfirmDialogComponent} from '@shared/modules/security-confirm-dialog/security-confirm-dialog.component';
+import {RetryDialogComponent} from '@shared/modules/retry-dialog/retry-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,21 @@ export class DialogService {
    */
   openConfirmDialog(message: DialogMessage): NbDialogRef<ConfirmDialogComponent> {
     return this.dialog.open(ConfirmDialogComponent, {
+      closeOnEsc: true,
+      hasScroll: false,
+      autoFocus: true,
+      closeOnBackdropClick: false,
+      context: {data: message}
+    });
+  }
+
+  /**
+   * @param message.key The translation key for the shown message
+   * @param message.data The data that may be used in the message translation key (Set it null if it's not required in the key)
+   * @param message.title The translation key for the dialog title
+   */
+  openRetryDialog(message: DialogMessage): NbDialogRef<RetryDialogComponent> {
+    return this.dialog.open(RetryDialogComponent, {
       closeOnEsc: true,
       hasScroll: false,
       autoFocus: true,

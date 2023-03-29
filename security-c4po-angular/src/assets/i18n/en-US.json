@@ -21,10 +21,14 @@
     "username": "Username",
     "password": "Password",
     "no.progress": "No progress",
+    "project": "Project",
     "validationMessage": {
       "inputNotMatching": "Input does not match!"
     },
-    "project": "Project"
+    "retry.dialog": {
+      "title": "Something went wrong...",
+      "information": "An error occured while processing your request. \nPlease retry or try it again later."
+    }
   },
   "languageKeys":{
     "de-DE": "German",
