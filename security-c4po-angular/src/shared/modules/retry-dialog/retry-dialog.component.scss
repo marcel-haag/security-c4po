@@ -1,0 +1,11 @@
+@import "../../../assets/@theme/styles/_dialog.scss";
+
+* {
+}
+
+.retry-dialog-button {
+  // margin: 6rem 2rem 6rem 0;
+  .dialog-button-icon {
+    padding-right: 0.5rem;
+  }
+}

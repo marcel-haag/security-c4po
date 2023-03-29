@@ -71,7 +71,7 @@ class ProjectController(private val projectService: ProjectService, private val 
     @DeleteMapping("/{id}")
     fun deleteProject(@PathVariable(value = "id") id: String): Mono<ResponseEntity<ResponseBody>> {
         return this.projectService.deleteProject(id).flatMap { project: Project ->
-            // If the project has pentest the will be deleted as well as all associated findings & comments
+            // If the project has pentest they will be deleted as well as all associated findings & comments
             if (project.projectPentests.isNotEmpty()) {
                 this.pentestDeletionService.deletePentestsAndAllAssociatedFindingsAndComments(project).collectList()
                     .flatMap { prunedProject: Any ->

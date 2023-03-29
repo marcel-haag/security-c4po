@@ -1,0 +1,22 @@
+<nb-card accent="danger">
+  <nb-card-header fxLayoutAlign="start center" class="dialog-header confirm">
+    {{ 'global.retry.dialog.title' | translate }}
+  </nb-card-header>
+  <nb-card-body class="dialog-body">
+    {{ 'global.retry.dialog.information' | translate }}
+  </nb-card-body>
+  <nb-card-footer fxLayout="row" fxLayoutGap="1.5rem" fxLayoutAlign="end end">
+    <button nbButton size="small"
+            class="retry-dialog-button"
+            status="danger"
+            (click)="onClickRetry()">
+      <fa-icon [icon]="fa.faRedoAlt" class="dialog-button-icon"></fa-icon>
+      {{ 'global.action.retry' | translate }}
+    </button>
+    <button nbButton size="small"
+            class="cancel-dialog-button"
+            (click)="onClickCancel()">
+      {{ 'global.action.cancel' | translate }}
+    </button>
+  </nb-card-footer>
+</nb-card>

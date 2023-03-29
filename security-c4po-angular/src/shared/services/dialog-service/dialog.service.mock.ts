@@ -20,6 +20,10 @@ export class DialogServiceMock implements Required<DialogService> {
     return null;
   }
 
+  openRetryDialog(message: DialogMessage): NbDialogRef<any> {
+    return null;
+  }
+
   openSecurityConfirmDialog(message: SecurityDialogMessage): NbDialogRef<SecurityConfirmDialogComponent> {
     return undefined;
   }

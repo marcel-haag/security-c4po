@@ -21,10 +21,14 @@
     "username": "Nutzername",
     "password": "Passwort",
     "no.progress": "Kein Fortschritt",
+    "project": "Projekt",
     "validationMessage": {
       "inputNotMatching": "Eingabe stimmt nicht überein!"
     },
-    "project": "Projekt"
+    "retry.dialog": {
+      "title": "Etwas ist schief gelaufen...",
+      "information": "Fehler beim verarbeiten Ihrer Anfrage. \nBitte versuchen Sie es erneut oder zu einem späteren Zeitpunkt."
+    }
   },
   "languageKeys":{
     "de-DE": "Deutsch",

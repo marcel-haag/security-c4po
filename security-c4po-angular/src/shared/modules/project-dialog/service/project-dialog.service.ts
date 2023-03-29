@@ -96,7 +96,8 @@ export class ProjectDialogService {
         {
           headerLabelKey: 'project.edit.header',
           buttonKey: 'global.action.update',
-          accentColor: 'warning'
+          accentColor: 'warning',
+          additionalData: project
         },
       ];
     } else {
@@ -104,7 +105,8 @@ export class ProjectDialogService {
         {
           headerLabelKey: 'project.create.header',
           buttonKey: 'global.action.save',
-          accentColor: 'info'
+          accentColor: 'info',
+          additionalData: project
         },
       ];
     }

@@ -4,7 +4,13 @@ import {GenericDialogData, GenericFormFieldConfig} from '@shared/models/generic-
 import * as FA from '@fortawesome/free-solid-svg-icons';
 import deepEqual from 'deep-equal';
 import {NB_DIALOG_CONFIG, NbDialogRef} from '@nebular/theme';
-import {UntilDestroy} from '@ngneat/until-destroy';
+import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';
+import {Comment, transformCommentToRequestBody} from '@shared/models/comment.model';
+import {UpdatePentestComments} from '@shared/stores/project-state/project-state.actions';
+import {NotificationService, PopupType} from '@shared/services/toaster-service/notification.service';
+import {DialogService} from '@shared/services/dialog-service/dialog.service';
+import {Store} from '@ngxs/store';
+import {CommentService} from '@shared/services/api/comment.service';
 
 @Component({
   selector: 'app-comment-dialog',
@@ -26,7 +32,11 @@ export class CommentDialogComponent implements OnInit {
   constructor(
     @Inject(NB_DIALOG_CONFIG) private data: GenericDialogData,
     private fb: FormBuilder,
-    protected dialogRef: NbDialogRef<CommentDialogComponent>
+    protected dialogRef: NbDialogRef<CommentDialogComponent>,
+    private commentService: CommentService,
+    private readonly notificationService: NotificationService,
+    private dialogService: DialogService,
+    private store: Store
   ) {
   }
 
@@ -50,11 +60,13 @@ export class CommentDialogComponent implements OnInit {
   }
 
   onClickSave(value: any): void {
-    this.dialogRef.close({
-      title: value.commentTitle,
-      description: value.commentDescription,
-      // relatedFindings: this.selectedFindings ? this.selectedFindings : []
-    });
+    if (this.dialogData.options[0].headerLabelKey.includes('create')) {
+      // Save
+      this.saveComment(value);
+    } else {
+      // Update
+      this.updateComment(value);
+    }
   }
 
   onClickClose(): void {
@@ -90,5 +102,68 @@ export class CommentDialogComponent implements OnInit {
         (value.controlsConfig[0].value ? value.controlsConfig[0].value : value.controlsConfig[0]) : '';
     });
     return commentData;
+  }
+
+  saveComment(value): void {
+    const dialogRes = {
+      title: value.commentTitle,
+      description: value.commentDescription,
+      // relatedFindings: this.selectedFindings ? this.selectedFindings : []
+    };
+
+    this.commentService.saveComment(
+      this.dialogData.options[0].additionalData.id,
+      transformCommentToRequestBody(dialogRes)
+    ).pipe(
+      untilDestroyed(this)
+    ).subscribe({
+      next: (newComment: Comment) => {
+        this.store.dispatch(new UpdatePentestComments(newComment.id));
+        this.dialogRef.close();
+        this.notificationService.showPopup('comment.popup.save.success', PopupType.SUCCESS);
+      },
+      error: err => {
+        console.error(err);
+        this.onRequestFailed(value);
+        this.notificationService.showPopup('comment.popup.save.failed', PopupType.FAILURE);
+      }
+    });
+  }
+
+  updateComment(value): void {
+    const dialogRes = {
+      title: value.commentTitle,
+      description: value.commentDescription,
+      // relatedFindings: this.selectedFindings ? this.selectedFindings : []
+    };
+
+    this.commentService.updateComment(
+      this.dialogData.options[0].additionalData.id,
+      transformCommentToRequestBody(dialogRes)
+    ).pipe(
+      untilDestroyed(this)
+    ).subscribe({
+      next: (updatedComment: Comment) => {
+        this.dialogRef.close();
+        this.notificationService.showPopup('comment.popup.update.success', PopupType.SUCCESS);
+      },
+      error: err => {
+        console.error(err);
+        this.onRequestFailed(value);
+        this.notificationService.showPopup('comment.popup.update.failed', PopupType.FAILURE);
+      }
+    });
+  }
+
+  private onRequestFailed(retryParameter: any): void {
+    this.dialogService.openRetryDialog({key: 'global.retry.dialog', data: null}).onClose
+      .pipe(
+        untilDestroyed(this)
+      )
+      .subscribe((ref) => {
+        if (ref.retry) {
+          this.onClickSave(retryParameter);
+        }
+      });
   }
 }

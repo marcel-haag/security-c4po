@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import * as FA from '@fortawesome/free-solid-svg-icons';
-import {Project, ProjectDialogBody} from '@shared/models/project.model';
+import {Project} from '@shared/models/project.model';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';
 import {ProjectService} from '@shared/services/api/project.service';
 import {NotificationService, PopupType} from '@shared/services/toaster-service/notification.service';
-import {catchError, filter, mergeMap, switchMap, tap} from 'rxjs/operators';
+import {filter, tap} from 'rxjs/operators';
 import {DialogService} from '@shared/services/dialog-service/dialog.service';
 import {ProjectDialogComponent} from '@shared/modules/project-dialog/project-dialog.component';
 import {ProjectDialogService} from '@shared/modules/project-dialog/service/project-dialog.service';
@@ -70,17 +70,10 @@ export class ProjectOverviewComponent implements OnInit {
         closeOnBackdropClick: false
       }
     ).pipe(
-      filter(value => !!value),
-      mergeMap((value: ProjectDialogBody) => this.projectService.saveProject(value)),
       untilDestroyed(this)
     ).subscribe({
       next: () => {
         this.loadProjects();
-        this.notificationService.showPopup('project.popup.save.success', PopupType.SUCCESS);
-      },
-      error: err => {
-        console.error(err);
-        this.notificationService.showPopup('project.popup.save.failed', PopupType.FAILURE);
       }
     });
   }
@@ -96,17 +89,10 @@ export class ProjectOverviewComponent implements OnInit {
         closeOnBackdropClick: false
       }
     ).pipe(
-      filter(value => !!value),
-      mergeMap((value: ProjectDialogBody) => this.projectService.updateProject(project.id, value)),
       untilDestroyed(this)
     ).subscribe({
       next: () => {
         this.loadProjects();
-        this.notificationService.showPopup('project.popup.update.success', PopupType.SUCCESS);
-      },
-      error: error => {
-        console.error(error);
-        this.notificationService.showPopup('project.popup.update.failed', PopupType.FAILURE);
       }
     });
   }
@@ -124,18 +110,10 @@ export class ProjectOverviewComponent implements OnInit {
         message
       ).onClose.pipe(
         filter((confirm) => !!confirm),
-        switchMap(() => this.projectService.deleteProjectById(project.id)),
-        catchError(() => {
-          this.notificationService.showPopup('project.popup.delete.failed', PopupType.FAILURE);
-          return [];
-        }),
         untilDestroyed(this)
       ).subscribe({
         next: () => {
-          this.loadProjects();
-          this.notificationService.showPopup('project.popup.delete.success', PopupType.SUCCESS);
-        }, error: error => {
-          console.error(error);
+          this.deleteProject(project);
         }
       });
     } else {
@@ -152,18 +130,10 @@ export class ProjectOverviewComponent implements OnInit {
         secMessage
       ).onClose.pipe(
         filter((confirm) => !!confirm),
-        switchMap(() => this.projectService.deleteProjectById(project.id)),
-        catchError(() => {
-          this.notificationService.showPopup('project.popup.delete.failed', PopupType.FAILURE);
-          return [];
-        }),
         untilDestroyed(this)
       ).subscribe({
         next: () => {
-          this.loadProjects();
-          this.notificationService.showPopup('project.popup.delete.success', PopupType.SUCCESS);
-        }, error: error => {
-          console.error(error);
+          this.deleteProject(project);
         }
       });
     }
@@ -184,5 +154,32 @@ export class ProjectOverviewComponent implements OnInit {
   // HTML only
   isLoading(): Observable<boolean> {
     return this.loading$.asObservable();
+  }
+
+  private deleteProject(project: Project): void {
+    this.projectService.deleteProjectById(project.id).pipe(
+      untilDestroyed(this)
+    ).subscribe({
+      next: () => {
+        this.loadProjects();
+        this.notificationService.showPopup('project.popup.delete.success', PopupType.SUCCESS);
+      }, error: error => {
+        this.notificationService.showPopup('project.popup.delete.failed', PopupType.FAILURE);
+        this.onRequestFailed(project);
+        console.error(error);
+      }
+    });
+  }
+
+  private onRequestFailed(retryParameter: any): void {
+    this.dialogService.openRetryDialog({key: 'global.retry.dialog', data: null}).onClose
+      .pipe(
+        untilDestroyed(this)
+      )
+      .subscribe((ref) => {
+        if (ref.retry) {
+          this.deleteProject(retryParameter);
+        }
+      });
   }
 }
