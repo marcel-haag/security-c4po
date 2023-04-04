@@ -24,6 +24,7 @@ import {Category} from '@shared/models/category.model';
 import {PentestStatus} from '@shared/models/pentest-status.model';
 import {ExportReportDialogService} from '@shared/modules/export-report-dialog/service/export-report-dialog.service';
 import {ExportReportDialogServiceMock} from '@shared/modules/export-report-dialog/service/export-report-dialog.service.mock';
+import {ReportState} from '@shared/models/state.enum';
 
 const DESIRED_PROJECT_STATE_SESSION: ProjectStateModel = {
   selectedProject: {
@@ -33,6 +34,7 @@ const DESIRED_PROJECT_STATE_SESSION: ProjectStateModel = {
     createdAt: new Date('2019-01-10T09:00:00'),
     tester: 'Novatester',
     summary: '',
+    state: ReportState.NEW,
     testingProgress: 0,
     createdBy: '11c47c56-3bcd-45f1-a05b-c197dbd33110'
   },

@@ -1,4 +1,5 @@
 import {PentestStatus} from '@shared/models/pentest-status.model';
+import {ReportState} from '@shared/models/state.enum';
 
 export class Project {
   id: string;
@@ -7,6 +8,7 @@ export class Project {
   createdAt: Date;
   tester: string;
   summary: string;
+  state: ReportState;
   projectPentests?: Array<ProjectPentests>;
   testingProgress?: number;
   createdBy: string;
@@ -16,6 +18,7 @@ export class Project {
               title: string,
               createdAt: Date,
               tester: string,
+              state: ReportState,
               projectPentests?: Array<ProjectPentests>,
               testingProgress?: number,
               summary?: string,
@@ -28,14 +31,28 @@ export class Project {
     this.projectPentests = projectPentests;
     this.testingProgress = testingProgress;
     this.summary = summary;
+    this.state = state;
     this.createdBy = createdBy;
   }
+}
+
+export function transformProjectToRequestBody(project: ProjectDialogBody | Project): ProjectDialogBody {
+  const transformedProject = {
+    ...project,
+    title: project.title,
+    client: project.client,
+    tester: project.tester,
+    state: typeof project.state === 'number' ? ReportState[project.state] : project.state,
+    summary: project.summary,
+  } as unknown as ProjectDialogBody;
+  return transformedProject;
 }
 
 export interface ProjectDialogBody {
   title: string;
   client: string;
   tester: string;
+  state: ReportState;
   summary: string;
 }
 

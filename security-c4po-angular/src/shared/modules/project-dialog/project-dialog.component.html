@@ -1,6 +1,18 @@
 <nb-card #dialog accent="{{dialogData?.options[0].accentColor}}" class="project-dialog">
   <nb-card-header fxLayoutAlign="start center" class="dialog-header">
     {{ dialogData?.options[0].headerLabelKey | translate }}
+    <!-- Pents State Dropdown -->
+    <div class="state-dialog">
+      <nb-select class="states"
+                 type="state-select"
+                 [disabled]="!dialogData.options[0].additionalData"
+                 [(selected)]="formArray[4].controlsConfig[0].value"
+                 shape="round" status="{{getReportStateFillStatus(formArray[4].controlsConfig[0].value)}}" filled>
+        <nb-option *ngFor="let reportState of reportStateTexts" [value]="reportState.value">
+          {{ reportState.translationText | translate }}
+        </nb-option>
+      </nb-select>
+    </div>
   </nb-card-header>
   <nb-card-body>
     <form *ngIf="formArray" [formGroup]="projectFormGroup" fxLayout="column" fxLayoutGap="1rem"

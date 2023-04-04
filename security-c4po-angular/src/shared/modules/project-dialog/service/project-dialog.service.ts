@@ -6,6 +6,7 @@ import {Project} from '@shared/models/project.model';
 import {ProjectDialogComponent} from '@shared/modules/project-dialog/project-dialog.component';
 import {Validators} from '@angular/forms';
 import {GenericDialogData} from '@shared/models/generic-dialog-data';
+import {ReportState} from '@shared/models/state.enum';
 
 @Injectable()
 export class ProjectDialogService {
@@ -33,6 +34,11 @@ export class ProjectDialogService {
                            config?: Partial<NbDialogConfig<Partial<any> | string>>): Observable<any> {
     let dialogOptions: Partial<NbDialogConfig<Partial<any> | string>>;
     let dialogData: GenericDialogData;
+    let state;
+    // transform severity of finding if existing
+    if (project) {
+      state = typeof project.state !== 'number' ? ReportState[project.state] : project.state;
+    }
     // Setup ProjectDialogData
     dialogData = {
       form: {
@@ -87,7 +93,20 @@ export class ProjectDialogService {
           errors: [
             {errorCode: 'required', translationKey: 'project.validationMessage.summaryRequired'}
           ]
-        }
+        },
+        pentestState: {
+          fieldName: 'pentestState',
+          type: 'state-select',
+          labelKey: 'project.state.label',
+          placeholder: 'project.state',
+          controlsConfig: [
+            {value: project ? state : ReportState.NEW, disabled: false},
+            [Validators.required]
+          ],
+          errors: [
+            {errorCode: 'required', translationKey: 'project.validationMessage.stateRequired'}
+          ]
+        },
       },
       options: []
     };

@@ -2,11 +2,11 @@
 @import '../../../assets/@theme/styles/themes';
 
 .project-dialog {
-  width: 34rem !important;
+  width: 36rem !important;
   height: 43.5rem;
 
   .project-dialog-header {
-    height: 8vh;
+    height: 10vh;
     font-size: 1.5rem;
   }
 
@@ -21,19 +21,19 @@
   }
 
   .form-field {
-    width: 26.75rem;
+    width: 32.75rem;
     // width: 30rem !important;
     margin-bottom: 0.5rem;
   }
 
   .form-textarea {
-    width: 26.75rem !important;
+    width: 32.75rem !important;
     // width: 30rem !important;
     height: 8rem;
   }
 
   .form-textarea:disabled {
-    width: 26.75rem !important;
+    width: 32.75rem !important;
     // width: 30rem !important;
     background-color: nb-theme(color-basic-transparent-focus);
     height: 8rem;
@@ -42,5 +42,15 @@
   .error-text {
     float: left;
     color: nb-theme(color-danger-default);
+  }
+
+  .state-dialog {
+    margin-left: auto;
+    margin-right: 0;
+    // padding: 0.5rem 0 0.75rem;
+
+    .states {
+      width: 14rem !important;
+    }
   }
 }

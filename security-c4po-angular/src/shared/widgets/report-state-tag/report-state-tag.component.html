@@ -1,0 +1,29 @@
+<ng-container [ngSwitch]="reportState">
+  <nb-tag-list>
+    <!--Success Tags-->
+    <nb-tag *ngSwitchCase="state.RESOLVED" status="success" appearance="filled"
+            text="{{getTranslationKey() | translate}}"></nb-tag>
+    <nb-tag *ngSwitchCase=" state.INFORMATIVE" status="success" appearance="filled"
+            text="{{getTranslationKey() | translate}}"></nb-tag>
+    <!--Info Tags-->
+    <nb-tag *ngSwitchCase="state.NEW" status="info" appearance="filled"
+            text=" {{getTranslationKey() | translate}}"></nb-tag>
+    <!--Warning Tags-->
+    <nb-tag *ngSwitchCase="state.DUPLICATE" status="warning" appearance="filled"
+            text="{{getTranslationKey() | translate}}"></nb-tag>
+    <nb-tag *ngSwitchCase="state.NOT_APPLICABLE" status="warning" appearance="filled"
+            text="{{getTranslationKey() | translate}}"></nb-tag>
+    <nb-tag *ngSwitchCase="state.OUT_OF_SCOPE" status="warning" appearance="filled"
+            text="{{getTranslationKey() | translate}}"></nb-tag>
+    <nb-tag *ngSwitchCase="state.ACCEPTED_RISK" status="warning" appearance="filled"
+            text="{{getTranslationKey() | translate}}"></nb-tag>
+    <!--Danger Tags-->
+    <nb-tag *ngSwitchCase="state.NEEDS_MORE_INFO" status="danger" appearance="filled"
+            text="{{getTranslationKey() | translate}}"></nb-tag>
+    <nb-tag *ngSwitchCase="state.SPAM" status="danger" appearance="filled"
+            text="{{getTranslationKey() | translate}}"></nb-tag>
+    <!--Default Tags-->
+    <nb-tag *ngSwitchDefault status="basic" appearance="filled"
+            text="{{getTranslationKey() | translate}}"></nb-tag>
+  </nb-tag-list>
+</ng-container>

@@ -75,6 +75,8 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
                                 .description("The user that is assigned as a tester in the project"),
                             PayloadDocumentation.fieldWithPath("[].summary").type(JsonFieldType.STRING)
                                 .description("The summary of the requested project"),
+                            PayloadDocumentation.fieldWithPath("[].state").type(JsonFieldType.STRING)
+                                .description("The state of the requested project pentest"),
                             PayloadDocumentation.fieldWithPath("[].createdBy").type(JsonFieldType.STRING)
                                 .description("The id of the user that created the project"),
                             PayloadDocumentation.fieldWithPath("[].testingProgress").type(JsonFieldType.NUMBER)
@@ -92,6 +94,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
             tester = "Novatester",
             summary = "Lorem Ipsum",
             projectPentests = emptyList<ProjectPentest>(),
+            state = PentestState.NEW,
             createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
         val projectTwo = Project(
@@ -102,6 +105,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
             tester = "Elliot",
             summary = "Lorem Ipsum",
             projectPentests = emptyList<ProjectPentest>(),
+            state = PentestState.NEW,
             createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
 
@@ -144,6 +148,8 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
                                 .description("The date where the project was created at"),
                             PayloadDocumentation.fieldWithPath("tester").type(JsonFieldType.STRING)
                                 .description("The user that is assigned as a tester in the project"),
+                            PayloadDocumentation.fieldWithPath("state").type(JsonFieldType.STRING)
+                                .description("The state of the requested project pentest"),
                             PayloadDocumentation.fieldWithPath("createdBy").type(JsonFieldType.STRING)
                                 .description("The id of the user that created the project"),
                             PayloadDocumentation.fieldWithPath("testingProgress").type(JsonFieldType.NUMBER)
@@ -157,6 +163,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
             client = "Novatec",
             title = "log4j Pentest",
             tester = "Stipe",
+            state = PentestState.NEW,
             summary = ""
         )
     }
@@ -230,6 +237,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
             createdAt = "2021-01-10T18:05:00Z",
             tester = "Novatester",
             projectPentests = emptyList<ProjectPentest>(),
+            state = PentestState.NEW,
             createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
     }
@@ -269,6 +277,8 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
                                 .description("The updated user that is assigned as a tester in the project"),
                             PayloadDocumentation.fieldWithPath("summary").type(JsonFieldType.STRING)
                                 .description("The summary of the requested project"),
+                            PayloadDocumentation.fieldWithPath("state").type(JsonFieldType.STRING)
+                                .description("The state of the requested project pentest"),
                             PayloadDocumentation.fieldWithPath("createdBy").type(JsonFieldType.STRING)
                                 .description("The id of the user that created the project"),
                             PayloadDocumentation.fieldWithPath("testingProgress").type(JsonFieldType.NUMBER)
@@ -282,6 +292,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
             client = "Novatec_updated",
             title = "log4j Pentest_updated",
             tester = "Stipe_updated",
+            state = PentestState.NEW,
             summary = ""
         )
 
@@ -292,6 +303,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
             createdAt = "2021-01-10T18:05:00Z",
             tester = "Stipe_updated",
             summary = "",
+            state = PentestState.NEW,
             projectPentests = emptyList<ProjectPentest>(),
             createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
@@ -306,6 +318,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
             createdAt = "2021-01-10T18:05:00Z",
             tester = "Novatester",
             summary = "Lorem Ipsum",
+            state = PentestState.NEW,
             projectPentests = emptyList<ProjectPentest>(),
             createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
@@ -316,6 +329,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
             createdAt = "2021-01-10T18:05:00Z",
             tester = "Elliot",
             summary = "Lorem Ipsum",
+            state = PentestState.NEW,
             projectPentests = emptyList<ProjectPentest>(),
             createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )

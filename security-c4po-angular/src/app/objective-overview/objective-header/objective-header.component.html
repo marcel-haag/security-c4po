@@ -9,6 +9,7 @@
     </button>
   </div>
 
+  <app-report-state-tag class="state-tag" [currentReportState]="selectedProject$.getValue()?.state"></app-report-state-tag>
   <h4>{{selectedProject$.getValue().title}}</h4>
 
   <div class="button-container">

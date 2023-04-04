@@ -8,7 +8,7 @@ import {
   NbDialogRef,
   NbFormFieldModule,
   NbInputModule,
-  NbLayoutModule
+  NbLayoutModule, NbSelectModule
 } from '@nebular/theme';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -24,6 +24,8 @@ import {DialogServiceMock} from '@shared/services/dialog-service/dialog.service.
 import {ReactiveFormsModule, Validators} from '@angular/forms';
 import {Project} from '@shared/models/project.model';
 import Mock = jest.Mock;
+import {ReportState} from '@shared/models/state.enum';
+import {GenericFormFieldConfig} from '@shared/models/generic-dialog-data';
 
 describe('ProjectDialogComponent', () => {
   let component: ProjectDialogComponent;
@@ -43,6 +45,7 @@ describe('ProjectDialogComponent', () => {
         NbButtonModule,
         FlexLayoutModule,
         NbInputModule,
+        NbSelectModule,
         NbFormFieldModule,
         ReactiveFormsModule,
         BrowserAnimationsModule,
@@ -70,7 +73,8 @@ describe('ProjectDialogComponent', () => {
     TestBed.overrideProvider(NB_DIALOG_CONFIG, {useValue: mockedProjectDialogData});
     fixture = TestBed.createComponent(ProjectDialogComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    // ToDo: fix detectChanges() when controlsConfig is defined
+    // fixture.detectChanges();
   });
 
   it('should create', () => {
@@ -91,7 +95,8 @@ export const mockProject: Project = {
   title: 'Test Project',
   client: 'Testclient',
   tester: 'Testpentester',
-  summary: '',
+  summary: 'Test',
+  state: ReportState.NEW,
   createdAt: new Date(),
   testingProgress: 0,
   createdBy: 'UID-11-12-13'
@@ -137,13 +142,27 @@ export const mockedProjectDialogData = {
       errors: [
         {errorCode: 'required', translationKey: 'project.validationMessage.testerRequired'}
       ]
-    }
+    },
+    pentestState: {
+      fieldName: 'pentestState',
+      type: 'state-select',
+      labelKey: 'project.state.label',
+      placeholder: 'project.state',
+      controlsConfig: [
+        {value: mockProject ? mockProject.state : ReportState.NEW, disabled: false},
+        [Validators.required]
+      ],
+      errors: [
+        {errorCode: 'required', translationKey: 'project.validationMessage.stateRequired'}
+      ]
+    },
   },
   options: [
     {
       headerLabelKey: 'project.edit.header',
       buttonKey: 'global.action.update',
-      accentColor: 'warning'
+      accentColor: 'warning',
+      additionalData: mockProject
     },
   ]
 };

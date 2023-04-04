@@ -30,6 +30,7 @@ import {Category} from '@shared/models/category.model';
 import {PentestStatus} from '@shared/models/pentest-status.model';
 import {PROJECT_STATE_NAME, ProjectState, ProjectStateModel} from '@shared/stores/project-state/project-state';
 import {NgxsModule, Store} from '@ngxs/store';
+import {ReportState} from '@shared/models/state.enum';
 
 const DESIRED_PROJECT_STATE_SESSION: ProjectStateModel = {
   selectedProject: {
@@ -39,6 +40,7 @@ const DESIRED_PROJECT_STATE_SESSION: ProjectStateModel = {
     createdAt: new Date('2019-01-10T09:00:00'),
     tester: 'Novatester',
     summary: '',
+    state: ReportState.NEW,
     testingProgress: 0,
     createdBy: '11c47c56-3bcd-45f1-a05b-c197dbd33110'
   },
@@ -97,13 +99,13 @@ describe('FindingDialogComponent', () => {
         {provide: NotificationService, useValue: new NotificationServiceMock()},
         {provide: DialogService, useClass: DialogServiceMock},
         {provide: NbDialogRef, useValue: dialogSpy},
-        {provide: NB_DIALOG_CONFIG, useValue: mockedCommentDialogData}
+        {provide: NB_DIALOG_CONFIG, useValue: mockedFindingDialogData}
       ]
     }).compileComponents();
   });
 
   beforeEach(() => {
-    TestBed.overrideProvider(NB_DIALOG_CONFIG, {useValue: mockedCommentDialogData});
+    TestBed.overrideProvider(NB_DIALOG_CONFIG, {useValue: mockedFindingDialogData});
     fixture = TestBed.createComponent(FindingDialogComponent);
     store = TestBed.inject(Store);
     store.reset({
@@ -138,7 +140,7 @@ export const mockFinding: Finding = {
   mitigation: 'Mitigation Test'
 };
 
-export const mockedCommentDialogData = {
+export const mockedFindingDialogData = {
   form: {
     findingTitle: {
       fieldName: 'findingTitle',

@@ -21,6 +21,7 @@ data class Project(
     val createdAt: String = Instant.now().toString(),
     val tester: String,
     val summary: String? = null,
+    val state: PentestState,
     var projectPentests: List<ProjectPentest> = emptyList(),
     val createdBy: String
 )
@@ -33,6 +34,7 @@ fun buildProject(body: ProjectRequestBody, projectEntity: ProjectEntity): Projec
         createdAt = projectEntity.data.createdAt,
         tester = body.tester,
         summary = body.summary,
+        state = body.state,
         projectPentests = projectEntity.data.projectPentests,
         createdBy = projectEntity.data.createdBy
     )
@@ -46,6 +48,7 @@ fun Project.toProjectResponseBody(): ResponseBody {
         "createdAt" to createdAt,
         "tester" to tester,
         "summary" to summary,
+        "state" to state,
         /* ToDo: Calculate percentage in BE type: float */
         "testingProgress" to calculateProgress(),
         "createdBy" to createdBy
@@ -119,6 +122,7 @@ data class ProjectRequestBody(
     val client: String,
     val title: String,
     val tester: String,
+    val state: PentestState,
     val summary: String?
 )
 
@@ -132,6 +136,7 @@ fun ProjectRequestBody.isValid(): Boolean {
         this.client.isBlank() -> false
         this.title.isBlank() -> false
         this.tester.isBlank() -> false
+        this.state.toString().isBlank() -> false
         else -> true
     }
 }
@@ -144,6 +149,7 @@ fun ProjectRequestBody.toProject(): Project {
         createdAt = Instant.now().toString(),
         tester = this.tester,
         summary = this.summary,
+        state = this.state,
         // ToDo: Should be changed to SUB from Token after adding AUTH Header
         createdBy = UUID.randomUUID().toString()
     )
