@@ -72,6 +72,7 @@ class ProjectControllerIntTest : BaseIntTest() {
             createdAt = "2021-01-10T18:05:00Z",
             tester = "Novatester",
             summary = "Lorem Ipsum",
+            state = PentestState.NEW,
             createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
         val projectTwo = Project(
@@ -81,6 +82,7 @@ class ProjectControllerIntTest : BaseIntTest() {
             createdAt = "2021-01-10T18:05:00Z",
             tester = "Elliot",
             summary = "Lorem Ipsum",
+            state = PentestState.NEW,
             createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
 
@@ -116,6 +118,7 @@ class ProjectControllerIntTest : BaseIntTest() {
             createdAt = "2021-04-10T18:05:00Z",
             tester = "Stipe",
             summary = "",
+            state = PentestState.NEW,
             createdBy = "a8891ad2-5cf5-4519-a89e-9ef8eec9e10c"
         )
     }
@@ -149,6 +152,7 @@ class ProjectControllerIntTest : BaseIntTest() {
             title = "CashMyData (iOS)",
             createdAt = "2021-01-10T18:05:00Z",
             tester = "Elliot",
+            state = PentestState.NEW,
             createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
     }
@@ -175,6 +179,7 @@ class ProjectControllerIntTest : BaseIntTest() {
             title = "log4j Pentest_updated",
             createdAt = "2021-04-10T18:05:00Z",
             tester = "Stipe_updated",
+            state = PentestState.NEW,
             createdBy = "a8891ad2-5cf5-4519-a89e-9ef8eec9e10c"
         )
     }
@@ -188,6 +193,7 @@ class ProjectControllerIntTest : BaseIntTest() {
             createdAt = "2021-01-10T18:05:00Z",
             tester = "Novatester",
             summary = "Lorem Ipsum",
+            state = PentestState.NEW,
             createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
         val projectTwo = Project(
@@ -197,6 +203,7 @@ class ProjectControllerIntTest : BaseIntTest() {
             createdAt = "2021-01-10T18:05:00Z",
             tester = "Elliot",
             summary = "Lorem Ipsum",
+            state = PentestState.NEW,
             createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
         // persist test data in database

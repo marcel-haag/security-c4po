@@ -1,87 +1,131 @@
-<div fxLayout="row" fxLayoutGap="2rem">
-  <div *ngFor="let project of projects$ | async">
-    <nb-card class="project-card" accent="success">
-      <nb-card-header fxLayoutAlign="start center"
-                      routerLink="id"
-                      fragment="{{project.id}}"
-                      class="project-link project-header"
-                      (click)="onClickRouteToProject(project)">
-        <h4>{{project?.title}}</h4>
-      </nb-card-header>
-      <nb-card-body class="project-link"
-                    routerLink="id"
-                    fragment="{{project.id}}"
-                    (click)="onClickRouteToProject(project)">
-        <p class="project-subheader">
-          {{'project.client' | translate}}:
-        </p>
-        <span class="project-paragraph">
+<div fxFlex="0 1 max-content" fxLayout="column" class="pentest-overview">
+  <nb-layout fxFlex>
+    <!--Header-->
+    <nb-layout-header class="pentest-overview-header">
+      <div fxLayout="row" fxLayoutGap="2rem" fxLayoutAlign="space-between center">
+        <!--Filter-->
+        <div fxLayout="row" fxLayoutGap="1rem" class="header-filer">
+          <!--Actions-->
+          <!--ToDo: Add searchbar that filters for title, client, tester-->
+          <form class="project-filter-input">
+            <nb-form-field>
+              <fa-icon nbPrefix class ="search-prefix-icon" [icon]="fa.faSearch"></fa-icon>
+              <input type="text" required
+                     fullWidth nbInput
+                     [formControl]="projectSearch"
+                     placeholder="{{ 'project.filter.placeholder' | translate }}"
+                     shape="semi-round"
+                     fieldSize="medium"
+                     status="basic">
+            </nb-form-field>
+          </form>
+          <!--ToDo: Add dropdown to filter for specific state-->
+          <button nbButton
+                  status="danger"
+                  size="medium"
+                  shape="semi-round"
+                  class="reset-filter-btn"
+                  (click)="onClickResetFilter()">
+            <fa-icon [icon]="fa.faFilterCircleXmark" class="btn-icon"></fa-icon>
+            {{'global.action.reset' | translate}}
+          </button>
+        </div>
+        <!--Button-->
+        <div class="header-project-button">
+          <button nbButton hero
+                  status="info"
+                  size="medium"
+                  shape="round"
+                  class="add-project-button"
+                  (click)="onClickAddProject()">
+            <fa-icon [icon]="fa.faPlus" class="btn-icon"></fa-icon>
+            {{'project.overview.add.project' | translate}}
+          </button>
+        </div>
+      </div>
+    </nb-layout-header>
+    <!--Column-->
+    <nb-layout-column class="pentest-overview-column">
+      <div fxLayout="row" fxLayoutGap="2rem">
+        <div *ngFor="let project of projects$ | async">
+          <nb-card class="project-card" accent="{{getProjectAccentFillStatus(project?.state)}}">
+            <nb-card-header fxLayoutAlign="start center"
+                            routerLink="id"
+                            fragment="{{project.id}}"
+                            class="project-link project-header"
+                            (click)="onClickRouteToProject(project)">
+              <div fxLayout="row" fxLayoutAlign="space-between center">
+                <h4 class="header-title">{{project?.title}}</h4>
+                <app-report-state-tag class="state-tag" [currentReportState]="project?.state"></app-report-state-tag>
+              </div>
+            </nb-card-header>
+            <nb-card-body class="project-link"
+                          routerLink="id"
+                          fragment="{{project.id}}"
+                          (click)="onClickRouteToProject(project)">
+              <p class="project-subheader">
+                {{'project.client' | translate}}:
+              </p>
+              <span class="project-paragraph">
           {{project?.client}}
         </span>
 
-        <p class="project-subheader">
-          {{'project.tester' | translate}}:
-        </p>
-        <span class="project-paragraph">
+              <p class="project-subheader">
+                {{'project.tester' | translate}}:
+              </p>
+              <span class="project-paragraph">
           {{project?.tester}}
         </span>
 
-        <p class="project-subheader">
-          {{'project.createdAt' | translate}}:
-        </p>
-        <span class="project-paragraph">
+              <p class="project-subheader">
+                {{'project.createdAt' | translate}}:
+              </p>
+              <span class="project-paragraph">
           {{project?.createdAt | dateTimeFormat}}
         </span>
-      </nb-card-body>
-      <nb-card-footer>
-        <div fxLayout="row" fxLayoutGap="1rem" fxLayoutAlign="start end">
-          <div class="project-progress">
-            <nb-progress-bar *ngIf="project.testingProgress > 0; else altProgressBar"
-                             status="warning"
-                             [value]="project.testingProgress"
-                             [displayValue]="true">
-            </nb-progress-bar>
-            <ng-template #altProgressBar>
-              {{'popup.info' | translate}} {{'global.no.progress' | translate}}
-            </ng-template>
-          </div>
+            </nb-card-body>
+            <nb-card-footer>
+              <div fxLayout="row" fxLayoutGap="1rem" fxLayoutAlign="start end">
+                <div class="project-progress">
+                  <nb-progress-bar *ngIf="project.testingProgress > 0; else altProgressBar"
+                                   status="warning"
+                                   [value]="project.testingProgress"
+                                   [displayValue]="true">
+                  </nb-progress-bar>
+                  <ng-template #altProgressBar>
+                    {{'popup.info' | translate}} {{'global.no.progress' | translate}}
+                  </ng-template>
+                </div>
 
-          <button nbButton
-                  status="primary"
-                  size="small"
-                  class="project-button"
-                  (click)="onClickEditProject(project)">
-            <fa-icon [icon]="fa.faPencilAlt"></fa-icon>
-          </button>
-          <button nbButton
-                  status="danger"
-                  size="small"
-                  class="project-button"
-                  (click)="onClickDeleteProject(project)">
-            <fa-icon [icon]="fa.faTrash"></fa-icon>
-          </button>
+                <button nbButton
+                        status="primary"
+                        size="small"
+                        class="project-button"
+                        (click)="onClickEditProject(project)">
+                  <fa-icon [icon]="fa.faPencilAlt"></fa-icon>
+                </button>
+                <button nbButton
+                        status="danger"
+                        size="small"
+                        class="project-button"
+                        (click)="onClickDeleteProject(project)">
+                  <fa-icon [icon]="fa.faTrash"></fa-icon>
+                </button>
+              </div>
+            </nb-card-footer>
+          </nb-card>
         </div>
-      </nb-card-footer>
-    </nb-card>
-  </div>
-</div>
+      </div>
+      <!--Error Text-->
+      <div *ngIf="projects$.getValue() == null || projects$.getValue().length === 0 && loading$.getValue() === false"
+           fxLayout="row" fxLayoutAlign="center center">
+        <p class="error-text">
+          {{'project.overview.no.projects' | translate}}
+        </p>
+      </div>
+      <!--Loading Spinner-->
+      <app-loading-spinner [isLoading$]="isLoading()" *ngIf="isLoading() | async"></app-loading-spinner>
 
-<div *ngIf="projects$.getValue() == null || projects$.getValue().length === 0 && loading$.getValue() === false" fxLayout="row" fxLayoutAlign="center center">
-  <p class="error-text">
-    {{'project.overview.no.projects' | translate}}
-  </p>
+    </nb-layout-column>
+  </nb-layout>
 </div>
-
-<div fxLayoutAlign="end end">
-  <button nbButton hero
-          status="info"
-          size="large"
-          shape="round"
-          class="add-project-button"
-          (click)="onClickAddProject()">
-    <fa-icon [icon]="fa.faPlus" class="new-project-icon"></fa-icon>
-    {{'project.overview.add.project' | translate}}
-  </button>
-</div>
-
-<app-loading-spinner [isLoading$]="isLoading()" *ngIf="isLoading() | async"></app-loading-spinner>

@@ -7,6 +7,9 @@ import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';
 import {DialogService} from '@shared/services/dialog-service/dialog.service';
 import {ProjectService} from '@shared/services/api/project.service';
 import {NotificationService, PopupType} from '@shared/services/toaster-service/notification.service';
+import * as FA from '@fortawesome/free-solid-svg-icons';
+import {ReportState, reportStateTexts} from '@shared/models/state.enum';
+import {Project, transformProjectToRequestBody} from '@shared/models/project.model';
 
 @UntilDestroy()
 @Component({
@@ -20,6 +23,11 @@ export class ProjectDialogComponent implements OnInit {
   formArray: GenericFormFieldConfig[];
 
   dialogData: GenericDialogData;
+
+  // HTML only
+  readonly fa = FA;
+  state: ReportState = ReportState.NEW;
+  readonly reportStateTexts = reportStateTexts;
 
   constructor(
     @Inject(NB_DIALOG_CONFIG) private data: GenericDialogData,
@@ -64,6 +72,43 @@ export class ProjectDialogComponent implements OnInit {
   }
 
   /**
+   * HTML only
+   * @return the correct nb-status for current report state of the project
+   */
+  getReportStateFillStatus(value: number): string {
+    let reportStateFillStatus;
+    switch (value) {
+      case 6:
+      case 7: {
+        reportStateFillStatus = 'success';
+        break;
+      }
+      case 0:
+      {
+        reportStateFillStatus = 'info';
+        break;
+      }
+      case 8:
+      case 9:
+      case 11:
+      case 12: {
+        reportStateFillStatus = 'warning';
+        break;
+      }
+      case 1:
+      case 10: {
+        reportStateFillStatus = 'danger';
+        break;
+      }
+      default: {
+        reportStateFillStatus = 'basic';
+        break;
+      }
+    }
+    return reportStateFillStatus;
+  }
+
+  /**
    * @return true if project data is different from initial value
    */
   private projectDataChanged(): boolean {
@@ -98,9 +143,12 @@ export class ProjectDialogComponent implements OnInit {
       title: value.projectTitle,
       client: value.projectClient,
       tester: value.projectTester,
+      state: this.formArray[4].controlsConfig[0].value,
       summary: value.projectSummary
     };
-    this.projectService.saveProject(dialogRes).pipe(
+    this.projectService.saveProject(
+      transformProjectToRequestBody(dialogRes)
+    ).pipe(
       untilDestroyed(this)
     ).subscribe(
       {
@@ -122,15 +170,19 @@ export class ProjectDialogComponent implements OnInit {
       title: value.projectTitle,
       client: value.projectClient,
       tester: value.projectTester,
+      state: this.formArray[4].controlsConfig[0].value,
       summary: value.projectSummary
     };
-    this.projectService.updateProject(this.dialogData.options[0].additionalData.id, dialogRes).pipe(
+    this.projectService.updateProject(
+      this.dialogData.options[0].additionalData.id,
+      transformProjectToRequestBody(dialogRes)
+    ).pipe(
       untilDestroyed(this)
     ).subscribe(
       {
-        next: () => {
+        next: (project: Project) => {
           this.notificationService.showPopup('project.popup.update.success', PopupType.SUCCESS);
-          this.dialogRef.close();
+          this.dialogRef.close(project);
         },
         error: err => {
           console.error(err);

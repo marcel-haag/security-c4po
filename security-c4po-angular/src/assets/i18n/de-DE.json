@@ -52,6 +52,21 @@
     "failed": "Benutzername oder Passwort falsch",
     "unauthorized": "Benutzer nicht gefunden. Bitte registrieren und erneut versuchen"
   },
+  "state": {
+    "new": "Neu",
+    "needs_more_info": "Benötigt mehr Informationen",
+    "pre_submission": "Voranmeldung",
+    "pending": "Pending",
+    "triaged": "Ausstehend",
+    "retesting": "Erneutes Testen",
+    "resolved": "Aufgeklärt",
+    "informative": "Informatif",
+    "duplicate": "Duplikat",
+    "not_applicable": "Unzutreffend",
+    "spam": "Spam",
+    "out_of_scope": "Außerhalb Anwendungsbereich",
+    "accepted_risk": "Akzeptiertes Risiko"
+  },
   "report": {
     "dialog": {
       "header": "Penetrationstestbereicht exportieren",
@@ -69,16 +84,21 @@
     "title.label": "Projekt Titel",
     "client.label": "Name des Auftraggebers",
     "tester.label": "Name des Pentester",
+    "state.label": "Penteststatus",
     "summary.label": "Zusammenfassung",
     "summary.placeholder": "Sollte eine Zusammenfassung, einen Ansatz, einen Umfang und eine Bewertungsübersicht sowie allgemeine Empfehlungen enthalten",
     "title": "Titel",
     "client": "Klient",
     "tester": "Tester",
+    "state": "Penteststatus",
     "summary": "Zusammenfassung",
     "createdAt": "Erstellt am",
     "overview": {
       "add.project": "Projekt hinzufügen",
       "no.projects": "Keine Projekte verfügbar"
+    },
+    "filter": {
+      "placeholder": "Projekt suchen"
     },
     "create": {
       "header": "Neues Projekt erstellen"
@@ -96,6 +116,7 @@
       "titleRequired": "Titel ist erforderlich.",
       "clientRequired": "Klient ist erforderlich.",
       "testerRequired": "Tester ist erforderlich.",
+      "stateRequired": "Status ist erforderlich.",
       "summaryRequired": "Zusammenfassung ist erforderlich."
     },
     "popup": {

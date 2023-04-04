@@ -28,6 +28,7 @@ import {Project, ProjectPentests} from '@shared/models/project.model';
 import {PentestStatus} from '@shared/models/pentest-status.model';
 import {ObjectiveChartModule} from '@shared/modules/objective-chart/objective-chart.module';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {ReportState} from '@shared/models/state.enum';
 
 describe('ExportReportDialogComponent', () => {
   let component: ExportReportDialogComponent;
@@ -102,6 +103,7 @@ const mockProject: Project = {
   createdAt: new Date('2019-01-10T09:00:00'),
   tester: 'Novatester',
   summary: '',
+  state: ReportState.NEW,
   projectPentests: mockedPentests,
   testingProgress: 0,
   createdBy: '11c47c56-3bcd-45f1-a05b-c197dbd33110'

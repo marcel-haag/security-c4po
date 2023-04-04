@@ -75,21 +75,16 @@ export class ObjectiveHeaderComponent implements OnInit {
         closeOnBackdropClick: false
       }
     ).pipe(
-      filter(value => !!value),
-      mergeMap((value: ProjectDialogBody) => this.projectService.updateProject(this.selectedProject$.getValue().id, value)),
       untilDestroyed(this)
     ).subscribe({
-      next: (project: Project) => {
+      next: (project) => {
         this.store.dispatch(new InitProjectState(
           project,
           [],
           []
-        )).pipe(untilDestroyed(this)).subscribe();
-        this.notificationService.showPopup('project.popup.update.success', PopupType.SUCCESS);
-      },
-      error: error => {
-        console.error(error);
-        this.notificationService.showPopup('project.popup.update.failed', PopupType.FAILURE);
+        )).pipe(
+          untilDestroyed(this)
+        ).subscribe();
       }
     });
   }

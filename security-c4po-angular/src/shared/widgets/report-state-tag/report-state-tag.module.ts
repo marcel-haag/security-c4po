@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {SeverityTagComponent} from '@shared/widgets/severity-tag/severity-tag.component';
 import {NbTagModule} from '@nebular/theme';
 import {TranslateModule} from '@ngx-translate/core';
+import {ReportStateTagComponent} from '@shared/widgets/report-state-tag/report-state-tag.component';
+
+
 
 @NgModule({
   declarations: [
-    SeverityTagComponent
+    ReportStateTagComponent
   ],
   imports: [
     CommonModule,
@@ -14,7 +16,7 @@ import {TranslateModule} from '@ngx-translate/core';
     TranslateModule
   ],
   exports: [
-    SeverityTagComponent
+    ReportStateTagComponent
   ]
 })
-export class SeverityTagModule { }
+export class ReportStateTagModule { }

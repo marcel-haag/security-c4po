@@ -7,6 +7,7 @@ import {KeycloakService} from 'keycloak-angular';
 import {Project, ProjectDialogBody} from '@shared/models/project.model';
 import {environment} from '../../../environments/environment';
 import {throwError} from 'rxjs';
+import {ReportState} from '@shared/models/state.enum';
 
 describe('ProjectService', () => {
   let service: ProjectService;
@@ -42,6 +43,7 @@ describe('ProjectService', () => {
       createdAt: dummyDate,
       tester: 'Novatester',
       summary: '',
+      state: ReportState.NEW,
       testingProgress: 0,
       createdBy: '11c47c56-3bcd-45f1-a05b-c197dbd33110'
     };
@@ -83,6 +85,7 @@ describe('ProjectService', () => {
       client: 'E Corp',
       title: 'Some Mock API (v1.0) Scanning',
       tester: 'Novatester',
+      state: ReportState.NEW,
       summary: ''
     };
 
@@ -93,6 +96,7 @@ describe('ProjectService', () => {
       createdAt: dummyDate,
       tester: 'Novatester',
       summary: '',
+      state: ReportState.NEW,
       testingProgress: 0,
       createdBy: '11c47c56-3bcd-45f1-a05b-c197dbd33110'
     };

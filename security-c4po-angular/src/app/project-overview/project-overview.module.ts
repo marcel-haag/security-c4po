@@ -2,7 +2,15 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ProjectOverviewComponent} from './project-overview.component';
 import {ProjectOverviewRoutingModule} from './project-overview-routing.module';
-import {NbButtonModule, NbCardModule, NbProgressBarModule} from '@nebular/theme';
+import {
+  NbButtonModule,
+  NbCardModule,
+  NbFormFieldModule,
+  NbInputModule,
+  NbLayoutModule,
+  NbProgressBarModule,
+  NbSelectModule
+} from '@nebular/theme';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {TranslateModule} from '@ngx-translate/core';
@@ -12,6 +20,8 @@ import {CommonAppModule} from '../common-app.module';
 import {ConfirmDialogModule} from '@shared/modules/confirm-dialog/confirm-dialog.module';
 import {SecurityConfirmDialogModule} from '@shared/modules/security-confirm-dialog/security-confirm-dialog.module';
 import {RouterModule} from '@angular/router';
+import {ReportStateTagModule} from '@shared/widgets/report-state-tag/report-state-tag.module';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,7 +44,13 @@ import {RouterModule} from '@angular/router';
     TranslateModule,
     ProjectDialogModule,
     ConfirmDialogModule,
-    SecurityConfirmDialogModule
+    ReportStateTagModule,
+    SecurityConfirmDialogModule,
+    NbLayoutModule,
+    NbInputModule,
+    NbFormFieldModule,
+    ReactiveFormsModule,
+    NbSelectModule
   ]
 })
 export class ProjectOverviewModule {

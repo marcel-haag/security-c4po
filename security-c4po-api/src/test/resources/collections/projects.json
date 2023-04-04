@@ -3,7 +3,7 @@
     "$oid": "6405d84a13ae975803a098fa"
   },
   "lastModified": {
-    "$date": "2023-03-24T12:18:06.619Z"
+    "$date": "2023-04-04T13:39:00.146Z"
   },
   "data": {
     "_id": "575dd9d4-cb3c-4df3-981e-8a18bf8dc1d2",
@@ -12,6 +12,7 @@
     "createdAt": "2023-03-06T12:10:50.835664Z",
     "tester": "Jojo",
     "summary": "This report includes an Executeive Summary, the rules in regards to the scope of the pentest and the choosen approach of the pentester.\nDio Stonemask Inc. contracted Jojo to perform a Penetration Test to identify security weaknesses,\ndetermine the impact to Dio Stonemask Inc., document all findings in a clear and repeatable manner,\nand provide remediation recommendations",
+    "state": "TRIAGED",
     "projectPentests": [
       {
         "pentestId": "54f3ce12-784a-4e44-b9b3-0a986119ec50",
@@ -250,7 +251,7 @@
     "$oid": "6405e92813ae975803a09905"
   },
   "lastModified": {
-    "$date": "2023-03-06T13:22:48.564Z"
+    "$date": "2023-03-29T19:04:32.771Z"
   },
   "data": {
     "_id": "d6e83738-4251-44ac-ad40-21b360780c98",
@@ -258,8 +259,14 @@
     "title": "CashMyData (iOS)",
     "createdAt": "2023-03-06T13:22:48.564351Z",
     "tester": "Elliot",
-    "projectPentests": [],
-    "createdBy": "5f104d76-bd8d-4258-852a-d000c7f0666d"
+    "projectPentests": [
+      {
+        "pentestId": "a666322d-688c-45b2-bf34-dd7020ee71ac",
+        "status": "COMPLETED"
+      }
+    ],
+    "createdBy": "5f104d76-bd8d-4258-852a-d000c7f0666d",
+    "state": "NEW"
   },
   "_class": "com.securityc4po.api.project.ProjectEntity"
 }]
