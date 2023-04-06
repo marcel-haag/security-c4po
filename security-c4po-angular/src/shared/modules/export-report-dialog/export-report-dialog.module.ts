@@ -11,6 +11,7 @@ import {ExportReportDialogService} from '@shared/modules/export-report-dialog/se
 import {ReportingService} from '@shared/services/reporting/reporting.service';
 import {ObjectiveChartModule} from '@shared/modules/objective-chart/objective-chart.module';
 import {LoadingBarModule} from '@shared/widgets/loading-bar/loading-bar.module';
+import {VersionTagModule} from '@shared/widgets/version-tag/version-tag.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {LoadingBarModule} from '@shared/widgets/loading-bar/loading-bar.module';
         ReactiveFormsModule,
         NbRadioModule,
         ObjectiveChartModule,
-        LoadingBarModule
+        LoadingBarModule,
+        VersionTagModule
     ],
   providers: [
     ExportReportDialogService,

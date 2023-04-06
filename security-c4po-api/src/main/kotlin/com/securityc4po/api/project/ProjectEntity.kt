@@ -20,6 +20,7 @@ fun ProjectEntity.toProject() : Project {
                 this.data.tester,
                 this.data.summary,
                 this.data.state,
+                this.data.version,
                 this.data.projectPentests,
                 this.data.createdBy
         )

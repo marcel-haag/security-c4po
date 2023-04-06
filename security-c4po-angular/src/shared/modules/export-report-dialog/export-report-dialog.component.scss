@@ -1,5 +1,6 @@
 @import "../../../assets/@theme/styles/_dialog.scss";
 @import '../../../assets/@theme/styles/themes';
+@import '../../../assets/@theme/styles/_text-overflow.scss';
 
 .export-report-dialog {
   width: 45.25rem !important;
@@ -44,8 +45,13 @@
   }
 
   .project-title {
-    font-size: 1.5rem;
     padding: 0.25rem 0.5rem 0.5rem;
+    width: 100%;
+
+
+    .title {
+      @include multiLineEllipsis($font-size: 1.5rem, $font-weight: bold, $line-height: 1.5rem, $lines-to-show: 2, $max-width: 32rem);
+    }
   }
 
   .form-field {

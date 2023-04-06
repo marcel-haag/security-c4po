@@ -8,6 +8,7 @@ import {PROJECT_STATE_NAME, ProjectState, ProjectStateModel} from '@shared/store
 import {Category} from '@shared/models/category.model';
 
 const INITIAL_PROJECT_STATE_SESSION: ProjectStateModel = {
+  allProjects: [],
   selectedProject: null,
   disabledCategories: [],
   selectedCategory: Category.INFORMATION_GATHERING,
@@ -16,6 +17,7 @@ const INITIAL_PROJECT_STATE_SESSION: ProjectStateModel = {
 };
 
 const DESIRED_PROJECT_STATE_SESSION: ProjectStateModel = {
+  allProjects: [],
   selectedProject: null,
   disabledCategories: [],
   selectedCategory: Category.INFORMATION_GATHERING,

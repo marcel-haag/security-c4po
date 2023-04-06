@@ -22,6 +22,7 @@
     "password": "Passwort",
     "no.progress": "Kein Fortschritt",
     "project": "Projekt",
+    "version": "Version",
     "validationMessage": {
       "inputNotMatching": "Eingabe stimmt nicht überein!"
     },
@@ -98,7 +99,7 @@
       "no.projects": "Keine Projekte verfügbar"
     },
     "filter": {
-      "placeholder": "Projekt suchen"
+      "placeholder": "Alle {{allProjectsCount}} Projekt(e) durchsuchen.."
     },
     "create": {
       "header": "Neues Projekt erstellen"

@@ -5,7 +5,6 @@ import com.securityc4po.reporting.remote.model.ProjectReport
 import java.time.Instant
 import java.util.Date
 
-
 data class Project(
     val id: String,
     val client: String,
@@ -13,6 +12,7 @@ data class Project(
     val createdAt: String,
     val tester: String,
     val summary: String? = "",
+    val version: String,
     var projectPentests: List<ProjectPentest>? = emptyList(),
     val createdBy: String
 )
@@ -26,6 +26,7 @@ fun Project.toProjectReport(): ProjectReport {
         createdAt = Date.from(Instant.now()),
         tester = this.tester,
         summary = this.summary,
+        version = this.version,
         projectPentestReport = mutableListOf<PentestReport>(),
         createdBy = this.createdBy
     )

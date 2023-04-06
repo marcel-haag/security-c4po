@@ -77,6 +77,8 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
                                 .description("The summary of the requested project"),
                             PayloadDocumentation.fieldWithPath("[].state").type(JsonFieldType.STRING)
                                 .description("The state of the requested project pentest"),
+                            PayloadDocumentation.fieldWithPath("[].version").type(JsonFieldType.STRING)
+                                .description("The version of the requested project"),
                             PayloadDocumentation.fieldWithPath("[].createdBy").type(JsonFieldType.STRING)
                                 .description("The id of the user that created the project"),
                             PayloadDocumentation.fieldWithPath("[].testingProgress").type(JsonFieldType.NUMBER)
@@ -95,6 +97,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
             summary = "Lorem Ipsum",
             projectPentests = emptyList<ProjectPentest>(),
             state = PentestState.NEW,
+            version = "1.0",
             createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
         val projectTwo = Project(
@@ -106,6 +109,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
             summary = "Lorem Ipsum",
             projectPentests = emptyList<ProjectPentest>(),
             state = PentestState.NEW,
+            version = "1.0",
             createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
 
@@ -150,6 +154,8 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
                                 .description("The user that is assigned as a tester in the project"),
                             PayloadDocumentation.fieldWithPath("state").type(JsonFieldType.STRING)
                                 .description("The state of the requested project pentest"),
+                            PayloadDocumentation.fieldWithPath("version").type(JsonFieldType.STRING)
+                                .description("The version of the requested project"),
                             PayloadDocumentation.fieldWithPath("createdBy").type(JsonFieldType.STRING)
                                 .description("The id of the user that created the project"),
                             PayloadDocumentation.fieldWithPath("testingProgress").type(JsonFieldType.NUMBER)
@@ -238,6 +244,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
             tester = "Novatester",
             projectPentests = emptyList<ProjectPentest>(),
             state = PentestState.NEW,
+            version = "1.0",
             createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
     }
@@ -279,6 +286,8 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
                                 .description("The summary of the requested project"),
                             PayloadDocumentation.fieldWithPath("state").type(JsonFieldType.STRING)
                                 .description("The state of the requested project pentest"),
+                            PayloadDocumentation.fieldWithPath("version").type(JsonFieldType.STRING)
+                                .description("The version of the requested project"),
                             PayloadDocumentation.fieldWithPath("createdBy").type(JsonFieldType.STRING)
                                 .description("The id of the user that created the project"),
                             PayloadDocumentation.fieldWithPath("testingProgress").type(JsonFieldType.NUMBER)
@@ -304,6 +313,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
             tester = "Stipe_updated",
             summary = "",
             state = PentestState.NEW,
+            version = "1.0",
             projectPentests = emptyList<ProjectPentest>(),
             createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
@@ -319,6 +329,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
             tester = "Novatester",
             summary = "Lorem Ipsum",
             state = PentestState.NEW,
+            version = "1.0",
             projectPentests = emptyList<ProjectPentest>(),
             createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )
@@ -330,6 +341,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
             tester = "Elliot",
             summary = "Lorem Ipsum",
             state = PentestState.NEW,
+            version = "1.0",
             projectPentests = emptyList<ProjectPentest>(),
             createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
         )

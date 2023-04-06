@@ -9,6 +9,7 @@ export class Project {
   tester: string;
   summary: string;
   state: ReportState;
+  version: string;
   projectPentests?: Array<ProjectPentests>;
   testingProgress?: number;
   createdBy: string;
@@ -19,6 +20,7 @@ export class Project {
               createdAt: Date,
               tester: string,
               state: ReportState,
+              version: string,
               projectPentests?: Array<ProjectPentests>,
               testingProgress?: number,
               summary?: string,
@@ -32,6 +34,7 @@ export class Project {
     this.testingProgress = testingProgress;
     this.summary = summary;
     this.state = state;
+    this.version = version;
     this.createdBy = createdBy;
   }
 }

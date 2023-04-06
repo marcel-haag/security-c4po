@@ -13,7 +13,6 @@ import {PentestStatus} from '@shared/models/pentest-status.model';
 import {shareReplay, tap} from 'rxjs/operators';
 import {downloadFile} from '@shared/functions/download-file.function';
 import {Loading, LoadingState} from '@shared/models/loading.model';
-import {HttpEvent, HttpEventType} from '@angular/common/http';
 import {DialogService} from '@shared/services/dialog-service/dialog.service';
 
 @Component({

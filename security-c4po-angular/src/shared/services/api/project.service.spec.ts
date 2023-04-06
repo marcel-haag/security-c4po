@@ -44,6 +44,7 @@ describe('ProjectService', () => {
       tester: 'Novatester',
       summary: '',
       state: ReportState.NEW,
+      version: '1.0',
       testingProgress: 0,
       createdBy: '11c47c56-3bcd-45f1-a05b-c197dbd33110'
     };
@@ -97,6 +98,7 @@ describe('ProjectService', () => {
       tester: 'Novatester',
       summary: '',
       state: ReportState.NEW,
+      version: '1.0',
       testingProgress: 0,
       createdBy: '11c47c56-3bcd-45f1-a05b-c197dbd33110'
     };

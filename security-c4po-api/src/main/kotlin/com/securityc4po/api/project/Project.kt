@@ -22,6 +22,7 @@ data class Project(
     val tester: String,
     val summary: String? = null,
     val state: PentestState,
+    val version: String,
     var projectPentests: List<ProjectPentest> = emptyList(),
     val createdBy: String
 )
@@ -35,6 +36,7 @@ fun buildProject(body: ProjectRequestBody, projectEntity: ProjectEntity): Projec
         tester = body.tester,
         summary = body.summary,
         state = body.state,
+        version = projectEntity.data.version,
         projectPentests = projectEntity.data.projectPentests,
         createdBy = projectEntity.data.createdBy
     )
@@ -49,6 +51,7 @@ fun Project.toProjectResponseBody(): ResponseBody {
         "tester" to tester,
         "summary" to summary,
         "state" to state,
+        "version" to version,
         /* ToDo: Calculate percentage in BE type: float */
         "testingProgress" to calculateProgress(),
         "createdBy" to createdBy
@@ -64,6 +67,7 @@ fun Project.toProjectCompletedPentestResponseBody(): ResponseBody {
         "createdAt" to createdAt,
         "tester" to tester,
         "summary" to summary,
+        "version" to version,
         "projectPentests" to projectPentests.filter { pentest -> pentest.status == PentestStatus.COMPLETED },
         "createdBy" to createdBy
     )
@@ -78,6 +82,7 @@ fun Project.toProjectEvaluatedPentestResponseBody(): ResponseBody {
         "createdAt" to createdAt,
         "tester" to tester,
         "summary" to summary,
+        "version" to version,
         "projectPentests" to projectPentests,
         "createdBy" to createdBy
     )
@@ -150,6 +155,8 @@ fun ProjectRequestBody.toProject(): Project {
         tester = this.tester,
         summary = this.summary,
         state = this.state,
+        // ToDo: Update version in backend automatically
+        version = "1.0",
         // ToDo: Should be changed to SUB from Token after adding AUTH Header
         createdBy = UUID.randomUUID().toString()
     )

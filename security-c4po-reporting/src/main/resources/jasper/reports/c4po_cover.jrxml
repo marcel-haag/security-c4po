@@ -39,6 +39,7 @@
         <property name="net.sf.jasperreports.json.field.expression" value="createdBy"/>
         <fieldDescription><![CDATA[createdBy]]></fieldDescription>
     </field>
+    <field name="version" class="java.lang.String"/>
     <background>
         <band splitType="Stretch"/>
     </background>
@@ -149,23 +150,23 @@
         </band>
     </detail>
     <columnFooter>
-        <band height="70" splitType="Stretch">
+        <band height="76" splitType="Stretch">
             <rectangle>
                 <reportElement x="-20" y="30" width="595" height="30" forecolor="#232B44" backcolor="#232B44" uuid="1ed47e2d-9d46-44b9-bad7-8eeb1143c83c"/>
                 <graphicElement>
                     <pen lineWidth="1.0"/>
                 </graphicElement>
             </rectangle>
-            <staticText>
-                <reportElement mode="Opaque" x="0" y="35" width="551" height="20" forecolor="#FEFEFF" backcolor="#232B44" uuid="fc82cf8c-f284-413c-9c49-ad924c765c48"/>
-                <textElement textAlignment="Right" verticalAlignment="Middle">
-                    <font fontName="SansSerif&#xA;&#xA;" size="12" isBold="false" isItalic="true"/>
-                </textElement>
-                <text><![CDATA[Version 1.0]]></text>
-            </staticText>
             <rectangle>
                 <reportElement x="-20" y="20" width="595" height="10" forecolor="#151B2E" backcolor="#151B2E" uuid="b9a5cd43-3460-4177-97f5-a46eac874e7d"/>
             </rectangle>
+            <textField>
+                <reportElement x="380" y="35" width="174" height="20" forecolor="#FFFFFF" uuid="0aa9c401-c73c-4a7e-b5a2-b650d333093f"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="12" isItalic="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Version " + $F{version}]]></textFieldExpression>
+            </textField>
         </band>
     </columnFooter>
     <pageFooter>

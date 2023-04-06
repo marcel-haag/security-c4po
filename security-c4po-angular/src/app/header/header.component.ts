@@ -34,7 +34,12 @@ export class HeaderComponent implements OnInit {
   // User Menu Properties
   userPictureOnly = false;
   user: BehaviorSubject<User> = new BehaviorSubject<User>(null);
-  userMenu: NbMenuItem[] = [{title: '', pathMatch: 'prefix'}];
+  userMenu: NbMenuItem[] = [
+    {
+      title: '',
+      pathMatch: 'prefix'
+    }
+  ];
   readonly FALLBACK_IMG = 'assets/images/demo/anon-user-icon.png';
 
   constructor(
@@ -67,7 +72,7 @@ export class HeaderComponent implements OnInit {
         console.error(err);
       }
     });
-    // Handle user profile manu selection
+    // Handle user profile menu selection
     this.menuService.onItemClick()
       .pipe(
         untilDestroyed(this)

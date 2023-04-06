@@ -97,6 +97,7 @@ export const mockProject: Project = {
   tester: 'Testpentester',
   summary: 'Test',
   state: ReportState.NEW,
+  version: '1.0',
   createdAt: new Date(),
   testingProgress: 0,
   createdBy: 'UID-11-12-13'

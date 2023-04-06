@@ -5,7 +5,7 @@ import {
   ChangeCategory,
   ChangePentest,
   ChangeProject,
-  InitProjectState,
+  InitProjectState, SetAvailableProjects,
   UpdatePentestComments,
   UpdatePentestFindings, UpdatePentestStatus,
   UpdatePentestTime
@@ -17,6 +17,7 @@ import {PentestStatus} from '@shared/models/pentest-status.model';
 export const PROJECT_STATE_NAME = 'project';
 
 export interface ProjectStateModel {
+  allProjects: Project[];
   selectedProject: Project;
   // Manages Categories
   disabledCategories: Array<string>;
@@ -33,6 +34,7 @@ export interface FindingMap {
 @State<ProjectStateModel>({
   name: PROJECT_STATE_NAME,
   defaults: {
+    allProjects: [],
     selectedProject: null,
     disabledCategories: [],
     selectedCategory: Category.INFORMATION_GATHERING,
@@ -42,6 +44,11 @@ export interface FindingMap {
 })
 @Injectable()
 export class ProjectState {
+  @Selector()
+  static allProjects(state: ProjectStateModel): Project[] {
+    return state.allProjects;
+  }
+
   @Selector()
   static project(state: ProjectStateModel): Project {
     return state.selectedProject;
@@ -60,11 +67,21 @@ export class ProjectState {
   @Action(InitProjectState)
   initProjectState(ctx: StateContext<ProjectStateModel>, action: InitProjectState): void {
     ctx.setState({
+      allProjects: ctx.getState().allProjects,
       selectedProject: action.project,
       disabledCategories: action.disabledCategories,
       selectedCategory: Category.INFORMATION_GATHERING,
       disabledPentests: action.disabledPentests,
       selectedPentest: null
+    });
+  }
+
+  @Action(SetAvailableProjects)
+  setAllAvailableProjects(ctx: StateContext<ProjectStateModel>, {projects}: SetAvailableProjects): void {
+    const state = ctx.getState();
+    // ToDo: Add logic to change selectedCategory if disabled
+    ctx.patchState({
+      allProjects: projects
     });
   }
 

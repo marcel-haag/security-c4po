@@ -33,6 +33,7 @@ import {NgxsModule, Store} from '@ngxs/store';
 import {ReportState} from '@shared/models/state.enum';
 
 const DESIRED_PROJECT_STATE_SESSION: ProjectStateModel = {
+  allProjects: [],
   selectedProject: {
     id: '56c47c56-3bcd-45f1-a05b-c197dbd33111',
     client: 'E Corp',
@@ -41,6 +42,7 @@ const DESIRED_PROJECT_STATE_SESSION: ProjectStateModel = {
     tester: 'Novatester',
     summary: '',
     state: ReportState.NEW,
+    version: '1.0',
     testingProgress: 0,
     createdBy: '11c47c56-3bcd-45f1-a05b-c197dbd33110'
   },

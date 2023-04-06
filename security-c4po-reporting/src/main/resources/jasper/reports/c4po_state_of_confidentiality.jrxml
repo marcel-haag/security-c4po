@@ -33,6 +33,7 @@
         <property name="net.sf.jasperreports.json.field.expression" value="createdBy"/>
         <fieldDescription><![CDATA[createdBy]]></fieldDescription>
     </field>
+    <field name="version" class="java.lang.String"/>
     <background>
         <band splitType="Stretch"/>
     </background>
@@ -70,7 +71,7 @@
                 <textElement>
                     <font size="12"/>
                 </textElement>
-                <textFieldExpression><![CDATA["The contents of this document have been developed by " + $F{tester} + ". " + $F{tester} + " considers the contents of this document to be proprietary and business confidential information. This information is to be used only in the performance of its intended use. This document may not be released to another vendor, business partner or contractor without prior written consent from " + $F{tester} + ". Additionally, no portion of this document may be communicated, reproduced, copied or distributed without the prior consent of " + $F{tester} + "." ]]></textFieldExpression>
+                <textFieldExpression><![CDATA["The contents of this document have been developed by " + $F{tester} + ". " + $F{tester} + " considers the contents of this document to be proprietary and business confidential information. This information is to be used only in the performance of its intended use. This document may not be released to another vendor, business partner or contractor without prior written consent from " + $F{tester} + ". Additionally, no portion of this document may be communicated, reproduced, copied or distributed without the prior consent of " + $F{tester} + "."]]></textFieldExpression>
             </textField>
             <textField textAdjust="StretchHeight">
                 <reportElement positionType="Float" x="0" y="100" width="551" height="100" uuid="6b5626a8-ff7b-450b-8c53-93c2115bd56c"/>

@@ -26,7 +26,7 @@ import {DialogService} from '@shared/services/dialog-service/dialog.service';
 import {DialogServiceMock} from '@shared/services/dialog-service/dialog.service.mock';
 import {ProjectDialogService} from '@shared/modules/project-dialog/service/project-dialog.service';
 import {ProjectDialogServiceMock} from '@shared/modules/project-dialog/service/project-dialog.service.mock';
-import {MockComponent, MockPipe} from 'ng-mocks';
+import {MockComponent} from 'ng-mocks';
 
 describe('ProjectOverviewComponent', () => {
   let component: ProjectOverviewComponent;
@@ -36,19 +36,17 @@ describe('ProjectOverviewComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [
         ProjectOverviewComponent,
-        MockComponent(LoadingSpinnerComponent),
-        MockPipe(DateTimeFormatPipe)
+        MockComponent(LoadingSpinnerComponent)
       ],
       imports: [
         CommonModule,
-        ProjectOverviewRoutingModule,
         NbCardModule,
         NbButtonModule,
         FlexLayoutModule,
         BrowserAnimationsModule,
         FontAwesomeModule,
         TranslateModule,
-        NbProgressBarModule,
+        ProjectOverviewRoutingModule,
         NbSpinnerModule,
         HttpClientTestingModule,
         ThemeModule.forRoot(),
