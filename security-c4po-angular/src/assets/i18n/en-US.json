@@ -22,6 +22,7 @@
     "password": "Password",
     "no.progress": "No progress",
     "project": "Project",
+    "version": "Version",
     "validationMessage": {
       "inputNotMatching": "Input does not match!"
     },
@@ -98,7 +99,7 @@
       "no.projects": "No projects available"
     },
     "filter": {
-      "placeholder": "Search for project"
+      "placeholder": "Search through all {{allProjectsCount}} project(s).."
     },
     "create": {
       "header": "Create New Project"

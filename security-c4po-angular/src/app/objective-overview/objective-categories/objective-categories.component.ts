@@ -9,17 +9,17 @@ import {TranslateService} from '@ngx-translate/core';
 import {ProjectState} from '@shared/stores/project-state/project-state';
 import {catchError, switchMap, tap} from 'rxjs/operators';
 import {Pentest, transformPentestsToObjectiveEntries} from '@shared/models/pentest.model';
+import {UntilDestroy} from '@ngneat/until-destroy';
 
 @Component({
   selector: 'app-objective-categories',
   templateUrl: './objective-categories.component.html',
   styleUrls: ['./objective-categories.component.scss']
 })
-export class ObjectiveCategoriesComponent implements OnInit, OnDestroy {
+@UntilDestroy()
+export class ObjectiveCategoriesComponent implements OnInit {
   categories: NbMenuItem[] = [];
   selectedCategory: Category = 0;
-
-  private destroy$ = new Subject<void>();
 
   constructor(private store: Store,
               private menuService: NbMenuService,
@@ -49,13 +49,15 @@ export class ObjectiveCategoriesComponent implements OnInit, OnDestroy {
         untilDestroyed(this)
       )
       .subscribe((menuBag) => {
-        this.selectedCategory = menuBag.item.data;
-        this.categories.forEach(category => {
-          category.selected = false;
-        });
-        if (this.selectedCategory >= 0) {
-          menuBag.item.selected = true;
-          this.store.dispatch(new ChangeCategory(this.selectedCategory));
+        if (menuBag.tag === 'menu') {
+          this.selectedCategory = menuBag.item.data;
+          this.categories.forEach(category => {
+            category.selected = false;
+          });
+          if (this.selectedCategory >= 0) {
+            menuBag.item.selected = true;
+            this.store.dispatch(new ChangeCategory(this.selectedCategory));
+          }
         }
       });
   }
@@ -85,10 +87,5 @@ export class ObjectiveCategoriesComponent implements OnInit, OnDestroy {
           });
       }
     }
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 }

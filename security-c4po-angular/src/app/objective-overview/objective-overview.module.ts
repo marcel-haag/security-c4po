@@ -11,7 +11,7 @@ import {
   NbListModule,
   NbButtonModule,
   NbTooltipModule,
-  NbActionsModule
+  NbActionsModule, NbUserModule, NbContextMenuModule
 } from '@nebular/theme';
 import {TranslateModule} from '@ngx-translate/core';
 import {StatusTagModule} from '@shared/widgets/status-tag/status-tag.module';
@@ -26,6 +26,7 @@ import {ExportReportDialogModule} from '@shared/modules/export-report-dialog/exp
 import {ProjectDialogModule} from '@shared/modules/project-dialog/project-dialog.module';
 import {CommentWidgetModule} from '@shared/widgets/comment-widget/comment-widget.module';
 import {ReportStateTagModule} from '@shared/widgets/report-state-tag/report-state-tag.module';
+import {VersionTagModule} from '@shared/widgets/version-tag/version-tag.module';
 
 @NgModule({
   declarations: [
@@ -33,33 +34,36 @@ import {ReportStateTagModule} from '@shared/widgets/report-state-tag/report-stat
     ObjectiveCategoriesComponent,
     ObjectiveTableComponent,
   ],
-    imports: [
-        CommonModule,
-        CommonAppModule,
-        NbLayoutModule,
-        NbCardModule,
-        NbButtonModule,
-        // nbTooltip crashes app right now if used in component,
-        // workaround: use title in html for now
-        NbTooltipModule,
-        NbTreeGridModule,
-        TranslateModule,
-        StatusTagModule,
-        RouterModule,
-        FormsModule,
-        NbListModule,
-        FontAwesomeModule,
-        FlexLayoutModule,
-        NbActionsModule,
-        ExportReportDialogModule,
-        ProjectDialogModule,
-        ObjectiveOverviewRoutingModule,
-        // Table Widgets
-        FindigWidgetModule,
-        CommentWidgetModule,
-        NbMenuModule,
-        ReportStateTagModule
-    ],
+  imports: [
+    CommonModule,
+    CommonAppModule,
+    NbLayoutModule,
+    NbCardModule,
+    NbButtonModule,
+    // nbTooltip crashes app right now if used in component,
+    // workaround: use title in html for now
+    NbTooltipModule,
+    NbTreeGridModule,
+    TranslateModule,
+    StatusTagModule,
+    RouterModule,
+    FormsModule,
+    NbListModule,
+    FontAwesomeModule,
+    FlexLayoutModule,
+    NbActionsModule,
+    ExportReportDialogModule,
+    ProjectDialogModule,
+    ObjectiveOverviewRoutingModule,
+    // Table Widgets
+    FindigWidgetModule,
+    CommentWidgetModule,
+    NbMenuModule,
+    ReportStateTagModule,
+    VersionTagModule,
+    NbUserModule,
+    NbContextMenuModule
+  ],
   exports: [
     ObjectiveHeaderComponent,
     ObjectiveCategoriesComponent,

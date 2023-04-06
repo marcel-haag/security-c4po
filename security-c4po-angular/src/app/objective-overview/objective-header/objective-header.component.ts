@@ -16,6 +16,9 @@ import {ProjectDialogService} from '@shared/modules/project-dialog/service/proje
 import {InitProjectState} from '@shared/stores/project-state/project-state.actions';
 import {ExportReportDialogService} from '@shared/modules/export-report-dialog/service/export-report-dialog.service';
 import {ExportReportDialogComponent} from '@shared/modules/export-report-dialog/export-report-dialog.component';
+import {NbMenuItem} from '@nebular/theme/components/menu/menu.service';
+import {NbMenuService} from '@nebular/theme';
+import {TranslateService} from '@ngx-translate/core';
 
 @UntilDestroy()
 @Component({
@@ -27,6 +30,23 @@ export class ObjectiveHeaderComponent implements OnInit {
 
   readonly fa = FA;
   selectedProject$: BehaviorSubject<Project> = new BehaviorSubject<Project>(null);
+  // Mobile menu properties
+  objectiveActionItems: NbMenuItem[] = [
+    {
+      title: 'global.action.edit',
+      badge: {
+        status: 'warning'
+      }
+    },
+    {
+      title: 'global.action.report',
+      badge: {
+        status: 'info'
+      }
+    },
+  ];
+  readonly BARS_IMG = 'assets/images/icons/bars.svg';
+  readonly ELLIPSIS_IMG = 'assets/images/icons/ellipsis.svg';
 
   constructor(private store: Store,
               private readonly notificationService: NotificationService,
@@ -34,7 +54,10 @@ export class ObjectiveHeaderComponent implements OnInit {
               private projectDialogService: ProjectDialogService,
               private projectService: ProjectService,
               private exportReportDialogService: ExportReportDialogService,
-              private readonly router: Router) {
+              private readonly router: Router,
+              private translateService: TranslateService,
+              private menuService: NbMenuService
+              ) {
   }
 
   ngOnInit(): void {
@@ -51,6 +74,33 @@ export class ObjectiveHeaderComponent implements OnInit {
       error: err => {
         console.error(err);
       }
+    });
+
+    // Handle user profile menu action selection
+    this.menuService.onItemClick()
+      .pipe(
+        untilDestroyed(this)
+      )
+      .subscribe((menuBag) => {
+        if (menuBag.item.badge && menuBag.item.badge.status === 'warning') {
+          this.onClickEditPentestProject();
+        } else if (menuBag.item.badge && menuBag.item.badge.status === 'info') {
+          this.onClickGeneratePentestReport();
+        }
+      });
+    // Setup stream to translate menu action item
+    this.translateService.stream('global.action.edit')
+      .pipe(
+        untilDestroyed(this)
+      ).subscribe((text: string) => {
+      this.objectiveActionItems[0].title = text;
+    });
+    // Setup stream to translate menu action item
+    this.translateService.stream('global.action.report')
+      .pipe(
+        untilDestroyed(this)
+      ).subscribe((text: string) => {
+      this.objectiveActionItems[1].title = text;
     });
   }
 
@@ -78,13 +128,15 @@ export class ObjectiveHeaderComponent implements OnInit {
       untilDestroyed(this)
     ).subscribe({
       next: (project) => {
-        this.store.dispatch(new InitProjectState(
-          project,
-          [],
-          []
-        )).pipe(
-          untilDestroyed(this)
-        ).subscribe();
+        if (project) {
+          this.store.dispatch(new InitProjectState(
+            project,
+            [],
+            []
+          )).pipe(
+            untilDestroyed(this)
+          ).subscribe();
+        }
       }
     });
   }

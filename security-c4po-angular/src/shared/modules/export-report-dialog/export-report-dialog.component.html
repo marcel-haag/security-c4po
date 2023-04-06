@@ -1,15 +1,17 @@
 <nb-card #dialog accent="{{dialogData?.options[0].accentColor}}" class="export-report-dialog">
-  <nb-card-header fxLayoutAlign="start center" class="export-report-header">
-    {{ dialogData?.options[0].headerLabelKey | translate }}
+  <nb-card-header fxLayout="row" fxLayoutAlign="start center" class="export-report-header">
+      {{ dialogData?.options[0].headerLabelKey | translate }}
   </nb-card-header>
-  <nb-card-body>
+  <!--ToDo: fix ngIf to avoid rendering issue-->
+  <nb-card-body *ngIf="selectedEvaluatedProject$.getValue()">
     <div fxLayout="column" fxLayoutGap="1rem" fxLayoutAlign="start start">
       <label class="export-format-label">
         {{ 'global.project' | translate }}:
       </label>
-      <b class="project-title">
-        {{dialogData.options[0].additionalData.title}}
-      </b>
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="project-title">
+        <span class="title">{{dialogData.options[0].additionalData.title}}</span>
+        <app-version-tag [version]="dialogData.options[0].additionalData?.version"></app-version-tag>
+      </div>
       <!--Chart Objective Component-->
       <div fxLayout="column" fxLayoutGap="2rem" fxLayoutAlign="center center">
         <app-objective-chart

@@ -1,0 +1,64 @@
+<nb-card class="project-card" accent="{{getProjectAccentFillStatus(project?.state)}}">
+  <nb-card-header fxLayoutAlign="start center"
+                  class="project-link project-header"
+                  (click)="onClickRouteToProject(project)">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <h4 class="header-title">{{project?.title}}</h4>
+      <span>
+                  <app-report-state-tag class="state-tag" [currentReportState]="project?.state"></app-report-state-tag>
+                </span>
+    </div>
+  </nb-card-header>
+  <nb-card-body class="project-link"
+                (click)="onClickRouteToProject(project)">
+    <p class="project-subheader">
+      {{'project.client' | translate}}:
+    </p>
+    <span class="project-paragraph">
+          {{project?.client}}
+        </span>
+
+    <p class="project-subheader">
+      {{'project.tester' | translate}}:
+    </p>
+    <span class="project-paragraph">
+          {{project?.tester}}
+        </span>
+
+    <p class="project-subheader">
+      {{'project.createdAt' | translate}}:
+    </p>
+    <span class="project-paragraph">
+          {{project?.createdAt | dateTimeFormat}}
+        </span>
+  </nb-card-body>
+  <nb-card-footer>
+    <div fxLayout="row" fxLayoutGap="1rem" fxLayoutAlign="start end">
+      <div class="project-progress">
+        <nb-progress-bar *ngIf="project.testingProgress > 0; else altProgressBar"
+                         status="warning"
+                         [value]="project.testingProgress"
+                         [displayValue]="true">
+        </nb-progress-bar>
+        <ng-template #altProgressBar>
+          {{'popup.info' | translate}} {{'global.no.progress' | translate}}
+        </ng-template>
+      </div>
+
+      <button nbButton
+              status="primary"
+              size="small"
+              class="project-button"
+              (click)="onClickEditProject(project)">
+        <fa-icon [icon]="fa.faPencilAlt"></fa-icon>
+      </button>
+      <button nbButton
+              status="danger"
+              size="small"
+              class="project-button"
+              (click)="onClickDeleteProject(project)">
+        <fa-icon [icon]="fa.faTrash"></fa-icon>
+      </button>
+    </div>
+  </nb-card-footer>
+</nb-card>

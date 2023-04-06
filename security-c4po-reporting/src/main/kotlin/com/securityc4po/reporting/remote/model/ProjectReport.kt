@@ -9,6 +9,7 @@ data class ProjectReport(
     val createdAt: Date,
     val tester: String,
     val summary: String? = null,
+    val version: String,
     var projectPentestReport: MutableList<PentestReport> = mutableListOf<PentestReport>(),
     val createdBy: String
 )

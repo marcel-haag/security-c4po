@@ -36,6 +36,9 @@
     .logo-container {
       font-style: oblique;
       color: #e74c3c;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     nb-action {

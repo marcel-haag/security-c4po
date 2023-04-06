@@ -6,25 +6,27 @@
         <!--Filter-->
         <div fxLayout="row" fxLayoutGap="1rem" class="header-filer">
           <!--Actions-->
-          <!--ToDo: Add searchbar that filters for title, client, tester-->
           <form class="project-filter-input">
             <nb-form-field>
-              <fa-icon nbPrefix class ="search-prefix-icon" [icon]="fa.faSearch"></fa-icon>
-              <input type="text" required
+              <fa-icon nbPrefix class="search-prefix-icon" [icon]="fa.faSearch"></fa-icon>
+              <input type="text"
                      fullWidth nbInput
+                     class="search-field"
                      [formControl]="projectSearch"
-                     placeholder="{{ 'project.filter.placeholder' | translate }}"
+                     placeholder="{{ 'project.filter.placeholder' | translate: this.allProjectsCount$?.getValue() }}"
+                     status="basic"
                      shape="semi-round"
-                     fieldSize="medium"
-                     status="basic">
+                     fieldSize="medium">
             </nb-form-field>
           </form>
           <!--ToDo: Add dropdown to filter for specific state-->
           <button nbButton
                   status="danger"
+                  outline
                   size="medium"
                   shape="semi-round"
                   class="reset-filter-btn"
+                  [disabled]="projectSearch.value === ''"
                   (click)="onClickResetFilter()">
             <fa-icon [icon]="fa.faFilterCircleXmark" class="btn-icon"></fa-icon>
             {{'global.action.reset' | translate}}
@@ -45,75 +47,11 @@
       </div>
     </nb-layout-header>
     <!--Column-->
+    <!--ToDo: Fix the column style for multiple projects in css-->
     <nb-layout-column class="pentest-overview-column">
-      <div fxLayout="row" fxLayoutGap="2rem">
-        <div *ngFor="let project of projects$ | async">
-          <nb-card class="project-card" accent="{{getProjectAccentFillStatus(project?.state)}}">
-            <nb-card-header fxLayoutAlign="start center"
-                            routerLink="id"
-                            fragment="{{project.id}}"
-                            class="project-link project-header"
-                            (click)="onClickRouteToProject(project)">
-              <div fxLayout="row" fxLayoutAlign="space-between center">
-                <h4 class="header-title">{{project?.title}}</h4>
-                <app-report-state-tag class="state-tag" [currentReportState]="project?.state"></app-report-state-tag>
-              </div>
-            </nb-card-header>
-            <nb-card-body class="project-link"
-                          routerLink="id"
-                          fragment="{{project.id}}"
-                          (click)="onClickRouteToProject(project)">
-              <p class="project-subheader">
-                {{'project.client' | translate}}:
-              </p>
-              <span class="project-paragraph">
-          {{project?.client}}
-        </span>
-
-              <p class="project-subheader">
-                {{'project.tester' | translate}}:
-              </p>
-              <span class="project-paragraph">
-          {{project?.tester}}
-        </span>
-
-              <p class="project-subheader">
-                {{'project.createdAt' | translate}}:
-              </p>
-              <span class="project-paragraph">
-          {{project?.createdAt | dateTimeFormat}}
-        </span>
-            </nb-card-body>
-            <nb-card-footer>
-              <div fxLayout="row" fxLayoutGap="1rem" fxLayoutAlign="start end">
-                <div class="project-progress">
-                  <nb-progress-bar *ngIf="project.testingProgress > 0; else altProgressBar"
-                                   status="warning"
-                                   [value]="project.testingProgress"
-                                   [displayValue]="true">
-                  </nb-progress-bar>
-                  <ng-template #altProgressBar>
-                    {{'popup.info' | translate}} {{'global.no.progress' | translate}}
-                  </ng-template>
-                </div>
-
-                <button nbButton
-                        status="primary"
-                        size="small"
-                        class="project-button"
-                        (click)="onClickEditProject(project)">
-                  <fa-icon [icon]="fa.faPencilAlt"></fa-icon>
-                </button>
-                <button nbButton
-                        status="danger"
-                        size="small"
-                        class="project-button"
-                        (click)="onClickDeleteProject(project)">
-                  <fa-icon [icon]="fa.faTrash"></fa-icon>
-                </button>
-              </div>
-            </nb-card-footer>
-          </nb-card>
+      <div class="project-grid">
+        <div class="project" *ngFor="let project of projects$ | async">
+          <app-project-widget [project]="project"></app-project-widget>
         </div>
       </div>
       <!--Error Text-->
@@ -125,7 +63,6 @@
       </div>
       <!--Loading Spinner-->
       <app-loading-spinner [isLoading$]="isLoading()" *ngIf="isLoading() | async"></app-loading-spinner>
-
     </nb-layout-column>
   </nb-layout>
 </div>

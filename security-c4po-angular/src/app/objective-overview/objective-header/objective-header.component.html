@@ -9,20 +9,23 @@
     </button>
   </div>
 
-  <app-report-state-tag class="state-tag" [currentReportState]="selectedProject$.getValue()?.state"></app-report-state-tag>
-  <h4>{{selectedProject$.getValue().title}}</h4>
+  <div class="header-info" fxLayout="row" fxLayoutGap="4rem" fxLayoutAlign="space-between center">
+    <app-report-state-tag class="state-tag"
+                          [currentReportState]="selectedProject$.getValue()?.state"></app-report-state-tag>
+    <h4 class="project-title">{{selectedProject$.getValue().title}}</h4>
+    <app-version-tag [version]="selectedProject$.getValue().version"></app-version-tag>
+  </div>
 
   <div class="button-container">
-    <nb-actions size="medium">
+    <!--Actions for normal view-->
+    <nb-actions size="medium" fxHide.lt-lg>
       <nb-action>
-        <!--status="button-outline-basic-text-color"-->
         <button nbButton
                 status="primary"
                 shape="round"
                 (click)="onClickEditPentestProject()">
           <fa-icon [icon]="fa.faEdit"
                    class="element-icon fa-lg"></fa-icon>
-          <!--<span class="element-text">{{ 'global.action.edit' | translate }}</span>-->
         </button>
       </nb-action>
       <nb-action>
@@ -34,6 +37,12 @@
                    class="element-icon fa-lg"></fa-icon>
           <span class="element-text">{{ 'global.action.report' | translate }}</span>
         </button>
+      </nb-action>
+    </nb-actions>
+    <!--Actions for mobile devices-->
+    <nb-actions size="medium" fxHide fxShow.lt-lg>
+      <nb-action>
+        <nb-user [nbContextMenu]="objectiveActionItems" shape="rectangle" [picture]="BARS_IMG" name="" [onlyPicture]></nb-user> <!--[picture]="fa.faRedoAlt"-->
       </nb-action>
     </nb-actions>
   </div>

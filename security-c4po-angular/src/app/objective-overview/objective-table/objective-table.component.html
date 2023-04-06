@@ -1,4 +1,4 @@
-<nb-card class="pentest-table">
+<div class="pentest-table">
   <table [nbTreeGrid]="dataSource">
     <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="columns"></tr>
     <tr nbTreeGridRow *nbTreeGridRowDef="let pentest; columns: columns"
@@ -52,6 +52,6 @@
       </td>
     </ng-container>
   </table>
-</nb-card>
+</div>
 
 <app-loading-spinner [isLoading$]="isLoading()" *ngIf="isLoading() | async"></app-loading-spinner>

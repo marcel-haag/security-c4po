@@ -105,6 +105,7 @@
         <property name="net.sf.jasperreports.json.field.expression" value="createdBy"/>
         <fieldDescription><![CDATA[createdBy]]></fieldDescription>
     </field>
+    <field name="version" class="java.lang.String"/>
     <group name="id">
         <groupExpression><![CDATA[$F{id}]]></groupExpression>
     </group>

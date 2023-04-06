@@ -1,0 +1,16 @@
+/* mixin for multiline */
+@mixin multiLineEllipsis($font-size, $font-weight, $line-height, $lines-to-show, $max-width) {
+  // Fallback for non-webkit
+  display: block;
+  display: -webkit-box;
+  max-width: $max-width;
+  // Fallback for non-webkit
+  height: calc(#{$font-size} * #{$line-height} * #{$lines-to-show});
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+  -webkit-line-clamp: $lines-to-show;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

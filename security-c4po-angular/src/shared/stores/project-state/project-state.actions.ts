@@ -14,6 +14,13 @@ export class InitProjectState {
   }
 }
 
+export class SetAvailableProjects {
+  static readonly type = '[ProjectState] SetAvailableProjects';
+
+  constructor(public projects: Project[]) {
+  }
+}
+
 export class ChangeProject {
   static readonly type = '[ProjectState] ChangeProject';
 

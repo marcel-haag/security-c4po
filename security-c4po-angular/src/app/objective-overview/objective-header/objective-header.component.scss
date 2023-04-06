@@ -1,16 +1,30 @@
+@import '../../../assets/@theme/styles/_text-overflow.scss';
+
 .pentest-header {
-  width: calc(100vw - 14%);
+  width: 100vw;
 
   .back-button-container {
     .back-element-icon {
     }
   }
 
+  .header-info {
+    position: absolute;
+    margin-left: 10rem;
+    margin-right: 10rem;
+    text-align: center;
+
+    .state-tag {
+    }
+
+    .project-title {
+      @include multiLineEllipsis($font-size: 1.5rem, $font-weight: bold, $line-height: 2rem, $lines-to-show: 1, $max-width: 36rem);
+    }
+  }
+
   .button-container {
-    display: flex;
-    align-content: flex-end;
-    // ToDo: Fix so that longer / shorter name won't change needed margin
-    // margin-right: 2.25rem;
+    position: absolute;
+    right: 2rem;
 
     .element-icon {
     }

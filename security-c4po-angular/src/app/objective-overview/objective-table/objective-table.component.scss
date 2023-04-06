@@ -1,7 +1,11 @@
 @import '../../../assets/@theme/styles/themes';
 
 .pentest-table {
-  width: calc(78vw - 18%);
+  // width: calc(78vw - 18%);
+  // width: 100%;
+  // width: calc(100% - 20rem);
+  margin-right: 2rem;
+  padding-right: 2rem;
 
   .pentest-cell {
     // Add style here
