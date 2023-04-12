@@ -14,6 +14,8 @@ import {NgxsModule, Store} from '@ngxs/store';
 import {KeycloakService} from 'keycloak-angular';
 import {SESSION_STATE_NAME, SessionState, SessionStateModel} from '@shared/stores/session-state/session-state';
 import {User} from '@shared/models/user.model';
+import {DialogService} from '@shared/services/dialog-service/dialog.service';
+import {DialogServiceMock} from '@shared/services/dialog-service/dialog.service.mock';
 
 const DESIRED_STORE_STATE_SESSION: SessionStateModel = {
   userAccount: {
@@ -52,6 +54,7 @@ describe('HeaderComponent', () => {
         NgxsModule.forRoot([SessionState])
       ],
       providers: [
+        {provide: DialogService, useClass: DialogServiceMock},
         NbMenuService,
         KeycloakService
       ]

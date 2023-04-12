@@ -1,6 +1,7 @@
 {
   "global": {
     "actions": "Aktionen",
+    "action.profile": "Profil",
     "action.login": "Einloggen",
     "action.logout": "Ausloggen",
     "action.retry": "Erneut Versuchen",
@@ -56,6 +57,35 @@
     "failed": "Benutzername oder Passwort falsch",
     "unauthorized": "Benutzer nicht gefunden. Bitte registrieren und erneut versuchen"
   },
+  "profile": {
+    "header": "Nutzerprofil",
+    "username": {
+      "title": "Nutzername",
+      "placeholder": "Nutzername"
+    },
+    "firstName": {
+      "title": "Vorname",
+      "placeholder": "Vorname"
+    },
+    "lastName": {
+      "title": "Nachname",
+      "placeholder": "Nachname"
+    },
+    "validationMessage": {
+      "firstNameRequired": "Vorname ist erforderlich.",
+      "lastNameRequired": "Nachname ist erforderlich."
+    },
+    "languageLabel": "Sprache ändern:",
+    "password": {
+      "title": "Passwort ändern:",
+      "old": "Altes Passwort",
+      "new": "Neues Passwort",
+      "confirmNew": "Neues Passwort bestätigen",
+      "validationMessage": {
+        "passwordRequired": "Passwort ist erforderlich."
+      }
+    }
+  },
   "state": {
     "new": "Neu",
     "needs_more_info": "Benötigt mehr Informationen",
@@ -64,7 +94,7 @@
     "triaged": "Ausstehend",
     "retesting": "Erneutes Testen",
     "resolved": "Aufgeklärt",
-    "informative": "Informatif",
+    "informative": "Informativ",
     "duplicate": "Duplikat",
     "not_applicable": "Unzutreffend",
     "spam": "Spam",

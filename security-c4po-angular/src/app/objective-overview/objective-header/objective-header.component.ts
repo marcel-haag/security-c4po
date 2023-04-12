@@ -29,19 +29,18 @@ import {TranslateService} from '@ngx-translate/core';
 export class ObjectiveHeaderComponent implements OnInit {
 
   selectedProject$: BehaviorSubject<Project> = new BehaviorSubject<Project>(null);
+  // Menu only
+  readonly editIcon = 'edit';
+  readonly fileExportIcon = 'file-export';
   // Mobile menu properties
   objectiveActionItems: NbMenuItem[] = [
     {
       title: 'global.action.edit',
-      badge: {
-        status: 'warning'
-      }
+      icon: { icon: this.editIcon, pack: 'fas' }
     },
     {
       title: 'global.action.report',
-      badge: {
-        status: 'info'
-      }
+      icon: { icon: this.fileExportIcon, pack: 'fas' }
     },
   ];
   // HTML only
@@ -83,10 +82,16 @@ export class ObjectiveHeaderComponent implements OnInit {
         untilDestroyed(this)
       )
       .subscribe((menuBag) => {
-        if (menuBag.item.badge && menuBag.item.badge.status === 'warning') {
-          this.onClickEditPentestProject();
-        } else if (menuBag.item.badge && menuBag.item.badge.status === 'info') {
-          this.onClickGeneratePentestReport();
+        // Makes sure that other menus without icon won't trigger
+        if (menuBag.item.icon) {
+          // tslint:disable-next-line:no-string-literal
+          if (menuBag.item.icon['icon'] === this.editIcon) {
+            this.onClickEditPentestProject();
+          }
+          // tslint:disable-next-line:no-string-literal
+          else if (menuBag.item.icon['icon'] === this.fileExportIcon) {
+            this.onClickGeneratePentestReport();
+          }
         }
       });
     // Setup stream to translate menu action item

@@ -28,9 +28,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/assets/@theme/styles/styles.scss"
+              "src/assets/@theme/styles/styles.scss",
+              "node_modules/@fortawesome/fontawesome-free/css/all.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/@fortawesome/fontawesome-free/js/all.js"
+            ],
             "allowedCommonJsDependencies": [
               "buffer",
               "crypto-js/hmac-sha256",
