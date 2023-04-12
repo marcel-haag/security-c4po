@@ -14,6 +14,10 @@ import {MockComponent} from 'ng-mocks';
 import {NgxsModule} from '@ngxs/store';
 import {ProjectState} from '@shared/stores/project-state/project-state';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {DialogService} from '@shared/services/dialog-service/dialog.service';
+import {DialogServiceMock} from '@shared/services/dialog-service/dialog.service.mock';
+import {NotificationService} from '@shared/services/toaster-service/notification.service';
+import {NotificationServiceMock} from '@shared/services/toaster-service/notification.service.mock';
 
 describe('ObjectiveTableComponent', () => {
   let component: ObjectiveTableComponent;
@@ -41,6 +45,10 @@ describe('ObjectiveTableComponent', () => {
         }),
         RouterTestingModule.withRoutes([]),
         NgxsModule.forRoot([ProjectState])
+      ],
+      providers: [
+        {provide: DialogService, useClass: DialogServiceMock},
+        {provide: NotificationService, useClass: NotificationServiceMock}
       ]
     })
       .compileComponents();

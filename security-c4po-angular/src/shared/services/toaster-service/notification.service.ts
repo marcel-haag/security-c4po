@@ -17,12 +17,40 @@ export class NotificationService {
       .subscribe((translationContainer) => {
         this.toastrService.show(
           '',
-          translationContainer[translationKey] + ' ' + translationContainer[popupType], {
+          translationContainer[translationKey] /*+ ' ' + translationContainer[popupType]*/, {
             position: NbGlobalPhysicalPosition.BOTTOM_RIGHT,
             duration: 5000,
+            status: getStatusForPopUpType(popupType),
             toastClass: createCssClassName(popupType)
           });
       });
+
+    function getStatusForPopUpType(popupType): string {
+      let toasterStatus;
+      switch (popupType) {
+        case PopupType.SUCCESS: {
+          toasterStatus = 'success';
+          break;
+        }
+        case PopupType.INFO: {
+          toasterStatus = 'control';
+          break;
+        }
+        case PopupType.FAILURE: {
+          toasterStatus = 'danger';
+          break;
+        }
+        case PopupType.WARNING: {
+          toasterStatus = 'warning';
+          break;
+        }
+        default: {
+          toasterStatus = 'basic';
+          break;
+        }
+      }
+      return toasterStatus;
+    }
 
     function createCssClassName(type: PopupType): string {
       const currentType = type ? type : PopupType.INFO;

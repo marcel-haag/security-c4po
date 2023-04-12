@@ -1,28 +1,56 @@
 [{
   "_id": {
-    "$oid": "6405dbf113ae975803a09901"
+    "$oid": "6436992c28fc40394ae5b623"
   },
   "lastModified": {
-    "$date": "2023-03-06T12:26:25.081Z"
+    "$date": "2023-04-12T11:42:36.694Z"
   },
   "data": {
-    "_id": "85935303-e5b7-48ca-a504-910c1a94fb1f",
-    "title": "Uninteresting comment",
-    "description": "Nothing",
+    "_id": "5514f0d3-7c80-4138-bf3e-56b515560f00",
+    "title": "OWASP Juice Shop Architecture",
+    "description": "In the frontend the popular Angular framework is used to create a so-called Single Page Application.\nJavaScript is also used in the backend as the exclusive programming language: An Express application hosted in a Node.js server delivers the client-side code to the browser. It also provides the necessary backend functionality to the client via a RESTful API.\nAs an underlying database a light-weight SQLite was chosen, because of its file-based nature. Sequelize and finale-rest are used as an abstraction layer from the database.\nAs an additional data store, a MarsDB is part of the OWASP Juice Shop.\nThe application also offers user registration via OAuth 2.0 so users can sign in with their Google accounts.",
     "attachments": []
   },
   "_class": "com.securityc4po.api.pentest.comment.CommentEntity"
 },{
   "_id": {
-    "$oid": "6405dc0513ae975803a09902"
+    "$oid": "64369e4428fc40394ae5b679"
   },
   "lastModified": {
-    "$date": "2023-03-06T12:26:45.811Z"
+    "$date": "2023-04-12T12:04:20.039Z"
   },
   "data": {
-    "_id": "a785aaf0-1feb-429e-beb1-31bfcf70c404",
-    "title": "Interesting comment",
-    "description": "I know where your house lives",
+    "_id": "4a3be0f9-fc2a-4607-9996-c2a92ae5ccbc",
+    "title": "Test Scroll Feature here",
+    "description": "Try to make the info description scrollable without destroying the header.",
+    "attachments": []
+  },
+  "_class": "com.securityc4po.api.pentest.comment.CommentEntity"
+},{
+  "_id": {
+    "$oid": "64369f2628fc40394ae5b68e"
+  },
+  "lastModified": {
+    "$date": "2023-04-12T12:08:06.156Z"
+  },
+  "data": {
+    "_id": "02491d86-5f8d-4574-9bac-4d21ae4a2040",
+    "title": "Wow",
+    "description": "What a test comment..",
+    "attachments": []
+  },
+  "_class": "com.securityc4po.api.pentest.comment.CommentEntity"
+},{
+  "_id": {
+    "$oid": "64369f3b28fc40394ae5b68f"
+  },
+  "lastModified": {
+    "$date": "2023-04-12T12:08:27.939Z"
+  },
+  "data": {
+    "_id": "bd1b9a09-c8d4-4050-8930-b79e4e81d50d",
+    "title": "Amazing",
+    "description": "Wow!",
     "attachments": []
   },
   "_class": "com.securityc4po.api.pentest.comment.CommentEntity"

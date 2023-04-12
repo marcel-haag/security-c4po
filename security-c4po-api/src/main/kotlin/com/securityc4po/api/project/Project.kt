@@ -100,16 +100,17 @@ fun Project.calculateProgress(): BigDecimal {
     // https://owasp.org/www-project-web-security-testing-guide/assets/archive/OWASP_Testing_Guide_v4.pdf
     // @Value("\${owasp.web.objectives}")
     // lateinit var TOTALPENTESTS: Int
-    val TOTAL_OWASP_OBJECTIVES = 95.0
+    var TOTAL_OWASP_OBJECTIVES = 95.0
 
     return if (projectPentests.isEmpty())
         BigDecimal.ZERO
     else {
         var completedPentests = 0.0
         projectPentests.forEach { projectPentest ->
-            println(projectPentest.toString())
             if (projectPentest.status == PentestStatus.COMPLETED) {
                 completedPentests += 1.0
+            } else if (projectPentest.status == PentestStatus.DISABLED) {
+                TOTAL_OWASP_OBJECTIVES -= 1
             } else if (projectPentest.status != PentestStatus.NOT_STARTED) {
                 completedPentests += 0.5
             }

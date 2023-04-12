@@ -1,16 +1,17 @@
 <div class="pentest-table">
   <table [nbTreeGrid]="dataSource">
+    <!--ToDo: Add the click event to every td manually except the actions column actions-->
     <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="columns"></tr>
     <tr nbTreeGridRow *nbTreeGridRowDef="let pentest; columns: columns"
         class="pentest-cell"
-        (click)="onClickRouteToObjectivePentest(pentest.data)">
+        [ngClass]="{'disabled-objective' : !pentest.data['enabled']}">
     </tr>
     <!-- Test ID -->
     <ng-container [nbTreeGridColumnDef]="columns[0]">
       <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>
         {{ 'pentest.testId' | translate }}
       </th>
-      <td nbTreeGridCell *nbTreeGridCellDef="let pentest">
+      <td nbTreeGridCell *nbTreeGridCellDef="let pentest" (click)="onClickRouteToObjectivePentest(pentest.data)">
         <!-- Opens sub categories if row needs to be extendend -->
         <nb-tree-grid-row-toggle
           [expanded]="pentest.expanded"
@@ -25,7 +26,7 @@
       <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>
         {{ 'pentest.title' | translate }}
       </th>
-      <td nbTreeGridCell *nbTreeGridCellDef="let pentest">
+      <td nbTreeGridCell *nbTreeGridCellDef="let pentest" (click)="onClickRouteToObjectivePentest(pentest.data)">
         {{ getTitle(pentest.data['refNumber']) | translate }}
       </td>
     </ng-container>
@@ -34,7 +35,7 @@
       <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>
         {{ 'pentest.status' | translate }}
       </th>
-      <td nbTreeGridCell *nbTreeGridCellDef="let pentest">
+      <td nbTreeGridCell *nbTreeGridCellDef="let pentest" (click)="onClickRouteToObjectivePentest(pentest.data)">
         <app-status-tag [currentStatus]="pentest.data['status']"></app-status-tag>
       </td>
     </ng-container>
@@ -43,11 +44,45 @@
       <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>
         {{ 'pentest.findings&comments' | translate }}
       </th>
-      <td nbTreeGridCell *nbTreeGridCellDef="let pentest">
+      <td nbTreeGridCell *nbTreeGridCellDef="let pentest" (click)="onClickRouteToObjectivePentest(pentest.data)">
         <div fxLayout="row" fxLayoutGap="0.5rem" fxLayoutAlign="start start">
           <app-findig-widget [numberOfFindings]="pentest.data['findingIds'] ? pentest.data['findingIds'].length : 0"></app-findig-widget>
           <span> / </span>
           <app-comment-widget [numberOfComments]="pentest.data['commentIds'] ? pentest.data['commentIds'].length : 0"></app-comment-widget>
+        </div>
+      </td>
+    </ng-container>
+    <!-- Actions -->
+    <ng-container [nbTreeGridColumnDef]="columns[4]">
+      <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef class="cell-actions">
+          {{'global.actions' | translate}}
+      </th>
+      <td nbTreeGridCell *nbTreeGridCellDef="let pentest" class="cell-actions">
+        <div fxLayoutAlign="center center">
+          <ng-container  *ngIf="pentest.data['enabled'] === true; else renderDisablePentestButton">
+            <button
+              nbButton
+              status="danger"
+              size="small"
+              shape="round"
+              title="{{ 'global.action.disable' | translate }}"
+              [disabled]="!pentest.data['id']"
+              (click)="onClickDisableOrEnableObjective(pentest)">
+              <fa-icon [icon]="fa.faBan"></fa-icon>
+            </button>
+          </ng-container>
+          <ng-template #renderDisablePentestButton>
+            <button
+              nbButton
+              status="control"
+              size="small"
+              shape="round"
+              title="{{ 'global.action.enable' | translate }}"
+              [disabled]="!pentest.data['id']"
+              (click)="onClickDisableOrEnableObjective(pentest)">
+              <fa-icon [icon]="fa.faCheck"></fa-icon>
+            </button>
+          </ng-template>
         </div>
       </td>
     </ng-container>

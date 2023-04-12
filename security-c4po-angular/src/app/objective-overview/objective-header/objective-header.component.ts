@@ -28,7 +28,6 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class ObjectiveHeaderComponent implements OnInit {
 
-  readonly fa = FA;
   selectedProject$: BehaviorSubject<Project> = new BehaviorSubject<Project>(null);
   // Mobile menu properties
   objectiveActionItems: NbMenuItem[] = [
@@ -45,6 +44,8 @@ export class ObjectiveHeaderComponent implements OnInit {
       }
     },
   ];
+  // HTML only
+  readonly fa = FA;
   readonly BARS_IMG = 'assets/images/icons/bars.svg';
   readonly ELLIPSIS_IMG = 'assets/images/icons/ellipsis.svg';
 
