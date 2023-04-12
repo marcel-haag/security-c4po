@@ -1,5 +1,6 @@
 {
   "global": {
+    "actions": "Aktionen",
     "action.login": "Einloggen",
     "action.logout": "Ausloggen",
     "action.retry": "Erneut Versuchen",
@@ -16,6 +17,8 @@
     "action.report": "Bericht",
     "action.reset": "Zurücksetzen",
     "action.complete": "Fertig",
+    "action.disable": "Deaktivieren",
+    "action.enable": "Aktivieren",
     "action.yes": "Ja",
     "action.no": "Nein",
     "username": "Nutzername",
@@ -209,7 +212,7 @@
     "no.comments": "Keine Kommentare verfügbar",
     "no.relatedFindings": "Nicht verbunden mit einem Fund",
     "relatedFindingsPlaceholder": "Fund auswählen",
-    "noFindingsInObjectivePlaceholder": "Objective hat keine Befunde, auf die es sich beziehen könnte.",
+    "noFindingsInObjectivePlaceholder": "Ziel hat keine Befunde, auf die es sich beziehen könnte.",
     "create": {
       "header": "Neuen Kommentar erstellen"
     },
@@ -254,6 +257,14 @@
       "in_progress": "In Bearbeitung",
       "completed": "Fertig"
     },
+    "disable": {
+      "title": "Ziel deaktivieren",
+      "key": "Möchten Sie den Pentest \"{{name}}\" deaktivieren?"
+    },
+    "enable": {
+      "title": "Ziel aktivieren",
+      "key": "Möchten Sie den Pentest \"{{name}}\" aktivieren?"
+    },
     "popup": {
       "not.found": "Keine pentests gefunden",
       "initial.save.success": "Initialer Pentest erfolgreich aufgesetzt",
@@ -265,7 +276,11 @@
       "update.success": "Pentest erfolgreich aktualisiert",
       "update.failed": "Pentest konnte nicht aktualisiert werden",
       "delete.success": "Pentest erfolgreich gelöscht",
-      "delete.failed": "Pentest konnte nicht gelöscht werden"
+      "delete.failed": "Pentest konnte nicht gelöscht werden",
+      "disable.success": "Ziel erfolgreich deaktiviert",
+      "disable.failed": "Ziel konnte nicht deaktiviert werden",
+      "enable.success": "Ziel erfolgreich aktiviert",
+      "enable.failed": "Ziel konnte nicht aktiviert werden"
     },
     "info": {
       "001": "Nutze Suchmaschinenerkennung und -aufklärung für Informationslecks",

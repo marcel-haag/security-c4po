@@ -53,7 +53,7 @@ export class ProjectOverviewComponent implements OnInit {
       untilDestroyed(this)
     ).subscribe({
       next: (projects: Project[]) => {
-        if (projects.length === 0) {
+        if (projects && projects.length === 0) {
           this.loadProjects();
         } else {
         }

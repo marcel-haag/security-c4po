@@ -57,6 +57,7 @@ const DESIRED_PROJECT_STATE_SESSION: ProjectStateModel = {
     refNumber: 'OTF-001',
     childEntries: [],
     status: PentestStatus.NOT_STARTED,
+    enabled: true,
     findingIds: ['56c47c56-3bcd-45f1-a05b-c197dbd33112'],
     commentIds: []
   },

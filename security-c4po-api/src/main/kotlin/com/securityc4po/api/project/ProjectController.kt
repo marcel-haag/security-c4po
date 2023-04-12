@@ -74,7 +74,7 @@ class ProjectController(private val projectService: ProjectService, private val 
             // If the project has pentest they will be deleted as well as all associated findings & comments
             if (project.projectPentests.isNotEmpty()) {
                 this.pentestDeletionService.deletePentestsAndAllAssociatedFindingsAndComments(project).collectList()
-                    .flatMap { prunedProject: Any ->
+                    .flatMap {
                         Mono.just(ResponseEntity.ok().body(project.toProjectDeleteResponseBody()))
                     }
             } else {

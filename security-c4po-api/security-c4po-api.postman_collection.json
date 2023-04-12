@@ -73,7 +73,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8443/projects/5a4f126c-9471-43b8-80b9-6eb02b7c35d0",
+							"raw": "http://localhost:8443/projects/575dd9d4-cb3c-4df3-981e-8a18bf8dc1d2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -81,7 +81,7 @@
 							"port": "8443",
 							"path": [
 								"projects",
-								"5a4f126c-9471-43b8-80b9-6eb02b7c35d0"
+								"575dd9d4-cb3c-4df3-981e-8a18bf8dc1d2"
 							]
 						}
 					},
@@ -107,7 +107,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8443/projects/evaluation/5a4f126c-9471-43b8-80b9-6eb02b7c35d0",
+							"raw": "http://localhost:8443/projects/evaluation/575dd9d4-cb3c-4df3-981e-8a18bf8dc1d2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -116,7 +116,7 @@
 							"path": [
 								"projects",
 								"evaluation",
-								"5a4f126c-9471-43b8-80b9-6eb02b7c35d0"
+								"575dd9d4-cb3c-4df3-981e-8a18bf8dc1d2"
 							]
 						}
 					},
@@ -860,7 +860,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8443/pentests/pentestId",
+							"raw": "http://localhost:8443/pentests/{pentestId}",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -868,7 +868,79 @@
 							"port": "8443",
 							"path": [
 								"pentests",
-								"pentestId"
+								"{pentestId}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "disablePentest",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItdG1lbEV0ZHhGTnRSMW9aNXlRdE5jaFFpX0RVN2VNeV9YcU44aXY0S3hzIn0.eyJleHAiOjE2ODEyODY4MDQsImlhdCI6MTY4MTI4NjUwNCwianRpIjoiMzM2MDM4NDAtZWI3Yy00ZWNkLWI0MmYtYzU5NGU1ZjdhYjg4IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL2M0cG9fcmVhbG1fbG9jYWwiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTBlMDZkN2EtOGRkMC00ZWNkLTg5NjMtMDU2YjQ1MDc5YzRmIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYzRwb19sb2NhbCIsInNlc3Npb25fc3RhdGUiOiIyZDljNDdhZC1jZTBhLTQxMDQtODAxYy0zMTU1OWQxYjc0Y2MiLCJhbGxvd2VkLW9yaWdpbnMiOlsiKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiYzRwb191c2VyIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImM0cG9fbG9jYWwiOnsicm9sZXMiOlsidXNlciJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwic2lkIjoiMmQ5YzQ3YWQtY2UwYS00MTA0LTgwMWMtMzE1NTlkMWI3NGNjIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoidGVzdCB1c2VyIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidHR0IiwiZ2l2ZW5fbmFtZSI6InRlc3QiLCJmYW1pbHlfbmFtZSI6InVzZXIifQ.koJ8prpiRfL8twkSKMkOZW38jsfrj2Gf6XJtWXeJOhrsgJ-Ncehh1u_Dp_m8eokOZ_Xfl90SJhePh0KTUOY18-bz1KTBtWeqaX4-91Pz9pQ0wkztsZv9K2Axk6gfbFf5yObFj8EW4uhO_DDRfbBXzSrH6MhFk3PBz4smJQ4eVTtEg7D5XKbCZ0B4ja5RfQMTlfgp4dgnPdw6SZgraBJZaqzXkfcWa2jYSyLILsaaaY2mXEBDmBy3rBoV63ucYUB7BA6MmoMz-k8CVFCCZ57XIfT-IPIfWtbIldM0Bb3SMWC_bt89eGhOKqpzl354h5vFEAapiSLtNicvbX_Wk_1MWw",
+									"type": "string"
+								},
+								{
+									"key": "undefined",
+									"type": "any"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8443/pentests/{projectId}/{pentestId}/disable",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"pentests",
+								"{projectId}",
+								"{pentestId}",
+								"disable"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "enablePentest",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItdG1lbEV0ZHhGTnRSMW9aNXlRdE5jaFFpX0RVN2VNeV9YcU44aXY0S3hzIn0.eyJleHAiOjE2ODEyODY4MDQsImlhdCI6MTY4MTI4NjUwNCwianRpIjoiMzM2MDM4NDAtZWI3Yy00ZWNkLWI0MmYtYzU5NGU1ZjdhYjg4IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL2M0cG9fcmVhbG1fbG9jYWwiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTBlMDZkN2EtOGRkMC00ZWNkLTg5NjMtMDU2YjQ1MDc5YzRmIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYzRwb19sb2NhbCIsInNlc3Npb25fc3RhdGUiOiIyZDljNDdhZC1jZTBhLTQxMDQtODAxYy0zMTU1OWQxYjc0Y2MiLCJhbGxvd2VkLW9yaWdpbnMiOlsiKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiYzRwb191c2VyIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImM0cG9fbG9jYWwiOnsicm9sZXMiOlsidXNlciJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwic2lkIjoiMmQ5YzQ3YWQtY2UwYS00MTA0LTgwMWMtMzE1NTlkMWI3NGNjIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoidGVzdCB1c2VyIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidHR0IiwiZ2l2ZW5fbmFtZSI6InRlc3QiLCJmYW1pbHlfbmFtZSI6InVzZXIifQ.koJ8prpiRfL8twkSKMkOZW38jsfrj2Gf6XJtWXeJOhrsgJ-Ncehh1u_Dp_m8eokOZ_Xfl90SJhePh0KTUOY18-bz1KTBtWeqaX4-91Pz9pQ0wkztsZv9K2Axk6gfbFf5yObFj8EW4uhO_DDRfbBXzSrH6MhFk3PBz4smJQ4eVTtEg7D5XKbCZ0B4ja5RfQMTlfgp4dgnPdw6SZgraBJZaqzXkfcWa2jYSyLILsaaaY2mXEBDmBy3rBoV63ucYUB7BA6MmoMz-k8CVFCCZ57XIfT-IPIfWtbIldM0Bb3SMWC_bt89eGhOKqpzl354h5vFEAapiSLtNicvbX_Wk_1MWw",
+									"type": "string"
+								},
+								{
+									"key": "undefined",
+									"type": "any"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8443/pentests/{projectId}/{pentestId}/enable",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"pentests",
+								"{projectId}",
+								"{pentestId}",
+								"enable"
 							]
 						}
 					},

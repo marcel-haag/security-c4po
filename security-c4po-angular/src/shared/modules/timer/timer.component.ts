@@ -65,13 +65,13 @@ export class TimerComponent implements OnInit, OnDestroy {
   }
 
   private createIntialPentestInBackend(): void {
-    // Save initial Pentest a new
+    // Save initial pentest a new
     this.pentestInfo$.next({...this.pentestInfo$.getValue(), timeSpent: this.timer});
     this.pentestService.savePentest(this.selectedProjectId$.getValue(), transformPentestToRequestBody(this.pentestInfo$.getValue()))
       .subscribe({
         next: (pentest: Pentest) => {
           this.store.dispatch(new ChangePentest(pentest));
-          this.notificationService.showPopup('pentest.popup.initial.save.success', PopupType.SUCCESS);
+          this.notificationService.showPopup('pentest.popup.initial.save.success', PopupType.INFO);
         },
         error: err => {
           console.log(err);

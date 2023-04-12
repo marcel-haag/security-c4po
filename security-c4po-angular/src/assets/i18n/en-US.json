@@ -1,5 +1,6 @@
 {
   "global": {
+    "actions": "Actions",
     "action.login": "Login",
     "action.logout": "Logout",
     "action.retry": "Try again",
@@ -16,6 +17,8 @@
     "action.report": "Report",
     "action.reset": "Reset",
     "action.complete": "Complete",
+    "action.disable": "Deactivate",
+    "action.enable": "Activate",
     "action.yes": "Yes",
     "action.no": "No",
     "username": "Username",
@@ -254,6 +257,14 @@
       "in_progress": "In progress",
       "completed": "Completed"
     },
+    "disable": {
+      "title": "Disable Objective",
+      "key": "Do you want to disable the objective \"{{name}}\"?"
+    },
+    "enable": {
+      "title": "Enable Objective",
+      "key": "Do you want to enable the objective \"{{name}}\"?"
+    },
     "popup": {
       "not.found": "No pentest found",
       "initial.save.success": "Initial Pentest successfully setup",
@@ -265,7 +276,11 @@
       "update.success": "Pentest updated successfully",
       "update.failed": "Pentest could not be updated",
       "delete.success": "Pentest deleted successfully",
-      "delete.failed": "Pentest could not be deleted"
+      "delete.failed": "Pentest could not be deleted",
+      "disable.success": "Objective disabled successfully",
+      "disable.failed": "Objective could not be disabled",
+      "enable.success": "Objective enabled successfully",
+      "enable.failed": "Objective could not be enabled"
     },
     "info": {
       "001": "Conduct Search Engine Discovery and Reconnaissance for Information Leakage",

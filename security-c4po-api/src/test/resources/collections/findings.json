@@ -1,75 +1,178 @@
 [{
   "_id": {
-    "$oid": "6405db8a13ae975803a098fe"
+    "$oid": "643699cd28fc40394ae5b625"
   },
   "lastModified": {
-    "$date": "2023-03-06T12:24:42.494Z"
+    "$date": "2023-04-12T11:45:23.385Z"
   },
   "data": {
-    "_id": "5bf1b2e1-69b7-463b-a1ca-4ac6ac66b10f",
-    "severity": "MEDIUM",
-    "title": "Medium Prio Finding",
-    "description": "Medium Description",
-    "impact": "Medium Impact",
-    "affectedUrls": [],
-    "reproduction": "1. Open App",
-    "mitigation": "",
-    "attachments": []
-  },
-  "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
-},{
-  "_id": {
-    "$oid": "6405dba513ae975803a098ff"
-  },
-  "lastModified": {
-    "$date": "2023-03-06T12:25:09.645Z"
-  },
-  "data": {
-    "_id": "f6e6c632-ab34-479e-9584-565f61c5862a",
+    "_id": "354c62b1-8f7f-4a65-9f1b-c4f6388f5506",
     "severity": "HIGH",
-    "title": "High Prio Finding",
-    "description": "High Prio Description",
-    "impact": "High Impact",
-    "affectedUrls": [],
-    "reproduction": "1. Open App\n2. Hack",
-    "mitigation": "",
+    "title": "Broken Access Control",
+    "description": "Security flaws are caused by fragilely implemented access rights (or non-well-thought access constructs).\nAccess control is based on:\n- Confidentiality of the requested element\n- Role or permissions of the requesting user\nFlaws in access control can lead to:\n- Unauthorized users can obtain, manipulate or delete important and sensitive data\nChanging the bid inside the session storage in the frontend or intercepting the GET request for the basket and changing the id parameter results in getting the basket of another user (as long as the new id is valid).\n",
+    "impact": "This does not just affects the frontend but also destroys the integrity of the data from the backend since you can see the basket of other users.",
+    "affectedUrls": [
+      "https://juice-shop.herokuapp.com/#/basket, https://juice-shop.herokuapp.com/rest/basket/{id}"
+    ],
+    "reproduction": "Step 1:\nLogin as any user.\n\nStep 2:\nGo to the basket page.\n\nStep 3:\nChange the bid value or intecept and manipulate the GET request for the basket.\n",
+    "mitigation": "Decide for a matching access control model: - Discretionary access control (DAC)\n- Role-based access control (RBAC)\n- Mandatory access control (MAC)\n- Attribute-based access control (ABAC)",
     "attachments": []
   },
   "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
 },{
   "_id": {
-    "$oid": "6405dbcc13ae975803a09900"
+    "$oid": "64369a1428fc40394ae5b627"
   },
   "lastModified": {
-    "$date": "2023-03-06T12:25:48.815Z"
+    "$date": "2023-04-12T11:46:28.934Z"
   },
   "data": {
-    "_id": "176f5d93-0fe3-40b1-8a25-f11a6f760148",
-    "severity": "CRITICAL",
-    "title": "Critical Prio Finding",
-    "description": "Critical Description",
-    "impact": "Critical Impact",
-    "affectedUrls": [],
-    "reproduction": "1. Open App\n2. Hack\n3. Break everything",
-    "mitigation": "",
+    "_id": "b215d04c-fec9-4f75-8d83-89ba0c6d3e74",
+    "severity": "HIGH",
+    "title": "Deprectated B2B Interface File Upload Error",
+    "description": "Inside the complaint screen the user is able to upload a file that should only be ment to be a pdf.\nUpon expection of the allowed MIME Types included in the main.js file we can see the following MIME Types being accepted by the application:\n[\"application/pdf\", \"application/xml\", \"text/xml\", \"application/zip\", \"application/x-zip-compressed\", \"multipart/x-zip\"]\nUploading a XML File results in the following error message that doesn't get handled gracefully by the frontend:\n\"Error: B2B customer complaints via file upload have been deprecated for security reasons (filename.xml)\"",
+    "impact": "This deprecated interface affects the frontend, backend and potentially the database depending on how the uploaded file is being handeled in the backend.",
+    "affectedUrls": [
+      "https://juice-shop.herokuapp.com/#/complain"
+    ],
+    "reproduction": "Step 1:\nLogin to the application with any user.\n\nStep 2:\nGo to complaint screen.\n\nStep 3:\nWrite a small message in text field and upload any xml file before clicking on \"Submit\".\n\nYou will now get the error mentioned in the description.",
+    "mitigation": "Adjust the allowed MIME Type in the frontend.\nOther generic prevention methods include: \n- Use Configuration Management:\n- Hardening, Remove old configurations\n- Proper Error Codes",
     "attachments": []
   },
   "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
 },{
   "_id": {
-    "$oid": "641d94fb28aed92b289a61c7"
+    "$oid": "64369a5528fc40394ae5b629"
   },
   "lastModified": {
-    "$date": "2023-03-24T12:18:03.350Z"
+    "$date": "2023-04-12T11:49:24.611Z"
   },
   "data": {
-    "_id": "82076448-7ec0-4d64-a75d-b9bf6f4920be",
+    "_id": "19521078-aef5-4505-8b1f-958e75bd3fd1",
+    "severity": "HIGH",
+    "title": "Searchbar XSS",
+    "description": "DOM-based vulnerabilities arise when a client-side script reads data from a controllable part of the DOM (for example, the URL) and processes this data in an unsafe way.\nAdding <iframe src=\"javascript:alert(`xss`)\"> in the search bar of the header results here in the XSS Vulnerability.\n",
+    "impact": "Generally there are three kinds of XXS: 1. DOM-Based Cross-Site Scripting\n2. Reflected Cross-Site Scripting\n3. Persistent Cross-Site Scripting\n\nThe found XSS only impacts the Webapplication itself.",
+    "affectedUrls": [
+      "https://juice- shop.herokuapp.com/#/search?q=%3Ciframe%20src%3D%22javascript:alert('xss')%22%3E"
+    ],
+    "reproduction": "Step 1:\nClick on the search field of the header.\n\nStep 2:\nEnter <iframe src=\"javascript:alert(`xss`)\">\n\nStep 3:\nPress ENTER to exucute the query.\n\nYou will now get a PopUp because the javascript code was executed in the browser.\n",
+    "mitigation": "- Do NOT put untrusted data into templates & SSR\n- Use strict input validation & strong typing (server-side) - Contextual Output Encoding\n- Sanitizing Input Fields\n- Content Security Policies\n- Trusted Types",
+    "attachments": []
+  },
+  "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
+},{
+  "_id": {
+    "$oid": "64369aaf28fc40394ae5b62b"
+  },
+  "lastModified": {
+    "$date": "2023-04-12T11:49:03.092Z"
+  },
+  "data": {
+    "_id": "5924c1c6-348b-403c-af41-d5e0fab05c1b",
+    "severity": "MEDIUM",
+    "title": "SQLITE Error",
+    "description": "Provoked an error that is neither gracefully nor consistently handled.",
+    "impact": "Webapplication and Node.js Server.",
+    "affectedUrls": [],
+    "reproduction": "Step 1:\nGo to Login.\n\nStep 2:\nInsert ' in username field and any string in password field.\n\nStep 3:\nSend the request and observe the error message [object object displayed].\nInside the Network traffic the response body for the login POST request with the \"incomplete\" SQL Injection returns to much information.\n\nWe can see that the errorcode is from SQLITE and get the sql query returned that got executed: SELECT * FROM Users WHERE email =\" ' \" AND password = \"randomString\"\n",
+    "mitigation": "Sanitize and validate Input Fields.\nUse proper error handeling in Backend. Rule of thumb: Escape all user input...\n",
+    "attachments": []
+  },
+  "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
+},{
+  "_id": {
+    "$oid": "64369ae828fc40394ae5b62d"
+  },
+  "lastModified": {
+    "$date": "2023-04-12T11:50:00.889Z"
+  },
+  "data": {
+    "_id": "271a2e85-5804-4b78-a12a-b722049321b3",
+    "severity": "HIGH",
+    "title": "Admin Account SQL Injection for Login",
+    "description": "SQL injection vulnerabilities arise when user-controllable data is incorporated into database SQL queries in an unsafe manner.\nInside Login Form using the ' or TRUE-- Syntax will enable the user to login as the Admin.\n",
+    "impact": "The active User-Session with Admin priviledges can affect the whole application.",
+    "affectedUrls": [
+      "https://juice-shop.herokuapp.com/#/login"
+    ],
+    "reproduction": "Step 1:\nGo to login page.\n\nStep 2:\nEnter ' or TRUE-- in the username field and enter a random password.\n\nStep 3:\nClick “Login”.\n\nYou will now be authenticated as the Juice Shop Admin.",
+    "mitigation": "Preventing SQL Injections can be easily accomplished by adding: - Prepared statements\n- Stored procedures\n- Whitelist Input Validation\n- Escaping all input, that could be user-supplied - Webapp Firewall",
+    "attachments": []
+  },
+  "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
+},{
+  "_id": {
+    "$oid": "64369ef828fc40394ae5b68a"
+  },
+  "lastModified": {
+    "$date": "2023-04-12T12:07:20.402Z"
+  },
+  "data": {
+    "_id": "b76728bd-afab-4478-bc87-49f444e11c10",
     "severity": "LOW",
     "title": "Low Prio Finding",
-    "description": "Low Prio Description",
-    "impact": "Low Prio Impact",
+    "description": "Low Prio Finding",
+    "impact": "Low Prio Finding",
     "affectedUrls": [],
-    "reproduction": "Step 1: Do Nothing",
+    "reproduction": "Low Prio Finding",
+    "mitigation": "",
+    "attachments": []
+  },
+  "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
+},{
+  "_id": {
+    "$oid": "64369f0328fc40394ae5b68b"
+  },
+  "lastModified": {
+    "$date": "2023-04-12T12:07:31.726Z"
+  },
+  "data": {
+    "_id": "80990bff-fb03-47af-980b-adf2bca89c4e",
+    "severity": "HIGH",
+    "title": "High Prio Finding",
+    "description": "High Prio Finding",
+    "impact": "High Prio Finding",
+    "affectedUrls": [],
+    "reproduction": "High Prio Finding",
+    "mitigation": "",
+    "attachments": []
+  },
+  "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
+},{
+  "_id": {
+    "$oid": "64369f0c28fc40394ae5b68c"
+  },
+  "lastModified": {
+    "$date": "2023-04-12T12:07:40.452Z"
+  },
+  "data": {
+    "_id": "279e698e-9511-43a4-b249-d84e84238fed",
+    "severity": "MEDIUM",
+    "title": "Medium Prio Finding",
+    "description": "Medium Prio Finding",
+    "impact": "Medium Prio Finding",
+    "affectedUrls": [],
+    "reproduction": "Medium Prio Finding",
+    "mitigation": "",
+    "attachments": []
+  },
+  "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
+},{
+  "_id": {
+    "$oid": "64369f1828fc40394ae5b68d"
+  },
+  "lastModified": {
+    "$date": "2023-04-12T12:07:52.793Z"
+  },
+  "data": {
+    "_id": "7a8b975a-eff3-4f99-b379-3f3ed08cf832",
+    "severity": "CRITICAL",
+    "title": "Critical Finding",
+    "description": "Critical Finding",
+    "impact": "Critical Finding",
+    "affectedUrls": [],
+    "reproduction": "Critical Finding",
     "mitigation": "",
     "attachments": []
   },
