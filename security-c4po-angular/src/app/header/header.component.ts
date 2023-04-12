@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import * as FA from '@fortawesome/free-solid-svg-icons';
 import {NbMenuItem, NbMenuService, NbThemeService} from '@nebular/theme';
-import {map} from 'rxjs/operators';
+import {filter, map} from 'rxjs/operators';
 import {GlobalTitlesVariables} from '@shared/config/global-variables';
 import {TranslateService} from '@ngx-translate/core';
 import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';
@@ -14,6 +14,8 @@ import {BehaviorSubject} from 'rxjs';
 import {Route} from '@shared/models/route.enum';
 import {environment} from '../../environments/environment';
 import {Router} from '@angular/router';
+import {DialogService} from '@shared/services/dialog-service/dialog.service';
+import {ProfileSettingsComponent} from '@shared/modules/profile-settings/profile-settings.component';
 
 @Component({
   selector: 'app-header',
@@ -26,18 +28,21 @@ export class HeaderComponent implements OnInit {
   // HTML only
   readonly fa = FA;
   readonly SECURITYC4PO_TITLE: string = GlobalTitlesVariables.SECURITYC4PO_TITLE;
+  // Menu only
+  readonly settingsIcon = 'gear';
+  readonly logoutIcon = 'right-from-bracket';
 
   currentTheme = '';
-  languages = ['en-US', 'de-DE'];
-  selectedLanguage = '';
 
-  // User Menu Properties
-  userPictureOnly = false;
   user: BehaviorSubject<User> = new BehaviorSubject<User>(null);
   userMenu: NbMenuItem[] = [
     {
-      title: '',
-      pathMatch: 'prefix'
+      title: 'settings',
+      icon: { icon: this.settingsIcon, pack: 'fas' }
+    },
+    {
+      title: 'logout',
+      icon: { icon: this.logoutIcon, pack: 'fas'}
     }
   ];
   readonly FALLBACK_IMG = 'assets/images/demo/anon-user-icon.png';
@@ -47,6 +52,7 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     private themeService: NbThemeService,
     private translateService: TranslateService,
+    private dialogService: DialogService,
     private menuService: NbMenuService,
     private userService: UserService,
     protected keycloakService: KeycloakService) {
@@ -60,7 +66,6 @@ export class HeaderComponent implements OnInit {
         untilDestroyed(this),
       ).subscribe(themeName => this.currentTheme = themeName);
 
-    this.selectedLanguage = this.translateService.currentLang;
     // Load user profile
     this.userService.loadUserProfile().pipe(
       untilDestroyed(this)
@@ -78,22 +83,54 @@ export class HeaderComponent implements OnInit {
         untilDestroyed(this)
       )
       .subscribe((menuBag) => {
-        if (menuBag.item.pathMatch === 'prefix') {
-          this.onClickLogOut();
+        // Makes sure that other menus without icon won't trigger
+        if (menuBag.item.icon) {
+          // tslint:disable-next-line:no-string-literal
+          if (menuBag.item.icon['icon'] === this.settingsIcon) {
+            console.warn('Profile');
+            this.dialogService.openCustomDialog(
+              ProfileSettingsComponent,
+              {
+                user: this.user.getValue(),
+              }
+            ).onClose.pipe(
+              filter((confirm) => !!confirm),
+              untilDestroyed(this)
+            ).subscribe({
+              next: () => {
+                console.warn('New Settings confirmed');
+              }
+            });
+          }
+          // tslint:disable-next-line:no-string-literal
+          else if (menuBag.item.icon['icon'] === this.logoutIcon) {
+            this.onClickLogOut();
+          }
         }
       });
+    // Setup stream to translate menu item
+    this.translateService.stream('global.action.profile')
+      .pipe(
+        untilDestroyed(this)
+      ).subscribe((text: string) => {
+      this.userMenu[0].title = text;
+    });
     // Setup stream to translate menu item
     this.translateService.stream('global.action.logout')
       .pipe(
         untilDestroyed(this)
       ).subscribe((text: string) => {
-      this.userMenu[0].title = text;
+      this.userMenu[1].title = text;
     });
   }
 
   // HTML only
   onClickGoToLink(url: string): void {
     window.open(url, '_blank');
+  }
+
+  onClickShowInfo(): void {
+    console.info('To be implemented..');
   }
 
   onClickSwitchTheme(): void {
@@ -119,9 +156,5 @@ export class HeaderComponent implements OnInit {
     }, err => {
       console.error(err);
     });*/
-  }
-
-  onClickLanguage(language: string): void {
-    this.translateService.use(language);
   }
 }

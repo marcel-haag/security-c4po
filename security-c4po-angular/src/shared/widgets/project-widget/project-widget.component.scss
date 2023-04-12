@@ -16,7 +16,7 @@
     min-height: 6rem;
 
     .header-title {
-      @include multiLineEllipsis($font-size: 1.5rem, $font-weight: bold, $line-height: 1.5rem, $lines-to-show: 2, $max-width: 14rem);
+      @include multiLineEllipsis($font-size: 1.5rem, $font-weight: bold, $line-height: 2rem, $lines-to-show: 4, $max-width: 14rem);
     }
 
     .state-tag {

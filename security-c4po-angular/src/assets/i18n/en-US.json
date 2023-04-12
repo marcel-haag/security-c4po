@@ -1,6 +1,7 @@
 {
   "global": {
     "actions": "Actions",
+    "action.profile": "Profile",
     "action.login": "Login",
     "action.logout": "Logout",
     "action.retry": "Try again",
@@ -55,6 +56,35 @@
     "title": "Login",
     "failed": "Wrong username or password",
     "unauthorized": "User not found. Please register and try again"
+  },
+  "profile": {
+    "header": "Userprofile",
+    "username": {
+      "title": "Username",
+      "placeholder": "Username"
+    },
+    "firstName": {
+      "title": "Firstname",
+      "placeholder": "Firstname"
+    },
+    "lastName": {
+      "title": "Lastname",
+      "placeholder": "Lastname"
+    },
+    "validationMessage": {
+      "firstNameRequired": "Firstname is required.",
+      "lastNameRequired": "Lastname is required."
+    },
+    "languageLabel": "Change language:",
+    "password": {
+      "title": "Change password:",
+      "old": "Old password",
+      "new": "New password",
+      "confirmNew": "Confirm new password",
+      "validationMessage": {
+        "passwordRequired": "Password is required."
+      }
+    }
   },
   "state": {
     "new": "New",

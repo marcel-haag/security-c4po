@@ -2,7 +2,8 @@
   <img *ngIf="currentTheme === 'corporate', else changeImage"
        src="../../assets/images/favicons/favicon.ico" alt="logo dark" class="header-icon" width="60rem" height="60rem">
   <ng-template #changeImage>
-    <img src="../../assets/images/favicons/favicon_corporate.ico" alt="logo light" class="header-icon" width="60rem" height="60rem">
+    <img src="../../assets/images/favicons/favicon_corporate.ico" alt="logo light" class="header-icon" width="60rem"
+         height="60rem">
   </ng-template>
 
   <div class="logo-container">
@@ -11,41 +12,31 @@
   <div class="filler"></div>
   <div fxLayoutGap="4rem">
     <nb-actions size="medium">
+      <!--Info Action-->
+      <nb-action>
+        <fa-icon title="Info" [icon]="fa.faCircleInfo" (click)="onClickShowInfo()" class="action-element-icon fa-2x">
+        </fa-icon>
+      </nb-action>
+      <!--OWASP Action-->
+      <nb-action>
+        <fa-icon title="OWASP Testing Guide"
+                 (click)="onClickGoToLink('https://owasp.org/www-project-web-security-testing-guide/v42/')"
+                 [icon]="fa.faFileInvoice" class="action-element-icon fa-2x">
+        </fa-icon>
+      </nb-action>
       <!--Theme Action-->
-      <nb-action class="toggle-theme">
-        <button nbButton
-                (click)="onClickGoToLink('https://owasp.org/www-project-web-security-testing-guide/v42/')">
-          <fa-icon [icon]="fa.faFileInvoice" class="new-element-icon" href="https://www.google.com">
+      <nb-action>
+        <div (click)="onClickSwitchTheme()" class="action-element-icon">
+          <fa-icon *ngIf="currentTheme === 'corporate', else changeIcon"
+                   title="Darktheme" [icon]="fa.faMoon" class="fa-2x">
           </fa-icon>
-          <span class="owasp-redirect-button">OWASP</span>
-        </button>
-      </nb-action>
-      <nb-action class="toggle-theme">
-        <button nbButton
-                (click)="onClickSwitchTheme()">
-          <fa-icon *ngIf="currentTheme === 'corporate', else changeIcon" [icon]="fa.faMoon"
-                   class="new-element-icon"></fa-icon>
           <ng-template #changeIcon>
-            <fa-icon [icon]="fa.faSun" class="new-element-icon"></fa-icon>
+            <fa-icon title="Lighttheme" [icon]="fa.faSun" class="fa-2x"></fa-icon>
           </ng-template>
-        </button>
-      </nb-action>
-      <!--Language Action-->
-      <nb-action class="language-menu">
-        <div *ngIf="selectedLanguage && languages" class="languageContainer">
-          <nb-select selected="{{selectedLanguage}}" fullWidth>
-            <nb-option *ngFor="let language of languages"
-                       value="{{language}}" (click)="onClickLanguage(language)" fxLayoutAlign="start center">
-              <img src="../../assets/images/flags/{{language}}.svg" class="flag" width="25rem" height="16rem" alt="">
-              <span fxFlexOffset="0.5rem"> {{'languageKeys.' + language | translate}} </span>
-            </nb-option>
-          </nb-select>
         </div>
       </nb-action>
       <!--User Action-->
-      <nb-action class="user">
-        <!--<fa-icon [icon]="fa.faUser" class="user-icon">
-        </fa-icon>-->
+      <nb-action class="user-action">
         <nb-user [nbContextMenu]="userMenu"
                  [picture]="FALLBACK_IMG"
                  name="{{user?.getValue()?.username}}"

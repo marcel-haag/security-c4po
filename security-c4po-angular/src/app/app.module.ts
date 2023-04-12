@@ -12,15 +12,12 @@ import {
   NbSelectModule,
   NbThemeModule,
   NbOverlayContainerAdapter,
-  NbDialogModule, NbMenuModule,
+  NbDialogModule, NbMenuModule, NbIconLibraries,
 } from '@nebular/theme';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {HttpLoaderFactory} from './common-app.module';
 import {RouterModule} from '@angular/router';
-import {FaConfig, FaIconLibrary, FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {fas} from '@fortawesome/free-solid-svg-icons';
-import {far} from '@fortawesome/free-regular-svg-icons';
 import {NgxsModule} from '@ngxs/store';
 import {SessionState} from '@shared/stores/session-state/session-state';
 import {environment} from '../environments/environment';
@@ -37,6 +34,9 @@ import {CustomOverlayContainer} from '@shared/modules/custom-overlay-container.c
 import {DialogService} from '@shared/services/dialog-service/dialog.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RetryDialogModule} from '@shared/modules/retry-dialog/retry-dialog.module';
+import {FaConfig, FaIconLibrary, FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {fas} from '@fortawesome/free-solid-svg-icons';
+import {far} from '@fortawesome/free-regular-svg-icons';
 
 @NgModule({
   declarations: [
@@ -94,9 +94,11 @@ import {RetryDialogModule} from '@shared/modules/retry-dialog/retry-dialog.modul
   ]
 })
 export class AppModule {
-  constructor(library: FaIconLibrary, faConfig: FaConfig) {
-    library.addIconPacks(fas, far);
+  constructor(library: FaIconLibrary, faConfig: FaConfig, libraries: NbIconLibraries) {
+    library.addIconPacks(far, fas);
+    libraries.registerFontPack('solid', {packClass: 'fas', iconClassPrefix: 'fa'});
     faConfig.defaultPrefix = 'fas';
+    libraries.setDefaultPack('solid');
   }
 }
 

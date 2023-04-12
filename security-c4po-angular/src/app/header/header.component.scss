@@ -8,17 +8,26 @@
     flex-grow: 1;
   }
 
+  .action-element-icon:hover {
+    cursor: pointer;
+  }
+
+  .logo-container {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   .owasp-redirect-button {
     margin-left: 0.5rem;
   }
 
-  .languageContainer {
-    display: flex;
-    max-width: 8rem;
-    min-width: 8rem;
+  .user-action {
+    // width: 4rem;
+    z-index: 10;
+    // height: 3rem;
+    .user-action-accordion-header {
 
-    .flag {
-      object-fit: contain;
     }
   }
 }
@@ -32,14 +41,6 @@
     display: flex;
     align-items: center;
     width: auto;
-
-    .logo-container {
-      font-style: oblique;
-      color: #e74c3c;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
 
     nb-action {
       height: auto;

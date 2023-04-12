@@ -32,15 +32,14 @@ export class ExportReportDialogComponent implements OnInit {
     private dialogService: DialogService
   ) {
   }
-
   // HTML
   readonly fa = FA;
   // form control elements
   exportReportFormatControl = new FormControl(ExportFormatOptions.PDF);
-  exportReportLanguageControl = new FormControl(ExportLanguageOptions.ENGLISH);
+  exportReportLanguageControl = new FormControl(LanguageOptions.ENGLISH);
   // exports
   exportFormats = ExportFormatOptions;
-  exportLanguages = ExportLanguageOptions;
+  exportLanguages = LanguageOptions;
 
   dialogData: GenericDialogData;
 
@@ -159,7 +158,7 @@ export enum ExportFormatOptions {
   HTML = 'HTML'
 }
 
-export enum ExportLanguageOptions {
+export enum LanguageOptions {
   ENGLISH = 'en-US',
   GERMAN = 'de-DE'
 }

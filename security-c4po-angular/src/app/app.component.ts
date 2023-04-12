@@ -9,6 +9,8 @@ import {SessionState, SessionStateModel} from '@shared/stores/session-state/sess
 import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';
 import {isNotNullOrUndefined} from 'codelyzer/util/isNotNullOrUndefined';
 import {filter} from 'rxjs/operators';
+import {NbIconLibraries} from '@nebular/theme';
+import {FaIconLibrary} from '@fortawesome/angular-fontawesome';
 
 @UntilDestroy()
 @Component({
@@ -24,6 +26,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(private translateService: TranslateService,
               private store: Store,
+              private iconLibraries: FaIconLibrary,
+              private nebularIconLibraries: NbIconLibraries,
               @Inject(LOCALE_ID) private localeId: string) {
     this.initApp();
   }
@@ -44,10 +48,14 @@ export class AppComponent implements OnInit, OnDestroy {
   initApp(): void {
     // for global language
     this.translateService.use(this.localeId);
-
     // for number, date and time
     registerLocaleData(localeDe, 'de-DE');
-
+    // for font-awesome icons
+    this.nebularIconLibraries.registerFontPack('fas', { packClass: 'fas', iconClassPrefix: 'fa' });
+    this.nebularIconLibraries.registerFontPack('far', { packClass: 'far', iconClassPrefix: 'fa' });
+    this.nebularIconLibraries.registerFontPack('fab', { packClass: 'fab', iconClassPrefix: 'fa' });
+    this.nebularIconLibraries.setDefaultPack('far');
+    // for country codes
     this.setupCountryCode();
   }
 

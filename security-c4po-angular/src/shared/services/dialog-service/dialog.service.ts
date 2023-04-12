@@ -5,6 +5,7 @@ import {DialogMessage, SecurityDialogMessage} from '@shared/services/dialog-serv
 import {ConfirmDialogComponent} from '@shared/modules/confirm-dialog/confirm-dialog.component';
 import {SecurityConfirmDialogComponent} from '@shared/modules/security-confirm-dialog/security-confirm-dialog.component';
 import {RetryDialogComponent} from '@shared/modules/retry-dialog/retry-dialog.component';
+import {any} from 'codelyzer/util/function';
 
 @Injectable({
   providedIn: 'root'
@@ -19,14 +20,15 @@ export class DialogService {
    */
   openCustomDialog<T>(
     componentOrTemplateRef: ComponentType<T> | TemplateRef<T>,
-    config?: Partial<NbDialogConfig<Partial<T> | string>>
+    additionalData: any
   ): NbDialogRef<T> {
     return this.dialog.open<T>(componentOrTemplateRef, {
-      context: config?.context || undefined,
-      closeOnEsc: config?.closeOnEsc || false,
-      hasScroll: config?.hasScroll || false,
-      autoFocus: config?.autoFocus || true,
-      closeOnBackdropClick: config?.closeOnBackdropClick || false
+      closeOnEsc: false,
+      hasScroll: false,
+      autoFocus: true,
+      closeOnBackdropClick: false,
+      // @ts-ignore
+      context: {data: additionalData}
     });
   }
 

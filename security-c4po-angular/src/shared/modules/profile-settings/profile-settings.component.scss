@@ -1,0 +1,98 @@
+@import "../../../assets/@theme/styles/_dialog.scss";
+@import '../../../assets/@theme/styles/themes';
+
+.profile-setting-dialog {
+  width: 45.25rem !important;
+  height: 46rem;
+
+  .dialog-header {
+    height: 8vh;
+
+    .header-text {
+      font-size: 1.5rem;
+      padding-left: 1rem;
+    }
+  }
+
+  .dialog-body {
+
+    .user-properties {
+      padding-top: 1rem;
+
+      .user-img {
+        width: 10rem;
+        height: 10rem;
+        border-radius: 50%;
+      }
+
+      .user-img:hover {
+        cursor: not-allowed;
+      }
+
+      .properties {
+        padding-left: 2rem;
+
+        .prefix-icon {
+          margin-top: 1rem;
+        }
+
+        .label {
+          display: block;
+          font-size: 0.95rem;
+          padding-bottom: 0.5rem;
+        }
+
+        .form-field {
+          margin-bottom: 0.5rem;
+        }
+
+        .form-field:disabled {
+          background-color: nb-theme(color-basic-transparent-focus);
+        }
+
+        .untouchable {
+          width: 30rem;
+        }
+
+        .error-text {
+          float: left;
+          color: nb-theme(color-danger-default);
+        }
+      }
+    }
+
+    .language-settings{
+      padding-top: 2rem;
+
+      .language-selection-label {
+        font-weight: bold;
+      }
+
+      .language-radio-buttons {
+        float: left;
+        clear: none;
+        padding-top: 0.5rem;
+        margin-left: 1rem;
+      }
+
+      .languageContainer {
+        display: flex;
+        max-width: 8rem;
+        min-width: 8rem;
+
+        .flag {
+          object-fit: contain;
+          margin-top: 0.5rem;
+        }
+      }
+    }
+
+    .user-password-change{
+      padding-top: 1rem;
+
+      .password-selection-label {
+        font-weight: bold;
+      }
+    }
+  }
+}

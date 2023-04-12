@@ -5,13 +5,14 @@ import {
   NbActionsModule,
   NbButtonModule,
   NbCardModule,
-  NbContextMenuModule, NbMenuModule,
+  NbContextMenuModule,
   NbSelectModule,
   NbUserModule
 } from '@nebular/theme';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {TranslateModule} from '@ngx-translate/core';
+import {ProfileSettingsModule} from '@shared/modules/profile-settings/profile-settings.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {TranslateModule} from '@ngx-translate/core';
     NbSelectModule,
     TranslateModule,
     NbUserModule,
-    NbContextMenuModule
+    NbContextMenuModule,
+    ProfileSettingsModule,
   ],
   providers: [
   ]
