@@ -1,5 +1,14 @@
 import {Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors} from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  NG_VALIDATORS,
+  NG_VALUE_ACCESSOR,
+  ValidationErrors,
+  Validators
+} from '@angular/forms';
 import {
   OldPasswordEmptyError,
   PasswordErrorStateMatcher
@@ -61,9 +70,9 @@ export class PasswordInputFromComponent implements OnInit {
   ngOnInit(): void {
     this.passwordFormGroup = this.fb.group(
       {
-        oldPassword: ['', [PasswordInputFromComponent.containsBlankSpaceValidator]],
-        newPassword: ['', [PasswordInputFromComponent.containsBlankSpaceValidator]],
-        confirmNewPassword: ''
+        oldPassword: [{value: '', disabled: true}, [Validators.required, PasswordInputFromComponent.containsBlankSpaceValidator]],
+        newPassword: [{value: '', disabled: true}, [Validators.required, PasswordInputFromComponent.containsBlankSpaceValidator]],
+        confirmNewPassword: [{value: '', disabled: true}, [Validators.required]]
       },
       {validators: [passwordValidator]}
     );

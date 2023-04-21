@@ -92,8 +92,8 @@ export class ProfileSettingsComponent implements OnInit {
   setupUserFormGroup(): void {
     this.userFormGroup = this.fb.group({
       username: [{value: '', disabled: true}, [Validators.required, Validators.pattern(Patterns.NO_WHITESPACES)]],
-      firstName: [{value: '', disabled: false}, [Validators.required, Validators.pattern(Patterns.NO_WHITESPACES)]],
-      lastName: [{value: '', disabled: false}, [Validators.required, Validators.pattern(Patterns.NO_WHITESPACES)]],
+      firstName: [{value: '', disabled: true}, [Validators.required, Validators.pattern(Patterns.NO_WHITESPACES)]],
+      lastName: [{value: '', disabled: true}, [Validators.required, Validators.pattern(Patterns.NO_WHITESPACES)]],
       eMail: [{value: '', disabled: true}, [Validators.required, Validators.email, Validators.pattern(Patterns.NO_WHITESPACES)]],
       avatarUploader: null
     });
@@ -110,6 +110,13 @@ export class ProfileSettingsComponent implements OnInit {
     });
     // get password-form control
     this.userPasswordInputControl = this.passwordFormGroup.get('passwordInput');
+  }
+
+  changePasswordInKeycloak(): void {
+    this.userService.redirectToChangePasswordAction().then(r => {
+      // tslint:disable-next-line:no-console
+      console.info('Redirecting to Keycloak for password change...');
+    });
   }
 
   onClickLanguage(language: string): void {
@@ -149,22 +156,20 @@ export class ProfileSettingsComponent implements OnInit {
   }
 
   private handleUserUpdate(user: User): Observable<void> {
-    /*    return this.userService.updateUser(user, this.timeOfChange)
-          .pipe(
-            tap({
-              next: resultingUser => {
-                this.store.dispatch(new UpdateUserSettings(resultingUser));
-                this.store.dispatch(new UpdateUser(resultingUser, true));
-              },
-              error: error => {
-                console.error(error);
-                this.onFailedUpdate(error);
-              }
-            }),
-            mapTo(void 0),
-            untilDestroyed(this)
-          );*/
-    return of();
+    return this.userService.changeUserProperties(user)
+      .pipe(
+        tap({
+          next: resultingUser => {
+            this.store.dispatch(new UpdateUserSettings(resultingUser));
+            this.store.dispatch(new UpdateUser(resultingUser, true));
+          },
+          error: error => {
+            console.error(error);
+          }
+        }),
+        mapTo(void 0),
+        untilDestroyed(this)
+      );
   }
 
   private handlePasswordChange(): void {

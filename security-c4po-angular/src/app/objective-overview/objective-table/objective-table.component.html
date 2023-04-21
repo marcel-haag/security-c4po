@@ -1,5 +1,5 @@
 <div class="pentest-table">
-  <table [nbTreeGrid]="dataSource" nbsort>
+  <table [nbTreeGrid]="dataSource">
     <!--ToDo: Add the click event to every td manually except the actions column actions-->
     <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="columns"></tr>
     <tr nbTreeGridRow *nbTreeGridRowDef="let pentest; columns: columns"
@@ -45,7 +45,7 @@
         {{ 'pentest.findings&comments' | translate }}
       </th>
       <td nbTreeGridCell *nbTreeGridCellDef="let pentest" (click)="onClickRouteToObjectivePentest(pentest.data)">
-        <div fxLayout="row" fxLayoutGap="0.5rem" fxLayoutAlign="start start">
+        <div fxLayout="row" fxLayoutGap="0.5rem" fxLayoutAlign="center center">
           <app-findig-widget [numberOfFindings]="pentest.data['findingIds'] ? pentest.data['findingIds'].length : 0"></app-findig-widget>
           <span> / </span>
           <app-comment-widget [numberOfComments]="pentest.data['commentIds'] ? pentest.data['commentIds'].length : 0"></app-comment-widget>
