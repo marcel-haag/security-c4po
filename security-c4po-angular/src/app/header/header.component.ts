@@ -142,13 +142,14 @@ export class HeaderComponent implements OnInit {
   }
 
   onClickLogOut(): void {
-    console.info('Logging out...');
-    // ToDo: Redirect user to Landing page from Issue #142 https://github.com/Marcel-Haag/security-c4po/issues/143
-    // ToDo: Fix Redirect URI in Keycloak Setting
-    /*this.keycloakService.logout(`http://auth-server/realms/${environment.keycloakclientId}/protocol/openid-connect/logout`).then(() => {
+    // ToDo: Has to be implemented once HTTPS works
+
+    /*this.userService.logout().then(() => {
+      console.warn('logout success');
       // Route user back to default page
       this.router.navigate([Route.HOME]).then(() => {
         // Reset User props from store
+        this.keycloakService.clearToken();
         this.store.dispatch(new ResetSession());
       }, err => {
         console.error(err);

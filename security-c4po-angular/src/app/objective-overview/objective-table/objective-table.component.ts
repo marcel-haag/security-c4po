@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {NbGetters, NbTreeGridDataSource, NbTreeGridDataSourceBuilder} from '@nebular/theme';
-import {Pentest, ObjectiveEntry, transformPentestsToObjectiveEntries} from '@shared/models/pentest.model';
+import {NbGetters, NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder} from '@nebular/theme';
+import {ObjectiveEntry, Pentest, transformPentestsToObjectiveEntries} from '@shared/models/pentest.model';
 import {PentestService} from '@shared/services/api/pentest.service';
 import {Store} from '@ngxs/store';
-import {PROJECT_STATE_NAME, ProjectState} from '@shared/stores/project-state/project-state';
+import {ProjectState} from '@shared/stores/project-state/project-state';
 import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';
 import {catchError, filter, switchMap, tap} from 'rxjs/operators';
 import {BehaviorSubject, Observable, of} from 'rxjs';
@@ -71,6 +71,12 @@ export class ObjectiveTableComponent implements OnInit {
       }
     });
     this.loadPentestData();
+    this.changeSortTable()
+    this.dataSource.sort({column: ObjectiveColumns.TEST_ID, direction: NbSortDirection.DESCENDING});
+  }
+
+  private changeSortTable(): void {
+    this.dataSource.sort({column: ObjectiveColumns.TEST_ID, direction: NbSortDirection.DESCENDING});
   }
 
   loadPentestData(): void {

@@ -11,7 +11,7 @@ import {
   NbListModule,
   NbButtonModule,
   NbTooltipModule,
-  NbActionsModule, NbUserModule, NbContextMenuModule
+  NbActionsModule, NbUserModule, NbContextMenuModule, NbSortDirective
 } from '@nebular/theme';
 import {TranslateModule} from '@ngx-translate/core';
 import {StatusTagModule} from '@shared/widgets/status-tag/status-tag.module';
@@ -32,7 +32,7 @@ import {VersionTagModule} from '@shared/widgets/version-tag/version-tag.module';
   declarations: [
     ObjectiveHeaderComponent,
     ObjectiveCategoriesComponent,
-    ObjectiveTableComponent,
+    ObjectiveTableComponent
   ],
   imports: [
     CommonModule,
@@ -67,7 +67,10 @@ import {VersionTagModule} from '@shared/widgets/version-tag/version-tag.module';
   exports: [
     ObjectiveHeaderComponent,
     ObjectiveCategoriesComponent,
-    ObjectiveTableComponent,
+    ObjectiveTableComponent
+  ],
+  providers: [
+    NbSortDirective
   ]
 })
 export class ObjectiveOverviewModule {

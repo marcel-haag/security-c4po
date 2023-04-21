@@ -28,6 +28,7 @@ export class CommentDialogComponent implements OnInit {
 
   // HTML only
   readonly fa = FA;
+  readonly getRowsFromString = /\r|\r\n|\n/;
 
   constructor(
     @Inject(NB_DIALOG_CONFIG) private data: GenericDialogData,

@@ -87,7 +87,7 @@ export class ProjectDialogService {
           labelKey: 'project.summary.label',
           placeholder: 'project.summary.placeholder',
           controlsConfig: [
-            {value: project ? project.summary : '', disabled: !project},
+            {value: project && project.summary ? project.summary : '', disabled: !project},
             [project ? Validators.required : []]
           ],
           errors: [

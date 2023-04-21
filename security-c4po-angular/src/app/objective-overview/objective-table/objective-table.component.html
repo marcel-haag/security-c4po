@@ -1,5 +1,5 @@
 <div class="pentest-table">
-  <table [nbTreeGrid]="dataSource">
+  <table [nbTreeGrid]="dataSource" nbsort>
     <!--ToDo: Add the click event to every td manually except the actions column actions-->
     <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="columns"></tr>
     <tr nbTreeGridRow *nbTreeGridRowDef="let pentest; columns: columns"
