@@ -21,25 +21,6 @@ import {Store} from '@ngxs/store';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FindingDialogComponent implements OnInit {
-  // form control elements
-  findingFormGroup: FormGroup;
-  formArray: GenericFormFieldConfig[];
-
-  dialogData: GenericDialogData;
-
-  // HTML only
-  readonly fa = FA;
-  severity: Severity = Severity.LOW;
-  readonly severityTexts: Array<SeverityText> = [
-    {value: Severity.LOW, translationText: 'severities.low'},
-    {value: Severity.MEDIUM, translationText: 'severities.medium'},
-    {value: Severity.HIGH, translationText: 'severities.high'},
-    {value: Severity.CRITICAL, translationText: 'severities.critical'}
-  ];
-
-  // ToDo: Adjust for edit finding dialog to include existing urls
-  affectedUrls: string[] = [];
-  initialAffectedUrls: string[] = [];
 
   constructor(
     @Inject(NB_DIALOG_CONFIG) private data: GenericDialogData,
@@ -51,6 +32,26 @@ export class FindingDialogComponent implements OnInit {
     private store: Store
   ) {
   }
+  // form control elements
+  findingFormGroup: FormGroup;
+  formArray: GenericFormFieldConfig[];
+
+  dialogData: GenericDialogData;
+
+  // HTML only
+  readonly fa = FA;
+  readonly getRowsFromString = /\r|\r\n|\n/;
+  severity: Severity = Severity.LOW;
+  readonly severityTexts: Array<SeverityText> = [
+    {value: Severity.LOW, translationText: 'severities.low'},
+    {value: Severity.MEDIUM, translationText: 'severities.medium'},
+    {value: Severity.HIGH, translationText: 'severities.high'},
+    {value: Severity.CRITICAL, translationText: 'severities.critical'}
+  ];
+
+  // ToDo: Adjust for edit finding dialog to include existing urls
+  affectedUrls: string[] = [];
+  initialAffectedUrls: string[] = [];
 
   ngOnInit(): void {
     this.findingFormGroup = this.generateFormCreationFieldArray();

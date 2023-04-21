@@ -26,6 +26,7 @@ export class ProjectDialogComponent implements OnInit {
 
   // HTML only
   readonly fa = FA;
+  readonly getRowsFromString = /\r|\r\n|\n/;
   state: ReportState = ReportState.NEW;
   readonly reportStateTexts = reportStateTexts;
 

@@ -49,6 +49,7 @@
                       type="formText" required fullWidth
                       id="{{fieldConfig.fieldName}}" nbInput
                       class="form-field form-textarea"
+                      rows="{{fieldConfig.controlsConfig[0].value !== '' ? fieldConfig.controlsConfig[0].value.split(getRowsFromString).length + 1 : 2}}"
                       [status]="projectFormGroup.get(fieldConfig.fieldName).dirty ? (projectFormGroup.get(fieldConfig.fieldName).invalid  ? 'danger' : 'basic') : 'basic'"
                       placeholder="{{fieldConfig.placeholder | translate}}">
               </textarea>

@@ -36,6 +36,7 @@
                       type="formText" required fullWidth
                       id="{{formArray[1].fieldName}}" nbInput
                       class="form-field form-textarea"
+                      rows="{{formArray[1].controlsConfig[0].value !== '' ? formArray[1].controlsConfig[0].value.split(getRowsFromString).length + 1 : 2}}"
                       [status]="commentFormGroup.get(formArray[1].fieldName).dirty ? (commentFormGroup.get(formArray[1].fieldName).invalid  ? 'danger' : 'basic') : 'basic'"
                       placeholder="{{formArray[1].placeholder | translate}} *">
               </textarea>

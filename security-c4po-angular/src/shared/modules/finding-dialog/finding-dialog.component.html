@@ -36,6 +36,7 @@
                       type="formText" required fullWidth
                       id="{{formArray[2].fieldName}}" nbInput
                       class="form-field form-text"
+                      rows="{{formArray[2].controlsConfig[0].value !== '' ? formArray[2].controlsConfig[0].value.split(getRowsFromString).length + 1 : 2}}"
                       [status]="findingFormGroup.get(formArray[2].fieldName).dirty ? (findingFormGroup.get(formArray[2].fieldName).invalid  ? 'danger' : 'basic') : 'basic'"
                       placeholder="{{formArray[2].placeholder | translate}} *">
               </textarea>
@@ -57,6 +58,7 @@
                       type="formText" required fullWidth
                       id="{{formArray[3].fieldName}}" nbInput
                       class="form-field form-text"
+                      rows="{{formArray[3].controlsConfig[0].value !== '' ? formArray[3].controlsConfig[0].value.split(getRowsFromString).length + 1 : 2}}"
                       [status]="findingFormGroup.get(formArray[3].fieldName).dirty ? (findingFormGroup.get(formArray[3].fieldName).invalid  ? 'danger' : 'basic') : 'basic'"
                       placeholder="{{formArray[3].placeholder | translate}} *">
               </textarea>
@@ -132,6 +134,7 @@
                     type="text" required fullWidth
                     id="{{formArray[5].fieldName}}" nbInput
                     class="form-field form-textarea"
+                    rows="{{formArray[5].controlsConfig[0].value !== '' ? formArray[5].controlsConfig[0].value.split(getRowsFromString).length + 1 : 2}}"
                     [status]="findingFormGroup.get(formArray[5].fieldName).dirty ? (findingFormGroup.get(formArray[5].fieldName).invalid  ? 'danger' : 'basic') : 'basic'"
                     placeholder="{{formArray[5].placeholder | translate}} *">
             </textarea>
@@ -153,6 +156,7 @@
                     type="text" fullWidth
                     id="{{formArray[6].fieldName}}" nbInput
                     class="form-field form-textarea"
+                    rows="{{formArray[6].controlsConfig[0].value !== '' ? formArray[6].controlsConfig[0].value.split(getRowsFromString).length + 1 : 2}}"
                     [status]="findingFormGroup.get(formArray[6].fieldName).dirty ? (findingFormGroup.get(formArray[6].fieldName).invalid  ? 'danger' : 'basic') : 'basic'"
                     placeholder="{{formArray[6].placeholder | translate}}">
             </textarea>
