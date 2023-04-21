@@ -7,11 +7,14 @@ import {KeycloakService} from 'keycloak-angular';
 import {map} from 'rxjs/operators';
 import {environment} from '../../../environments/environment';
 import {Route} from '@shared/models/route.enum';
+import {Project} from '@shared/models/project.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+
+  private keycloakBaseURL = `${environment.keycloakURL}/`;
 
   constructor(private http: HttpClient,
               private keycloakService: KeycloakService,
@@ -56,25 +59,22 @@ export class UserService {
   // https://stackoverflow.com/questions/33910615/is-there-an-api-call-for-changing-user-password-on-keycloak
 
   // ToDo: https://www.keycloak.org/docs/latest/server_development/
-  public changeUserProperties(): Observable<any> {
+  public changeUserProperties(user: User): Observable<any> {
     // ToDo: There is a kc_action parameter available in keycloak to let application force required actions.
+    console.warn(user);
     /*../realms/myrealm/protocol/openid-connect/auth
         ?response_type=code
         &client_id=myclient
         &redirect_uri=https://myclient.com
         &kc_action=update_profile*/
-    return of();
+    return of(user);
   }
 
-  // ToDo: https://keycloak.discourse.group/t/integrate-change-password-from-account-console-into-own-webapp/12300
-  public changePassword(): Observable<any> {
-    // ToDo: To force (or allow) a password update, use kc_action=UPDATE_PASSWORD
-    /*../realms/myrealm/protocol/openid-connect/auth
-        ?response_type=code
-        &client_id=myclient
-        &redirect_uri=https://myclient.com
-        &kc_action=update_profile*/
-    return of();
+  public redirectToChangePasswordAction(): Promise<void> {
+    // https://keycloak.discourse.group/t/integrate-change-password-from-account-console-into-own-webapp/12300
+    return this.keycloakService.login({
+      action: 'UPDATE_PASSWORD',
+    });
   }
 
   private getToken(): Observable<string> {

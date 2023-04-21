@@ -36,21 +36,15 @@
                      type="text" required
                      id="firstName" nbInput
                      fullWidth
-                     class="form-field"
+                     class="form-field name"
                      [status]="userFormGroup.get('firstName').dirty ? (userFormGroup.get('firstName').invalid  ? 'danger' : 'basic') : 'basic'"
                      placeholder="{{'profile.firstName.placeholder' | translate}} *">
-              <!-- FIXME: when the bug (https://github.com/angular/components/issues/7739) is fixed -->
-              <ng-template *ngIf="userFormGroup.get('firstName').dirty">
+              <ng-container *ngIf="userFirstNameControl.dirty">
               <span class="error-text"
-                    *ngIf="userFormGroup.get('firstName')?.hasError('required')">
-                {{'WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW'}}
+                    *ngIf="userFirstNameControl.hasError('required')">
                 {{'profile.validationMessage.firstNameRequired' | translate}}
               </span>
-                <span class="error-text"
-                      *ngIf="userFormGroup.get('firstName').invalid">
-                {{'Firstname is invalid' | translate}}
-              </span>
-              </ng-template>
+              </ng-container>
             </nb-form-field>
             <!--Lastname-->
             <nb-form-field class="user-form-field">
@@ -61,60 +55,66 @@
                      type="text" required
                      id="lastName" nbInput
                      fullWidth
-                     class="form-field"
+                     class="form-field name"
                      [status]="userFormGroup.get('lastName').dirty ? (userFormGroup.get('lastName').invalid  ? 'danger' : 'basic') : 'basic'"
                      placeholder="{{'profile.lastName.placeholder' | translate}} *">
-              <!-- FIXME: when the bug (https://github.com/angular/components/issues/7739) is fixed -->
-              <ng-template *ngIf="userFormGroup.get('lastName').dirty">
+              <ng-container *ngIf="userLastNameControl.dirty">
               <span class="error-text"
-                    *ngIf="userFormGroup.get('lastName')?.hasError('required')">
+                    *ngIf="userLastNameControl.hasError('required')">
                 {{'profile.validationMessage.lastNameRequired' | translate}}
               </span>
-                <span class="error-text"
-                      *ngIf="userFormGroup.get('lastName').invalid">
-                {{'Lastname is invalid' | translate}}
-              </span>
-              </ng-template>
+              </ng-container>
             </nb-form-field>
           </div>
           <!--ToDo: Email?-->
         </form>
       </div>
     </div>
-    <div class="language-settings">
-      <!--Language Radio Selection-->
-      <label class="language-selection-label">
-        {{ 'profile.languageLabel' | translate }}
-      </label>
-      <div fxLayout="row" fxLayoutGap="1rem" fxLayoutAlign="start center">
-        <nb-radio-group name="language" [formControl]="profileLanguageControl"
-                        class="language-radio-buttons languageContainer" status="info">
-          <nb-radio value="{{profileLanguages.ENGLISH}}" (click)="onClickLanguage(profileLanguages.ENGLISH)">
-            <img src="../../assets/images/flags/{{profileLanguages.ENGLISH}}.svg" class="flag" width="25rem"
-                 height="16rem"
-                 alt="">
-          </nb-radio>
-          <nb-radio value="{{profileLanguages.GERMAN}}" (click)="onClickLanguage(profileLanguages.GERMAN)">
-            <img src="../../assets/images/flags/{{profileLanguages.GERMAN}}.svg" class="flag" width="25rem"
-                 height="16rem"
-                 alt="">
-          </nb-radio>
-        </nb-radio-group>
+    <div fxLayout="row" fxLayoutGap="2rem" fxLayoutAlign="start center">
+      <div class="user-password-change">
+        <!--User password change-->
+        <label class="password-selection-label">
+          {{'profile.password.title' | translate}}
+        </label>
+        <div class="password-form">
+          <button nbButton size="small"
+                  class="password-btn"
+                  status="info"
+                  hero outline
+                  (click)="changePasswordInKeycloak()">
+            <fa-icon [icon]="fa.faPassport" class="btn-icon"></fa-icon>
+            {{'profile.password.button' | translate}}
+          </button>
+          <!--ToDo: Remove unused feature-->
+          <!--<form class="password-form" [formGroup]="passwordFormGroup">
+            <app-password-input-from
+              formControlName="passwordInput"
+              [userServiceError$]="userServiceError"
+              (passwordStrong)="passwordStrong = $event">
+            </app-password-input-from>
+          </form>-->
+        </div>
       </div>
-    </div>
-    <!--ToDo: Add accordion for keycloak values-->
-    <div class="user-password-change">
-      <label class="password-selection-label">
-        {{'profile.password.title' | translate}}
-      </label>
-      <div>
-        <form class="password-form" [formGroup]="passwordFormGroup">
-          <app-password-input-from
-            formControlName="passwordInput"
-            [userServiceError$]="userServiceError"
-            (passwordStrong)="passwordStrong = $event">
-          </app-password-input-from>
-        </form>
+      <div class="language-settings">
+        <!--Language radio selection-->
+        <label class="language-selection-label">
+          {{ 'profile.languageLabel' | translate }}
+        </label>
+        <div fxLayout="row" fxLayoutGap="1rem" fxLayoutAlign="start center">
+          <nb-radio-group name="language" [formControl]="profileLanguageControl"
+                          class="language-radio-buttons languageContainer" status="info">
+            <nb-radio value="{{profileLanguages.ENGLISH}}" (click)="onClickLanguage(profileLanguages.ENGLISH)">
+              <img src="../../assets/images/flags/{{profileLanguages.ENGLISH}}.svg" class="flag" width="25rem"
+                   height="16rem"
+                   alt="">
+            </nb-radio>
+            <nb-radio value="{{profileLanguages.GERMAN}}" (click)="onClickLanguage(profileLanguages.GERMAN)">
+              <img src="../../assets/images/flags/{{profileLanguages.GERMAN}}.svg" class="flag" width="25rem"
+                   height="16rem"
+                   alt="">
+            </nb-radio>
+          </nb-radio-group>
+        </div>
       </div>
     </div>
   </nb-card-body>

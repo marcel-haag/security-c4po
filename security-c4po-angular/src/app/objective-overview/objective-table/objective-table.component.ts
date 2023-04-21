@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NbGetters, NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder} from '@nebular/theme';
+import {NbGetters, NbTreeGridDataSource, NbTreeGridDataSourceBuilder} from '@nebular/theme';
 import {ObjectiveEntry, Pentest, transformPentestsToObjectiveEntries} from '@shared/models/pentest.model';
 import {PentestService} from '@shared/services/api/pentest.service';
 import {Store} from '@ngxs/store';
@@ -15,6 +15,7 @@ import * as FA from '@fortawesome/free-solid-svg-icons';
 import {DialogService} from '@shared/services/dialog-service/dialog.service';
 import {NotificationService, PopupType} from '@shared/services/toaster-service/notification.service';
 import {Project} from '@shared/models/project.model';
+import {sortDescending} from '@shared/functions/sort-names.function';
 
 @UntilDestroy()
 @Component({
@@ -25,7 +26,6 @@ import {Project} from '@shared/models/project.model';
 export class ObjectiveTableComponent implements OnInit {
   // HTML only
   readonly fa = FA;
-  // use ban and check
 
   loading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   columns: Array<ObjectiveColumns> = [
@@ -71,12 +71,6 @@ export class ObjectiveTableComponent implements OnInit {
       }
     });
     this.loadPentestData();
-    this.changeSortTable()
-    this.dataSource.sort({column: ObjectiveColumns.TEST_ID, direction: NbSortDirection.DESCENDING});
-  }
-
-  private changeSortTable(): void {
-    this.dataSource.sort({column: ObjectiveColumns.TEST_ID, direction: NbSortDirection.DESCENDING});
   }
 
   loadPentestData(): void {
@@ -87,8 +81,12 @@ export class ObjectiveTableComponent implements OnInit {
       untilDestroyed(this)
     ).subscribe({
       next: (pentests: Pentest[]) => {
-        this.pentests$.next(pentests);
-        this.data = transformPentestsToObjectiveEntries(pentests);
+        // Sort data without before adding as table data source
+        const sortedPentests = pentests.sort((a: Pentest, b: Pentest) =>
+          sortDescending(a.refNumber.toLowerCase(), b.refNumber.toLowerCase())
+        );
+        this.pentests$.next(sortedPentests);
+        this.data = transformPentestsToObjectiveEntries(sortedPentests);
         this.dataSource.setData(this.data, this.getters);
         this.loading$.next(false);
       },

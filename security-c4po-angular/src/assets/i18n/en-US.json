@@ -78,6 +78,7 @@
     "languageLabel": "Change language:",
     "password": {
       "title": "Change password:",
+      "button" : "Change password",
       "old": "Old password",
       "new": "New password",
       "confirmNew": "Confirm new password",

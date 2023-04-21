@@ -4,6 +4,7 @@
     <span class="findings-count">{{numberOfFindings}}</span>
   </ng-container>
   <ng-template #noFindings>
-    {{'-'}}
+    <fa-icon [icon]="fa.faExclamationCircle" size="lg" class="finding-icon"></fa-icon>
+    <span class="findings-count">{{0}}</span>
   </ng-template>
 </div>

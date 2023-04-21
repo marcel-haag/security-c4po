@@ -3,7 +3,7 @@
 
 .profile-setting-dialog {
   width: 45.25rem !important;
-  height: 46rem;
+  height: 32rem;
 
   .dialog-header {
     height: 8vh;
@@ -54,6 +54,10 @@
           width: 30rem;
         }
 
+        .name {
+          width: 14.5rem !important;
+        }
+
         .error-text {
           float: left;
           color: nb-theme(color-danger-default);
@@ -62,7 +66,7 @@
     }
 
     .language-settings{
-      padding-top: 2rem;
+      padding-top: 2.5rem;
 
       .language-selection-label {
         font-weight: bold;
@@ -76,6 +80,7 @@
       }
 
       .languageContainer {
+        padding-top: 1rem;
         display: flex;
         max-width: 8rem;
         min-width: 8rem;
@@ -88,10 +93,21 @@
     }
 
     .user-password-change{
-      padding-top: 1rem;
+      padding-top: 2rem;
 
       .password-selection-label {
         font-weight: bold;
+      }
+
+      .password-form {
+        padding-top: 1rem;
+
+        .password-btn {
+          .btn-icon {
+            padding-bottom: 0.15rem;
+            padding-right: 0.5rem;
+          }
+        }
       }
     }
   }
