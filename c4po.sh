@@ -14,13 +14,17 @@ ______| |______ |_____  |_____| |    \_ __|__    |       |         _/_/_/     _/
 
 echo "-------------CLEAN UP Container---------------"
 echo -e "\n"
-docker rm -f c4po-keycloak
-#docker rm -f c4po-db     ### toggle to clear database with every start ###
+#docker rm -f c4po-keycloak     ### toggle to clear keycloak with every start ###
+#docker rm -f c4po-db           ### toggle to clear database with every start ###
+docker rm -f c4po-reporting
 docker rm -f c4po-api
 docker rm -f c4po-angular
 echo -e "\n"
 
 echo "-----------------Start Build------------------"
+echo -e "\n"
+echo " - Report Engine: "
+docker-compose -f ${compose} build c4po-reporting
 echo -e "\n"
 echo " - Backend: "
 docker-compose -f ${compose} build c4po-api

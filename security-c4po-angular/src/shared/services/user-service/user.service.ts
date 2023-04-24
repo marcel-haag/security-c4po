@@ -73,7 +73,7 @@ export class UserService {
   public redirectToChangePasswordAction(): Promise<void> {
     // https://keycloak.discourse.group/t/integrate-change-password-from-account-console-into-own-webapp/12300
     return this.keycloakService.login({
-      action: 'UPDATE_PASSWORD',
+      action: 'UPDATE_PASSWORD'
     });
   }
 

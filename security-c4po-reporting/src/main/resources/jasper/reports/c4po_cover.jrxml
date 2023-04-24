@@ -4,6 +4,8 @@
     <property name="com.jaspersoft.studio.data.defaultdataadapter" value="ProjectReportJasperData Template JSON Adapter"/>
     <!-- Ignores Issue about not finding a specific font -->
     <property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+    <parameter name="CDATA_WATERMARK" class="java.lang.String"/>
+    <parameter name="CDATA_C4POCoverBackground" class="java.lang.String"/>
     <queryString language="JSON">
         <![CDATA[projectReportData]]>
     </queryString>
@@ -47,7 +49,7 @@
         <band height="390" splitType="Stretch">
             <image>
                 <reportElement x="-20" y="-20" width="595" height="409" uuid="7b8866c7-8b72-43a8-9428-2404a75e803e"/>
-                <imageExpression><![CDATA["/Users/mhg/Documents/Projects/security-c4po/security-c4po-reporting/src/main/resources/jasper/C4POCoverBackground#1.jpeg"]]></imageExpression>
+                <imageExpression><![CDATA[$P{CDATA_C4POCoverBackground}]]></imageExpression>
             </image>
             <rectangle>
                 <reportElement x="-20" y="-20" width="595" height="280" forecolor="#151B2E" backcolor="rgba(35, 43, 68, 0.5882353)" uuid="7412dfc2-c785-4584-b8e9-120df2ef41f2"/>
@@ -89,7 +91,7 @@
             </ellipse>
             <image>
                 <reportElement x="-14" y="224" width="31" height="37" uuid="ae84d484-ee44-436a-a0cd-e94a265ed665"/>
-                <imageExpression><![CDATA["/Users/mhg/Documents/Projects/security-c4po/security-c4po-reporting/src/main/resources/jasper/Watermark.png"]]></imageExpression>
+                <imageExpression><![CDATA[$P{CDATA_WATERMARK}]]></imageExpression>
             </image>
             <staticText>
                 <reportElement mode="Transparent" x="22" y="226" width="82" height="20" forecolor="#FEFEFF" backcolor="#151B2E" uuid="b40755db-f42b-47cf-9e73-57cd092f7bde"/>
