@@ -64,6 +64,22 @@ services:
       - 8443:8443
     networks:
       - c4po
+  c4po-reporting:
+    build: '../security-c4po-reporting'
+    image: security-c4po-reporting:latest
+    container_name: c4po-reporting
+    environment:
+      - SPRING_PROFILES_ACTIVE=COMPOSE
+    depends_on:
+      - c4po-keycloak
+    deploy:
+      resources:
+        limits:
+          memory: "4G"
+    ports:
+      - 8444:8444
+    networks:
+      - c4po
 
 networks:
   c4po:

@@ -2,6 +2,10 @@
 <!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="C4PO_Appendencies" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dd2c2daf-6b71-4752-8ed0-e25ae2523a51">
     <property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+    <!-- Ignores Issue about not finding a specific font -->
+    <property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+    <parameter name="CDATA_WATERMARK" class="java.lang.String"/>
+    <parameter name="CDATA_SeverityRatingTable" class="java.lang.String"/>
     <queryString>
         <![CDATA[]]>
     </queryString>
@@ -24,7 +28,7 @@
             </ellipse>
             <image>
                 <reportElement x="539" y="3" width="23" height="24" uuid="74214b7e-f089-49f2-9ef9-ef134386750c"/>
-                <imageExpression><![CDATA["/Users/mhg/Documents/Projects/security-c4po/security-c4po-reporting/src/main/resources/jasper/Watermark.png"]]></imageExpression>
+                <imageExpression><![CDATA[$P{CDATA_WATERMARK}]]></imageExpression>
             </image>
             <staticText>
                 <reportElement x="0" y="0" width="432" height="30" forecolor="#FFFFFF" uuid="cb237865-2647-4ee2-a85c-ebc5c8f84f9e"/>
@@ -54,7 +58,7 @@
             <subreport>
                 <reportElement positionType="Float" x="-3" y="510" width="553" height="30" uuid="ca9b0ff4-30c6-43d0-8da2-458d1960ef0b"/>
                 <dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
-                <subreportExpression><![CDATA["./src/main/resources/jasper/subreports/"+"SeverityRatingTableSubreport.jasper"]]></subreportExpression>
+                <subreportExpression><![CDATA[$P{CDATA_SeverityRatingTable}]]></subreportExpression>
             </subreport>
             <staticText>
                 <reportElement x="0" y="83" width="280" height="20" forecolor="#232B44" uuid="147e164e-f290-4751-82ca-e4b55508408f"/>

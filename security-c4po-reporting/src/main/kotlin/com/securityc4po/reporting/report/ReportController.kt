@@ -37,8 +37,6 @@ class ReportController(private val apiService: APIService, private val reportSer
                 ResponseEntity.ok().body(reportClassLoaderFilePath)
             }.switchIfEmpty {
                 Mono.just(notFound().build<ByteArray>())
-            }.doOnSuccess {
-                this.reportService.cleanUpFiles()
             }
         }
     }

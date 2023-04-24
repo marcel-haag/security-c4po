@@ -15,6 +15,7 @@ COPY ./build/libs/security-c4po-reporting-0.0.1-SNAPSHOT.jar /
 USER security-c4po-reporting
 EXPOSE 8444
 
-# RUN JAVA
+# WAIT FOR KEYCLOAK & RUN JAVA
+COPY ./wait-for-keycloak.sh /
 # CMD [ "java", "-jar", "security-c4po-reporting-0.0.1-SNAPSHOT.jar" ]
-ENTRYPOINT [ "java", "-jar", "-Dspring.profiles.active=${ENV_STAGE}", "security-c4po-reporting-0.0.1-SNAPSHOT.jar" ]
+ENTRYPOINT [ "./wait-for-keycloak.sh", "http://c4po-keycloak:8080/auth/realms/c4po_realm_local", "java", "-Dspring.profiles.active=${SPRING_PROFILES_ACTIVE}", "-jar", "security-c4po-reporting-0.0.1-SNAPSHOT.jar" ]
