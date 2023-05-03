@@ -18,8 +18,9 @@ export class ReportingService {
   /**
    * Get PDF Report by project id
    */
-  public getReportPDFforProjectById(projectId: string): Observable<Loading<ArrayBuffer>> {
-    return this.http.get(`${this.reportBaseURL}/${projectId}/pdf`,
+  // ToDo: Add language here
+  public getReportPDFforProjectById(projectId: string, reportLanguage: string): Observable<Loading<ArrayBuffer>> {
+    return this.http.get(`${this.reportBaseURL}/${projectId}/pdf/${reportLanguage}`,
       {
         // @ts-ignore
         responseType: 'arraybuffer',

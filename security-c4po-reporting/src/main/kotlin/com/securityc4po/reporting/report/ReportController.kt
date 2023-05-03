@@ -28,12 +28,13 @@ class ReportController(private val apiService: APIService, private val reportSer
     var logger = getLoggerFor<ReportController>()
 
     @GetMapping(
-        "/{projectId}/pdf",
+        "/{projectId}/pdf/{reportLanguage}",
         produces = [MediaType.APPLICATION_PDF_VALUE]
     )
-    fun downloadPentestReportPDF(@PathVariable(value = "projectId") projectId: String, @AuthenticationPrincipal user: Appuser): Mono<ResponseEntity<ByteArray>> {
+    // ToDo: Add language here
+    fun downloadPentestReportPDF(@PathVariable(value = "projectId") projectId: String, @PathVariable(value = "reportLanguage") reportLanguage: String, @AuthenticationPrincipal user: Appuser): Mono<ResponseEntity<ByteArray>> {
         return this.apiService.requestProjectReportDataById(projectId, user.token).flatMap {projectReport ->
-            this.reportService.createReport(projectReport, "pdf").map { reportClassLoaderFilePath ->
+            this.reportService.createReport(projectReport, "pdf", reportLanguage).map { reportClassLoaderFilePath ->
                 ResponseEntity.ok().body(reportClassLoaderFilePath)
             }.switchIfEmpty {
                 Mono.just(notFound().build<ByteArray>())

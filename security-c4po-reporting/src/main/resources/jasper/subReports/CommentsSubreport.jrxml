@@ -35,20 +35,6 @@
 	</background>
 	<detail>
 		<band height="580" splitType="Stretch">
-			<staticText>
-				<reportElement x="0" y="50" width="100" height="19" forecolor="#232B44" uuid="27e653a4-f25c-4e14-a2dd-98639beaa958"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Title:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement positionType="Float" x="0" y="120" width="100" height="20" forecolor="#232B44" uuid="4f0f0eaf-177b-4af7-99d8-a46b0faa9357"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Description:]]></text>
-			</staticText>
 			<textField textAdjust="StretchHeight">
 				<reportElement x="0" y="70" width="530" height="30" uuid="62ff1e8e-7987-4cd0-a79e-536859418d32"/>
 				<textElement>
@@ -82,13 +68,27 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="0" y="-12" width="80" height="32" forecolor="#FFFFFF" uuid="06c9b872-ccec-44a6-854f-ef7b5dcedec9"/>
+			<textField>
+				<reportElement x="0" y="-12" width="80" height="32" forecolor="#FFFFFF" uuid="e3a73731-aebe-4f52-b965-c33e63c03dac"/>
 				<textElement verticalAlignment="Middle">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Comment:]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$R{title.comment}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="50" width="280" height="20" forecolor="#232B44" uuid="19308a8b-8ca0-48cb-84c9-a7088027b7f3"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{title}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="0" y="120" width="280" height="20" forecolor="#232B44" uuid="967a81ec-1f91-431f-a644-c26eecad5d34"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{description}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 </jasperReport>

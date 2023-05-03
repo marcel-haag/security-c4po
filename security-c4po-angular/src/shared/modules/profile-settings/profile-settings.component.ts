@@ -205,10 +205,6 @@ export class ProfileSettingsComponent implements OnInit {
   }
 
   onClickCancel(): void {
-    console.log(this.userFormGroup.get('firstName').dirty);
-    console.log(this.userFormGroup.get('firstName')?.hasError('required'));
-    console.log(this.userFirstNameControl.hasError('required'));
-
     this.dialogRef.close();
   }
 

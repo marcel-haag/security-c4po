@@ -119,7 +119,8 @@
     </div>
   </nb-card-body>
   <nb-card-footer fxLayout="row" fxLayoutGap="1.5rem" fxLayoutAlign="end end">
-    <button nbButton size="small"
+    <!--Not needed for now-->
+   <!-- <button nbButton size="small"
             class="dialog-button"
             status="info"
             [disabled]="!allowConfirm()"
@@ -130,6 +131,11 @@
             class="dialog-button"
             (click)="onClickCancel()">
       {{ 'global.action.cancel' | translate }}
+    </button>-->
+    <button nbButton size="small"
+            class="dialog-button"
+            (click)="onClickCancel()">
+      {{ 'global.action.exit' | translate }}
     </button>
   </nb-card-footer>
 </nb-card>
