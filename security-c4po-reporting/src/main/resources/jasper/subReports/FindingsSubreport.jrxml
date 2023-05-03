@@ -86,20 +86,6 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement positionType="Float" x="0" y="120" width="100" height="20" forecolor="#232B44" uuid="cb620215-7d9a-422e-a286-d1374c29469a"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Description:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="50" width="100" height="20" forecolor="#232B44" uuid="a8c19344-4ce8-4d15-919b-4cbb004aba79"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Title:]]></text>
-			</staticText>
 			<textField textAdjust="StretchHeight">
 				<reportElement x="0" y="70" width="430" height="30" uuid="1ac22e9e-2fe9-4fc7-94ca-5e30db7aa74f"/>
 				<textElement>
@@ -107,13 +93,6 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement positionType="Float" x="0" y="200" width="100" height="20" forecolor="#232B44" uuid="3d056116-a999-4c17-b3b0-94b26e69c9c6"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Impact:]]></text>
-			</staticText>
 			<textField textAdjust="StretchHeight">
 				<reportElement positionType="Float" x="0" y="220" width="530" height="40" uuid="d026c3e2-1431-4010-b0d7-bf07cb339ed7"/>
 				<textElement>
@@ -128,27 +107,13 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{reproduction}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement positionType="Float" x="0" y="280" width="180" height="20" forecolor="#232B44" uuid="5d0ab6e7-dd18-4da2-848b-95abc47936e8"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Reproduction Steps:]]></text>
-			</staticText>
 			<textField textAdjust="StretchHeight">
 				<reportElement positionType="Float" x="0" y="380" width="530" height="40" uuid="09dea210-c47a-486e-b461-c6fb7c27bb39"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[(($F{mitigation}.length() == 0) ? "No mitigation to avoid, minimize or compensate the finding found or needed."  : $F{mitigation})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[(($F{mitigation}.length() == 0) ? $R{no_mitigation}  : $F{mitigation})]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement positionType="Float" x="0" y="360" width="180" height="20" forecolor="#232B44" uuid="0aaec1e4-9ac0-48de-96ef-0ac5ad1e9be0"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Mitigation:]]></text>
-			</staticText>
 			<rectangle>
 				<reportElement x="0" y="-12" width="575" height="33" forecolor="#FF3D70" backcolor="#FF3D70" uuid="cb580eb9-9492-4fb6-8eb7-304e50612c9f"/>
 				<graphicElement>
@@ -192,22 +157,57 @@
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[(($F{affectedUrls}.size() == 0) ? "No specific URL's affected."  : $F{affectedUrls}.toString().substring(1, $F{affectedUrls}.toString().length() - 1))]]></textFieldExpression>
+				<textFieldExpression><![CDATA[(($F{affectedUrls}.size() == 0) ? $R{no_affected_urls}  : $F{affectedUrls}.toString().substring(1, $F{affectedUrls}.toString().length() - 1))]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement positionType="Float" x="0" y="440" width="180" height="20" forecolor="#232B44" uuid="003646c0-fc53-4add-84d2-b3816d52789d"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Affected URL's:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="-12" width="80" height="32" forecolor="#FFFFFF" uuid="c6ec29f3-3687-4098-80b5-30fd33a7989a"/>
+			<textField>
+				<reportElement x="0" y="-12" width="80" height="32" forecolor="#FFFFFF" uuid="b57555be-8b0c-4f2e-be08-22c3bf07e343"/>
 				<textElement verticalAlignment="Middle">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Finding:]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$R{title.finding}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="50" width="280" height="20" forecolor="#232B44" uuid="24833130-7baa-4959-996e-97cfce37b3d6"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{title}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="0" y="120" width="280" height="20" forecolor="#232B44" uuid="83f026fc-249b-41aa-9540-99661ee5010d"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{description}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="0" y="200" width="280" height="20" forecolor="#232B44" uuid="e7a779ad-b9ae-47ad-8e3d-be20876fc5a9"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{impact}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="0" y="280" width="280" height="20" forecolor="#232B44" uuid="2f5670ee-4de0-4409-bb33-ac83c5e03ec4"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{reproduction_steps}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="0" y="360" width="280" height="20" forecolor="#232B44" uuid="3d6c19e0-8cd3-4c39-b998-e704210d6622"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{mitigation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="0" y="440" width="280" height="20" forecolor="#232B44" uuid="975e0e09-6186-4a40-9466-2f241c43b7f6"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{affected_urls}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 </jasperReport>

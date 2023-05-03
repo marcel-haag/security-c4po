@@ -3,6 +3,7 @@ package com.securityc4po.reporting.report
 import com.securityc4po.reporting.extensions.getLoggerFor
 import com.securityc4po.reporting.remote.model.*
 import net.sf.jasperreports.engine.*
+import net.sf.jasperreports.engine.JRParameter.REPORT_RESOURCE_BUNDLE
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource
 import org.apache.pdfbox.io.MemoryUsageSetting
 import org.apache.pdfbox.multipdf.PDFMergerUtility
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import java.io.*
+import java.util.*
+import kotlin.collections.HashMap
 
 
 @Service
@@ -51,6 +54,10 @@ class ReportService {
     @Value("\${reportDefaultPdf}")
     lateinit var reportDefaultPdfPropertyPath: String
 
+    // Path to localization files
+    @Value("\${localization}")
+    lateinit var localizationRessourceBasePath: String
+
     // Image paths
     @Value("\${CDATA_WATERMARK}")
     lateinit var waterMarkPath: String
@@ -68,13 +75,14 @@ class ReportService {
     @Value("\${CDATA_SeverityRatingTable}")
     lateinit var severityRatingTablePath: String
 
-    fun createReport(projectReportCollection: ProjectReport, reportFormat: String): Mono<ByteArray> {
+    fun createReport(projectReportCollection: ProjectReport, reportFormat: String, reportLanguage: String): Mono<ByteArray> {
+        logger.info("Use: " + reportLanguage)
         // Setup PDFMergerUtility
         val mergedC4POPentestReport: PDFMergerUtility = PDFMergerUtility()
         // Setup ByteArrayOutputStream for "on the fly" file generation
         val pdfDocOutputstream = ByteArrayOutputStream()
         // Try to create report files & merge them together
-        return createPentestReportFiles(projectReportCollection, reportFormat, mergedC4POPentestReport).collectList()
+        return createPentestReportFiles(projectReportCollection, reportFormat, reportLanguage, mergedC4POPentestReport).collectList()
             .map {
                 // Merge report files
                 mergedC4POPentestReport.destinationStream = pdfDocOutputstream
@@ -89,16 +97,20 @@ class ReportService {
     private fun createPentestReportFiles(
         projectReportCollection: ProjectReport,
         reportFormat: String,
+        reportLanguage: String,
         mergedC4POPentestReport: PDFMergerUtility
     ): Flux<Unit> {
+        // Setup ressource bundle for localization
+        val resourceBundle = getRessourceBundle(reportLanguage)
+        // Setup Flux to create report
         return Flux.just(
             // Create byte arrays of report files
-            createCover(projectReportCollection, reportFormat),
-            createTableOfContent(projectReportCollection, reportFormat),
-            createStateOfConfidentiality(projectReportCollection, reportFormat),
-            createExecutiveSummary(projectReportCollection, reportFormat),
-            createPentestReports(projectReportCollection, reportFormat),
-            createAppendencies(reportFormat)
+            createCover(projectReportCollection, reportFormat, resourceBundle),
+            createTableOfContent(projectReportCollection, reportFormat, resourceBundle),
+            createStateOfConfidentiality(projectReportCollection, reportFormat, resourceBundle),
+            createExecutiveSummary(projectReportCollection, reportFormat, resourceBundle),
+            createPentestReports(projectReportCollection, reportFormat, resourceBundle),
+            createAppendencies(reportFormat, resourceBundle)
         ).map { jasperObject ->
             if (jasperObject is ByteArray) {
                 val pdfInputSteam = ByteArrayInputStream(jasperObject)
@@ -114,7 +126,23 @@ class ReportService {
         }
     }
 
-    private fun createCover(projectReportCollection: ProjectReport, reportFormat: String): ByteArray {
+    private fun getRessourceBundle(reportLanguage: String): ResourceBundle {
+        return if (reportLanguage.equals("de-DE")) {
+            // Get the language code from the report parameter or other criteria
+            val languageCode = "de"
+            val locale = Locale(languageCode)
+            ResourceBundle.getBundle(localizationRessourceBasePath, locale)
+        }
+        // Default to english
+        else {
+            // Get the language code from the report parameter or other criteria
+            val languageCode = "en"
+            val locale = Locale(languageCode)
+            ResourceBundle.getBundle(localizationRessourceBasePath, locale)
+        }
+    }
+
+    private fun createCover(projectReportCollection: ProjectReport, reportFormat: String, resourceBundle: ResourceBundle): ByteArray {
         // Load Jasper Files
         val fileCoverStream = javaClass.getResourceAsStream(reportCoverDesignTemplate)
         // Open file stream
@@ -129,6 +157,8 @@ class ReportService {
             val parameters = HashMap<String, Any>()
             parameters["CDATA_WATERMARK"] = waterMarkPath
             parameters["CDATA_C4POCoverBackground"] = coverBackgroundPath
+            // Adds the resource bundle into the report
+            parameters[REPORT_RESOURCE_BUNDLE] = resourceBundle
             // Fill Reports
             val jasperPrintCover: JasperPrint = JasperFillManager.fillReport(jasperReportCover, parameters, dataSource)
             // Create File
@@ -144,7 +174,7 @@ class ReportService {
         }
     }
 
-    private fun createTableOfContent(projectReportCollection: ProjectReport, reportFormat: String): ByteArray {
+    private fun createTableOfContent(projectReportCollection: ProjectReport, reportFormat: String, resourceBundle: ResourceBundle): ByteArray {
         // Load Jasper Files
         val fileContentStream = javaClass.getResourceAsStream(reportContentDesignTemplate)
         // Open file stream
@@ -159,6 +189,8 @@ class ReportService {
             val parameters = HashMap<String, Any>()
             parameters["ProjectPentestReportDataSource"] = projectPentestReportDataSource
             parameters["CDATA_WATERMARK"] = waterMarkPath
+            // Adds the resource bundle into the report
+            parameters[REPORT_RESOURCE_BUNDLE] = resourceBundle
             // Fill Reports
             val jasperPrintContent: JasperPrint =
                 JasperFillManager.fillReport(jasperReportContent, parameters, JREmptyDataSource())
@@ -175,7 +207,7 @@ class ReportService {
         }
     }
 
-    private fun createStateOfConfidentiality(projectReportCollection: ProjectReport, reportFormat: String): ByteArray {
+    private fun createStateOfConfidentiality(projectReportCollection: ProjectReport, reportFormat: String, resourceBundle: ResourceBundle): ByteArray {
         // Load Jasper Files
         val fileStateOfConfidentialityStream = javaClass.getResourceAsStream(reportStateOfConfidentialityDesignTemplate)
         // Open file stream
@@ -189,6 +221,8 @@ class ReportService {
             // Setup Parameter & add Sub-datasets
             val parameters = HashMap<String, Any>()
             parameters["CDATA_WATERMARK"] = waterMarkPath
+            // Adds the resource bundle into the report
+            parameters[REPORT_RESOURCE_BUNDLE] = resourceBundle
             // Fill Reports
             val jasperPrintStateOfConfidentiality: JasperPrint =
                 JasperFillManager.fillReport(jasperReportContent, parameters, dataSource)
@@ -204,7 +238,7 @@ class ReportService {
         }
     }
 
-    private fun createExecutiveSummary(projectReportCollection: ProjectReport, reportFormat: String): ByteArray {
+    private fun createExecutiveSummary(projectReportCollection: ProjectReport, reportFormat: String, resourceBundle: ResourceBundle): ByteArray {
         // Load Jasper Files
         val fileExecutiveSummaryStream = javaClass.getResourceAsStream(reportExecutiveSummaryDesignTemplate)
         // Open file stream
@@ -332,6 +366,8 @@ class ReportService {
             parameters["CategoryFindingsPieChartDataSource"] = categoryFindingsDataSource
             parameters["SeverityFindingsPieChartDataSource"] = severityFindingsDataSource
             parameters["CDATA_WATERMARK"] = waterMarkPath
+            // Adds the resource bundle into the report
+            parameters[REPORT_RESOURCE_BUNDLE] = resourceBundle
             // Fill Reports
             val jasperPrintExecutiveSummary: JasperPrint =
                 JasperFillManager.fillReport(jasperReportContent, parameters, dataSource)
@@ -347,7 +383,7 @@ class ReportService {
         }
     }
 
-    private fun createPentestReports(projectReportCollection: ProjectReport, reportFormat: String): List<ByteArray> {
+    private fun createPentestReports(projectReportCollection: ProjectReport, reportFormat: String, resourceBundle: ResourceBundle): List<ByteArray> {
         // Create List of Files
         var finalFiles: List<ByteArray> = emptyList()
         // Load Jasper Files
@@ -388,6 +424,8 @@ class ReportService {
                         parameters["CDATA_WATERMARK"] = waterMarkPath
                         parameters["CDATA_FindingsSubreport"] = findingsSubreportPath
                         parameters["CDATA_CommentsSubreport"] = commentsSubreportPath
+                        // Adds the resource bundle into the report
+                        parameters[REPORT_RESOURCE_BUNDLE] = resourceBundle
                         // Fill Reports
                         // Print one report for each objective and merge them together afterwards
                         val jasperPrintPentests: JasperPrint =
@@ -427,7 +465,7 @@ class ReportService {
         return finalFiles
     }
 
-    private fun createAppendencies(reportFormat: String): ByteArray {
+    private fun createAppendencies(reportFormat: String, resourceBundle: ResourceBundle): ByteArray {
         // Load Jasper Files
         val fileAppendenciesStream = javaClass.getResourceAsStream(reportAppendenciesDesignTemplate)
         // Open file stream
@@ -440,6 +478,8 @@ class ReportService {
             parameters["SeverityRatingDefinition"] = JREmptyDataSource()
             parameters["CDATA_WATERMARK"] = waterMarkPath
             parameters["CDATA_SeverityRatingTable"] = severityRatingTablePath
+            // Adds the resource bundle into the report
+            parameters[REPORT_RESOURCE_BUNDLE] = resourceBundle
             // Fill Reports
             val jasperPrintAppendencies: JasperPrint =
                 JasperFillManager.fillReport(jasperReportCover, parameters, JREmptyDataSource())

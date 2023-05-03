@@ -141,13 +141,6 @@
                     <pen lineWidth="0.0"/>
                 </graphicElement>
             </rectangle>
-            <staticText>
-                <reportElement x="0" y="0" width="432" height="30" forecolor="#FFFFFF" uuid="727c5a22-9505-4eee-8697-c33c25770203"/>
-                <textElement verticalAlignment="Middle">
-                    <font size="16" isBold="true"/>
-                </textElement>
-                <text><![CDATA[Executive Summary]]></text>
-            </staticText>
             <ellipse>
                 <reportElement x="537" y="0" width="30" height="30" backcolor="#232B44" uuid="94ae9350-4d6a-4660-a412-628324e3e766"/>
                 <graphicElement>
@@ -158,6 +151,13 @@
                 <reportElement x="539" y="3" width="23" height="24" uuid="e47a59e3-90b6-43d3-9d42-930a6d497a05"/>
                 <imageExpression><![CDATA[$P{CDATA_WATERMARK}]]></imageExpression>
             </image>
+            <textField>
+                <reportElement x="1" y="0" width="379" height="30" forecolor="#FFFFFF" uuid="4c1bb295-6c8a-4ee8-a0c7-9c9787bde39c"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$R{title.summary}]]></textFieldExpression>
+            </textField>
         </band>
     </title>
     <columnHeader>
@@ -167,33 +167,19 @@
                 <textElement>
                     <font size="12"/>
                 </textElement>
-                <textFieldExpression><![CDATA[(($F{summary}.length() == 0) ? "" + $F{client} +" contracted " + $F{tester} + " to perform a Penetration Test to identify security weaknesses, determine the impact to " + $F{client} +", document all findings in a clear and repeatable manner, and provide remediation recommendations."  : $F{summary})]]></textFieldExpression>
+                <textFieldExpression><![CDATA[(($F{summary}.length() == 0) ? $R{text.summary}  : $F{summary})]]></textFieldExpression>
             </textField>
-            <staticText>
-                <reportElement x="0" y="10" width="380" height="20" forecolor="#232B44" uuid="b508eb27-8cf7-40f3-86e8-6b7c9328d919"/>
-                <textElement>
+            <textField>
+                <reportElement x="1" y="11" width="479" height="19" forecolor="#232B44" uuid="13717058-8dea-4512-8807-1d2eda079aad"/>
+                <textElement textAlignment="Left" verticalAlignment="Top" markup="none">
                     <font size="12" isBold="true"/>
                 </textElement>
-                <text><![CDATA[Assessment Overview and Recommendations]]></text>
-            </staticText>
+                <textFieldExpression><![CDATA[$R{title.assessment_overview_and_recommendations}]]></textFieldExpression>
+            </textField>
         </band>
     </columnHeader>
     <detail>
         <band height="500" splitType="Stretch">
-            <staticText>
-                <reportElement x="0" y="20" width="380" height="20" forecolor="#232B44" uuid="43e826cd-e910-4ab5-a689-935baa555e58"/>
-                <textElement>
-                    <font size="12" isBold="true"/>
-                </textElement>
-                <text><![CDATA[Number of Findings per Category]]></text>
-            </staticText>
-            <staticText>
-                <reportElement positionType="Float" x="0" y="300" width="380" height="20" forecolor="#232B44" uuid="daae5600-96f6-4f4c-b3ce-a12aadf2696a"/>
-                <textElement>
-                    <font size="12" isBold="true"/>
-                </textElement>
-                <text><![CDATA[Severity Overview of Findings]]></text>
-            </staticText>
             <pieChart>
                 <chart evaluationTime="Report">
                     <reportElement key="" positionType="Float" stretchType="ElementGroupHeight" x="0" y="40" width="553" height="239" uuid="aaf04aa7-f7c5-48b9-b422-0f210e35d7be"/>
@@ -269,6 +255,20 @@
                     <itemLabel/>
                 </piePlot>
             </pieChart>
+            <textField>
+                <reportElement x="0" y="20" width="480" height="19" forecolor="#232B44" uuid="8810e73b-f431-430d-86bc-10747c926be6"/>
+                <textElement textAlignment="Left" verticalAlignment="Top" markup="none">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$R{title.number_of_findings_per_category}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="1" y="300" width="479" height="19" forecolor="#232B44" uuid="e21093fa-df5d-4827-a2a5-b935db9749e3"/>
+                <textElement textAlignment="Left" verticalAlignment="Top" markup="none">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$R{title.severity_overview_of_findings}]]></textFieldExpression>
+            </textField>
         </band>
     </detail>
 </jasperReport>

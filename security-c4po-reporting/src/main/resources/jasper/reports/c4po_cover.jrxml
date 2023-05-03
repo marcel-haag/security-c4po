@@ -122,14 +122,14 @@
                 <textElement textAlignment="Center" verticalAlignment="Middle">
                     <font size="26" isBold="true"/>
                 </textElement>
-                <textFieldExpression><![CDATA["Penetration Test"]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$R{title.cover_one}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="107" y="61" width="340" height="40" forecolor="#232B44" uuid="edce29e2-8963-43bd-8361-69e579e4a1e1"/>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
                     <font size="26" isBold="true"/>
                 </textElement>
-                <textFieldExpression><![CDATA["Report of Findings"]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$R{title.cover_two}]]></textFieldExpression>
             </textField>
         </band>
     </columnHeader>
@@ -176,13 +176,13 @@
             <rectangle>
                 <reportElement x="-20" y="-10" width="595" height="20" forecolor="#151B2E" backcolor="#151B2E" uuid="724a02c5-82c8-4a72-bf81-b77baa72c723"/>
             </rectangle>
-            <staticText>
-                <reportElement mode="Opaque" x="0" y="-9" width="551" height="18" forecolor="#FEFEFF" backcolor="#151B2E" uuid="3291af19-09ed-453c-a068-90a951d4f7b5"/>
+            <textField>
+                <reportElement x="0" y="-7" width="554" height="15" forecolor="#FFFFFF" uuid="32716a0d-4cec-4dc4-b766-f545dea11169"/>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
-                    <font fontName="SansSerif&#xA;&#xA;" size="8" isBold="true" isItalic="false"/>
+                    <font size="8" isBold="true"/>
                 </textElement>
-                <text><![CDATA[No part of this document may be disclosed to outside sources without the explicit written authorization of the tester]]></text>
-            </staticText>
+                <textFieldExpression><![CDATA[$R{hint}]]></textFieldExpression>
+            </textField>
         </band>
     </pageFooter>
 </jasperReport>

@@ -58,30 +58,23 @@
                 <reportElement x="539" y="3" width="23" height="24" uuid="75a577b3-42df-4d40-be10-d0991b2769e2"/>
                 <imageExpression><![CDATA[$P{CDATA_WATERMARK}]]></imageExpression>
             </image>
-            <staticText>
-                <reportElement x="0" y="0" width="432" height="30" forecolor="#FFFFFF" uuid="329f5881-cba9-4418-9ef0-99a6805906ba"/>
+            <textField>
+                <reportElement x="0" y="0" width="379" height="30" forecolor="#FFFFFF" uuid="28de72b7-9df9-4a23-af2b-1f0266caf400"/>
                 <textElement verticalAlignment="Middle">
                     <font size="16" isBold="true"/>
                 </textElement>
-                <text><![CDATA[State of Confidentiality]]></text>
-            </staticText>
+                <textFieldExpression><![CDATA[$R{title.confidentiality}]]></textFieldExpression>
+            </textField>
         </band>
     </title>
     <detail>
         <band height="460" splitType="Stretch">
             <textField textAdjust="StretchHeight">
-                <reportElement x="0" y="0" width="552" height="99" uuid="155d6f81-907f-49ed-ae21-2dae085f72b2"/>
+                <reportElement x="0" y="0" width="552" height="339" uuid="155d6f81-907f-49ed-ae21-2dae085f72b2"/>
                 <textElement>
                     <font size="12"/>
                 </textElement>
-                <textFieldExpression><![CDATA["The contents of this document have been developed by " + $F{tester} + ". " + $F{tester} + " considers the contents of this document to be proprietary and business confidential information. This information is to be used only in the performance of its intended use. This document may not be released to another vendor, business partner or contractor without prior written consent from " + $F{tester} + ". Additionally, no portion of this document may be communicated, reproduced, copied or distributed without the prior consent of " + $F{tester} + "."]]></textFieldExpression>
-            </textField>
-            <textField textAdjust="StretchHeight">
-                <reportElement positionType="Float" x="0" y="100" width="551" height="100" uuid="6b5626a8-ff7b-450b-8c53-93c2115bd56c"/>
-                <textElement>
-                    <font size="12"/>
-                </textElement>
-                <textFieldExpression><![CDATA["The contents of this document do not constitute legal advice. " + $F{tester}+"’s offer of services that relate to compliance, litigation or other legal interests are not intended as legal counsel and should not be taken as such. The assessment detailed herein is against the company " + $F{client} + " for examination purposes, and the vulnerabilities included in this document should be mitigated in order to secure " + $F{client} + " external or internal infrastructure."]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$R{text.confidentiality}]]></textFieldExpression>
             </textField>
         </band>
     </detail>
