@@ -147,7 +147,7 @@
                 <textElement textAlignment="Right">
                     <font fontName="SansSerif" size="12" isBold="true" isItalic="true"/>
                 </textElement>
-                <textFieldExpression><![CDATA[(new SimpleDateFormat($R{date.format}).format($F{createdAt}))]]></textFieldExpression>
+                <textFieldExpression><![CDATA[(new SimpleDateFormat("dd/MM/yyyy").format($F{createdAt}))]]></textFieldExpression>
             </textField>
         </band>
     </detail>

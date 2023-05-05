@@ -81,7 +81,6 @@ export class ExportReportDialogComponent implements OnInit {
   }
 
   onClickExport(reportFormat: string, reportLanguage: string): void {
-    console.warn('ToDo: Use format ', reportFormat);
     // Get project id from dialog data
     const projectId = this.dialogData.options[0].additionalData.id;
     // Loading is true as long as there is a response from the reporting service
@@ -89,7 +88,6 @@ export class ExportReportDialogComponent implements OnInit {
     // Export pentest in choosen format
     switch (reportFormat) {
       case ExportFormatOptions.PDF: {
-        // @ts-ignore
         this.downloadPentestReport$ = this.reportingService.getReportPDFforProjectById(projectId, reportLanguage)
           .pipe(
             shareReplay(),
@@ -110,16 +108,6 @@ export class ExportReportDialogComponent implements OnInit {
             this.notificationService.showPopup('report.popup.generation.failed', PopupType.FAILURE);
           }
         });
-        break;
-      }
-      case ExportFormatOptions.CSV: {
-        this.loading$.next(false);
-        this.notificationService.showPopup('report.popup.generation.failed', PopupType.FAILURE);
-        break;
-      }
-      case ExportFormatOptions.HTML: {
-        this.loading$.next(false);
-        this.notificationService.showPopup('report.popup.generation.failed', PopupType.FAILURE);
         break;
       }
       default: {

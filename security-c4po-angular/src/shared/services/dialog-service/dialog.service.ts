@@ -23,7 +23,7 @@ export class DialogService {
     additionalData: any
   ): NbDialogRef<T> {
     return this.dialog.open<T>(componentOrTemplateRef, {
-      closeOnEsc: false,
+      closeOnEsc: true,
       hasScroll: false,
       autoFocus: true,
       closeOnBackdropClick: false,

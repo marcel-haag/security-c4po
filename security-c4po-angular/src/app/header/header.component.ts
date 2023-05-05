@@ -87,7 +87,6 @@ export class HeaderComponent implements OnInit {
         if (menuBag.item.icon) {
           // tslint:disable-next-line:no-string-literal
           if (menuBag.item.icon['icon'] === this.settingsIcon) {
-            console.warn('Profile');
             this.dialogService.openCustomDialog(
               ProfileSettingsComponent,
               {
@@ -98,7 +97,7 @@ export class HeaderComponent implements OnInit {
               untilDestroyed(this)
             ).subscribe({
               next: () => {
-                console.warn('New Settings confirmed');
+                console.info('New Settings confirmed');
               }
             });
           }

@@ -13,7 +13,7 @@
         <app-version-tag [version]="dialogData.options[0].additionalData?.version"></app-version-tag>
       </div>
       <!--Chart Objective Component-->
-      <div fxLayout="column" fxLayoutGap="2rem" fxLayoutAlign="center center">
+      <div fxLayout="column" fxLayoutGap="2rem" fxLayoutAlign="center center" class="objective-chart">
         <app-objective-chart
           [projectPentestData]="selectedEvaluatedProject$.getValue().projectPentests"></app-objective-chart>
         <span
@@ -35,8 +35,8 @@
                alt="">
         </nb-radio>
       </nb-radio-group>
-      <!--Export Format Radio Selection-->
-      <label class="export-format-label">
+      <!--ToDo: Export Format Radio Selection only whne more than pdf is supported-->
+      <!--<label class="export-format-label">
         {{ 'report.dialog.formatLabel' | translate }}
       </label>
       <nb-radio-group name="format" [formControl]="exportReportFormatControl" class="export-radio-buttons"
@@ -47,10 +47,10 @@
         <nb-radio disabled value="{{exportFormats.CSV}}">
           {{exportFormats.CSV}}
         </nb-radio>
-        <nb-radio disabled value="{{exportFormats.HTML}}">
+        <nb-radio value="{{exportFormats.HTML}}">
           {{exportFormats.HTML}}
         </nb-radio>
-      </nb-radio-group>
+      </nb-radio-group>-->
     </div>
   </nb-card-body>
   <nb-card-footer fxLayout="row" fxLayoutGap="1.5rem" fxLayoutAlign="end end">
