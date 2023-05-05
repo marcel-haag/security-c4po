@@ -4,11 +4,16 @@
 
 .export-report-dialog {
   width: 45.25rem !important;
-  height: 56.25rem;
+  height: 48.25rem;
 
   .export-report-header {
     height: 8vh;
     font-size: 1.5rem;
+  }
+
+  .objective-chart {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
   }
 
   .languageContainer {
@@ -22,16 +27,18 @@
     }
   }
 
-  .hint {
-    padding-bottom: 0.5rem;
-    color: nb-theme(color-danger-default);
-  }
-
   .export-radio-buttons {
     float: left;
     clear: none;
     margin-left: 1rem;
   }
+
+  .hint {
+    padding-bottom: 0.5rem;
+    color: nb-theme(color-danger-default);
+  }
+
+
 
   nb-form-field {
     padding: 0.5rem 0 0.75rem;

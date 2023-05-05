@@ -76,19 +76,18 @@ class ReportService {
     lateinit var severityRatingTablePath: String
 
     fun createReport(projectReportCollection: ProjectReport, reportFormat: String, reportLanguage: String): Mono<ByteArray> {
-        logger.info("Use: " + reportLanguage)
         // Setup PDFMergerUtility
         val mergedC4POPentestReport: PDFMergerUtility = PDFMergerUtility()
         // Setup ByteArrayOutputStream for "on the fly" file generation
-        val pdfDocOutputstream = ByteArrayOutputStream()
+        val penetstReportOutputstream = ByteArrayOutputStream()
         // Try to create report files & merge them together
         return createPentestReportFiles(projectReportCollection, reportFormat, reportLanguage, mergedC4POPentestReport).collectList()
             .map {
                 // Merge report files
-                mergedC4POPentestReport.destinationStream = pdfDocOutputstream
+                mergedC4POPentestReport.destinationStream = penetstReportOutputstream
                 mergedC4POPentestReport.mergeDocuments(MemoryUsageSetting.setupTempFileOnly())
             }.flatMap {
-                return@flatMap Mono.just(pdfDocOutputstream.toByteArray())
+                return@flatMap Mono.just(penetstReportOutputstream.toByteArray())
             }.doOnError {
                 logger.error("Report generation failed.")
             }
@@ -113,13 +112,13 @@ class ReportService {
             createAppendencies(reportFormat, resourceBundle)
         ).map { jasperObject ->
             if (jasperObject is ByteArray) {
-                val pdfInputSteam = ByteArrayInputStream(jasperObject)
-                mergedC4POPentestReport.addSource(pdfInputSteam)
+                val reportFilesInputSteam = ByteArrayInputStream(jasperObject)
+                mergedC4POPentestReport.addSource(reportFilesInputSteam)
             } else if (jasperObject is List<*>) {
                 jasperObject.forEach { jasperFile ->
                     if (jasperFile is ByteArray) {
-                        val pdfInputSteam = ByteArrayInputStream(jasperFile)
-                        mergedC4POPentestReport.addSource(pdfInputSteam)
+                        val reportFilesInputSteam = ByteArrayInputStream(jasperFile)
+                        mergedC4POPentestReport.addSource(reportFilesInputSteam)
                     }
                 }
             }

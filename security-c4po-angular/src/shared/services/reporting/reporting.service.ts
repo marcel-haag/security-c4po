@@ -18,7 +18,6 @@ export class ReportingService {
   /**
    * Get PDF Report by project id
    */
-  // ToDo: Add language here
   public getReportPDFforProjectById(projectId: string, reportLanguage: string): Observable<Loading<ArrayBuffer>> {
     return this.http.get(`${this.reportBaseURL}/${projectId}/pdf/${reportLanguage}`,
       {
@@ -29,12 +28,6 @@ export class ReportingService {
       }
     ).pipe(loadContent<ArrayBuffer>());
   }
-
-  /* ToDo: Remove report function without observing report progress
-  public getReportPDFforProjectById(projectId: string): Observable<ArrayBuffer> {
-    // @ts-ignore
-    return this.http.get<ArrayBuffer>(`${this.reportBaseURL}/${projectId}/pdf`, {responseType: 'arraybuffer'})
-  }*/
 }
 
 export interface ReportDownloadConfiguration {

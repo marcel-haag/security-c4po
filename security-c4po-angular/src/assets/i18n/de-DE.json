@@ -183,12 +183,12 @@
     "title": "Titel",
     "description": "Beschreibung",
     "impact": "Auswirkung",
-    "affectedUrls": "Betroffene URL's",
+    "affectedUrls": "Betroffene URL's / API's",
     "reproduction": "Reproduktion",
     "mitigation": "Minderung",
     "add": "Fund hinzufügen",
-    "add.url": "Betroffene URL hinzufügen",
-    "affectedUrls.placeholder": "Betroffene URL hier eingeben..",
+    "add.url": "Betroffene URL / API hinzufügen",
+    "affectedUrls.placeholder": "Betroffene URL oder API hier eingeben..",
     "create": {
       "header": "Neuen Fund erstellen"
     },

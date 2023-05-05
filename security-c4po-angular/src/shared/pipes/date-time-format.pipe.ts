@@ -1,15 +1,16 @@
 import {Pipe, PipeTransform} from '@angular/core';
 import {formatDate} from '@angular/common';
 import {Store} from '@ngxs/store';
-import {SessionState} from '@shared/stores/session-state/session-state';
 import {CustomPipe} from '@shared/models/custom-pipe.mode';
+import {TranslateService} from '@ngx-translate/core';
 
 @Pipe({
-  name: 'dateTimeFormat'
+  name: 'dateTimeFormat',
+  pure: false
 })
 export class DateTimeFormatPipe implements PipeTransform {
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private translateService: TranslateService) {
   }
 
   /**
@@ -22,18 +23,15 @@ export class DateTimeFormatPipe implements PipeTransform {
       return '-';
     }
 
-    const localeDateAndNumberFormat = this.store.selectSnapshot(SessionState.userAccount) ?
-      // @ts-ignore
-      this.store.selectSnapshot(SessionState.userAccount.interfaceLang) : 'en-US';
+    const currentLanguage = this.translateService.currentLang;
 
-    if (!localeDateAndNumberFormat) {
+    if (!currentLanguage) {
       return formatDate(value, CustomPipe.DATE_TIME_FMT_EN, 'en-US');
     }
-    if (localeDateAndNumberFormat === 'de-DE') {
-      return formatDate(value, CustomPipe.DATE_TIME_FMT_DE, localeDateAndNumberFormat) + ' Uhr';
+    if (currentLanguage === 'de-DE') {
+      return formatDate(value, CustomPipe.DATE_TIME_FMT_DE, currentLanguage) + ' Uhr';
     }
     // @ts-ignore
-    return formatDate(value, CustomPipe.DATE_TIME_FMT_EN, localeDateAndNumberFormat);
+    return formatDate(value, CustomPipe.DATE_TIME_FMT_EN, currentLanguage);
   }
-
 }

@@ -77,7 +77,6 @@ export class ProfileSettingsComponent implements OnInit {
         this.userNameControl.setValue(user.username);
         this.userFirstNameControl.setValue(user.firstName);
         this.userLastNameControl.setValue(user.lastName);
-        console.warn(this.user.getValue());
       },
       error: err => {
         console.error(err);
@@ -121,6 +120,9 @@ export class ProfileSettingsComponent implements OnInit {
 
   onClickLanguage(language: string): void {
     this.translateService.use(language);
+    // ToDo: Update userAccount language property
+    const user = this.store.selectSnapshot(SessionState.userAccount);
+    this.store.dispatch(new UpdateUserSettings({...user, interfaceLang: language}));
   }
 
   onClickConfirm(): void {

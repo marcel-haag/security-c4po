@@ -183,12 +183,12 @@
     "title": "Title",
     "description": "Description",
     "impact": "Impact",
-    "affectedUrls": "Affected URL's",
+    "affectedUrls": "Affected URL's / API's",
     "reproduction": "Reproduction",
     "mitigation": "Mitigation",
     "add": "Add finding",
-    "add.url": "Add affected Url",
-    "affectedUrls.placeholder": "Enter affected URL here..",
+    "add.url": "Add affected URL / API",
+    "affectedUrls.placeholder": "Enter affected URL or API here..",
     "create": {
       "header": "Create New Finding"
     },
