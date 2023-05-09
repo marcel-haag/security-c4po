@@ -1,6 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
 import {formatDate} from '@angular/common';
-import {Store} from '@ngxs/store';
 import {CustomPipe} from '@shared/models/custom-pipe.mode';
 import {TranslateService} from '@ngx-translate/core';
 
@@ -10,7 +9,7 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class DateTimeFormatPipe implements PipeTransform {
 
-  constructor(private store: Store, private translateService: TranslateService) {
+  constructor(private translateService: TranslateService) {
   }
 
   /**

@@ -9,6 +9,10 @@
 @import './overrides';
 @import './variables';
 
+// loading glide
+@import "~@glidejs/glide/src/assets/sass/glide.core";
+@import "~@glidejs/glide/src/assets/sass/glide.theme";
+
 * {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }

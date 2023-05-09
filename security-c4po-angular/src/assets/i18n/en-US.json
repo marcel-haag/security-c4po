@@ -20,6 +20,7 @@
     "action.complete": "Complete",
     "action.disable": "Deactivate",
     "action.enable": "Activate",
+    "action.close": "Close",
     "action.yes": "Yes",
     "action.no": "No",
     "username": "Username",
@@ -85,6 +86,23 @@
       "validationMessage": {
         "passwordRequired": "Password is required."
       }
+    }
+  },
+  "tutorial": {
+    "header": "Getting started with C4PO",
+    "carousel": {
+      "project_overview": "The Project Overview gives you a rundown of all your current projects. \nYou can create new ones, edit or delete existing ones or filter for an specific project here. \nLook up the current state of your projects as well as the progress together with some additional information like name, client, tester and when it was created.",
+      "project_overview_filtered": "Filtering through the Project Overview can help you to find the project(s) you are looking for. \nEnter specific keywords like the title of a project, a special state like 'Needs More Info or look for an important client.",
+      "create_edit_project": "Create a new project or an existing one and give it a title, client name, assign a tester and write a summary for the pentest (only available in edit mode). \nIn addition to that you can also select a specific state for the project to show if the pentest is currently 'work in progress' or waits for the customer to review the report.",
+      "userprofile": "Change your settings. \nWeather it's just selecting the language of the application or changing your password.",
+      "category&objective_overview": "View every objective of every category here. \nThe same content is also included in the OWASP Web Testing Guide. \nYou can get a good overview of all the objectives that are included in a specific category, see how many findings and comments have been added and even deactivate specific ones that you will result in them not being included in the report.",
+      "objective_info": "Read the most important information in regards to the selected objective. \nThis information includes what has to be done in the objective and what are the most common issue as well as how you could exploit them.",
+      "objective_finding_overview": "See all the findings that relate to the selected objective. \nYou can see the title, severity, part of the description and impact of the finding. \nIn addition you can also edit or even delete a specific finding.",
+      "create_edit_finding": "Edit or create new findings for the objective. \nDocument the title, description, the impacted application parts, affected URL's or API's and a severity rating together with reproduction steps and a mitigation suggestion here. \nYou can only create findings once you have started the timer so that your work will be tracked.",
+      "objective_comment_overview": "See all the comments that relate to the selected objective. \nYou can see the title and part of the description of the comment. \nIn addition you can also edit or even delete a specific comment.",
+      "create_edit_comment": "Edit or create new comments for the objective. \nDocument the title and a description here. \nYou can only create comments once you have started the timer so that your work will be tracked.",
+      "generate_report": "Generate and export your report. You can see your project name and version as well as some statistics about how many of your objectives are completed, in progress, paused, not started or disabled. \nOnly your completed objectives will be included in the final report. \nBefore exporting make sure you select the correct language of you report.",
+      "report": "Download your generated report as an pdf and send it directly to the customer. \nThe report includes all the information you have entered in the C4PO application. \nThe report consists of a Cover, Table of Contents, State of Confidentiality, Executive Summary, Technical Details for Findings and Comments and Appendencies."
     }
   },
   "state": {
@@ -203,7 +221,7 @@
     "title.label": "Finding Title",
     "description.label": "Description of Finding",
     "impact.label": "Impacted Applicationparts",
-    "affectedUrls.label": "Affected URL's",
+    "affectedUrls.label": "Affected URL's / API's",
     "reproduction.label": "Reproductionsteps",
     "mitigation.label": "Suggest Mitigation",
     "no.findings": "No findings available",

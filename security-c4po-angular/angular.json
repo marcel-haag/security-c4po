@@ -29,7 +29,9 @@
             ],
             "styles": [
               "src/assets/@theme/styles/styles.scss",
-              "node_modules/@fortawesome/fontawesome-free/css/all.css"
+              "node_modules/@fortawesome/fontawesome-free/css/all.css",
+              "node_modules/@glidejs/glide/src/assets/sass/glide.core.scss",
+              "node_modules/@glidejs/glide/src/assets/sass/glide.theme.scss"
             ],
             "scripts": [
               "node_modules/@fortawesome/fontawesome-free/js/all.js"

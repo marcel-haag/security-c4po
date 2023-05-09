@@ -20,6 +20,7 @@
     "action.complete": "Fertig",
     "action.disable": "Deaktivieren",
     "action.enable": "Aktivieren",
+    "action.close": "Schließen",
     "action.yes": "Ja",
     "action.no": "Nein",
     "username": "Nutzername",
@@ -85,6 +86,23 @@
       "validationMessage": {
         "passwordRequired": "Passwort ist erforderlich."
       }
+    }
+  },
+  "tutorial": {
+    "header": "Erste Schritte mit C4PO",
+    "carousel": {
+      "project_overview": "Die Projektübersicht gibt Ihnen einen Überblick über alle Ihre aktuellen Projekte.\nHier können Sie neue erstellen, bestehende bearbeiten oder löschen oder nach einem bestimmten Projekt filtern.\nSehen Sie den aktuellen Stand Ihrer Projekte sowie den Fortschritt zusammen mit einigen zusätzlichen Informationen wie Name, Kunde, Tester und wann es erstellt wurde.",
+      "project_overview_filtered": "Das Filtern in der Projektübersicht kann Ihnen helfen, das/die gesuchte(n) Projekt(e) zu finden.\nGeben Sie bestimmte Schlüsselwörter wie den Titel eines Projekts oder einen speziellen Status wie „Benötigt weitere Informationen“ ein oder suchen Sie nach einem wichtigen Kunden.",
+      "create_edit_project": "Erstellen Sie ein neues oder ein bestehendes Projekt, geben Sie ihm einen Titel und einen Kundennamen, weisen Sie einen Tester zu und schreiben Sie eine Zusammenfassung für den Pentest (nur im Bearbeitungsmodus verfügbar).\nDarüber hinaus können Sie auch einen bestimmten Status für das Projekt auswählen, um anzuzeigen, ob der Pentest derzeit „in Arbeit“ ist oder darauf wartet, dass der Kunde den Bericht überprüft.",
+      "userprofile": "Ändern Sie Ihre Einstellungen.\nEgal, ob Sie nur die Sprache der Anwendung auswählen oder Ihr Passwort ändern.",
+      "category&objective_overview": "Sehen Sie sich hier jedes Ziel jeder Kategorie an.\nDerselbe Inhalt ist auch im OWASP Web Testing Guide enthalten.\nSie können sich einen guten Überblick über alle Ziele verschaffen, die in einer bestimmten Kategorie enthalten sind, sehen, wie viele Ergebnisse und Kommentare hinzugefügt wurden, und sogar bestimmte Ziele deaktivieren, was zur Folge hat, dass sie nicht in den Bericht aufgenommen werden.",
+      "objective_info": "Lesen Sie die wichtigsten Informationen zum gewählten Ziel.\nZu diesen Informationen gehört, was am Ziel zu tun ist, welche Probleme am häufigsten auftreten und wie Sie sie ausnutzen können.",
+      "objective_finding_overview": "Sehen Sie sich alle Funde an, die sich auf das ausgewählte Ziel beziehen.\nSie können den Titel, den Schweregrad, einen Teil der Beschreibung und die Auswirkung des Befundes sehen.\nDarüber hinaus können Sie einen bestimmten Befund auch bearbeiten oder sogar löschen.",
+      "create_edit_finding": "Bearbeiten oder erstellen Sie neue Funde für das Ziel.\nDokumentieren Sie hier den Titel, die Beschreibung, die betroffenen Anwendungsteile, die betroffenen URLs oder APIs und eine Schweregradbewertung zusammen mit Reproduktionsschritten und einem Abhilfevorschlag.\nSie können Befunde erst erstellen, wenn Sie den Timer gestartet haben, damit Ihre Arbeit nachverfolgt wird.",
+      "objective_comment_overview": "Sehen Sie sich alle Kommentare an, die sich auf das ausgewählte Ziel beziehen.\nSie können den Titel und einen Teil der Beschreibung des Kommentars sehen.\nDarüber hinaus können Sie einen bestimmten Kommentar auch bearbeiten oder sogar löschen.",
+      "create_edit_comment": "Bearbeiten oder erstellen Sie neue Kommentare für das Ziel.\nDokumentieren Sie hier den Titel und eine Beschreibung.\nSie können Kommentare erst erstellen, wenn Sie den Timer gestartet haben, damit Ihre Arbeit nachverfolgt wird.",
+      "generate_report": "Generieren und exportieren Sie Ihren Bericht. Sie können den Namen und die Version Ihres Projekts sowie einige Statistiken darüber sehen, wie viele Ihrer Ziele abgeschlossen, in Bearbeitung, pausiert, nicht gestartet oder deaktiviert sind.\nNur Ihre abgeschlossenen Ziele werden in den Abschlussbericht aufgenommen.\nStellen Sie vor dem Exportieren sicher, dass Sie die richtige Sprache für Ihren Bericht auswählen.",
+      "report": "Laden Sie Ihren generierten Bericht als PDF herunter und senden Sie ihn direkt an den Kunden.\nDer Bericht enthält alle Informationen, die Sie in der C4PO-Anwendung eingegeben haben.\nDer Bericht besteht aus einem Deckblatt, einem Inhaltsverzeichnis, dem Stand der Vertraulichkeit, einer Zusammenfassung, technischen Details zu den Ergebnissen sowie Kommentaren und Anhängen."
     }
   },
   "state": {
@@ -203,7 +221,7 @@
     "title.label": "Fundtitel",
     "description.label": "Beschreibung des Funds",
     "impact.label": "Auswirkung auf Anwendung",
-    "affectedUrls.label": "Betroffene URL's",
+    "affectedUrls.label": "Betroffene URL's / API's",
     "reproduction.label": "Reproduktionsschritte",
     "mitigation.label": "Minderungsvorschlag",
     "no.findings": "Keine Funde verfügbar",
