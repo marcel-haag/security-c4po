@@ -1,0 +1,56 @@
+<nb-card accent="control" status="info" class="profile-setting-dialog">
+  <nb-card-header fxLayoutAlign="start center" class="dialog-header">
+    <fa-icon [icon]="fa.faJournalWhills"
+             class="header-icon fa-lg">
+    </fa-icon>
+    <span class="header-text"> {{ 'tutorial.header' | translate }} </span>
+  </nb-card-header>
+  <nb-card-body class="dialog-body">
+    <div fxLayout="column" fxLayoutGap="2rem" fxLayoutAlign="center center">
+      <div class="info-slideshow">
+        <div *ngIf="images?.length > 0; else defaultImage">
+          <!--ToDo: Add info slideshow-->
+          <ngx-glide id="carousel"
+                     type="carousel"
+                     perView="1"
+                     autoplay="4000"
+                     animationDuration="2000"
+                     [arrowLeftTemplate]="arrowLeft"
+                     [arrowRightTemplate]="arrowRight">
+            <ng-template #arrowLeft>
+              <div class="left-arrow">
+                <fa-icon [icon]="fa.faArrowLeft"></fa-icon>
+              </div>
+            </ng-template>
+            <ng-template #arrowRight>
+              <div class="right-arrow">
+                <fa-icon [icon]="fa.faArrowRight"></fa-icon>
+              </div>
+            </ng-template>
+            <div *ngFor="let image of images"
+                 fxLayout="column"
+                 fxLayoutAlign="space-evenly center">
+              <div class="image-text">
+                {{image.translationText | translate}}
+              </div>
+              <div class="image"
+                   fxLayoutAlign="center">
+                <img [src]="image.source" onerror="this.src=FALLBACK_IMAGE" alt="tutorial-img">
+              </div>
+            </div>
+          </ngx-glide>
+        </div>
+        <ng-template #defaultImage>
+          <div class="default-image"></div>
+        </ng-template>
+      </div>
+    </div>
+  </nb-card-body>
+  <nb-card-footer fxLayout="row" fxLayoutGap="1.5rem" fxLayoutAlign="end end">
+    <button nbButton size="small"
+            class="dialog-button"
+            (click)="onClickCancel()">
+      {{ 'global.action.close' | translate }}
+    </button>
+  </nb-card-footer>
+</nb-card>

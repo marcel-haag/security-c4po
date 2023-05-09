@@ -1,0 +1,83 @@
+@import "../../../assets/@theme/styles/_dialog.scss";
+@import '../../../assets/@theme/styles/themes';
+
+$control-button-margin: 1.5rem;
+$control-button-size: 3.5rem;
+
+.profile-setting-dialog {
+  width: 65.25rem !important;
+  height: 58rem;
+
+  .dialog-header {
+    height: 8vh;
+
+    .header-text {
+      font-size: 1.5rem;
+      padding-left: 1rem;
+    }
+  }
+
+  .dialog-body {
+    //overflow: hidden!important;
+
+    .info-slideshow {
+      max-width: 100%;
+      max-height: 100%;
+
+      .image-text {
+        font-size: 1.2rem;
+        padding-top: 1.25rem;
+        // padding-bottom: 2.25rem;
+        max-width: 80%;
+        text-align: center;
+        // Allows \n in translation file for line breaks
+        white-space: pre-line;
+      }
+
+      .image {
+        img {
+          max-width: 100%;
+        }
+      }
+
+      .default-image {
+        background-image: url("../../../assets/images/tutorial/IMAGE_404.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        /*min-width: 100%;
+        min-height: 100vh;*/
+
+        position: inherit;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+      }
+
+      .left-arrow,
+      .right-arrow {
+        display: block;
+        top: calc(55% - (#{$control-button-size} / 2));
+        position: absolute;
+        font-size: 2rem;
+        color: nb-theme(color-basic-transparent-focus);
+        cursor: pointer;
+        z-index: 1000;
+
+        &:hover {
+          color: nb-theme(color-info-default);
+        }
+      }
+
+      .left-arrow {
+        left: $control-button-margin;
+      }
+
+      .right-arrow {
+        right: $control-button-margin;
+      }
+    }
+  }
+}

@@ -124,7 +124,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8444/reports/575dd9d4-cb3c-4df3-981e-8a18bf8dc1d2/pdf",
+							"raw": "http://localhost:8444/reports/575dd9d4-cb3c-4df3-981e-8a18bf8dc1d2/pdf/en-US",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -133,61 +133,8 @@
 							"path": [
 								"reports",
 								"575dd9d4-cb3c-4df3-981e-8a18bf8dc1d2",
-								"pdf"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getReportCSVforProjectById",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "text/html",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8444/reports/195809ed-9722-4ad5-a84b-0099a9a01652/csv",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8444",
-							"path": [
-								"reports",
-								"195809ed-9722-4ad5-a84b-0099a9a01652",
-								"csv"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getReportHTMLforProjectById",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "text/csv",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8444/reports/195809ed-9722-4ad5-a84b-0099a9a01652/html",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8444",
-							"path": [
-								"reports",
-								"195809ed-9722-4ad5-a84b-0099a9a01652",
-								"html"
+								"pdf",
+								"en-US"
 							]
 						}
 					},

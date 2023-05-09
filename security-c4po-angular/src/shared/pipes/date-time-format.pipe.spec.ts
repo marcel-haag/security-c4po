@@ -7,7 +7,7 @@ import {UserService} from '@shared/services/user-service/user.service';
 import {inject, TestBed} from '@angular/core/testing';
 import {HttpClient} from '@angular/common/http';
 import {HttpLoaderFactory} from '../../app/common-app.module';
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {KeycloakService} from 'keycloak-angular';
 
@@ -21,7 +21,6 @@ const DESIRED_STORE_STATE_SESSION: SessionStateModel = {
 
 describe('DateTimeFormatPipe', () => {
   let pipe: DateTimeFormatPipe;
-  let store: Store;
   // tslint:disable-next-line:prefer-const
   let dateAndNumberFormat: NumberAndDateFormatSystem;
 
@@ -43,18 +42,14 @@ describe('DateTimeFormatPipe', () => {
       ],
       providers: [
         {provide: UserService},
-        {provide: KeycloakService}
+        {provide: KeycloakService},
+        {provide: TranslateService}
       ]
     }).compileComponents();
   });
 
-  beforeEach(inject([Store], (inStore: Store) => {
-      store = inStore;
-      store.reset({
-        ...store.snapshot(),
-        [SESSION_STATE_NAME]: DESIRED_STORE_STATE_SESSION
-      });
-      pipe = new DateTimeFormatPipe(inStore);
+  beforeEach(inject([Store], (translateService: TranslateService) => {
+      pipe = new DateTimeFormatPipe(translateService);
     })
   );
 

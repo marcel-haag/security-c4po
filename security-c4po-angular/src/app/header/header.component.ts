@@ -16,6 +16,7 @@ import {environment} from '../../environments/environment';
 import {Router} from '@angular/router';
 import {DialogService} from '@shared/services/dialog-service/dialog.service';
 import {ProfileSettingsComponent} from '@shared/modules/profile-settings/profile-settings.component';
+import {TutorialDialogComponent} from '@shared/modules/tutorial-dialog/tutorial-dialog.component';
 
 @Component({
   selector: 'app-header',
@@ -128,8 +129,20 @@ export class HeaderComponent implements OnInit {
     window.open(url, '_blank');
   }
 
-  onClickShowInfo(): void {
+  onClickShowTutorial(): void {
     console.info('To be implemented..');
+
+    this.dialogService.openCustomDialog(
+      TutorialDialogComponent,
+      {}
+    ).onClose.pipe(
+      filter((confirm) => !!confirm),
+      untilDestroyed(this)
+    ).subscribe({
+      next: () => {
+        console.info('New Settings confirmed');
+      }
+    });
   }
 
   onClickSwitchTheme(): void {

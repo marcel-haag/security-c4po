@@ -13,6 +13,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {TranslateModule} from '@ngx-translate/core';
 import {ProfileSettingsModule} from '@shared/modules/profile-settings/profile-settings.module';
+import {TutorialDialogModule} from '@shared/modules/tutorial-dialog/tutorial-dialog.module';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {ProfileSettingsModule} from '@shared/modules/profile-settings/profile-se
     NbUserModule,
     NbContextMenuModule,
     ProfileSettingsModule,
+    TutorialDialogModule
   ],
   providers: [
   ]
