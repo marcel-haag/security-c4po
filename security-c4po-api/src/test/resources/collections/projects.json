@@ -3,7 +3,7 @@
     "$oid": "64368903e15faf56402f785b"
   },
   "lastModified": {
-    "$date": "2023-04-12T12:23:14.572Z"
+    "$date": "2023-05-09T10:43:56.770Z"
   },
   "data": {
     "_id": "cb4dc4c2-180f-4b82-88bd-9e19629dfb7b",
@@ -17,7 +17,7 @@
     "projectPentests": [
       {
         "pentestId": "81c113d1-f2a0-4ce1-a93d-f636ef9b4717",
-        "status": "NOT_STARTED"
+        "status": "PAUSED"
       },
       {
         "pentestId": "90a14259-2bf7-418a-babc-10015be84369",
@@ -53,7 +53,23 @@
       },
       {
         "pentestId": "fe3a2361-a23c-4a5d-8702-7b4178be3b8e",
-        "status": "NOT_STARTED"
+        "status": "PAUSED"
+      },
+      {
+        "pentestId": "64b6f349-579a-4a05-b813-b049c7dc9094",
+        "status": "COMPLETED"
+      },
+      {
+        "pentestId": "917a5808-25b3-46fd-8c6b-68f1190479bd",
+        "status": "PAUSED"
+      },
+      {
+        "pentestId": "1c8e6b39-4916-4d28-8db5-78d6d044ad2f",
+        "status": "COMPLETED"
+      },
+      {
+        "pentestId": "67a70db2-1537-4a44-98a6-4ae031015962",
+        "status": "PAUSED"
       }
     ],
     "createdBy": "2b4615ec-2f58-4d6a-8543-0c764d64455a"
@@ -83,15 +99,14 @@
     "$oid": "64369b7a28fc40394ae5b62f"
   },
   "lastModified": {
-    "$date": "2023-04-12T12:12:21.434Z"
+    "$date": "2023-04-12T13:18:12.868Z"
   },
   "data": {
     "_id": "953b91b8-6cc8-4cbb-97eb-dfdadf69d217",
     "client": "Dio Stonemask Inc.",
-    "title": "loq4il bizarre adventure",
+    "title": "log4jj bizarre adventure",
     "createdAt": "2023-04-12T11:52:26.624663Z",
     "tester": "Jojo",
-    "summary": "Dio Stonemask Inc. contracted Jojo to perform a Penetration Test to identify security weaknesses,\ndetermine the impact to Dio Stonemask Inc., document all findings in a clear and repeatable manner,\nand provide remediation recommendations.",
     "state": "INFORMATIVE",
     "version": "1.0",
     "projectPentests": [

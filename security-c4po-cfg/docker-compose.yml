@@ -6,14 +6,18 @@ volumes:
 services:
   # Database
   c4po-db:
-    image: mongo:latest
+    image: mongo:5.0.0-focal
     container_name: c4po-db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=Test1234!
+      - MONGO_INITDB_DATABASE=admin
     volumes:
       - ./volumes/mongodb/data/:/db/data
     deploy:
       resources:
         limits:
-          memory: "1G"
+          memory: "2G"
     ports:
       - 27017:27017
     networks:

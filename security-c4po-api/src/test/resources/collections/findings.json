@@ -177,4 +177,46 @@
     "attachments": []
   },
   "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
+},{
+  "_id": {
+    "$oid": "6440041a1f4ed15ba9666307"
+  },
+  "lastModified": {
+    "$date": "2023-04-19T15:48:58.169Z"
+  },
+  "data": {
+    "_id": "ac45159b-4108-4ec2-b6aa-d3bfc5d597d2",
+    "severity": "LOW",
+    "title": "Enumuration of Webserver",
+    "description": "Running nmap against the Webserver we can find the following information about the installed services.\nInteresting ports on 54.78.134.111:\n- 993/tcp is running imaps\n- 995/tcp is running pop3s\n- 3128/tcp is runnung squid-http\n- 8080/tcp is running http-proxy",
+    "impact": "Webserver",
+    "affectedUrls": [
+      "https://juice-shop.herokuapp.com/"
+    ],
+    "reproduction": "Step 1:\nResolve IP-Address of Webserver (https://juice-shop.herokuapp.com/) through nslookup.\n\nStep 2:\nScan the address that got returned from the DNS via nmap (nmap -sC -sV 54.78.134.111).\n\nStep 3:\nSee what service runs on which port.",
+    "mitigation": "",
+    "attachments": []
+  },
+  "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
+},{
+  "_id": {
+    "$oid": "64400afd1f4ed15ba966630c"
+  },
+  "lastModified": {
+    "$date": "2023-04-19T15:40:06.007Z"
+  },
+  "data": {
+    "_id": "972b0cee-13e5-4267-ab5c-5b00c9657578",
+    "severity": "HIGH",
+    "title": "Admin Useraccount",
+    "description": "When looking through the application it is possible to find the censored e-mail of an user with an juice-shop mail (***der@juice.sh.op) that can be found on the \"About Us\" page by the customer feedback section. \n\nUpon further investigating the product reviews the complete admin e-mail (admin@juice-sh.op) can be found in the review for the Apple Juice.\n\nThis account can now be used by an attacker to try to bruteforce into the account since the username is now known.",
+    "impact": "Webserver only.",
+    "affectedUrls": [
+      "https://juice-shop.herokuapp.com/#/about"
+    ],
+    "reproduction": "Step 1:\nLook at the hompage.\n\nStep 2:\nClick on the \"Apple Juice (1000ml)\" Item.\n\nStep 3:\nOpen the reviews.\n\nYou can now directly see the e-mail of the admin user.",
+    "mitigation": "Censor important usernames of accounts with high priveldges like seen on the \"About Us\" page by the customer feedback section.",
+    "attachments": []
+  },
+  "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
 }]

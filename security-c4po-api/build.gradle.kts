@@ -77,6 +77,11 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
     implementation("org.modelmapper:modelmapper:2.3.2")
 
+    // Mongock
+    implementation("com.github.cloudyrock.mongock:mongock-bom:4.1.19")
+    implementation("com.github.cloudyrock.mongock:mongock-spring-v5:4.1.19")
+    implementation("com.github.cloudyrock.mongock:mongodb-springdata-v3-driver:4.1.19")
+
     api("org.springframework.boot:spring-boot-starter-test")
     api("org.springframework.security:spring-security-jwt:1.1.1.RELEASE")
     api("net.logstash.logback:logstash-logback-encoder:6.2")

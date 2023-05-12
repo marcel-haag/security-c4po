@@ -54,4 +54,46 @@
     "attachments": []
   },
   "_class": "com.securityc4po.api.pentest.comment.CommentEntity"
+},{
+  "_id": {
+    "$oid": "6440085a1f4ed15ba9666309"
+  },
+  "lastModified": {
+    "$date": "2023-04-19T15:27:22.756Z"
+  },
+  "data": {
+    "_id": "f4901f6b-6814-450c-8734-7ff1b3eed9b0",
+    "title": "Deprecated MIME Types",
+    "description": "When looking through the main.js file of the webserver we can search for \"allowedMimeType\" and get presented with the following:\n- application/pdf\n- application/xml\n- text/xml\n- application/zip\n- application/x-zip-compressed\n- multipart/x-zip\n\nEspecially the upload of xml files can result in a XXE Attack or in a RCE.",
+    "attachments": []
+  },
+  "_class": "com.securityc4po.api.pentest.comment.CommentEntity"
+},{
+  "_id": {
+    "$oid": "644008e81f4ed15ba966630a"
+  },
+  "lastModified": {
+    "$date": "2023-04-19T15:29:44.718Z"
+  },
+  "data": {
+    "_id": "0dd84537-6be7-468f-a4ad-6cf30d8fb7dc",
+    "title": "Webserver Type",
+    "description": "When looking at \"Server\" property of the repsonse header we can see that the application is running on a Cowboy HTTP Server.",
+    "attachments": []
+  },
+  "_class": "com.securityc4po.api.pentest.comment.CommentEntity"
+},{
+  "_id": {
+    "$oid": "645a23e989feac5618c3a83e"
+  },
+  "lastModified": {
+    "$date": "2023-05-09T10:43:53.712Z"
+  },
+  "data": {
+    "_id": "eb31f820-0f7b-4b70-98e2-ed8624d56824",
+    "title": "Juice Shop Application Structure",
+    "description": "In the frontend the popular Angular framework is used to create a so-called Single Page Application.\nJavaScript is also used in the backend as the exclusive programming language: An Express application hosted in a Node.js server delivers the client-side code to the browser. It also provides the necessary backend functionality to the client via a RESTful API.\nAs an underlying database a light-weight SQLite was chosen, because of its file-based nature. Sequelize and finale-rest are used as an abstraction layer from the database.\nAs an additional data store, a MarsDB is part of the OWASP Juice Shop.\nThe application also offers user registration via OAuth 2.0 so users can sign in with their Google accounts.",
+    "attachments": []
+  },
+  "_class": "com.securityc4po.api.pentest.comment.CommentEntity"
 }]
