@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {NbDialogRef} from '@nebular/theme';
 import * as FA from '@fortawesome/free-solid-svg-icons';
 import {TranslateService} from '@ngx-translate/core';
@@ -77,6 +77,7 @@ export class ProfileSettingsComponent implements OnInit {
         this.userNameControl.setValue(user.username);
         this.userFirstNameControl.setValue(user.firstName);
         this.userLastNameControl.setValue(user.lastName);
+        this.userEmailControl.setValue(user.email ? user.email : null);
       },
       error: err => {
         console.error(err);
@@ -216,7 +217,7 @@ export class ProfileSettingsComponent implements OnInit {
     user.username = formData.username;
     user.firstName = formData.firstName;
     user.lastName = formData.lastName;
-    user.mailAddress = formData.email;
+    user.email = formData.email;
 
     return [formData, user];
   }

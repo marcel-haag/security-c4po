@@ -3,7 +3,7 @@
 
 .profile-setting-dialog {
   width: 45.25rem !important;
-  height: 32rem;
+  height: 36rem;
 
   .dialog-header {
     height: 8vh;
@@ -65,47 +65,52 @@
       }
     }
 
-    .language-settings{
-      padding-top: 2.5rem;
+    .options {
+      //
+      padding-left: 12.5rem;
 
-      .language-selection-label {
-        font-weight: bold;
-      }
+      .language-settings {
+        padding-top: 2.5rem;
 
-      .language-radio-buttons {
-        float: left;
-        clear: none;
-        padding-top: 0.5rem;
-        margin-left: 1rem;
-      }
+        .language-selection-label {
+          font-weight: bold;
+        }
 
-      .languageContainer {
-        padding-top: 1rem;
-        display: flex;
-        max-width: 8rem;
-        min-width: 8rem;
+        .language-radio-buttons {
+          float: left;
+          clear: none;
+          padding-top: 0.5rem;
+          margin-left: 1rem;
+        }
 
-        .flag {
-          object-fit: contain;
-          margin-top: 0.5rem;
+        .languageContainer {
+          padding-top: 1rem;
+          display: flex;
+          max-width: 8rem;
+          min-width: 8rem;
+
+          .flag {
+            object-fit: contain;
+            margin-top: 0.5rem;
+          }
         }
       }
-    }
 
-    .user-password-change{
-      padding-top: 2rem;
+      .user-password-change {
+        padding-top: 2rem;
 
-      .password-selection-label {
-        font-weight: bold;
-      }
+        .password-selection-label {
+          font-weight: bold;
+        }
 
-      .password-form {
-        padding-top: 1rem;
+        .password-form {
+          padding-top: 1rem;
 
-        .password-btn {
-          .btn-icon {
-            padding-bottom: 0.15rem;
-            padding-right: 0.5rem;
+          .password-btn {
+            .btn-icon {
+              padding-bottom: 0.15rem;
+              padding-right: 0.5rem;
+            }
           }
         }
       }
