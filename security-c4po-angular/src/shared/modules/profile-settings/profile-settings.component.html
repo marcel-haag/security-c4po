@@ -66,11 +66,23 @@
               </ng-container>
             </nb-form-field>
           </div>
-          <!--ToDo: Email?-->
+          <!--E-Mail-->
+          <nb-form-field class="user-form-field">
+            <label for="eMail" class="label">
+              {{'profile.eMail.title' | translate}}
+            </label>
+            <fa-icon nbPrefix class="prefix-icon" [icon]="fa.faEnvelope"></fa-icon>
+            <input formControlName="eMail"
+                   type="text" required
+                   id="eMail" nbInput
+                   fullWidth
+                   class="form-field untouchable"
+                   placeholder="{{'profile.eMail.placeholder' | translate}}">
+          </nb-form-field>
         </form>
       </div>
     </div>
-    <div fxLayout="row" fxLayoutGap="2rem" fxLayoutAlign="start center">
+    <div fxLayout="row" fxLayoutGap="2rem" fxLayoutAlign="start center" class="options">
       <div class="user-password-change">
         <!--User password change-->
         <label class="password-selection-label">

@@ -72,6 +72,10 @@
       "title": "Nachname",
       "placeholder": "Nachname"
     },
+    "eMail": {
+      "title": "E-Mail",
+      "placeholder": "Keine E-Mail bestätigt."
+    },
     "validationMessage": {
       "firstNameRequired": "Vorname ist erforderlich.",
       "lastNameRequired": "Nachname ist erforderlich."

@@ -5,7 +5,7 @@ export class User {
   username?: string;
   firstName?: string;
   lastName?: string;
-  mailAddress?: string;
+  email?: string;
   interfaceLang?: string;
 
   constructor(username?: string,
@@ -18,9 +18,9 @@ export class User {
     this.firstName = firstName;
     this.lastName = lastName;
     if (email) {
-      this.mailAddress = email;
+      this.email = email;
     } else {
-      this.mailAddress = null;
+      this.email = null;
     }
     if (interfaceLang) {
       this.interfaceLang = interfaceLang;

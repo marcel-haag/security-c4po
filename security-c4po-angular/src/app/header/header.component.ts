@@ -130,19 +130,13 @@ export class HeaderComponent implements OnInit {
   }
 
   onClickShowTutorial(): void {
-    console.info('To be implemented..');
-
     this.dialogService.openCustomDialog(
       TutorialDialogComponent,
       {}
     ).onClose.pipe(
       filter((confirm) => !!confirm),
       untilDestroyed(this)
-    ).subscribe({
-      next: () => {
-        console.info('New Settings confirmed');
-      }
-    });
+    ).subscribe();
   }
 
   onClickSwitchTheme(): void {
