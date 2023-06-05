@@ -22,7 +22,7 @@ import org.springframework.web.cors.CorsConfiguration
 @EnableReactiveMethodSecurity
 @Configuration
 @ComponentScan
-class WebSecurityConfiguration(private val userAccountDetailsService: UserAccountDetailsService) {
+class WebSecurityConfiguration {
 
     @Value("\${external.issuer-uri}")
     var externalIssuerUri: String? = null
@@ -60,7 +60,7 @@ class WebSecurityConfiguration(private val userAccountDetailsService: UserAccoun
 
     @Bean
     fun appuserJwtAuthenticationConverter(): AppuserJwtAuthConverter {
-        return AppuserJwtAuthConverter(userAccountDetailsService)
+        return AppuserJwtAuthConverter()
     }
 
     @Bean

@@ -57,6 +57,8 @@ class ProjectControllerIntTest : BaseIntTest() {
     inner class GetProjects {
         @Test
         fun `requesting projects successfully`() {
+            println("test " + adminSub)
+
             webTestClient.get().uri("/projects")
                 .header("Authorization", "Bearer $tokenAdmin")
                 .exchange()
@@ -74,7 +76,7 @@ class ProjectControllerIntTest : BaseIntTest() {
             summary = "Lorem Ipsum",
             state = PentestState.NEW,
             version = "1.0",
-            createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
+            createdBy = "8f725a10-bdf5-4530-a185-4627fb092d78"
         )
         val projectTwo = Project(
             id = "61360a47-796b-4b3f-abf9-c46c668596c5",
@@ -85,7 +87,7 @@ class ProjectControllerIntTest : BaseIntTest() {
             summary = "Lorem Ipsum",
             state = PentestState.NEW,
             version = "1.0",
-            createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
+            createdBy = "8f725a10-bdf5-4530-a185-4627fb092d78"
         )
 
         private fun getProjects() = listOf(
@@ -109,8 +111,7 @@ class ProjectControllerIntTest : BaseIntTest() {
                 .jsonPath("$.client").isEqualTo("Novatec")
                 .jsonPath("$.title").isEqualTo("log4j Pentest")
                 .jsonPath("$.tester").isEqualTo("Stipe")
-                // ToDo: Should be changed to SUB from Token after adding AUTH Header
-                /*.jsonPath("$.createdBy").isEqualTo("f8aab31f-4925-4242-a6fa-f98135b4b032")*/
+                .jsonPath("$.createdBy").isEqualTo("8f725a10-bdf5-4530-a185-4627fb092d78")
         }
 
         val project = Project(
@@ -122,7 +123,7 @@ class ProjectControllerIntTest : BaseIntTest() {
             summary = "",
             state = PentestState.NEW,
             version = "1.0",
-            createdBy = "a8891ad2-5cf5-4519-a89e-9ef8eec9e10c"
+            createdBy = "8f725a10-bdf5-4530-a185-4627fb092d78"
         )
     }
 
@@ -157,7 +158,7 @@ class ProjectControllerIntTest : BaseIntTest() {
             tester = "Elliot",
             state = PentestState.NEW,
             version = "1.0",
-            createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
+            createdBy = "8f725a10-bdf5-4530-a185-4627fb092d78"
         )
     }
 
@@ -185,7 +186,7 @@ class ProjectControllerIntTest : BaseIntTest() {
             tester = "Stipe_updated",
             state = PentestState.NEW,
             version = "1.0",
-            createdBy = "a8891ad2-5cf5-4519-a89e-9ef8eec9e10c"
+            createdBy = "8f725a10-bdf5-4530-a185-4627fb092d78"
         )
     }
 
@@ -200,7 +201,7 @@ class ProjectControllerIntTest : BaseIntTest() {
             summary = "Lorem Ipsum",
             state = PentestState.NEW,
             version = "1.0",
-            createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
+            createdBy = "8f725a10-bdf5-4530-a185-4627fb092d78"
         )
         val projectTwo = Project(
             id = "61360a47-796b-4b3f-abf9-c46c668596c5",
@@ -211,7 +212,7 @@ class ProjectControllerIntTest : BaseIntTest() {
             summary = "Lorem Ipsum",
             state = PentestState.NEW,
             version = "1.0",
-            createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
+            createdBy = "8f725a10-bdf5-4530-a185-4627fb092d78"
         )
         // persist test data in database
         mongoTemplate.save(ProjectEntity(projectOne))
@@ -220,11 +221,13 @@ class ProjectControllerIntTest : BaseIntTest() {
 
     private fun configureAdminToken() {
         tokenAdmin = getAccessToken("test_admin", "test", "c4po_local", "c4po_realm_local")
+        adminSub = getSubClaim(tokenAdmin)
     }
 
     private fun cleanUp() {
         mongoTemplate.findAllAndRemove(Query(), ProjectEntity::class.java)
 
         tokenAdmin = "n/a"
+        adminSub = "n/a"
     }
 }

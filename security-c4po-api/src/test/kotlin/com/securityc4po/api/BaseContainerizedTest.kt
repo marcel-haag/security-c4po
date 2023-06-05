@@ -74,6 +74,7 @@ abstract class BaseContainerizedTest {
 
     var token = "n/a"
     var tokenAdmin = "n/a"
+    var adminSub = "n/a"
     var tokenUser = "n/a"
 
     fun getAccessToken(username: String, password: String, clientId: String, realm: String): String {

@@ -24,7 +24,8 @@ data class Project(
     val state: PentestState,
     val version: String,
     var projectPentests: List<ProjectPentest> = emptyList(),
-    val createdBy: String
+    @Indexed(background = true, unique = false)
+    var createdBy: String
 )
 
 fun buildProject(body: ProjectRequestBody, projectEntity: ProjectEntity): Project {
@@ -159,6 +160,21 @@ fun ProjectRequestBody.toProject(): Project {
         // ToDo: Update version in backend automatically
         version = "1.0",
         // ToDo: Should be changed to SUB from Token after adding AUTH Header
-        createdBy = UUID.randomUUID().toString()
+        createdBy = ""
+    )
+}
+
+fun ProjectRequestBody.toNewProject(userId: String): Project {
+    return Project(
+        id = UUID.randomUUID().toString(),
+        client = this.client,
+        title = this.title,
+        createdAt = Instant.now().toString(),
+        tester = this.tester,
+        summary = this.summary,
+        state = this.state,
+        // ToDo: Update version in backend automatically
+        version = "1.0",
+        createdBy = userId
     )
 }

@@ -98,7 +98,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
             projectPentests = emptyList<ProjectPentest>(),
             state = PentestState.NEW,
             version = "1.0",
-            createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
+            createdBy = "8f725a10-bdf5-4530-a185-4627fb092d78"
         )
         val projectTwo = Project(
             id = "61360a47-796b-4b3f-abf9-c46c668596c5",
@@ -110,7 +110,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
             projectPentests = emptyList<ProjectPentest>(),
             state = PentestState.NEW,
             version = "1.0",
-            createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
+            createdBy = "8f725a10-bdf5-4530-a185-4627fb092d78"
         )
 
         private fun getProjectsResponse() = listOf(
@@ -245,7 +245,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
             projectPentests = emptyList<ProjectPentest>(),
             state = PentestState.NEW,
             version = "1.0",
-            createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
+            createdBy = "8f725a10-bdf5-4530-a185-4627fb092d78"
         )
     }
 
@@ -315,7 +315,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
             state = PentestState.NEW,
             version = "1.0",
             projectPentests = emptyList<ProjectPentest>(),
-            createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
+            createdBy = "8f725a10-bdf5-4530-a185-4627fb092d78"
         )
     }
 
@@ -331,7 +331,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
             state = PentestState.NEW,
             version = "1.0",
             projectPentests = emptyList<ProjectPentest>(),
-            createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
+            createdBy = "8f725a10-bdf5-4530-a185-4627fb092d78"
         )
         val projectTwo = Project(
             id = "61360a47-796b-4b3f-abf9-c46c668596c5",
@@ -343,7 +343,7 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
             state = PentestState.NEW,
             version = "1.0",
             projectPentests = emptyList<ProjectPentest>(),
-            createdBy = "f8aab31f-4925-4242-a6fa-f98135b4b032"
+            createdBy = "8f725a10-bdf5-4530-a185-4627fb092d78"
         )
         // persist test data in database
         mongoTemplate.save(ProjectEntity(projectOne))
@@ -352,11 +352,13 @@ class ProjectControllerDocumentationTest : BaseDocumentationIntTest() {
 
     private fun configureAdminToken() {
         tokenAdmin = getAccessToken("test_admin", "test", "c4po_local", "c4po_realm_local")
+        adminSub = getSubClaim(tokenAdmin)
     }
 
     private fun cleanUp() {
         mongoTemplate.findAllAndRemove(Query(), ProjectEntity::class.java)
 
         tokenAdmin = "n/a"
+        adminSub = "n/a"
     }
 }
