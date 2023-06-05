@@ -5,7 +5,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 
-class Appuser internal constructor() : UserDetails {
+class Appuser internal constructor(sub: String, username: String, val token: String) : UserDetails {
+
+    var userSub = sub
+    var userName = username
 
     override fun getAuthorities(): Collection<GrantedAuthority> {
         return listOf("user").stream().map {
@@ -17,12 +20,17 @@ class Appuser internal constructor() : UserDetails {
         }.collect(Collectors.toList())
     }
 
+
+    fun getSub(): String {
+        return userSub
+    }
+
     override fun getPassword(): String {
         return "n/a"
     }
 
     override fun getUsername(): String {
-        return "n/a"
+        return userName
     }
 
     override fun isAccountNonExpired(): Boolean {

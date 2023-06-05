@@ -24,8 +24,8 @@ class ProjectService(private val projectRepository: ProjectRepository) {
      * @throws [EntityNotFoundException] if there are no [Project]s in collection
      * @return list of [Project]
      */
-    fun getProjects(): Mono<List<Project>> {
-        return projectRepository.findAll().collectList().map {
+    fun getProjects(userSub: String): Mono<List<Project>> {
+        return projectRepository.findAll().filter { project -> project.data.createdBy == userSub }.collectList().map {
             it.map { projectEntity -> projectEntity.toProject() }
         }.switchIfEmpty {
             val msg = "Projects not found."
@@ -41,8 +41,8 @@ class ProjectService(private val projectRepository: ProjectRepository) {
      * @throws [EntityNotFoundException] if there is no [Project] in collection
      * @return [Project]
      */
-    fun getProjectById(projectId: String): Mono<Project> {
-        return projectRepository.findProjectById(projectId).map {
+    fun getProjectById(projectId: String, userSub: String): Mono<Project> {
+        return projectRepository.findProjectById(projectId).filter { project -> project.data.createdBy == userSub }.map {
             it.toProject()
         }.switchIfEmpty {
             val msg = "Project not found."
@@ -59,7 +59,7 @@ class ProjectService(private val projectRepository: ProjectRepository) {
      * @throws [TransactionInterruptedException] if the [Project] could not be stored
      * @return saved [Project]
      */
-    fun saveProject(body: ProjectRequestBody): Mono<Project> {
+    fun saveProject(body: ProjectRequestBody, userSub: String): Mono<Project> {
         validate(
             require = body.isValid(),
             logging = { logger.warn("Project not valid.") },
@@ -68,6 +68,7 @@ class ProjectService(private val projectRepository: ProjectRepository) {
             )
         )
         val project = body.toProject()
+        project.createdBy = userSub
         val projectEntity = ProjectEntity(project)
         return projectRepository.insert(projectEntity).map {
             it.toProject()
@@ -110,7 +111,7 @@ class ProjectService(private val projectRepository: ProjectRepository) {
      * @throws [TransactionInterruptedException] if the [Project] could not be updated
      * @return updated [Project]
      */
-    fun updateProject(id: String, body: ProjectRequestBody): Mono<Project> {
+    fun updateProject(id: String, body: ProjectRequestBody, userSub: String): Mono<Project> {
         validate(
             require = body.isValid(),
             logging = { logger.warn("Project not valid.") },
