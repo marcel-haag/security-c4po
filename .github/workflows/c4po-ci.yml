@@ -1,0 +1,99 @@
+name: "Security C4PO CI"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+
+env:
+  ANGULAR_PATH: security-c4po-angular
+  API_PATH: security-c4po-api
+  REPORTING_PATH: security-c4po-reporting
+  CFG_PATH: security-c4po-cfg
+
+  ANGULAR_CLI_VERSION: 13
+
+
+jobs:
+
+  angular_job:
+    name: "Angular Job"
+
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: "Check out code"
+        uses: actions/checkout@v3
+
+      - name: "Use Node.js 14.x"
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+          cache: 'npm'
+          
+      - name: "Install NPM dependencies"
+        run: |
+          cd $ANGULAR_PATH
+          npm ci
+
+      - name: "Build assets"
+        run: |
+          cd $ANGULAR_PATH
+          npm run build --if-present
+
+      - name: "Run tests"
+        run: |
+          cd $ANGULAR_PATH
+          npm test
+  
+  api_job:
+    name: "API Job"
+
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: "Check out code"
+        uses: actions/checkout@v3
+
+      - name: "Set up JDK 11"
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+
+      - name: "Setup Gradle"
+        uses: gradle/gradle-build-action@v2
+        with:
+          gradle-version: 6.5
+
+      - name: "Execute Gradle build"
+        run: |
+          cd $API_PATH
+          ./gradlew clean build -x dependencyCheckAnalyze
+
+  reporting_job:
+    name: "Reporting Job"
+
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: "Check out code"
+        uses: actions/checkout@v3
+
+      - name: "Set up JDK 11"
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+
+      - name: "Setup Gradle"
+        uses: gradle/gradle-build-action@v2
+        with:
+          gradle-version: 6.5
+
+      - name: "Execute Gradle build"
+        run: |
+          cd $REPORTING_PATH
+          ./gradlew clean build
