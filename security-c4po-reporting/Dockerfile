@@ -1,5 +1,10 @@
 FROM openjdk:11-jre
-ENV TZ=Europe/Berlin
+ENV TZ=UTC
+
+#ARG JAR_FILE_REPORTING
+
+#COPY ${JAR_FILE_REPORTING} app.jar
+
 RUN groupadd -g 9999 security-c4po-reporting && \
     useradd -r -u 9999 -g security-c4po-reporting security-c4po-reporting
 RUN mkdir /data
@@ -19,3 +24,4 @@ EXPOSE 8444
 COPY ./wait-for-keycloak.sh /
 # CMD [ "java", "-jar", "security-c4po-reporting-0.0.1-SNAPSHOT.jar" ]
 ENTRYPOINT [ "./wait-for-keycloak.sh", "http://c4po-keycloak:8080/auth/realms/c4po_realm_local", "java", "-Dspring.profiles.active=${SPRING_PROFILES_ACTIVE}", "-jar", "security-c4po-reporting-0.0.1-SNAPSHOT.jar" ]
+#ENTRYPOINT [ "./wait-for-keycloak.sh", "http://c4po-keycloak:8080/auth/realms/c4po_realm_local", "java", "-Dspring.profiles.active=${SPRING_PROFILES_ACTIVE}", "-jar", "app.jar" ]

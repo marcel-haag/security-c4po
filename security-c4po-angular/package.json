@@ -30,7 +30,7 @@
     "@glidejs/glide": "^3.6.0",
     "@nebular/eva-icons": "^8.0.0",
     "@nebular/theme": "^8.0.0",
-    "@ngneat/until-destroy": "~8.0.4",
+    "@ngneat/until-destroy": "^9.2.3",
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
     "@ngxs/storage-plugin": "^3.7.3",

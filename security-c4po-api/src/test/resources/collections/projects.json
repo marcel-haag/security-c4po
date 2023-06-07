@@ -3,7 +3,7 @@
     "$oid": "64368903e15faf56402f785b"
   },
   "lastModified": {
-    "$date": "2023-05-09T10:43:56.770Z"
+    "$date": "2023-07-19T12:08:27.320Z"
   },
   "data": {
     "_id": "cb4dc4c2-180f-4b82-88bd-9e19629dfb7b",
@@ -53,7 +53,7 @@
       },
       {
         "pentestId": "fe3a2361-a23c-4a5d-8702-7b4178be3b8e",
-        "status": "PAUSED"
+        "status": "COMPLETED"
       },
       {
         "pentestId": "64b6f349-579a-4a05-b813-b049c7dc9094",
@@ -61,7 +61,7 @@
       },
       {
         "pentestId": "917a5808-25b3-46fd-8c6b-68f1190479bd",
-        "status": "PAUSED"
+        "status": "COMPLETED"
       },
       {
         "pentestId": "1c8e6b39-4916-4d28-8db5-78d6d044ad2f",
@@ -70,12 +70,37 @@
       {
         "pentestId": "67a70db2-1537-4a44-98a6-4ae031015962",
         "status": "PAUSED"
+      },
+      {
+        "pentestId": "f281f5ad-77bb-4405-bc3e-8080a0efc47f",
+        "status": "COMPLETED"
+      },
+      {
+        "pentestId": "1e8389c5-fe91-4e89-9b6a-27a9ab961781",
+        "status": "NOT_STARTED"
+      },
+      {
+        "pentestId": "36f8db13-ad88-41c4-8fb9-be98eeb4a178",
+        "status": "COMPLETED"
+      },
+      {
+        "pentestId": "afa62754-0ea9-4e36-8eb9-becc59f6b12d",
+        "status": "DISABLED"
+      },
+      {
+        "pentestId": "227eccfd-ab74-458a-9c5d-7cb743dea413",
+        "status": "COMPLETED"
+      },
+      {
+        "pentestId": "7159b8d4-1f47-43c1-be48-4684690fa341",
+        "status": "COMPLETED"
       }
     ],
     "createdBy": "16a52c3d-998b-4f2d-badb-1f369d95a690"
   },
   "_class": "com.securityc4po.api.project.ProjectEntity"
-},{
+},
+{
   "_id": {
     "$oid": "64369b3f28fc40394ae5b62e"
   },
@@ -94,7 +119,8 @@
     "createdBy": "16a52c3d-998b-4f2d-badb-1f369d95a690"
   },
   "_class": "com.securityc4po.api.project.ProjectEntity"
-},{
+},
+{
   "_id": {
     "$oid": "64369b7a28fc40394ae5b62f"
   },

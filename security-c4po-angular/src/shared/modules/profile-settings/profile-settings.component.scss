@@ -3,7 +3,9 @@
 
 .profile-setting-dialog {
   width: 45.25rem !important;
-  height: 36rem;
+  height: 36.5rem;
+
+  overflow: hidden; /* Hide scrollbars */
 
   .dialog-header {
     height: 8vh;

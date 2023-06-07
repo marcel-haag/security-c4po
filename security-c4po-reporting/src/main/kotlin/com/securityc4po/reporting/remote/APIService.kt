@@ -12,6 +12,20 @@ class APIService(private val apiClient: APIClient) {
 
     var logger = getLoggerFor<APIService>()
 
+    val sortPentestCategoryOrder = listOf(
+        "INFORMATION_GATHERING",
+        "CONFIGURATION_AND_DEPLOY_MANAGEMENT_TESTING",
+        "IDENTITY_MANAGEMENT_TESTING",
+        "AUTHENTICATION_TESTING",
+        "AUTHORIZATION_TESTING",
+        "SESSION_MANAGEMENT_TESTING",
+        "INPUT_VALIDATION_TESTING",
+        "ERROR_HANDLING",
+        "CRYPTOGRAPHY",
+        "BUSINESS_LOGIC_TESTING",
+        "CLIENT_SIDE_TESTING"
+    )
+
     /**
      *  Requests the complete project report data by project id
      *
@@ -33,6 +47,10 @@ class APIService(private val apiClient: APIClient) {
                 }.sequential().collectList()
             }?.map {
                 completedProjectReport.projectPentestReport.addAll(it)
+                completedProjectReport.projectPentestReport = completedProjectReport.projectPentestReport
+                    .sortedWith(compareBy { it.refNumber })
+                    .sortedBy { sortPentestCategoryOrder.indexOf(it.category) }
+                    .toMutableList()
                 completedProjectReport
             } ?: Mono.just(completedProjectReport)
         }
