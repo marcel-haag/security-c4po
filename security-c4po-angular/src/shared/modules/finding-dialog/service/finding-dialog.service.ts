@@ -98,7 +98,7 @@ export class FindingDialogService {
         },
         findingAffectedUrls: {
           fieldName: 'findingAffectedUrls',
-          type: 'text',
+          type: 'url',
           labelKey: 'finding.affectedUrls.label',
           placeholder: 'finding.affectedUrls.placeholder',
           controlsConfig: [

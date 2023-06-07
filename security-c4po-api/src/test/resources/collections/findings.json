@@ -3,28 +3,29 @@
     "$oid": "643699cd28fc40394ae5b625"
   },
   "lastModified": {
-    "$date": "2023-04-12T11:45:23.385Z"
+    "$date": "2023-07-19T12:12:32.900Z"
   },
   "data": {
     "_id": "354c62b1-8f7f-4a65-9f1b-c4f6388f5506",
     "severity": "HIGH",
     "title": "Broken Access Control",
     "description": "Security flaws are caused by fragilely implemented access rights (or non-well-thought access constructs).\nAccess control is based on:\n- Confidentiality of the requested element\n- Role or permissions of the requesting user\nFlaws in access control can lead to:\n- Unauthorized users can obtain, manipulate or delete important and sensitive data\nChanging the bid inside the session storage in the frontend or intercepting the GET request for the basket and changing the id parameter results in getting the basket of another user (as long as the new id is valid).\n",
-    "impact": "This does not just affects the frontend but also destroys the integrity of the data from the backend since you can see the basket of other users.",
+    "impact": "This does not just affect the frontend but also destroys the integrity of the data from the backend since you can see the basket of other users.",
     "affectedUrls": [
       "https://juice-shop.herokuapp.com/#/basket, https://juice-shop.herokuapp.com/rest/basket/{id}"
     ],
-    "reproduction": "Step 1:\nLogin as any user.\n\nStep 2:\nGo to the basket page.\n\nStep 3:\nChange the bid value or intecept and manipulate the GET request for the basket.\n",
-    "mitigation": "Decide for a matching access control model: - Discretionary access control (DAC)\n- Role-based access control (RBAC)\n- Mandatory access control (MAC)\n- Attribute-based access control (ABAC)",
+    "reproduction": "Step 1:\nLogin as any user.\n\nStep 2:\nGo to the basket page.\n\nStep 3:\nOpen the browser console and change the bid value or intecept and manipulate the GET request for the basket.\n",
+    "mitigation": "Decide for a matching access control model: \n- Discretionary access control (DAC)\n- Role-based access control (RBAC)\n- Mandatory access control (MAC)\n- Attribute-based access control (ABAC)\n- Rule-based access control (RuBAC)",
     "attachments": []
   },
   "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
-},{
+},
+{
   "_id": {
     "$oid": "64369a1428fc40394ae5b627"
   },
   "lastModified": {
-    "$date": "2023-04-12T11:46:28.934Z"
+    "$date": "2023-07-19T12:17:44.610Z"
   },
   "data": {
     "_id": "b215d04c-fec9-4f75-8d83-89ba0c6d3e74",
@@ -35,33 +36,35 @@
     "affectedUrls": [
       "https://juice-shop.herokuapp.com/#/complain"
     ],
-    "reproduction": "Step 1:\nLogin to the application with any user.\n\nStep 2:\nGo to complaint screen.\n\nStep 3:\nWrite a small message in text field and upload any xml file before clicking on \"Submit\".\n\nYou will now get the error mentioned in the description.",
-    "mitigation": "Adjust the allowed MIME Type in the frontend.\nOther generic prevention methods include: \n- Use Configuration Management:\n- Hardening, Remove old configurations\n- Proper Error Codes",
+    "reproduction": "Step 1:\nLogin to the application with any user.\n\nStep 2:\nGo to complaint screen.\n\nStep 3:\nWrite a small message in text field and upload any xml file before clicking on \"Submit\".\nYou will now get the error mentioned in the description.",
+    "mitigation": "Adjust the allowed MIME Type in the frontend.\n\nOther generic prevention methods include: \n- Check your HTTP response headers\n- Check your TLS configuration\n\nNever configure wildcards in:\n- CORS allowed origin header\n- Redirect URI for OAuth/OIDC\n\nUse Configuration Management:\n- Hardening, Remove old configurations\n- Proper Error Codes\n",
     "attachments": []
   },
   "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
-},{
+},
+{
   "_id": {
     "$oid": "64369a5528fc40394ae5b629"
   },
   "lastModified": {
-    "$date": "2023-04-12T11:49:24.611Z"
+    "$date": "2023-07-19T12:13:41.213Z"
   },
   "data": {
     "_id": "19521078-aef5-4505-8b1f-958e75bd3fd1",
     "severity": "HIGH",
-    "title": "Searchbar XSS",
+    "title": "Searchbar DOM XSS",
     "description": "DOM-based vulnerabilities arise when a client-side script reads data from a controllable part of the DOM (for example, the URL) and processes this data in an unsafe way.\nAdding <iframe src=\"javascript:alert(`xss`)\"> in the search bar of the header results here in the XSS Vulnerability.\n",
-    "impact": "Generally there are three kinds of XXS: 1. DOM-Based Cross-Site Scripting\n2. Reflected Cross-Site Scripting\n3. Persistent Cross-Site Scripting\n\nThe found XSS only impacts the Webapplication itself.",
+    "impact": "Generally there are three kinds of XXS: \n1. DOM-Based Cross-Site Scripting\n2. Reflected Cross-Site Scripting\n3. Persistent Cross-Site Scripting\n\nThe found XSS only impacts the Webapplication itself.",
     "affectedUrls": [
       "https://juice- shop.herokuapp.com/#/search?q=%3Ciframe%20src%3D%22javascript:alert('xss')%22%3E"
     ],
     "reproduction": "Step 1:\nClick on the search field of the header.\n\nStep 2:\nEnter <iframe src=\"javascript:alert(`xss`)\">\n\nStep 3:\nPress ENTER to exucute the query.\n\nYou will now get a PopUp because the javascript code was executed in the browser.\n",
-    "mitigation": "- Do NOT put untrusted data into templates & SSR\n- Use strict input validation & strong typing (server-side) - Contextual Output Encoding\n- Sanitizing Input Fields\n- Content Security Policies\n- Trusted Types",
+    "mitigation": "- Do NOT put untrusted data into templates & SSR\n- Use strict input validation & strong typing (server-side) \n- Contextual Output Encoding\n- Sanitizing Input Fields\n- Content Security Policies\n- Trusted Types\n- Protect Session Cookie (HTTPOnly)",
     "attachments": []
   },
   "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
-},{
+},
+{
   "_id": {
     "$oid": "64369aaf28fc40394ae5b62b"
   },
@@ -80,7 +83,8 @@
     "attachments": []
   },
   "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
-},{
+},
+{
   "_id": {
     "$oid": "64369ae828fc40394ae5b62d"
   },
@@ -101,7 +105,8 @@
     "attachments": []
   },
   "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
-},{
+},
+{
   "_id": {
     "$oid": "64369ef828fc40394ae5b68a"
   },
@@ -120,7 +125,8 @@
     "attachments": []
   },
   "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
-},{
+},
+{
   "_id": {
     "$oid": "64369f0328fc40394ae5b68b"
   },
@@ -139,7 +145,8 @@
     "attachments": []
   },
   "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
-},{
+},
+{
   "_id": {
     "$oid": "64369f0c28fc40394ae5b68c"
   },
@@ -158,7 +165,8 @@
     "attachments": []
   },
   "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
-},{
+},
+{
   "_id": {
     "$oid": "64369f1828fc40394ae5b68d"
   },
@@ -177,7 +185,8 @@
     "attachments": []
   },
   "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
-},{
+},
+{
   "_id": {
     "$oid": "6440041a1f4ed15ba9666307"
   },
@@ -198,7 +207,8 @@
     "attachments": []
   },
   "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
-},{
+},
+{
   "_id": {
     "$oid": "64400afd1f4ed15ba966630c"
   },
@@ -216,6 +226,205 @@
     ],
     "reproduction": "Step 1:\nLook at the hompage.\n\nStep 2:\nClick on the \"Apple Juice (1000ml)\" Item.\n\nStep 3:\nOpen the reviews.\n\nYou can now directly see the e-mail of the admin user.",
     "mitigation": "Censor important usernames of accounts with high priveldges like seen on the \"About Us\" page by the customer feedback section.",
+    "attachments": []
+  },
+  "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
+},
+{
+  "_id": {
+    "$oid": "649c0b5e27c8aa2135b9dc64"
+  },
+  "lastModified": {
+    "$date": "2023-06-28T12:25:27.488Z"
+  },
+  "data": {
+    "_id": "810138c0-dee4-42b3-8580-1fd0a0d92fa6",
+    "severity": "CRITICAL",
+    "title": "Exfiltrated the entire DB schema definition via SQL Injection",
+    "description": "An attacker would try to exploit SQL Injection to find out as much as possible about your database schema. \nThis subsequently allows much more targeted, stealthy and devastating SQL Injections.",
+    "impact": "Database Server",
+    "affectedUrls": [
+      "https://juice-shop.herokuapp.com/#/search?q=",
+      "https://juice-shop.herokuapp.com/rest/products/search?q="
+    ],
+    "reproduction": "Step 1:\nSearch for any product in the Juice Shop.\n\nStep 2:\nLook at the network traffic and copy the search request (https://juice-shop.herokuapp.com/rest/products/search?q=)\n\nStep 3:\nRun the request through sqlmap liek:\nsqlmap -u http://0.0.0.0:3000/rest/products/search\\?q\\= --dbs --level=3 --risk=3\n\nStep 4:\nRun the request through sqlmap with schema flag like:\nsqlmap -u http://0.0.0.0:3000/rest/products/search\\?q\\= --schema\n\nStep 5:\nEnterering the following string in the search field results in getting the the emails and password hashes of all users:\ntest ' )) UNION ALL SELECT NULL,email,password,NULL,NULL,NULL,NULL,NULL,NULL from users--",
+    "mitigation": "Preventing SQL Injections can be easily accomplished by adding: - Prepared statements\n- Stored procedures\n- Whitelist Input Validation\n- Escaping all input, that could be user-supplied - Webapp Firewall",
+    "attachments": []
+  },
+  "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
+},
+{
+  "_id": {
+    "$oid": "649c2a6827c8aa2135b9dc65"
+  },
+  "lastModified": {
+    "$date": "2023-06-28T12:41:12.670Z"
+  },
+  "data": {
+    "_id": "14e52a97-b147-4cd4-a0d5-d349bd9ca201",
+    "severity": "MEDIUM",
+    "title": "Ephemeral Accountant",
+    "description": "We logged into the application with an (non-existing) accountant acc0unt4nt@juice-sh.op  with accountant-level permissions without ever registering that user and we created the needed user “out of the air”.\n",
+    "impact": "Webapplication and Database Server.",
+    "affectedUrls": [
+      "https://juice-shop.herokuapp.com/#/login"
+    ],
+    "reproduction": "\nStep X:\nEnter the following sql syntax in the login field email and enter any sting in the password field:\n' UNION SELECT * FROM (SELECT 15 as 'id', '' as 'username', \n'acc0unt4nt@juice-sh.op' as 'email', '12345' as 'password', \n'accounting' as 'role', '123' as 'deluxeToken', \n'1.2.3.4' as 'lastLoginIp' , \n'/assets/public/images/uploads/default.svg' as 'profileImage',\n'' as 'totpSecret', 1 as 'isActive',\n'1999-08-16 14:14:41.644 +00:00' as 'createdAt',\n'1999-08-16 14:33:41.930 +00:00' as 'updatedAt',\nnull as 'deletedAt')--",
+    "mitigation": "",
+    "attachments": []
+  },
+  "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
+},
+{
+  "_id": {
+    "$oid": "649e935012d8f17aaf9add75"
+  },
+  "lastModified": {
+    "$date": "2023-06-30T08:33:20.615Z"
+  },
+  "data": {
+    "_id": "fa34ae0c-b230-4448-818b-e55e14d2ce38",
+    "severity": "CRITICAL",
+    "title": "NoSQL DoS Injection",
+    "description": "A denial-of-service (DoS) attack occurs when legitimate users are unable to access information systems, devices, or other network resources due to the actions of a malicious cyber threat actor. Services affected may include email, websites, online accounts (e.g., banking), or other services that rely on the affected computer or network. A denial-of-service condition is accomplished by flooding the targeted host or network with traffic until the target cannot respond or simply crashes, preventing access for legitimate users. DoS attacks can cost an organization both time and money while their resources and services are inaccessible.\n\nNoSQL databases provide looser consistency restrictions than traditional SQL databases.\nSo basically we will try to invoke sleep(milliseconds) MongoDB method.",
+    "impact": "Database Server",
+    "affectedUrls": [
+      "https://juice-shop.herokuapp.com/rest/products/sleep(1000)/reviews"
+    ],
+    "reproduction": "Step 1:\nOpen any product on the Juice Shop Homepage.\n\nStep 2: \nTake the GET request and change the product id parameter with sleep(1000).\n\nStep 3:\nSee the Serverresponse be delayed by the sleep command because the server is \"napping\".",
+    "mitigation": "NoSQL databases provide looser consistency restrictions than traditional SQL databases. By requiring fewer relational constraints and consistency checks, NoSQL databases often offer performance and scaling benefits. Yet these databases are still potentially vulnerable to injection attacks, even if they aren’t using the traditional SQL syntax. ",
+    "attachments": []
+  },
+  "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
+},
+{
+  "_id": {
+    "$oid": "649e992c12d8f17aaf9add76"
+  },
+  "lastModified": {
+    "$date": "2023-06-30T09:56:21.791Z"
+  },
+  "data": {
+    "_id": "4e28eb62-2a59-471d-b1f8-2b3de54f541b",
+    "severity": "LOW",
+    "title": "NoSQL Manipulation (Injection)",
+    "description": "NoSQL Injection is different than classic SQL Injection, so I decided to broader my knowledge, reading A NoSQL Injection Primer (with Mongo) – Null Sweep article.\n\nThere is trick described, when author is bypassing logging page with simple $ne (not-equals) verb like:",
+    "impact": "Mongo Database Server",
+    "affectedUrls": [
+      "https://juice-shop.herokuapp.com/rest/products/1/reviews"
+    ],
+    "reproduction": "Step 1:\nOpen any product in the Juice Shop homepage after loggin in and writ ea review.\n\nStep 2:\nLook at the PUT request and change the request body from:\n{\"message\":\"test\",\"author\":\"admin@juice-sh.op\"}\nto this:\n{\"id\": { \"$ne\": -1 }, \"message\":\"test\"}\n\nStep 3:\nSend the request with the $ne (not-equals) verb.",
+    "mitigation": "",
+    "attachments": []
+  },
+  "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
+},
+{
+  "_id": {
+    "$oid": "64b7a1e9fa93474368137f97"
+  },
+  "lastModified": {
+    "$date": "2023-07-19T08:47:09.390Z"
+  },
+  "data": {
+    "_id": "6edcdc7b-196e-4c72-bc74-7a8ae2ab3818",
+    "severity": "HIGH",
+    "title": "Sensitive Data Exposure",
+    "description": "Proper configuration of the single elements that make up an application architecture is important in order to prevent mistakes that might compromise the security of the whole architecture.\n\nThe web server or application server configuration takes an important role in protecting the contents of the site and it must be carefully reviewed in order to spot common configuration mistakes. \n\nAccessing the Logfiles of the server is a problem that was encounterd.",
+    "impact": "Webserver",
+    "affectedUrls": [
+      "https://juice-shop.herokuapp.com/support/logs",
+      "https://juice-shop.herokuapp.com/ftp/"
+    ],
+    "reproduction": "Step 1: \nSearch for different sub directories on the webserver with tools like DirBuster.\n\nStep 2: \nGo to the sub directory /support/logs\n\nStep 3: \nDownload the access.log.2023-07-19 file.",
+    "mitigation": "Block access for users who are not authenticated and / or authorized to see the logs or other sub directories like the ftp content.",
+    "attachments": []
+  },
+  "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
+},
+{
+  "_id": {
+    "$oid": "64b7ac19fa93474368137f99"
+  },
+  "lastModified": {
+    "$date": "2023-07-19T12:18:43.923Z"
+  },
+  "data": {
+    "_id": "b2d779c5-150e-4dee-a40e-0f45b6027ea3",
+    "severity": "CRITICAL",
+    "title": "Weird Crypto",
+    "description": "Initially confined to the realms of academia and the military, cryptography has become ubiquitous thanks to the Internet. Common every day uses of cryptography include mobile phones, passwords, SSL, smart cards, and DVDs.\n\nThe proper and accurate implementation of cryptography is extremely critical to its efficacy. A small mistake in configuration or coding will result in removing a large degree of the protection it affords and rending the crypto implementation useless against serious attacks.",
+    "impact": "Tokens / Cookies",
+    "affectedUrls": [],
+    "reproduction": "Step 1:\nLogin to the application with any valid user.\n\nStep 2:\nLook at the network traffic and copy the token that is part of the cookie header.\n\nStep 3:\nDecode the Base64 Token on an application like Cyberchef and copy the included passsword hash.\n\nStep 4: \nAnalyse the hash to find aout the type through:\nhttps://www.tunnelsup.com/hash-analyzer/\n\nStep 5: \nUnsalted MD4 and MD5 hashes are barely speedbumps to cracking passwords at this point in time, and should never be used. \n\nStep 6:\nWith tools like Hashcat or John the Ripper we can now easily crack the password and get it in cleartext.",
+    "mitigation": "Use more secure algorithms to encrypt sensible data.\nFor information like passwords it is recommended to use salting and strong and slow hashing algorithms like:\n- Argon2\n- Bcrypt",
+    "attachments": []
+  },
+  "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
+},
+{
+  "_id": {
+    "$oid": "64b7b2cafa93474368137f9b"
+  },
+  "lastModified": {
+    "$date": "2023-07-19T10:02:24.352Z"
+  },
+  "data": {
+    "_id": "3d0b7483-44e6-4f54-9481-a5295cc36e2d",
+    "severity": "MEDIUM",
+    "title": "Deprecated Interface",
+    "description": "Vulnerabilities related to the upload of unexpected file types is\nunique in that the upload should quickly reject a file if it does not\nhave a specific extension. \n\nUsing a deprecated B2B interface on the complaint page that was not properly shut down.\n\nSecurity Misconfiguration is based on:\n- Missing configuration management \n- Processes behind installation and maintenance of the systems\n- Ignored code standards\n\nFlaws in security misconfiguration can lead to:\n- Unauthorized access to sensitive data or functions\n- Up to a complete system takeover\n",
+    "impact": "Webserver, Backend",
+    "affectedUrls": [
+      "https://juice-shop.herokuapp.com/#/complain"
+    ],
+    "reproduction": "Step 1:\nLogin with any user.\n\nStep 2: \nGo to the complaints screen and write any message.\n\nStep 3:\nClick on file upload button to add an \"Invoice\".\nWhat is expected here is an pdf but when looking at the allowedMimeTypes whe can see that xml and zip files are supported as well.\n\nStep 4:\nPick any xml file that should to be uploaded.",
+    "mitigation": "Configuration Management: \n- Hardening, \n- Remove old configurations\n \nNever configure wildcards in:\n- CORS allowed origin header\n- Redirect URI for OAuth/OIDC\n\nCheck your HTTP response headers using the  Security Headers Project",
+    "attachments": []
+  },
+  "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
+},
+{
+  "_id": {
+    "$oid": "64b7b72bfa93474368137f9d"
+  },
+  "lastModified": {
+    "$date": "2023-07-19T10:12:59.252Z"
+  },
+  "data": {
+    "_id": "97daef3d-46be-43de-9950-7451da2e99c9",
+    "severity": "MEDIUM",
+    "title": "Permitting default, weak, or well-known passwords",
+    "description": "There may be authentication weaknesses because of:\n- Automated attacks such as credential stuffing, where the attacker has a list of valid usernames and passwords.\n- Brute force or other automated attacks.\n- Permitting default, weak, or well-known passwords, such as ”123456\".\n- Weak or ineffective credential recovery and forgot-password processes.\n- Using plain text, encrypted, or weakly hashed passwords data stores.\n- Missing or ineffective multi-factor authentication.\n- Exposing session identifier in the URL.\n- Reusing session identifier after successful login.\n",
+    "impact": "Userdata",
+    "affectedUrls": [
+      "https://juice-shop.herokuapp.com/#/register"
+    ],
+    "reproduction": "Step 1: \nGo to the login page and then try to register a new user.\n\nStep 2:\nFill out the form and type in a basic password like \"lorem\".\n\nStep 3:\nClick on \"Register\"",
+    "mitigation": "Change the Switch for \"Show password advice\" to enforce these policies on creation and just give them the users as an suggestions.\n\nMore generally you should:\n- Implement password validation and secure password guidelines\n- Implement countermeasures against brute-force attacks\n- Use best practices for session management\n- Check secure password policies from \"Hive Systems\"",
+    "attachments": []
+  },
+  "_class": "com.securityc4po.api.pentest.finding.FindingEntity"
+},
+{
+  "_id": {
+    "$oid": "64b7d031fa93474368137f9f"
+  },
+  "lastModified": {
+    "$date": "2023-07-19T12:05:11.318Z"
+  },
+  "data": {
+    "_id": "16bf3a81-982a-445d-8a84-d0b151bd1f71",
+    "severity": "HIGH",
+    "title": "Resetting Jim's Password",
+    "description": "The password change and reset function of an application is a\nself-service password change or reset mechanism for users. This\nself-service mechanism allows users to quickly change or reset\ntheir password without an administrator intervening. \nWhen passwords are changed they are typically changed within the application. \nWhen passwords are reset they are either rendered within the application or emailed to the user. This may indicate that the passwords are stored in plain text or in a decryptable format.\n\nWhen looking at the security question when creating an account we can see the options a user has. \nThis information can be used to attack the web application, for example, through a brute force when resetting a password.",
+    "impact": "Useraccount: jim@juice-sh.op",
+    "affectedUrls": [
+      "https://juice-shop.herokuapp.com/#/forgot-password",
+      "https://juice-shop.herokuapp.com/rest/user/reset-password"
+    ],
+    "reproduction": "Step 1:\nWe can get to the email for jim when looking at the reviews for the \"Green Smoothie\" in the Juice Shop homepage.\n\nStep 2:\nGo to the login page and click on \"Forgot your password?\"\n\nStep 3:\nEnter jims email (jim@juice-sh.op) and click inside the \"Security Question\" Field.\nWe can now see that he question jim choose was \"Your eldest siblings middle name?\"\n\nStep 4:\nSince names are a simple property to find out if the user answered the question honestly.\nWe can use a list of the most popular names for males and females and brute-force the forgot password process with tools like BurpSuite or OWASP ZAP.",
+    "mitigation": "To stop an attacker from brute-forcing anything you should\n- Limit Specific Request Attempts\n- Monitor IP addresses\n- Use Two-Factor Authentication (2FA)\n- Use CAPTCHAs\n- Use Web Application Firewalls (WAFs)",
     "attachments": []
   },
   "_class": "com.securityc4po.api.pentest.finding.FindingEntity"

@@ -12,7 +12,8 @@
     "attachments": []
   },
   "_class": "com.securityc4po.api.pentest.comment.CommentEntity"
-},{
+},
+{
   "_id": {
     "$oid": "64369e4428fc40394ae5b679"
   },
@@ -26,7 +27,8 @@
     "attachments": []
   },
   "_class": "com.securityc4po.api.pentest.comment.CommentEntity"
-},{
+},
+{
   "_id": {
     "$oid": "64369f2628fc40394ae5b68e"
   },
@@ -40,7 +42,8 @@
     "attachments": []
   },
   "_class": "com.securityc4po.api.pentest.comment.CommentEntity"
-},{
+},
+{
   "_id": {
     "$oid": "64369f3b28fc40394ae5b68f"
   },
@@ -54,7 +57,8 @@
     "attachments": []
   },
   "_class": "com.securityc4po.api.pentest.comment.CommentEntity"
-},{
+},
+{
   "_id": {
     "$oid": "6440085a1f4ed15ba9666309"
   },
@@ -68,7 +72,8 @@
     "attachments": []
   },
   "_class": "com.securityc4po.api.pentest.comment.CommentEntity"
-},{
+},
+{
   "_id": {
     "$oid": "644008e81f4ed15ba966630a"
   },
@@ -82,7 +87,8 @@
     "attachments": []
   },
   "_class": "com.securityc4po.api.pentest.comment.CommentEntity"
-},{
+},
+{
   "_id": {
     "$oid": "645a23e989feac5618c3a83e"
   },

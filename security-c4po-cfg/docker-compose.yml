@@ -8,6 +8,8 @@ services:
   c4po-db:
     image: mongo:5.0.0-focal
     container_name: c4po-db
+    labels:
+      name: "c4po-db"
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=Test1234!
@@ -25,6 +27,8 @@ services:
   # Authentication Provider
   c4po-keycloak:
     container_name: c4po-keycloak
+    labels:
+      name: "c4po-keycloak"
     image: quay.io/keycloak/keycloak:20.0.0
     environment:
       - KEYCLOAK_ADMIN=admin
@@ -41,6 +45,8 @@ services:
     build: '../security-c4po-angular'
     image: security-c4po-angular:latest
     container_name: c4po-angular
+    labels:
+      name: "c4po-angular"
     depends_on:
       - c4po-keycloak
     deploy:
@@ -55,6 +61,8 @@ services:
     build: '../security-c4po-api'
     image: security-c4po-api:latest
     container_name: c4po-api
+    labels:
+      name: "c4po-api"
     environment:
       - SPRING_PROFILES_ACTIVE=COMPOSE
     depends_on:
@@ -72,6 +80,8 @@ services:
     build: '../security-c4po-reporting'
     image: security-c4po-reporting:latest
     container_name: c4po-reporting
+    labels:
+      name: "c4po-reporting"
     environment:
       - SPRING_PROFILES_ACTIVE=COMPOSE
     depends_on:

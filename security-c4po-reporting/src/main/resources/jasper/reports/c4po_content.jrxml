@@ -79,9 +79,9 @@
         </band>
     </title>
     <detail>
-        <band height="464" splitType="Stretch">
+        <band height="330" splitType="Stretch">
             <componentElement>
-                <reportElement x="0" y="0" width="560" height="464" forecolor="#FFFFFF" uuid="925ff93f-70df-4093-a209-f9faaecb205c">
+                <reportElement x="0" y="180" width="560" height="30" forecolor="#FFFFFF" uuid="925ff93f-70df-4093-a209-f9faaecb205c">
                     <property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
                     <property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
                     <property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
@@ -94,100 +94,6 @@
                     </datasetRun>
                     <jr:column width="400" uuid="e1ddda3b-a51b-4ebc-ab41-72ba37cb90fc">
                         <property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
-                        <jr:tableHeader style="Table_TH" height="30" rowSpan="1">
-                            <textField>
-                                <reportElement x="0" y="0" width="400" height="30" uuid="61fc1eab-0534-4abc-a3d8-4fe3a65f082e"/>
-                                <textElement verticalAlignment="Middle">
-                                    <font size="12" isBold="true"/>
-                                </textElement>
-                                <textFieldExpression><![CDATA[$R{title.confidentiality}]]></textFieldExpression>
-                            </textField>
-                        </jr:tableHeader>
-                        <jr:tableFooter style="Table_TH" height="100" rowSpan="1">
-                            <textField>
-                                <reportElement x="0" y="0" width="400" height="25" uuid="8286e514-717b-453c-a3fd-407085cfc06b"/>
-                                <textElement verticalAlignment="Middle">
-                                    <font size="12" isBold="true"/>
-                                </textElement>
-                                <textFieldExpression><![CDATA[$R{title.appendencies}]]></textFieldExpression>
-                            </textField>
-                            <textField>
-                                <reportElement x="0" y="25" width="400" height="25" forecolor="#232B44" uuid="ff1277d5-4d92-45d4-8bb0-33e276535ccb">
-                                    <property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
-                                </reportElement>
-                                <textElement verticalAlignment="Middle">
-                                    <font size="12" isBold="true"/>
-                                    <paragraph leftIndent="10"/>
-                                </textElement>
-                                <textFieldExpression><![CDATA[$R{title.findings_severities}]]></textFieldExpression>
-                            </textField>
-                            <textField>
-                                <reportElement x="0" y="50" width="400" height="25" forecolor="#232B44" uuid="f7916dac-ce4d-4465-a966-725da9aec246">
-                                    <property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
-                                </reportElement>
-                                <textElement verticalAlignment="Middle">
-                                    <font size="12" isBold="true"/>
-                                    <paragraph leftIndent="10"/>
-                                </textElement>
-                                <textFieldExpression><![CDATA[$R{title.risk_matrix}]]></textFieldExpression>
-                            </textField>
-                            <textField>
-                                <reportElement x="0" y="75" width="400" height="25" forecolor="#232B44" uuid="3ecdc1c6-144c-4216-8073-0cd10c433b05">
-                                    <property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
-                                </reportElement>
-                                <textElement verticalAlignment="Middle">
-                                    <font size="12" isBold="true"/>
-                                    <paragraph leftIndent="10"/>
-                                </textElement>
-                                <textFieldExpression><![CDATA[$R{title.severity_definitions}]]></textFieldExpression>
-                            </textField>
-                        </jr:tableFooter>
-                        <jr:columnHeader style="Table_CH" height="170" rowSpan="1">
-                            <textField>
-                                <reportElement x="0" y="0" width="400" height="34" uuid="0dcf4738-ac1b-4a51-939c-8b8048166783"/>
-                                <textElement verticalAlignment="Middle">
-                                    <font size="12" isBold="true"/>
-                                </textElement>
-                                <textFieldExpression><![CDATA[$R{title.summary}]]></textFieldExpression>
-                            </textField>
-                            <textField>
-                                <reportElement x="0" y="34" width="400" height="34" forecolor="#232B44" uuid="5445fcf0-817f-4008-bc39-fa61b6171fe7">
-                                    <property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
-                                </reportElement>
-                                <textElement verticalAlignment="Middle">
-                                    <font size="12" isBold="true"/>
-                                    <paragraph leftIndent="10"/>
-                                </textElement>
-                                <textFieldExpression><![CDATA[$R{title.assessment_overview_and_recommendations}]]></textFieldExpression>
-                            </textField>
-                            <textField>
-                                <reportElement x="0" y="68" width="400" height="34" forecolor="#232B44" uuid="bdb51757-ecb6-41cc-9ee9-58072b3e5307">
-                                    <property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
-                                </reportElement>
-                                <textElement verticalAlignment="Middle">
-                                    <font size="12" isBold="true"/>
-                                    <paragraph leftIndent="10"/>
-                                </textElement>
-                                <textFieldExpression><![CDATA[$R{title.number_of_findings_per_category}]]></textFieldExpression>
-                            </textField>
-                            <textField>
-                                <reportElement x="0" y="102" width="400" height="34" forecolor="#232B44" uuid="68058a42-5ac0-4a11-b9a3-9159d2fae966">
-                                    <property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
-                                </reportElement>
-                                <textElement verticalAlignment="Middle">
-                                    <font size="12" isBold="true"/>
-                                    <paragraph leftIndent="10"/>
-                                </textElement>
-                                <textFieldExpression><![CDATA[$R{title.severity_overview_of_findings}]]></textFieldExpression>
-                            </textField>
-                            <textField>
-                                <reportElement x="0" y="136" width="400" height="34" uuid="6bc57000-98b4-4c44-90a7-23be43cc5bf0"/>
-                                <textElement verticalAlignment="Middle">
-                                    <font size="12" isBold="true"/>
-                                </textElement>
-                                <textFieldExpression><![CDATA[$R{title.reports}]]></textFieldExpression>
-                            </textField>
-                        </jr:columnHeader>
                         <jr:detailCell style="Table_TD" height="30">
                             <textField>
                                 <reportElement x="0" y="0" width="400" height="30" forecolor="#232B44" uuid="1930eea5-6835-498a-bcdd-d4fe0423a18a">
@@ -203,9 +109,6 @@
                     </jr:column>
                     <jr:column width="160" uuid="76741c88-65a6-4032-8d17-c6ba755c1a64">
                         <property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
-                        <jr:tableHeader style="Table_TH" height="30" rowSpan="1"/>
-                        <jr:tableFooter style="Table_TH" height="100" rowSpan="1"/>
-                        <jr:columnHeader style="Table_CH" height="170" rowSpan="1"/>
                         <jr:detailCell style="Table_TD" height="30">
                             <textField>
                                 <reportElement x="0" y="0" width="160" height="30" forecolor="#232B44" uuid="4c14b6ea-020c-4527-b853-543ac119003b"/>
@@ -218,11 +121,96 @@
                     </jr:column>
                 </jr:table>
             </componentElement>
+            <textField>
+                <reportElement x="0" y="0" width="560" height="30" uuid="ed60a487-2f72-42b5-a50f-65b5e5fa896b"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$R{title.confidentiality}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="30" width="560" height="30" uuid="fe095b7d-a37e-4586-b5ed-f4e1b10f8e26"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$R{title.summary}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="60" width="560" height="30" forecolor="#232B44" uuid="9468325b-2a95-41a7-b8f7-8d77177d537b">
+                    <property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+                </reportElement>
+                <textElement verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                    <paragraph leftIndent="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$R{title.assessment_overview_and_recommendations}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="90" width="560" height="30" forecolor="#232B44" uuid="7237cbd3-e5bb-47bc-8e1b-6f7d2dec31aa">
+                    <property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+                </reportElement>
+                <textElement verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                    <paragraph leftIndent="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$R{title.number_of_findings_per_category}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="120" width="560" height="30" forecolor="#232B44" uuid="0bc2efa0-4c47-47f2-9f90-f88ed5e0a153">
+                    <property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+                </reportElement>
+                <textElement verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                    <paragraph leftIndent="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$R{title.severity_overview_of_findings}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement positionType="Float" x="0" y="210" width="560" height="30" uuid="77ac4a8d-e2c9-4e45-81dd-7cc6d45a59d5"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$R{title.appendencies}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement positionType="Float" x="0" y="240" width="560" height="30" forecolor="#232B44" uuid="b7002156-506e-4540-8f0b-73fa5f990e9b">
+                    <property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+                </reportElement>
+                <textElement verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                    <paragraph leftIndent="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$R{title.findings_severities}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement positionType="Float" x="0" y="270" width="560" height="30" forecolor="#232B44" uuid="e4a8b338-704c-4fa1-9a5b-898ce69fcdc4">
+                    <property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+                </reportElement>
+                <textElement verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                    <paragraph leftIndent="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$R{title.risk_matrix}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement positionType="Float" x="0" y="300" width="560" height="30" forecolor="#232B44" uuid="2d8e914d-8729-4c05-8b37-7540e158d3df">
+                    <property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+                </reportElement>
+                <textElement verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                    <paragraph leftIndent="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$R{title.severity_definitions}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement positionType="Float" x="0" y="150" width="560" height="30" uuid="e48de3ca-7b91-4ead-888f-40bbb0628d6b"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$R{title.reports}]]></textFieldExpression>
+            </textField>
         </band>
     </detail>
-    <columnFooter>
-        <band height="50" splitType="Stretch"/>
-    </columnFooter>
     <pageFooter>
         <band height="54" splitType="Stretch"/>
     </pageFooter>
