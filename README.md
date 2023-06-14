@@ -1,3 +1,4 @@
+![workflow_badge](https://github.com/Marcel-Haag/security-c4po/actions/workflows/c4po-ci.yml/badge.svg?branch=main)
 
 ![alt architecture](./wiki/repository-open-graph-c4po.png)
 
