@@ -37,21 +37,20 @@ By participating, you are expected to uphold this code.
 
 ## Local development
 Security-C4PO and all it's included micorservices can be developed locally. 
-Execute 'c4po.sh' and all services will run on a dev server.
+Execute `c4po-dev.sh` and all services will run on a dev server.
 
 #### Testuser Credentials:
-* Username: ttt
+* Username: c4po
 * Password: Test1234!
 
 #### Technical Environment Requirements
 * Docker / Docker-compose
 * OpenJDK 11
 * Node 14.15.1 / npm 6.14.8
-* MongoDB 4.4.6
 
 #### Helpfull Tools
 * mongoDB Compass
 * Postman
 
-## Additional Notes
-lorem ipsum.
+## Issue Board
+[C4PO Board](https://github.com/Marcel-Haag/security-c4po/projects/1)

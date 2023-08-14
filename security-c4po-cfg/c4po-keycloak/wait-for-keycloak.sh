@@ -12,6 +12,6 @@ until $(curl --output /dev/null --silent --head --fail $host); do
     sleep 4
 done
 
-printf '\nKeycloak is up and running - Starting C4PO Reporting'
+printf '\nKeycloak is up and running - Starting C4PO Microservice'
 
 exec "$@"
