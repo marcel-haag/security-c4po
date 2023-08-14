@@ -22,12 +22,16 @@ docker rm -f c4po-angular
 echo -e "\n"
 
 echo "-----------------Start Build------------------"
+echo " - Report Engine: "
+docker-compose -f ${compose} build c4po-db
+echo " - Report Engine: "
+docker-compose -f ${compose} build c4po-keycloak
 echo -e "\n"
 echo " - Report Engine: "
-docker-compose -f ${compose} build c4po-reporting #--build-arg JAR_FILE_REPORT=security-c4po-reporting/build/libs/security-c4po-reporting-0.0.1-SNAPSHOT.jar
+docker-compose -f ${compose} build c4po-reporting --build-arg JAR_FILE_REPORT=./build/libs/security-c4po-reporting-0.0.1-SNAPSHOT.jar ### toggle for additional build args ###
 echo -e "\n"
 echo " - Backend: "
-docker-compose -f ${compose} build c4po-api #--build-arg JAR_FILE_API=security-c4po-api/build/libs/security-c4po-api-0.0.1-SNAPSHOT.jar
+docker-compose -f ${compose} build c4po-api --build-arg JAR_FILE_API=./build/libs/security-c4po-api-0.0.1-SNAPSHOT.jar ### toggle for additional build args ###
 echo -e "\n"
 echo " - Frontend: "
 docker-compose -f ${compose} build c4po-angular

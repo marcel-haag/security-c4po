@@ -9,7 +9,6 @@
 
 name: "Security C4PO CI"
 
-
 on:
   pull_request:
     branches: [ "main" ]

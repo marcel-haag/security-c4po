@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "6f244dd9-5264-497a-9ea4-1ae73e172624",
+		"_postman_id": "6329294d-deb2-449d-9fec-ac2f3fef46f3",
 		"name": "security-c4po-api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "5225213"
+		"_exporter_id": "14503169"
 	},
 	"item": [
 		{
@@ -228,95 +228,6 @@
 							"path": [
 								"projects",
 								"5a4f126c-9471-43b8-80b9-6eb02b7c35d0"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "keycloak",
-			"item": [
-				{
-					"name": "getKeycloakConfiguration",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/auth/realms/c4po_realm_local/.well-known/openid-configuration",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"auth",
-								"realms",
-								"c4po_realm_local",
-								".well-known",
-								"openid-configuration"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "postKeycloakToken",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "client_id",
-									"value": "c4po_local",
-									"type": "text"
-								},
-								{
-									"key": "username",
-									"value": "ttt",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "Test1234!",
-									"type": "text"
-								},
-								{
-									"key": "grant_type",
-									"value": "password",
-									"type": "text"
-								},
-								{
-									"key": "token",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "client_secret",
-									"value": "secret",
-									"type": "text",
-									"disabled": true
-								}
-							]
-						},
-						"url": {
-							"raw": "http://localhost:8080/auth/realms/c4po_realm_local/protocol/openid-connect/token",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"auth",
-								"realms",
-								"c4po_realm_local",
-								"protocol",
-								"openid-connect",
-								"token"
 							]
 						}
 					},

@@ -79,7 +79,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: API-jar
-          path: security-c4po-api/build/libs/security-c4po-api-0.0.1-SNAPSHOT.jar # artifacts/api.jar
+          path: security-c4po-api/build/libs/
 
   reporting_job:
     name: "Reporting Job"
@@ -109,7 +109,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: REPORTING-jar
-          path: security-c4po-reporting/build/libs/security-c4po-reporting-0.0.1-SNAPSHOT.jar # artifacts/reporting.jar
+          path: security-c4po-reporting/build/libs/
 
   push_c4po_to_docker_hub:
     name: "Push images to Docker Hub"
@@ -121,33 +121,6 @@ jobs:
     steps:
       - name: "Check out the repo"
         uses: actions/checkout@v3
-      
-      - name: Download jar api artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: API-jar
-          path: security-c4po-api/build/libs/security-c4po-api-0.0.1-SNAPSHOT.jar
-
-      - name: Download jar reporting artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: REPORTING-jar
-          path: security-c4po-reporting/build/libs/security-c4po-reporting-0.0.1-SNAPSHOT.jar
-
-      - name: "Set up Docker Compose"
-        # https://github.com/marketplace/actions/docker-compose-action
-        uses: isbang/compose-action@v1.4.1
-        with:
-          compose-file: ./security-c4po-cfg/docker-compose.yml
-
-      - name: "Build Docker images"
-        run: |
-          cd $CFG_PATH
-          docker-compose build \
-          --build-arg TAG=c4po:${{ github.run_number }} \
-          --build-arg VERSION=c4po:${{ github.run_number }} \
-          --build-arg JAR_FILE_API=security-c4po-api/build/libs/security-c4po-api-0.0.1-SNAPSHOT.jar \
-          --build-arg JAR_FILE_REPORT=security-c4po-reporting/build/libs/security-c4po-reporting-0.0.1-SNAPSHOT.jar
 
       - name: "Log in to Docker Hub"
         uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
@@ -161,16 +134,40 @@ jobs:
         with:
           images: cellecram/security-c4po  # my-docker-hub-namespace/my-docker-hub-repository
 
-      - name: "Push Docker images"
+      - name: Download jar api artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: API-jar
+          path: security-c4po-api/build/libs/
+
+      - name: Download jar reporting artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: REPORTING-jar
+          path: security-c4po-reporting/build/libs/
+
+      - name: "Set up Docker Buildx"
+        uses: docker/setup-buildx-action@94ab11c41e45d028884a99163086648e898eed25 #v1
+
+      - name: "Buildx & Push Docker images for AMD64 & ARM64"
         run: |
-          docker image ls
-          docker image tag security-c4po-angular cellecram/security-c4po:angular
-          docker image push cellecram/security-c4po:angular
-          docker image tag security-c4po-api cellecram/security-c4po:api
-          docker image push cellecram/security-c4po:api
-          docker image tag security-c4po-reporting cellecram/security-c4po:reporting
-          docker image push cellecram/security-c4po:reporting
-          docker image tag quay.io/keycloak/keycloak:20.0.0 cellecram/security-c4po:keycloak
-          docker image push cellecram/security-c4po:keycloak
-          docker image tag mongo:5.0.0-focal cellecram/security-c4po:mongo
-          docker image push cellecram/security-c4po:mongo
+          cd $CFG_PATH
+          docker buildx build --push \
+          --platform linux/amd64,linux/arm64 \
+          --tag cellecram/security-c4po:mongo ./c4po-db
+          docker buildx build --push \
+          --platform linux/amd64,linux/arm64 \
+          --tag cellecram/security-c4po:keycloak ./c4po-keycloak
+          docker buildx build --push \
+          --build-arg JAR_FILE_REPORT=./build/libs/security-c4po-reporting-0.0.1-SNAPSHOT.jar \
+          --build-arg SPRING_PROFILES_ACTIVE=COMPOSE \
+          --platform linux/amd64,linux/arm64 \
+          --tag cellecram/security-c4po:reporting ../security-c4po-reporting
+          docker buildx build --push \
+          --build-arg JAR_FILE_API=./build/libs/security-c4po-api-0.0.1-SNAPSHOT.jar \
+          --build-arg SPRING_PROFILES_ACTIVE=COMPOSE \
+          --platform linux/amd64,linux/arm64 \
+          --tag cellecram/security-c4po:api ../security-c4po-api
+          docker buildx build --push \
+          --platform linux/amd64,linux/arm64 \
+          --tag cellecram/security-c4po:angular ../security-c4po-angular

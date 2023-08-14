@@ -1,7 +1,7 @@
 ![workflow_badge](https://github.com/Marcel-Haag/security-c4po/actions/workflows/c4po-ci.yml/badge.svg?branch=main)
 ![workflow_badge](https://github.com/Marcel-Haag/security-c4po/actions/workflows/c4po-release.yml/badge.svg?branch=main)
 
-![alt architecture](./wiki/repository-open-graph-c4po.png)
+![alt architecture](./wiki/repository-owasp-guide-c4po.png)
 
 Welcome to the frontend repository of Security C4PO, an open-source pentest reporting tool.
 Security C4PO is a powerful, user-friendly tool designed to simplify the process of generating professional pentest reports.
@@ -13,6 +13,7 @@ This repository contains the codebase of Security C4PO, built with an Angular Fr
 
 
 ## Table of Contents
+* [Docker Hub Setup](#docker-hub-setup)
 * [Application Architecture](#application-architecture)
 * [Data Structure](#data-structure)
 * [C4PO Roadmap](#c4po-roadmap)
@@ -25,6 +26,23 @@ This repository contains the codebase of Security C4PO, built with an Angular Fr
 * [Contributing](#contributing)
 * [License](#license)
 
+## Docker Hub Setup
+[![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://hub.docker.com/repository/docker/cellecram/security-c4po/general)
+* Pull all images:
+  * `docker image pull --all-tags cellecram/security-c4po`
+* Create network: 
+  * `docker network create -d bridge c4po
+* Start images:
+  * `docker run --network=c4po --name c4po-keycloak -d -p 8080:8080 cellecram/security-c4po:keycloak`
+  * `docker run --network=c4po --name c4po-db -d -p 27017:27017 cellecram/security-c4po:mongo`
+  * `docker run --network=c4po --name c4po-angular -d -p 4200:4200 cellecram/security-c4po:angular`
+  * `docker run --network=c4po -e "SPRING_PROFILES_ACTIVE=COMPOSE" --name c4po-api -d -p 8443:8443 cellecram/security-c4po:api`
+  * `docker run --network=c4po -e "SPRING_PROFILES_ACTIVE=COMPOSE" --name c4po-reporting -d -p 8444:8444 cellecram/security-c4po:reporting`
+
+### OR: Run Script (Docker Hub)
+Execute `c4po-prod.sh` and all services will be pulled from Docker Hub and started.
+You can reach the application by entering http://localhost:4200 in you browser.
+  
 ## Application Architecture
 ![alt architecture](./wiki/C4PO-Architecture.png)
 
@@ -40,7 +58,6 @@ This repository contains the codebase of Security C4PO, built with an Angular Fr
 ![RxJS](https://img.shields.io/badge/rxjs-%23B7178C.svg?style=for-the-badge&logo=reactivex&logoColor=white)
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
 ![Gradle](https://img.shields.io/badge/Gradle-02303A.svg?style=for-the-badge&logo=Gradle&logoColor=white)
-![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 
 ### Technical Requirements
@@ -59,7 +76,8 @@ This repository contains the codebase of Security C4PO, built with an Angular Fr
 * Commit: `feat: <What was implemented?>` or `fix: <What got fixed?>`
 
 ### Development server
-Execute 'c4po.sh' and all services will run on a dev server.
+Execute `c4po-dev.sh` and all services will run on a dev server.
+You can reach the application by entering http://localhost:4200 in you browser.
 
 ### Testuser Credentials
 * Username: c4po

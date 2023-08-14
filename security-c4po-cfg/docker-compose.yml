@@ -1,4 +1,10 @@
-version: '2'
+version: '2.4'
+
+x-platforms:
+  - os: linux
+    arch: amd64
+  - os: linux
+    arch: arm64
 
 volumes:
   c4po-db:
@@ -6,14 +12,16 @@ volumes:
 services:
   # Database
   c4po-db:
+    build:
+      context: 'c4po-db'
+      x-bake:
+        platforms:
+          - linux/amd64
+          - linux/arm64
     image: mongo:5.0.0-focal
     container_name: c4po-db
     labels:
       name: "c4po-db"
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=Test1234!
-      - MONGO_INITDB_DATABASE=admin
     volumes:
       - ./volumes/mongodb/data/:/db/data
     deploy:
@@ -26,23 +34,29 @@ services:
       - c4po
   # Authentication Provider
   c4po-keycloak:
+    build:
+      context: 'c4po-keycloak'
+      x-bake:
+        platforms:
+          - linux/amd64
+          - linux/arm64
     container_name: c4po-keycloak
     labels:
       name: "c4po-keycloak"
     image: quay.io/keycloak/keycloak:20.0.0
-    environment:
-      - KEYCLOAK_ADMIN=admin
-      - KEYCLOAK_ADMIN_PASSWORD=admin
-    volumes:
-      - ./cfg/c4po_realm_export.json/:/opt/keycloak/data/import/c4po_realm_export.json
     ports:
       - 8080:8080
-    entrypoint: /opt/keycloak/bin/kc.sh --spi-login-protocol-openid-connect-legacy-logout-redirect-uri=true start-dev --import-realm --http-relative-path=/auth
     networks:
       - c4po
   # Services
   c4po-angular:
-    build: '../security-c4po-angular'
+    build:
+      context: '../security-c4po-angular'
+      x-bake:
+        platforms:
+          - linux/amd64
+          - linux/arm64
+    #build: '../security-c4po-angular'
     image: security-c4po-angular:latest
     container_name: c4po-angular
     labels:
@@ -58,7 +72,13 @@ services:
     networks:
       - c4po
   c4po-api:
-    build: '../security-c4po-api'
+    build:
+      context: '../security-c4po-api'
+      x-bake:
+        platforms:
+          - linux/amd64
+          - linux/arm64
+    #build: '../security-c4po-api'
     image: security-c4po-api:latest
     container_name: c4po-api
     labels:
@@ -77,7 +97,13 @@ services:
     networks:
       - c4po
   c4po-reporting:
-    build: '../security-c4po-reporting'
+    build:
+      context: '../security-c4po-reporting'
+      x-bake:
+        platforms:
+          - linux/amd64
+          - linux/arm64
+    #build: '../security-c4po-reporting'
     image: security-c4po-reporting:latest
     container_name: c4po-reporting
     labels:
