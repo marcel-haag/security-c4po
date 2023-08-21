@@ -12,7 +12,6 @@ import {UserService} from '@shared/services/user-service/user.service';
 import {User} from '@shared/models/user.model';
 import {BehaviorSubject} from 'rxjs';
 import {Route} from '@shared/models/route.enum';
-import {environment} from '../../environments/environment';
 import {Router} from '@angular/router';
 import {DialogService} from '@shared/services/dialog-service/dialog.service';
 import {ProfileSettingsComponent} from '@shared/modules/profile-settings/profile-settings.component';
@@ -148,9 +147,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onClickLogOut(): void {
-    // ToDo: Has to be implemented once HTTPS works
-
-    /*this.userService.logout().then(() => {
+    this.userService.logout().then(() => {
       console.warn('logout success');
       // Route user back to default page
       this.router.navigate([Route.HOME]).then(() => {
@@ -162,6 +159,6 @@ export class HeaderComponent implements OnInit {
       });
     }, err => {
       console.error(err);
-    });*/
+    });
   }
 }
