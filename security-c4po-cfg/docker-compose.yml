@@ -37,7 +37,7 @@ services:
       - ./cfg/c4po_realm_export.json/:/opt/keycloak/data/import/c4po_realm_export.json
     ports:
       - 8080:8080
-    entrypoint: /opt/keycloak/bin/kc.sh start-dev --import-realm --http-relative-path=/auth
+    entrypoint: /opt/keycloak/bin/kc.sh --spi-login-protocol-openid-connect-legacy-logout-redirect-uri=true start-dev --import-realm --http-relative-path=/auth
     networks:
       - c4po
   # Services
