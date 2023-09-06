@@ -31,7 +31,7 @@ This repository contains the codebase of Security C4PO, built with an Angular Fr
 * Pull all images:
   * `docker image pull --all-tags cellecram/security-c4po`
 * Create network: 
-  * `docker network create -d bridge c4po
+  * `docker network create -d bridge c4po`
 * Start images:
   * `docker run --network=c4po --name c4po-keycloak -d -p 8080:8080 cellecram/security-c4po:keycloak`
   * `docker run --network=c4po --name c4po-db -d -p 27017:27017 cellecram/security-c4po:mongo`
