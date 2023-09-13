@@ -10,9 +10,9 @@
 name: "CI: Clean Build C4PO"
 
 on:
-  pull_request:
-    branches: [ "main" ]
-
+  # ToDo: Change "push" back to "pull_request" before integration
+  push:
+    branches: [ "test" ]
 
 env:
   ANGULAR_PATH: security-c4po-angular
