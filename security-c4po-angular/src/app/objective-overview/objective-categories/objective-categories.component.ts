@@ -1,14 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NbMenuItem, NbMenuService} from '@nebular/theme';
-import {of, Subject} from 'rxjs';
 import {Store} from '@ngxs/store';
 import {ChangeCategory} from '@shared/stores/project-state/project-state.actions';
 import {Category} from '@shared/models/category.model';
 import {untilDestroyed} from 'ngx-take-until-destroy';
 import {TranslateService} from '@ngx-translate/core';
 import {ProjectState} from '@shared/stores/project-state/project-state';
-import {catchError, switchMap, tap} from 'rxjs/operators';
-import {Pentest, transformPentestsToObjectiveEntries} from '@shared/models/pentest.model';
 import {UntilDestroy} from '@ngneat/until-destroy';
 
 @Component({

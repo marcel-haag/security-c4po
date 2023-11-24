@@ -53,6 +53,10 @@ export function getTitleKeyForRefNumber(refNumber: string): string {
       translationKey += 'client.' + refNumberKey;
       break;
     }
+    case refNumber.includes('API'): {
+      translationKey += 'api.' + refNumberKey;
+      break;
+    }
     default: {
       translationKey = 'pentest.categories.translation';
       console.error('Invalid category number: ', refNumber.slice(4 - refNumber.length));

@@ -9,7 +9,8 @@ export enum Category {
   ERROR_HANDLING,
   CRYPTOGRAPHY,
   BUSINESS_LOGIC_TESTING,
-  CLIENT_SIDE_TESTING
+  CLIENT_SIDE_TESTING,
+  API_TESTING
 }
 
 export class CategoryDetails {

@@ -29,8 +29,6 @@ class ProjectController(private val projectService: ProjectService, private val 
     fun getProjects(
         @AuthenticationPrincipal user: Appuser
     ): Mono<ResponseEntity<List<ResponseBody>>> {
-
-        println("controller " + user.getSub())
         return projectService.getProjects(user.getSub()).map { projectList ->
             projectList.map {
                 it.toProjectResponseBody()

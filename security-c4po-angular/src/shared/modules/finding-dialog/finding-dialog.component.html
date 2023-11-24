@@ -134,10 +134,10 @@
                     type="text" required fullWidth
                     id="{{formArray[5].fieldName}}" nbInput
                     class="form-field form-textarea"
-                    rows="{{formArray[5].controlsConfig[0].value !== '' ? formArray[5].controlsConfig[0].value.split(getRowsFromString).length + 1 : 2}}"
+                    rows="{{formArray[5].controlsConfig[0].value !== '' ? formArray[5].controlsConfig[0].value.split(getRowsFromString).length + 2 : 2}}"
                     [status]="findingFormGroup.get(formArray[5].fieldName).dirty ? (findingFormGroup.get(formArray[5].fieldName).invalid  ? 'danger' : 'basic') : 'basic'"
                     placeholder="{{formArray[5].placeholder | translate}} *">
-            </textarea>
+          </textarea>
           <!-- FIXME: when the bug (https://github.com/angular/components/issues/7739) is fixed -->
           <ng-template ngFor let-error [ngForOf]="formArray[5].errors"
                        *ngIf="findingFormGroup.get(formArray[5].fieldName).dirty">
@@ -156,10 +156,10 @@
                     type="text" fullWidth
                     id="{{formArray[6].fieldName}}" nbInput
                     class="form-field form-textarea"
-                    rows="{{formArray[6].controlsConfig[0].value !== '' ? formArray[6].controlsConfig[0].value.split(getRowsFromString).length + 1 : 2}}"
+                    rows="{{formArray[6].controlsConfig[0].value !== '' ? formArray[6].controlsConfig[0].value.split(getRowsFromString).length + 2 : 2}}"
                     [status]="findingFormGroup.get(formArray[6].fieldName).dirty ? (findingFormGroup.get(formArray[6].fieldName).invalid  ? 'danger' : 'basic') : 'basic'"
                     placeholder="{{formArray[6].placeholder | translate}}">
-            </textarea>
+          </textarea>
           <!-- FIXME: when the bug (https://github.com/angular/components/issues/7739) is fixed -->
           <ng-template ngFor let-error [ngForOf]="formArray[6].errors"
                        *ngIf="findingFormGroup.get(formArray[6].fieldName).dirty">

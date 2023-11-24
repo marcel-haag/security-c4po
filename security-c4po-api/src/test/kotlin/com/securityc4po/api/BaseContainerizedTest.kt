@@ -63,6 +63,7 @@ abstract class BaseContainerizedTest {
                 Wait.forHttp("/auth")
             )
 
+
         @DynamicPropertySource
         @JvmStatic
         fun jwtValidationProperties(registry: DynamicPropertyRegistry) {

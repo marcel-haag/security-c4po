@@ -261,7 +261,8 @@ class ReportService {
                 CategoryPieData("ERROR_HANDLING", 0),
                 CategoryPieData("CRYPTOGRAPHY", 0),
                 CategoryPieData("BUSINESS_LOGIC_TESTING", 0),
-                CategoryPieData("CLIENT_SIDE_TESTING", 0)
+                CategoryPieData("CLIENT_SIDE_TESTING", 0),
+                CategoryPieData("API_TESTING", 0)
             )
             // Fill data for CategoryPieDataSet
             for (i in 0 until projectReportCollection.projectPentestReport.size) {
@@ -303,11 +304,15 @@ class ReportService {
                     }
 
                     "BUSINESS_LOGIC_TESTING" -> {
-                        categoryFindings[9].numberOfFindings += projectReportCollection.projectPentestReport[i].findings.size - 1
+                        categoryFindings[9].numberOfFindings += projectReportCollection.projectPentestReport[i].findings.size
                     }
 
                     "CLIENT_SIDE_TESTING" -> {
-                        categoryFindings[10].numberOfFindings += projectReportCollection.projectPentestReport[i].findings.size - 1
+                        categoryFindings[10].numberOfFindings += projectReportCollection.projectPentestReport[i].findings.size
+                    }
+
+                    "API_TESTING" -> {
+                        categoryFindings[11].numberOfFindings += projectReportCollection.projectPentestReport[i].findings.size
                     }
 
                     else -> {
@@ -347,7 +352,6 @@ class ReportService {
                         "CRITICAL" -> {
                             severityFindings[3].numberOfFindings += 1
                         }
-
                         else -> {
                             severityFindings.add(
                                 SeverityPieData(

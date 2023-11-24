@@ -45,7 +45,7 @@ export class ObjectiveTableComponent implements OnInit {
   getters: NbGetters<ObjectiveEntry, ObjectiveEntry> = {
     dataGetter: (node: ObjectiveEntry) => node,
     childrenGetter: (node: ObjectiveEntry) => node.childEntries || undefined,
-    expandedGetter: (node: ObjectiveEntry) => !!node.expanded,
+    expandedGetter: (node: ObjectiveEntry) => !!node.expanded
   };
 
   constructor(
