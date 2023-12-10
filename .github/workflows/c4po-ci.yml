@@ -10,9 +10,9 @@
 name: "Security C4PO CI"
 
 on:
-  pull_request:
+  # ToDo: Change "push" back to "pull_request" before integration
+  push:
     branches: [ "main" ]
-
 
 env:
   ANGULAR_PATH: security-c4po-angular
