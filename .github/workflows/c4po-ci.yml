@@ -11,7 +11,8 @@ name: "Security C4PO CI"
 
 on:
   pull_request:
-    branches: [ "main" ]
+    # ToDo: Change back to main
+    branches: [ "test" ]
 
 
 env:
