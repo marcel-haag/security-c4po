@@ -1,0 +1,72 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+# GitHub recommends pinning actions to a commit SHA.
+# To get a newer version, you will need to update the SHA.
+# You can also reference a tag or branch, but the action may change without warning.
+
+name: "Supply Chain Security C4PO SBOM Demo"
+
+# ToDo: Use manual trigger when integrating
+# on: workflow_dispatch
+on:
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  REPORTING_PATH: security-c4po-reporting
+  CFG_PATH: security-c4po-cfg
+
+
+jobs:
+  reporting_job:
+          name: "Reportingservice SBOM Job"
+      
+          runs-on: ubuntu-latest
+          
+          steps:
+            - name: "Check out code"
+              uses: actions/checkout@v3
+
+            # Steps required for build process
+            - name: "Set up JDK 11"
+              uses: actions/setup-java@v3
+              with:
+                java-version: '11'
+                distribution: 'temurin'
+      
+            - name: "Setup Gradle"
+              uses: gradle/gradle-build-action@v2
+              with:
+                gradle-version: 6.5
+      
+            - name: "Execute Gradle build"
+              run: |
+                cd $REPORTING_PATH
+                ./gradlew clean build
+
+            # Steps required for SBOM creation
+            - name: "Generate Reporting SBOM"
+              id: reporting_sbom
+              uses: anchore/sbom-action@v0
+              with:
+                path: './security-c4po-reporting'
+                format: cyclonedx-json
+                output-file: "${{ github.event.repository.name }}-reporting-sbom.cyclonedx.json"
+                upload-artifact: true
+
+            # ToDo: Push SBOM to self-hosted Dependency Track instance
+
+            # Working version to generate & analyse SBOMs
+            # Might be not good for company data
+            - name: "Generate SBOM"
+              id: sbom_generation
+              uses: codenotary/sbom.sh-create@main
+              with:
+                scan_type: 'grypefs'
+                target: './security-c4po-reporting' # . -> Assuming you want to scan the entire repository
+
+            - name: Output SBOM URL
+              run: echo "The Reportingservice SBOM can be found at $SBOM_SHARE_URL"
