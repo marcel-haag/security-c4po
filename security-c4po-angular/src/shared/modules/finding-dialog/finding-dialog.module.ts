@@ -17,29 +17,26 @@ import {CommonAppModule} from '../../../app/common-app.module';
 import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    FindingDialogComponent
-  ],
-  imports: [
-    CommonModule,
-    CommonAppModule,
-    NbCardModule,
-    NbButtonModule,
-    NbFormFieldModule,
-    NbInputModule,
-    FlexLayoutModule,
-    FontAwesomeModule,
-    TranslateModule,
-    NbSelectModule,
-    NbTagModule,
-    ReactiveFormsModule,
-  ],
-  providers: [
-    FindingDialogService,
-  ],
-  entryComponents: [
-    FindingDialogComponent
-  ]
+    declarations: [
+        FindingDialogComponent
+    ],
+    imports: [
+        CommonModule,
+        CommonAppModule,
+        NbCardModule,
+        NbButtonModule,
+        NbFormFieldModule,
+        NbInputModule,
+        FlexLayoutModule,
+        FontAwesomeModule,
+        TranslateModule,
+        NbSelectModule,
+        NbTagModule,
+        ReactiveFormsModule,
+    ],
+    providers: [
+        FindingDialogService,
+    ]
 })
 export class FindingDialogModule {
 }

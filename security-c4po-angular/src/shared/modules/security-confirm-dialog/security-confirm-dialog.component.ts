@@ -1,6 +1,6 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
 import {NB_DIALOG_CONFIG, NbDialogRef} from '@nebular/theme';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {acceptableInputValidator} from '@shared/modules/security-confirm-dialog/acceptableInputValidator';
 import {UntilDestroy} from '@ngneat/until-destroy';
 import {SecurityDialogMessage} from '@shared/services/dialog-service/dialog-message';
@@ -13,7 +13,7 @@ import {SecurityDialogMessage} from '@shared/services/dialog-service/dialog-mess
 @UntilDestroy()
 export class SecurityConfirmDialogComponent implements OnInit{
 
-  inputCtrl: FormControl;
+  inputCtrl: UntypedFormControl;
 
   constructor(/**
                * @param data contains all relevant information the dialog needs
@@ -28,7 +28,7 @@ export class SecurityConfirmDialogComponent implements OnInit{
 
   ngOnInit(): void {
     // Setup FormControl and custom validator
-    this.inputCtrl = new FormControl('', acceptableInputValidator(this.data.confirmString));
+    this.inputCtrl = new UntypedFormControl('', acceptableInputValidator(this.data.confirmString));
   }
 
   onClickConfirm(): void {

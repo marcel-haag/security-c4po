@@ -7,7 +7,7 @@
 # To get a newer version, you will need to update the SHA.
 # You can also reference a tag or branch, but the action may change without warning.
 
-name: "Security C4PO CI"
+name: "CI: Clean Build C4PO"
 
 on:
   pull_request:
@@ -20,7 +20,7 @@ env:
   REPORTING_PATH: security-c4po-reporting
   CFG_PATH: security-c4po-cfg
 
-  ANGULAR_CLI_VERSION: 13
+  ANGULAR_CLI_VERSION: 15
 
 
 jobs:
@@ -34,10 +34,10 @@ jobs:
       - name: "Check out code"
         uses: actions/checkout@v3
 
-      - name: "Use Node.js 14.x"
+      - name: "Use Node.js 16.x"
         uses: actions/setup-node@v1
         with:
-          node-version: '14.x'
+          node-version: '16.x'
           cache: 'npm'
           
       - name: "Install NPM dependencies"

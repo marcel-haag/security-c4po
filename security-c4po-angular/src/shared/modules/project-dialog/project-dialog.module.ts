@@ -10,9 +10,9 @@ import {CommonAppModule} from '../../../app/common-app.module';
 import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    ProjectDialogComponent
-  ],
+    declarations: [
+        ProjectDialogComponent
+    ],
     imports: [
         CommonModule,
         CommonAppModule,
@@ -26,12 +26,9 @@ import {ReactiveFormsModule} from '@angular/forms';
         ReactiveFormsModule,
         NbSelectModule,
     ],
-  providers: [
-    ProjectDialogService,
-  ],
-  entryComponents: [
-    ProjectDialogComponent
-  ]
+    providers: [
+        ProjectDialogService,
+    ]
 })
 export class ProjectDialogModule {
 }

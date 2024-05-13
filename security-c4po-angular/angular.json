@@ -155,7 +155,6 @@
       }
     }
   },
-  "defaultProject": "security-c4po-angular",
   "cli": {
     "analytics": false
   }

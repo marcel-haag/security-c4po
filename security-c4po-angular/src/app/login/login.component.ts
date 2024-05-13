@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Store} from '@ngxs/store';
 import {NotificationService, PopupType} from '@shared/services/toaster-service/notification.service';
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   version: string;
 
   // form control elements
-  loginFormGroup: FormGroup;
+  loginFormGroup: UntypedFormGroup;
   loginUsernameCtrl: AbstractControl;
   loginPasswordCtrl: AbstractControl;
 
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
 
   formCtrlStatus = FieldStatus.BASIC;
 
-  constructor(private fb: FormBuilder,
+  constructor(private fb: UntypedFormBuilder,
               private router: Router,
               private store: Store,
               private readonly httpClient: HttpClient,

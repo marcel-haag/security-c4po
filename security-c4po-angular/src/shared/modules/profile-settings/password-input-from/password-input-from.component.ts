@@ -1,9 +1,9 @@
 import {Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
 import {
   AbstractControl,
-  FormBuilder,
-  FormControl,
-  FormGroup,
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
   NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
   ValidationErrors,
@@ -37,7 +37,7 @@ import * as FA from '@fortawesome/free-solid-svg-icons';
 })
 export class PasswordInputFromComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: UntypedFormBuilder) { }
   // Emits true if password is strong
   @Output() passwordStrong: EventEmitter<boolean> = new EventEmitter();
   // Handle erros
@@ -48,7 +48,7 @@ export class PasswordInputFromComponent implements OnInit {
   // show the criteria of the new password
   showDetails = false;
 
-  passwordFormGroup: FormGroup;
+  passwordFormGroup: UntypedFormGroup;
   // form control elements
   oldPasswordCtrl: AbstractControl;
   newPasswordCtrl: AbstractControl;
@@ -62,7 +62,7 @@ export class PasswordInputFromComponent implements OnInit {
    * tests value of control for empty-spaces
    * @param control FormControl
    */
-  static containsBlankSpaceValidator(control: FormControl): ValidationErrors | null {
+  static containsBlankSpaceValidator(control: UntypedFormControl): ValidationErrors | null {
     const containsEmptySpacesRegex: RegExp = new RegExp(/\s+/);
     return containsEmptySpacesRegex.test(control.value) ? {passwordContainsBlankSpace: true} : null;
   }

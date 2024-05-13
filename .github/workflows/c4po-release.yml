@@ -7,7 +7,7 @@
 # To get a newer version, you will need to update the SHA.
 # You can also reference a tag or branch, but the action may change without warning.
 
-name: "Publish C4PO Docker Hub"
+name: "CD: Publish C4PO to Docker Hub"
 
 on:
   push:
@@ -30,10 +30,10 @@ jobs:
       - name: "Check out code"
         uses: actions/checkout@v3
 
-      - name: "Use Node.js 14.x"
+      - name: "Use Node.js 16.x"
         uses: actions/setup-node@v1
         with:
-          node-version: '14.x'
+          node-version: '16.x'
           cache: 'npm'
           
       - name: "Install NPM dependencies"

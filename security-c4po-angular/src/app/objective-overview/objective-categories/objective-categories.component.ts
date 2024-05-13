@@ -3,10 +3,9 @@ import {NbMenuItem, NbMenuService} from '@nebular/theme';
 import {Store} from '@ngxs/store';
 import {ChangeCategory} from '@shared/stores/project-state/project-state.actions';
 import {Category} from '@shared/models/category.model';
-import {untilDestroyed} from 'ngx-take-until-destroy';
 import {TranslateService} from '@ngx-translate/core';
 import {ProjectState} from '@shared/stores/project-state/project-state';
-import {UntilDestroy} from '@ngneat/until-destroy';
+import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';
 
 @Component({
   selector: 'app-objective-categories',

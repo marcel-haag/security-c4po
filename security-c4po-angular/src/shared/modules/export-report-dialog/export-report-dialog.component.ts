@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {GenericDialogData} from '@shared/models/generic-dialog-data';
 import {NB_DIALOG_CONFIG, NbDialogRef} from '@nebular/theme';
 import {ReportingService} from '@shared/services/reporting/reporting.service';
@@ -35,8 +35,8 @@ export class ExportReportDialogComponent implements OnInit {
   // HTML
   readonly fa = FA;
   // form control elements
-  exportReportFormatControl = new FormControl(ExportFormatOptions.PDF);
-  exportReportLanguageControl = new FormControl(LanguageOptions.ENGLISH);
+  exportReportFormatControl = new UntypedFormControl(ExportFormatOptions.PDF);
+  exportReportLanguageControl = new UntypedFormControl(LanguageOptions.ENGLISH);
   // exports
   exportFormats = ExportFormatOptions;
   exportLanguages = LanguageOptions;

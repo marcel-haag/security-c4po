@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {NB_DIALOG_CONFIG, NbDialogRef} from '@nebular/theme';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup} from '@angular/forms';
 import {GenericFormFieldConfig, GenericDialogData} from '@shared/models/generic-dialog-data';
 import deepEqual from 'deep-equal';
 import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';
@@ -19,7 +19,7 @@ import {Project, transformProjectToRequestBody} from '@shared/models/project.mod
 })
 export class ProjectDialogComponent implements OnInit {
   // form control elements
-  projectFormGroup: FormGroup;
+  projectFormGroup: UntypedFormGroup;
   formArray: GenericFormFieldConfig[];
 
   dialogData: GenericDialogData;
@@ -32,7 +32,7 @@ export class ProjectDialogComponent implements OnInit {
 
   constructor(
     @Inject(NB_DIALOG_CONFIG) private data: GenericDialogData,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private dialogService: DialogService,
     private projectService: ProjectService,
     private readonly notificationService: NotificationService,
@@ -45,7 +45,7 @@ export class ProjectDialogComponent implements OnInit {
     this.dialogData = this.data;
   }
 
-  generateFormCreationFieldArray(): FormGroup {
+  generateFormCreationFieldArray(): UntypedFormGroup {
     this.formArray = Object.values(this.data.form);
     const config = this.formArray?.reduce((accumulator: {}, currentValue: GenericFormFieldConfig) => ({
       ...accumulator,

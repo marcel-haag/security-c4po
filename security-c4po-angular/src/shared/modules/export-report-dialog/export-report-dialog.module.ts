@@ -14,9 +14,9 @@ import {LoadingBarModule} from '@shared/widgets/loading-bar/loading-bar.module';
 import {VersionTagModule} from '@shared/widgets/version-tag/version-tag.module';
 
 @NgModule({
-  declarations: [
-    ExportReportDialogComponent
-  ],
+    declarations: [
+        ExportReportDialogComponent
+    ],
     imports: [
         CommonModule,
         CommonAppModule,
@@ -33,12 +33,9 @@ import {VersionTagModule} from '@shared/widgets/version-tag/version-tag.module';
         LoadingBarModule,
         VersionTagModule
     ],
-  providers: [
-    ExportReportDialogService,
-    ReportingService
-  ],
-  entryComponents: [
-    ExportReportDialogComponent
-  ]
+    providers: [
+        ExportReportDialogService,
+        ReportingService
+    ]
 })
 export class ExportReportDialogModule { }

@@ -11,29 +11,26 @@ import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
-  declarations: [
-    CommentDialogComponent
-  ],
-  imports: [
-    CommonModule,
-    CommonAppModule,
-    NbCardModule,
-    NbButtonModule,
-    NbFormFieldModule,
-    NbInputModule,
-    FlexLayoutModule,
-    FontAwesomeModule,
-    TranslateModule,
-    NbSelectModule,
-    NbTagModule,
-    ReactiveFormsModule,
-  ],
-  providers: [
-    CommentDialogService,
-  ],
-  entryComponents: [
-    CommentDialogComponent
-  ]
+    declarations: [
+        CommentDialogComponent
+    ],
+    imports: [
+        CommonModule,
+        CommonAppModule,
+        NbCardModule,
+        NbButtonModule,
+        NbFormFieldModule,
+        NbInputModule,
+        FlexLayoutModule,
+        FontAwesomeModule,
+        TranslateModule,
+        NbSelectModule,
+        NbTagModule,
+        ReactiveFormsModule,
+    ],
+    providers: [
+        CommentDialogService,
+    ]
 })
 export class CommentDialogModule {
 }

@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup} from '@angular/forms';
 import {GenericDialogData, GenericFormFieldConfig} from '@shared/models/generic-dialog-data';
 import * as FA from '@fortawesome/free-solid-svg-icons';
 import deepEqual from 'deep-equal';
@@ -21,7 +21,7 @@ import {CommentService} from '@shared/services/api/comment.service';
 @UntilDestroy()
 export class CommentDialogComponent implements OnInit {
   // form control elements
-  commentFormGroup: FormGroup;
+  commentFormGroup: UntypedFormGroup;
   formArray: GenericFormFieldConfig[];
 
   dialogData: GenericDialogData;
@@ -32,7 +32,7 @@ export class CommentDialogComponent implements OnInit {
 
   constructor(
     @Inject(NB_DIALOG_CONFIG) private data: GenericDialogData,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     protected dialogRef: NbDialogRef<CommentDialogComponent>,
     private commentService: CommentService,
     private readonly notificationService: NotificationService,
@@ -46,7 +46,7 @@ export class CommentDialogComponent implements OnInit {
     this.commentFormGroup = this.generateFormCreationFieldArray();
   }
 
-  generateFormCreationFieldArray(): FormGroup {
+  generateFormCreationFieldArray(): UntypedFormGroup {
     this.formArray = Object.values(this.data.form);
     const config = this.formArray?.reduce((accumulator: {}, currentValue: GenericFormFieldConfig) => ({
       ...accumulator,

@@ -7,22 +7,19 @@ import {TranslateModule} from '@ngx-translate/core';
 import {CommonAppModule} from '../../../app/common-app.module';
 
 @NgModule({
-  declarations: [
-    ConfirmDialogComponent
-  ],
-  imports: [
-    CommonModule,
-    CommonAppModule,
-    NbCardModule,
-    NbButtonModule,
-    FlexLayoutModule,
-    TranslateModule,
-    NbLayoutModule,
-    NbSelectModule
-  ],
-  entryComponents: [
-    ConfirmDialogComponent
-  ]
+    declarations: [
+        ConfirmDialogComponent
+    ],
+    imports: [
+        CommonModule,
+        CommonAppModule,
+        NbCardModule,
+        NbButtonModule,
+        FlexLayoutModule,
+        TranslateModule,
+        NbLayoutModule,
+        NbSelectModule
+    ]
 })
 export class ConfirmDialogModule {
 }

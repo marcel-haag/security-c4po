@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup} from '@angular/forms';
 import {GenericDialogData, GenericFormFieldConfig} from '@shared/models/generic-dialog-data';
 import {NB_DIALOG_CONFIG, NbDialogRef, NbTagComponent} from '@nebular/theme';
 import deepEqual from 'deep-equal';
@@ -24,7 +24,7 @@ export class FindingDialogComponent implements OnInit {
 
   constructor(
     @Inject(NB_DIALOG_CONFIG) private data: GenericDialogData,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     protected dialogRef: NbDialogRef<FindingDialogComponent>,
     private findingService: FindingService,
     private readonly notificationService: NotificationService,
@@ -33,7 +33,7 @@ export class FindingDialogComponent implements OnInit {
   ) {
   }
   // form control elements
-  findingFormGroup: FormGroup;
+  findingFormGroup: UntypedFormGroup;
   formArray: GenericFormFieldConfig[];
 
   dialogData: GenericDialogData;
@@ -61,7 +61,7 @@ export class FindingDialogComponent implements OnInit {
     this.findingFormGroup.controls['findingAffectedUrls'].reset('');
   }
 
-  generateFormCreationFieldArray(): FormGroup {
+  generateFormCreationFieldArray(): UntypedFormGroup {
     this.formArray = Object.values(this.data.form);
     const config = this.formArray?.reduce((accumulator: {}, currentValue: GenericFormFieldConfig) => ({
       ...accumulator,
