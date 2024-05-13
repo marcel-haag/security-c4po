@@ -1,4 +1,4 @@
-import {FormControl, FormGroupDirective, NgForm} from '@angular/forms';
+import {UntypedFormControl, FormGroupDirective, NgForm} from '@angular/forms';
 import {BehaviorSubject} from 'rxjs';
 
 export class PasswordErrorStateMatcher {
@@ -12,7 +12,7 @@ export class PasswordErrorStateMatcher {
   /**
    * @return true if new and confirm password do not match.
    */
-  isErrorState(ctrl: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+  isErrorState(ctrl: UntypedFormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const passwordCtrl = form.control.get('newPassword');
     this.passwordsDoNotMatch = passwordCtrl.value !== ctrl.value;
     return this.passwordsDoNotMatch || this.userServiceError.value;
@@ -25,7 +25,7 @@ export class OldPasswordEmptyError {
   /**
    * @return true if old password is empty and new password is not.
    */
-  isErrorState(ctrl: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+  isErrorState(ctrl: UntypedFormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const passwordCtrl = form.control.get('newPassword');
     this.oldPasswordEmpty = passwordCtrl.value.length !== 0 && ctrl.value.length === 0;
     return this.oldPasswordEmpty;

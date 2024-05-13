@@ -2,7 +2,7 @@ import {Component, Input, OnInit, Output} from '@angular/core';
 import {NbDialogRef} from '@nebular/theme';
 import * as FA from '@fortawesome/free-solid-svg-icons';
 import {TranslateService} from '@ngx-translate/core';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {ProfilePasswordFormData} from '@shared/modules/profile-settings/password-input-from/util/profile-password-form-data.model';
 import {Patterns} from '@shared/modules/profile-settings/patterns';
 import {LanguageOptions} from '@shared/modules/export-report-dialog/export-report-dialog.component';
@@ -39,7 +39,7 @@ export class ProfileSettingsComponent implements OnInit {
   readonly USER_IMG = 'assets/images/demo/anon-user-icon.png';
 
   // User form
-  userFormGroup: FormGroup;
+  userFormGroup: UntypedFormGroup;
   userNameControl: AbstractControl;
   userFirstNameControl: AbstractControl;
   userLastNameControl: AbstractControl;
@@ -47,7 +47,7 @@ export class ProfileSettingsComponent implements OnInit {
   oldUserData: UserProfileFormData;
 
   // Password form
-  passwordFormGroup: FormGroup;
+  passwordFormGroup: UntypedFormGroup;
   userPasswordInputControl: AbstractControl;
   private readonly initialPasswordInput: ProfilePasswordFormData = {oldPassword: '', newPassword: '', confirmNewPassword: ''};
   passwordStrong: boolean;
@@ -55,11 +55,11 @@ export class ProfileSettingsComponent implements OnInit {
 
 
   // Language change
-  profileLanguageControl = new FormControl(LanguageOptions.ENGLISH);
+  profileLanguageControl = new UntypedFormControl(LanguageOptions.ENGLISH);
   profileLanguages = LanguageOptions;
 
   constructor(protected dialogRef: NbDialogRef<any>,
-              private fb: FormBuilder,
+              private fb: UntypedFormBuilder,
               private store: Store,
               private userService: UserService,
               private translateService: TranslateService) {

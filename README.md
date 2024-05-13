@@ -1,5 +1,7 @@
 ![workflow_badge](https://github.com/Marcel-Haag/security-c4po/actions/workflows/c4po-ci.yml/badge.svg?branch=main)
 ![workflow_badge](https://github.com/Marcel-Haag/security-c4po/actions/workflows/c4po-release.yml/badge.svg?branch=main)
+[![OWASP Incubator](https://img.shields.io/badge/owasp-incubator%20project-3267fe.svg)](https://owasp.org/other_projects/)<!-- @IGNORE PREVIOUS: link -->
+
 
 ![alt architecture](./wiki/repository-owasp-guide-c4po.png)
 
@@ -63,7 +65,7 @@ You can reach the application by entering http://localhost:4200 in you browser.
 ### Technical Requirements
 * Docker / Docker-compose
 * OpenJDK 11
-* Node 14.15.1 / npm 6.14.8
+* Node 16.20.2 / npm 8.19.4
 * MongoDB 4.4.6
 
 ### Tools

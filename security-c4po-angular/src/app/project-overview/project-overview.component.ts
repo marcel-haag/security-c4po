@@ -11,10 +11,8 @@ import {ProjectDialogComponent} from '@shared/modules/project-dialog/project-dia
 import {ProjectDialogService} from '@shared/modules/project-dialog/service/project-dialog.service';
 import {Router} from '@angular/router';
 import {Store} from '@ngxs/store';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {ProjectState} from '@shared/stores/project-state/project-state';
-import {Pentest} from '@shared/models/pentest.model';
-import {Route} from '@shared/models/route.enum';
 import {SetAvailableProjects} from '@shared/stores/project-state/project-state.actions';
 
 @UntilDestroy()
@@ -32,7 +30,7 @@ export class ProjectOverviewComponent implements OnInit {
   allProjects$: BehaviorSubject<Project[]> = new BehaviorSubject<Project[]>([]);
 
   // Search
-  projectSearch: FormControl;
+  projectSearch: UntypedFormControl = new UntypedFormControl();
   protected filter$: Observable<string>;
   allProjectsCount$: BehaviorSubject<any> = new BehaviorSubject<any>({allProjectsCount: 0});
 
@@ -53,18 +51,18 @@ export class ProjectOverviewComponent implements OnInit {
       untilDestroyed(this)
     ).subscribe({
       next: (projects: Project[]) => {
+        // tslint:disable-next-line:no-console
         if (projects && projects.length === 0) {
           this.loadProjects();
-        } else {
         }
+        // Setup Search Form
+        this.projectSearch = new UntypedFormControl({value: '', disabled: projects?.length === 0});
+        this.setFilterObserverForProjects();
       },
       error: err => {
         console.error(err);
-      }
+      },
     });
-    // Setup Search
-    this.projectSearch = new FormControl({value: '', disabled: this.allProjects$.getValue() === []});
-    this.setFilterObserverForProjects();
   }
 
   loadProjects(): void {

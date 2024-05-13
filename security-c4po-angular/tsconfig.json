@@ -12,13 +12,22 @@
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2015",
+    "target": "ES2022",
     "module": "esNext",
-    "lib": ["es2019", "es2018", "dom"],
+    "lib": [
+      "es2019",
+      "es2018",
+      "dom"
+    ],
     "paths": {
-      "@shared/*": ["./src/shared/*"],
-      "@assets/*": ["./src/assets/*"]
-    }
+      "@shared/*": [
+        "./src/shared/*"
+      ],
+      "@assets/*": [
+        "./src/assets/*"
+      ]
+    },
+    "useDefineForClassFields": false
   },
   "include": [
     "src/**/*.ts",
