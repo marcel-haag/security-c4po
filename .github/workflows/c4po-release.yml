@@ -30,10 +30,10 @@ jobs:
       - name: "Check out code"
         uses: actions/checkout@v3
 
-      - name: "Use Node.js 16.x"
-        uses: actions/setup-node@v1
+      - name: "Use Node.js 18.x"
+        uses: actions/setup-node@v4
         with:
-          node-version: '16.x'
+          node-version: '18.x'
           cache: 'npm'
           
       - name: "Install NPM dependencies"
@@ -76,7 +76,7 @@ jobs:
           cd $API_PATH
           ./gradlew clean bootJar -x dependencyCheckAnalyze
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: API-jar
           path: security-c4po-api/build/libs/
@@ -106,7 +106,7 @@ jobs:
           cd $REPORTING_PATH
           ./gradlew clean bootJar
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: REPORTING-jar
           path: security-c4po-reporting/build/libs/
@@ -135,13 +135,13 @@ jobs:
           images: cellecram/security-c4po  # my-docker-hub-namespace/my-docker-hub-repository
 
       - name: Download jar api artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: API-jar
           path: security-c4po-api/build/libs/
 
       - name: Download jar reporting artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: REPORTING-jar
           path: security-c4po-reporting/build/libs/
