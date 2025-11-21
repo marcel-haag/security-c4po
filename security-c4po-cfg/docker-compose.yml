@@ -63,10 +63,11 @@ services:
       name: "c4po-angular"
     depends_on:
       - c4po-keycloak
+    mem_limit: 4g
     deploy:
       resources:
         limits:
-          memory: "2G"
+          memory: "4G"
     ports:
       - 4200:4200
     networks:

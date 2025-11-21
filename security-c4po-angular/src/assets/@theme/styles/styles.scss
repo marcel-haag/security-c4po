@@ -10,8 +10,8 @@
 @import './variables';
 
 // loading glide
-@import "@glidejs/glide/src/assets/sass/glide.core";
-@import "@glidejs/glide/src/assets/sass/glide.theme";
+@import "~@glidejs/glide/dist/css/glide.core.min.css";
+@import "~@glidejs/glide/dist/css/glide.theme.min.css";
 
 * {
   font-family: Roboto, "Helvetica Neue", sans-serif;
