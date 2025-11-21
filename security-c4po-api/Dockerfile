@@ -1,4 +1,4 @@
-FROM openjdk:11-jre
+FROM eclipse-temurin:11-jre
 ENV TZ=UTC
 
 ARG JAR_FILE_API

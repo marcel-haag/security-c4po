@@ -39,4 +39,4 @@ echo -e "\n"
 
 echo "------------Start Docker Container------------"
 echo -e "\n"
-docker-compose -f ${compose} up
+docker-compose -f ${compose} up -d
