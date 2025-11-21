@@ -12,6 +12,9 @@ name: "CD: Publish C4PO to Docker Hub"
 on:
   push:
     branches: [ "main" ]
+# For testing only
+  #pull_request:
+  #  branches: [ "main" ]
 
 env:
   ANGULAR_PATH: security-c4po-angular
@@ -34,7 +37,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18.x'
-          cache: 'npm'
           
       - name: "Install NPM dependencies"
         run: |
